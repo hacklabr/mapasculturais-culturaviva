@@ -10,4 +10,4 @@ $this->part('header');
         <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>">voltar ao início</a>
 </div>
 
-<?php echo $this->part('footer-teste'); ?>
+<?php echo $this->part('footer'); ?>
