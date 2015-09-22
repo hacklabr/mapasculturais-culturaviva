@@ -33,11 +33,11 @@ class Theme extends BaseV1\Theme{
     }
     
     protected function _enqueueStyles(){
-        $this->enqueueStyle('culturaviva', 'bootstrap', 'css/bootstrap.css');
+
     }
     
     protected function _enqueueScripts(){
-        $this->enqueueScript('culturaviva', 'bootstrap', 'js/bootstrap.js');
+       
     }
     
     function head() {
