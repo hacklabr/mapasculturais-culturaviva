@@ -1,5 +1,83 @@
 
-.teste-1 {
-    background:url("../img/simpson.jpg");
-    height:200px;
+
+body{
+    background: url("../img/bg.png"), linear-gradient(to right, #075579 0%, #078979 51%, #075579 100%);
+}
+
+.clear{
+    clear:both;
+}
+
+#main-section{
+    background:transparent;
+}
+
+section{
+    max-width:960px;
+    width:100%;
+    margin:0 auto;
+}
+
+
+section.boxs-cadastro{
+    
+    article{
+        width:50%;
+        float:left;
+        background: #fff;
+    }
+
+    article.box-info-responsavel{
+        header{
+            background: $base-color-info-responsavel;
+        }
+    }
+
+    article.box-ponto-mapa{
+        header{
+            background: $base-color-ponto-mapa;
+        }
+    }
+
+    article.box-entidade-dados{
+        header{
+            background: $base-color-entidade-dados;
+        }
+    }
+
+    article.box-portfolio{
+        header{
+            background: $base-color-portfolio;
+        }
+    }
+
+    article.box-entidade-contato{
+        header{
+            background: $base-color-entidade-contato;
+        }
+    }
+
+    article.box-fale-mais-ponto{
+        header{
+            background: $base-color-fale-mais-ponto;
+        }
+    }
+
+}
+
+section.box-status{
+    article{
+        background:#fff;
+        .status{
+            width: 16%;
+            height: auto;
+            float: left;
+            padding: 0.3%;
+            color:#1502B3;
+        }
+    }
+
+    article.validar-ponto{
+        background: #078979;
+    }
 }

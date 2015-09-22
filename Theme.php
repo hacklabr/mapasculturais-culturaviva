@@ -29,7 +29,8 @@ class Theme extends BaseV1\Theme{
         parent::_init();
         $this->_enqueueStyles();
         $this->_enqueueScripts();
-        $this->assetManager->publishAsset('img/simpson.jpg', 'img/simpson.jpg');
+        $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
+
     }
     
     protected function _enqueueStyles(){
