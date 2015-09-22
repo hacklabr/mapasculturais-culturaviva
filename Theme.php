@@ -58,10 +58,10 @@ class Theme extends BaseV1\Theme{
             $registration->save(true);
             
             $user->inscricaoCulturaViva = json_encode([
-                'agenteIndividual' => $user->profile,
-                'agenteEntidade' => $entidade,
-                'agentePonto' => $ponto,
-                'inscricao' => $registration
+                'agenteIndividual' => $user->profile->id,
+                'agenteEntidade' => $entidade->id,
+                'agentePonto' => $ponto->id,
+                'inscricao' => $registration->id
             ]);
             $user->save(true);
             
