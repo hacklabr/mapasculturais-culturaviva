@@ -2,7 +2,7 @@
 
 $this->layout = 'cadastro';
 
-$this->cadastroTitle = $this->dict('cadastro: titulo - entidade contatos', false);
+$this->cadastroTitle = 'Contatos da Entidade';
 
 $this->cadastroText = 'DEFINIR';
 
