@@ -6,15 +6,7 @@ use MapasCulturais\App;
 class Theme extends BaseV1\Theme{
 
     protected static function _getTexts(){
-        $self = App::i()->view;
-        
         return array(
-            'cadastro: titulo - responsavel' => 'Informações do Responsável',
-            'cadastro: titulo - entidade dados' => 'Dados da Entidade',
-            'cadastro: titulo - entidade contatos' => 'Contatos da Entidade',
-            'cadastro: titulo - ponto mapa' => 'Seu Ponto no Mapa',
-            'cadastro: titulo - portifolio' => 'Portifólio',
-            'cadastro: titulo - ponto mais' => 'Fale mais sobre seu ponto',
             'site: owner' => 'Ministério da Cultura',
             'site: by the site owner' => 'pelo Ministério da Cultura',
 
@@ -33,10 +25,6 @@ class Theme extends BaseV1\Theme{
         
         $app = App::i();
         
-        if (!$app->user->is('guest')) {
-            $this->jsObject['ids'] = json_decode($app->user->cultura_viva_ids);
-        }
-        
         $app->hook('auth.createUser:after', function($user, $data) use ($app) {
             $project = $app->repo('Project')->find(1); //By(['owner' => 1], ['id' => 'asc'], 1);
             //
@@ -52,8 +40,15 @@ class Theme extends BaseV1\Theme{
             $entidade->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
             $entidade->save(true);
             
+            // criando o agente coletivo vazio
+            $ponto = new \MapasCulturais\Entities\Agent;
+            $ponto->parent = $user->profile;
+            $ponto->name = '';
+            $ponto->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+            $ponto->save(true);
+            
             // criando a inscrição
-            //$projeto = $projects[0];
+            
             // relaciona o agente responsável, que é o proprietário da inscrição
             $registration = new \MapasCulturais\Entities\Registration;
             $registration->owner = $user->profile;
@@ -61,20 +56,37 @@ class Theme extends BaseV1\Theme{
             
             // inserir que as inscricoes online estao ativadas
             $registration->save(true);
-            $user->cultura_viva_ids = json_encode([
-                'agente_individual' => $user->profile->id,
-                'agente_coletivo'   => $entidade->id,
-                'inscricao'         => $registration->id
+            
+            $user->inscricaoCulturaViva = json_encode([
+                'agenteIndividual' => $user->profile,
+                'agenteEntidade' => $entidade,
+                'agentePonto' => $ponto,
+                'inscricao' => $registration
             ]);
             $user->save(true);
             
             // relaciona o agente coletivo
             $registration->createAgentRelation($entidade, 'entidade', false, true, true);
+            $registration->createAgentRelation($ponto, 'ponto', false, true, true);
+            
             $app->enableAccessControl();
             //$app->em->flush(); sem o true no save, ele cria um transaction no bd
         });
+        
         if (!$app->user->is('guest')) {
-            $this->jsObject['ids'] = json_decode($app->user->cultura_viva_ids);
+            $ids = json_decode($app->user->inscricaoCulturaViva);
+            
+            $inscricao = $app->repo('Registration')->find($ids->inscricao);
+            $agenteIndividual = $app->repo('Agent')->find($ids->agenteIndividual);
+            $agenteEntidade = $app->repo('Agent')->find($ids->agenteEntidade);
+            $agentePonto = $app->repo('Agent')->find($ids->agentePonto);
+            
+            $this->jsObject['culturaViva'] = [
+                'agenteIndividual' => $agenteIndividual,
+                'agenteEntidade' => $agenteEntidade,
+                'agentePonto' => $agentePonto,
+                'inscricao' => $inscricao
+            ];
         }
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
@@ -91,7 +103,7 @@ class Theme extends BaseV1\Theme{
     }
     
     protected function _publishAssets(){
-        $this->assetManager->publishAsset('img/simpson.jpg', 'img/simpson.jpg');
+        
     }
     
     function head() {
@@ -116,32 +128,27 @@ class Theme extends BaseV1\Theme{
         }
     }
     
+    
+    
     public function register() {
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
         
-//        //$url = $app->createUrl('site');
-//        $def = new \MapasCulturais\Definitions\Metadata('cultura_viva_ids', [
-//            'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição',
-//            'private' => true
-//        ]);
-//        $app->registerMetadata($def, 'MapasCulturais\Entities\User');
-//        foreach ($this->agent_metadata as $k => $v) {
-//            $def = new \MapasCulturais\Definitions\Metadata($k, $v);
-//            $app->registerMetadata($def, 'MapasCulturais\Entities\Agent', 1);
-//            $app->registerMetadata($def, 'MapasCulturais\Entities\Agent', 2);
-//        }
-//        $metalist_definition = new Definitions\MetaListGroup('projetos', [
-//            'title' => ['label' => 'Nome'],
-//            'value' => [
-//                'label' => 'Projeto',
-//                'validations' => [
-//                    'required' => 'O json dos projetos é obrigatório',
-//                    "v::json()" => "Json inválido"
-//                ]
-//            ]
-//        ]);
-//        $app->registerMetaListGroup('agent', $metalist_definition);
+        $metadata = [
+            'MapasCulturais\Entities\User' => [
+                'inscricaoCulturaViva' => [
+                    'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição',
+                    'private' => true
+                ]
+            ]
+        ];
+        
+        foreach($metadata as $entity_class => $metas){
+            foreach($metas as $key => $cfg){
+                $def = new \MapasCulturais\Definitions\Metadata($key, $cfg);
+                $app->registerMetadata($def, $entity_class);
+            }
+        }
     }
 }
