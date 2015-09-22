@@ -29,8 +29,55 @@ class Theme extends BaseV1\Theme{
         parent::_init();
         $this->_enqueueStyles();
         $this->_enqueueScripts();
-        $this->assetManager->publishAsset('img/simpson.jpg', 'img/simpson.jpg');
+        $this->_publishAssets();
+        
+        $app = App::i();
+        
+        if (!$app->user->is('guest')) {
+            $this->jsObject['ids'] = json_decode($app->user->cultura_viva_ids);
+        }
+        
+        $app->hook('auth.createUser:after', function($user, $data) use ($app) {
+            $project = $app->repo('Project')->find(1); //By(['owner' => 1], ['id' => 'asc'], 1);
+            //
+            // define o agente padrão (profile) como rascunho
+            $app->disableAccessControl(); // não sei se é necessário desabilitar
+            $user->profile->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+            $user->profile->save(true);
+            
+            // criando o agente coletivo vazio
+            $entidade = new \MapasCulturais\Entities\Agent;
+            $entidade->parent = $user->profile;
+            $entidade->name = '';
+            $entidade->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+            $entidade->save(true);
+            
+            // criando a inscrição
+            //$projeto = $projects[0];
+            // relaciona o agente responsável, que é o proprietário da inscrição
+            $registration = new \MapasCulturais\Entities\Registration;
+            $registration->owner = $user->profile;
+            $registration->project = $project;
+            
+            // inserir que as inscricoes online estao ativadas
+            $registration->save(true);
+            $user->cultura_viva_ids = json_encode([
+                'agente_individual' => $user->profile->id,
+                'agente_coletivo'   => $entidade->id,
+                'inscricao'         => $registration->id
+            ]);
+            $user->save(true);
+            
+            // relaciona o agente coletivo
+            $registration->createAgentRelation($entidade, 'entidade', false, true, true);
+            $app->enableAccessControl();
+            //$app->em->flush(); sem o true no save, ele cria um transaction no bd
+        });
+        if (!$app->user->is('guest')) {
+            $this->jsObject['ids'] = json_decode($app->user->cultura_viva_ids);
+        }
     }
+    
     
     protected function _enqueueStyles(){
         $this->enqueueStyle('culturaviva', 'bootstrap', 'css/bootstrap.css');
@@ -38,6 +85,10 @@ class Theme extends BaseV1\Theme{
     
     protected function _enqueueScripts(){
         $this->enqueueScript('culturaviva', 'bootstrap', 'js/bootstrap.js');
+    }
+    
+    protected function _publishAssets(){
+        $this->assetManager->publishAsset('img/simpson.jpg', 'img/simpson.jpg');
     }
     
     function head() {
