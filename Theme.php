@@ -76,15 +76,18 @@ class Theme extends BaseV1\Theme{
         if (!$app->user->is('guest')) {
             $this->jsObject['ids'] = json_decode($app->user->cultura_viva_ids);
         }
+
+        $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
+
     }
     
     
     protected function _enqueueStyles(){
-        $this->enqueueStyle('culturaviva', 'bootstrap', 'css/bootstrap.css');
+
     }
     
     protected function _enqueueScripts(){
-        $this->enqueueScript('culturaviva', 'bootstrap', 'js/bootstrap.js');
+       
     }
     
     protected function _publishAssets(){

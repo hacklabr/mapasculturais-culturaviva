@@ -9,4 +9,8 @@ class Rede extends \MapasCulturais\Controller{
     function GET_entrada(){
         $this->render('entrada');
     }
+
+    function GET_faq(){
+        $this->render('faq');
+    }
 }
