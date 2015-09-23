@@ -18,12 +18,23 @@
                     }
                 },
                 'patch': {
-                    'method': 'PATCH'
+                    'method': 'PATCH',
                 }
             };
 
-            var url = '/api/agent/findOne?id=EQ(:agentId)';
-            var Responsible = $resource(url, {'agentId': '@agentId'}, resourceConfig);
+            var url = '/api/agent/findOne?id=EQ(:id)';
+            var Responsible = $resource(url, {'id': '@id'}, resourceConfig);
+
+            // 1) o angular não deixa selecionar individualmente o campos para patch
+            // 2) a api do mapas não devolve o objeto (nem parte dele) após a consulta
+            Responsible.prototype.patch = function(field) {
+                if(this.hasOwnProperty(field)){
+                    var obj = new Responsible();
+                    obj.id = this.id;
+                    obj[field] = this[field];
+                    return obj.$patch();
+                }
+            };
 
             return Responsible;
         }
