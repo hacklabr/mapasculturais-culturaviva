@@ -5,9 +5,6 @@ $this->layout = 'cadastro';
 
 $this->cadastroTitle = $this->dict('cadastro: titulo - entidade contatos', false);
 ?>
-<script type="text/javascript" src="/protected/application/themes/mapasculturais-culturaviva/assets/js/cadastro-app.js"></script>
-<script type="text/javascript" src="/protected/application/themes/mapasculturais-culturaviva/assets/js/cadastro-controller.js"></script>
-<script type="text/javascript" src="/protected/application/themes/mapasculturais-culturaviva/assets/js/cadastro-service.js"></script>
 
 <div class="container" ng-controller="CadastroController">
     <form>
