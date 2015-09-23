@@ -1,14 +1,14 @@
 (function(angular){
     'use strict';
 
-    angular.module('culturaviva', [
-       'culturaviva.controllers',
-       'culturaviva.services',
-       //'RelatedAgents', 
-       //'ChangeOwner', 
-       //'Project', 
-       'Notifications'
-       //'ngSanitize'
+    var app = angular.module('culturaviva', [
+        'culturaviva.controllers',
+        'culturaviva.services',
+        'Notifications'
     ]);
+
+    app.constant('DATA', {
+        'responsible_id': ((MapasCulturais||{}).redeCulturaViva||{}).agenteIndividual || null
+    });
 
 })(angular);
