@@ -3,8 +3,12 @@
 
     var app = angular.module('culturaviva.controllers', []);
 
-    app.controller('CadastroController', ['$scope', function($scope){
-        alert('oi');
-    }]);
+    app.controller('ResponsibleCtrl', ['$scope', 'DATA', 'Responsible',
+       function($scope, DATA, Responsible){
+            console.log(Responsible.get({
+                'agentId': 4
+            }));
+       }
+    ]);
 
 })(angular);
