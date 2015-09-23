@@ -1,25 +1,7 @@
 <?php 
+$this->bodyProperties['ng-app'] = "culturaviva";
 
 $this->layout = 'cadastro';
 
-$this->cadastroTitle = 'Contatos da Entidade';
-
-$this->cadastroText = 'DEFINIR';
-
+$this->cadastroTitle = $this->dict('cadastro: titulo - entidade contatos', false);
 ?>
-
-
-<section>
-    <h4>Informações Obrigatórias</h4>
-    <div class="form">
-        <!--  CAMPOS -->
-        
-    </div>
-</section>
-<section>
-    <h4>Informações Opcionais</h4>
-    <div class="form">
-        <!--  CAMPOS -->
-
-    </div>
-</section>
