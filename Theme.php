@@ -102,11 +102,9 @@ class Theme extends BaseV1\Theme{
     }
     
     protected function _enqueueScripts(){
-       
-    }
-    
-    protected function _publishAssets(){
-        
+        $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js');
+        $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
+        $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
     }
     
     function head() {
