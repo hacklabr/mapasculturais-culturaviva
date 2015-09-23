@@ -25,6 +25,7 @@ class Theme extends BaseV1\Theme{
         
         $app = App::i();
         
+        // @TODO: mudar a criação dos agentes coletivos para 
         $app->hook('auth.createUser:after', function($user, $data) use ($app) {
             $project = $app->repo('Project')->find(1); //By(['owner' => 1], ['id' => 'asc'], 1);
             //
@@ -128,12 +129,12 @@ class Theme extends BaseV1\Theme{
         }
     }
     
-    
-    
     public function register() {
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
+        
+        $app->registerApiOutput('\CulturaViva\GMLApiOutput', 'gml');
         
         $metadata = [
             'MapasCulturais\Entities\User' => [
@@ -141,14 +142,34 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição',
                     'private' => true
                 ]
+            ],
+            
+            'MapasCulturais\Entities\Agent' => [
+                
             ]
         ];
+        
         
         foreach($metadata as $entity_class => $metas){
             foreach($metas as $key => $cfg){
                 $def = new \MapasCulturais\Definitions\Metadata($key, $cfg);
                 $app->registerMetadata($def, $entity_class);
             }
+        }
+        
+        $taxonomies = [
+            'contemplado_edital' => 'Editais do Ministério da Cultura em que foi contemplado',
+            'acao_estruturante' => 'Ações Estruturantes',
+            'publico_participante' => 'Públicos que participam das ações',
+            'local_realizacao' => 'Locais onde são realizadas as ações culturais'
+        ];
+        
+        $id = 10;
+        
+        foreach ($taxonomies as $slug => $description){
+            $id++;
+            $def = new \MapasCulturais\Definitions\Taxonomy($id, $slug, $description);
+            $app->registerTaxonomy($slug, $def);
         }
     }
 }
