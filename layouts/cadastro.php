@@ -5,6 +5,7 @@ $this->part('header');
 <div id="page-<?php echo $this->cadastroPageClass ?>">
 
     <header>
+
         <div class="icon <?php echo $this->cadastroIcon ?>"></div>
         <h3><?php echo $this->cadastroTitle ?></h3>
         

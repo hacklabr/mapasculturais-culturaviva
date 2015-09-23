@@ -230,6 +230,12 @@ section{
         background:$base-color-info-responsavel; 
         height: 130px;
 
+        .icon{
+            font-size:25px;
+            color:#fff; 
+            margin: 20px 0 0 2%;
+        }
+
         h3{
             color: #fff;
             font-size: 20px;
@@ -349,7 +355,6 @@ section{
             text-decoration: underline;
             font-size:14px;
             font-weight: 100;
-
         }
     }
 
