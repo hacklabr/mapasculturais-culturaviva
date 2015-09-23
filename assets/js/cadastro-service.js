@@ -13,8 +13,12 @@
                             'rg,rg_orgao,relacaoPonto,cpf,'+
                             'geoEstado,emailPrivado,telefone1,'+
                             'telefone1_operadora,nomeCompleto,'+
-                            'geoCidade,facebook,twitter,googleplus'
+                            'geoCidade,facebook,twitter,googleplus',
+                        '@permissions': 'view'
                     }
+                },
+                'patch': {
+                    'method': 'PATCH'
                 }
             };
 
