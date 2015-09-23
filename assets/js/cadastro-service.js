@@ -5,15 +5,21 @@
 
     app.factory('Responsible', ['$resource',
         function($resource){
-            // var url = '/api/agent/findOne?id=EQ(:agentId)'         +
-            //           '&@select=id,singleUrl,name,rg,rg_orgao,'    +
-            //                    'relacaoPonto,cpf,geoEstado,'       +
-            //                    'emailPrivado,telefone1,'           +
-            //                    'telefone1_operadora,nomeCompleto,' +
-            //                    'geoCidade,facebook,twitter,googleplus';
+            var resourceConfig = {
+                'get':  {
+                    'method':'GET',
+                    'params':{
+                        '@select': 'id,singleUrl,name,'+
+                            'rg,rg_orgao,relacaoPonto,cpf,'+
+                            'geoEstado,emailPrivado,telefone1,'+
+                            'telefone1_operadora,nomeCompleto,'+
+                            'geoCidade,facebook,twitter,googleplus'
+                    }
+                }
+            };
 
             var url = '/api/agent/findOne?id=EQ(:agentId)';
-            var Responsible = $resource(url);
+            var Responsible = $resource(url, {'agentId': '@agentId'}, resourceConfig);
 
             return Responsible;
         }
