@@ -25,71 +25,12 @@ class Theme extends BaseV1\Theme{
         
         $app = App::i();
         
-        // @TODO: mudar a criação dos agentes coletivos para 
-        $app->hook('auth.createUser:after', function($user, $data) use ($app) {
-            $project = $app->repo('Project')->find(1); //By(['owner' => 1], ['id' => 'asc'], 1);
-            //
-            // define o agente padrão (profile) como rascunho
-            $app->disableAccessControl(); // não sei se é necessário desabilitar
-            $user->profile->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
-            $user->profile->save(true);
-            
-            // criando o agente coletivo vazio
-            $entidade = new \MapasCulturais\Entities\Agent;
-            $entidade->parent = $user->profile;
-            $entidade->name = '';
-            $entidade->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
-            $entidade->save(true);
-            
-            // criando o agente coletivo vazio
-            $ponto = new \MapasCulturais\Entities\Agent;
-            $ponto->parent = $user->profile;
-            $ponto->name = '';
-            $ponto->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
-            $ponto->save(true);
-            
-            // criando a inscrição
-            
-            // relaciona o agente responsável, que é o proprietário da inscrição
-            $registration = new \MapasCulturais\Entities\Registration;
-            $registration->owner = $user->profile;
-            $registration->project = $project;
-            
-            // inserir que as inscricoes online estao ativadas
-            $registration->save(true);
-            
-            $user->inscricaoCulturaViva = json_encode([
-                'agenteIndividual' => $user->profile->id,
-                'agenteEntidade' => $entidade->id,
-                'agentePonto' => $ponto->id,
-                'inscricao' => $registration->id
-            ]);
-            $user->save(true);
-            
-            // relaciona o agente coletivo
-            $registration->createAgentRelation($entidade, 'entidade', false, true, true);
-            $registration->createAgentRelation($ponto, 'ponto', false, true, true);
-            
-            $app->enableAccessControl();
-            //$app->em->flush(); sem o true no save, ele cria um transaction no bd
-        });
-        
         if (!$app->user->is('guest')) {
-            $ids = json_decode($app->user->inscricaoCulturaViva);
+            $ids = json_decode($app->user->redeCulturaViva);
             
             // TODO: verifica em que casos vem null
             if($ids !== null) {
-                $inscricao = $app->repo('Registration')->find($ids->inscricao);
-                $agenteIndividual = $app->repo('Agent')->find($ids->agenteIndividual);
-                $agenteEntidade = $app->repo('Agent')->find($ids->agenteEntidade);
-                $agentePonto = $app->repo('Agent')->find($ids->agentePonto);
-                
-                $this->jsObject['culturaViva'] = [
-                    'agenteIndividual' => $agenteIndividual,
-                    'agenteEntidade' => $agenteEntidade,
-                    'agentePonto' => $agentePonto,
-                    'inscricao' => $inscricao
-                ];
+                $this->jsObject['redeCulturaViva'] = $ids;
             }
         }
 
@@ -139,21 +80,45 @@ class Theme extends BaseV1\Theme{
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
         
-        $app->registerApiOutput('\CulturaViva\GMLApiOutput', 'gml');
-        
         $metadata = [
             'MapasCulturais\Entities\User' => [
-                'inscricaoCulturaViva' => [
-                    'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição',
-                    'private' => true
-                ]
+                'redeCulturaViva' => [ 'private' => true, 'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição' ]
             ],
             
             'MapasCulturais\Entities\Agent' => [
-                
+                'rg' => [ 
+                    'label' => 'RG',
+                    'required' => true,
+                    'private' => true
+                ],
+                'rg_orgao' => [ 
+                    'label' => 'Órgão Expedidor',
+                    'required' => true, 
+                    'private' => true
+                ],
+                'cpf' => [ 
+                    'label' => 'CPF', 
+                    'required' => true, 
+                    'private' => true
+                ],
+                'telefone1_operadora' => [ 
+                    'label' => 'Operadora do Telefone 1', 
+                    'required' => true, 
+                    'private' => true
+                ],
+                'relacaoPonto' => [
+                    'label' => 'Relação com o Ponto de Cultura',
+                    'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'responsavel' => 'Sou o responsável pelo Ponto/Pontão de Cultura',
+                        'funcionario' => 'Trabalho no Ponto/Pontão de Cultura',
+                        'parceiro' => 'Sou parceiro do Ponto/Pontão e estou ajudando a cadastrar'
+                    )
+                ]
             ]
         ];
-        
         
         foreach($metadata as $entity_class => $metas){
             foreach($metas as $key => $cfg){
