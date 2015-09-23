@@ -56,7 +56,7 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->render('ponto-mais');
     }
     
-    function POST_registra(){
+    function ALL_registra(){
         $this->requireAuthentication();
         $app = App::i();
         
@@ -97,7 +97,7 @@ class Cadastro extends \MapasCulturais\Controller{
                 'agenteEntidade' => $entidade->id,
                 'agentePonto' => $ponto->id,
                 'inscricao' => $registration->id,
-                'comCNPJ' => isset($this->postData['comCNPJ']) && $this->postData['comCNPJ']
+                'comCNPJ' => isset($this->data['comCNPJ']) && $this->data['comCNPJ']
             ]);
             
             $user->save(true);
