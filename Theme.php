@@ -99,7 +99,7 @@ class Theme extends BaseV1\Theme{
     
     
     protected function _enqueueStyles(){
-
+        $this->enqueueStyle('culturaviva', 'circle', 'css/circle.css');
     }
     
     protected function _enqueueScripts(){
