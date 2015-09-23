@@ -1,17 +1,14 @@
 <?php
+    $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-
     $this->cadastroTitle = 'Informações do Responsável';
-
     $this->cadastroText = 'Precisamos saber quem é você e pegar seus contatos! Afinal, comunicação é um requisito vital para que nossa rede se mantenha viva!';
-    
     $this->cadastroIcon = 'icon-responsavel';
-
     $this->cadastroPageClass = 'responsavel';
 ?>
 
 
-<form ng-controller="CadastroController">
+<form ng-controller="ResponsibleCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
