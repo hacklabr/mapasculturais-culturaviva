@@ -16,6 +16,9 @@
                             'geoCidade,facebook,twitter,googleplus',
                         '@permissions': 'view'
                     }
+                },
+                'patch': {
+                    'method': 'PATCH'
                 }
             };
 
