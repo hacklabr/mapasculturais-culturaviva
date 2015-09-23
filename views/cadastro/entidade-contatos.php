@@ -5,9 +5,9 @@ $this->layout = 'cadastro';
 
 $this->cadastroTitle = $this->dict('cadastro: titulo - entidade contatos', false);
 ?>
-
 <div class="container" ng-controller="CadastroController">
     <form>
+
         <fieldset class="required">
             <legend>Informações obrigatórias</legend>
 

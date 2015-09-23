@@ -76,17 +76,20 @@ class Theme extends BaseV1\Theme{
         if (!$app->user->is('guest')) {
             $ids = json_decode($app->user->inscricaoCulturaViva);
             
-            $inscricao = $app->repo('Registration')->find($ids->inscricao);
-            $agenteIndividual = $app->repo('Agent')->find($ids->agenteIndividual);
-            $agenteEntidade = $app->repo('Agent')->find($ids->agenteEntidade);
-            $agentePonto = $app->repo('Agent')->find($ids->agentePonto);
-            
-            $this->jsObject['culturaViva'] = [
-                'agenteIndividual' => $agenteIndividual,
-                'agenteEntidade' => $agenteEntidade,
-                'agentePonto' => $agentePonto,
-                'inscricao' => $inscricao
-            ];
+            // TODO: verifica em que casos vem null
+            if($ids !== null) {
+                $inscricao = $app->repo('Registration')->find($ids->inscricao);
+                $agenteIndividual = $app->repo('Agent')->find($ids->agenteIndividual);
+                $agenteEntidade = $app->repo('Agent')->find($ids->agenteEntidade);
+                $agentePonto = $app->repo('Agent')->find($ids->agentePonto);
+                
+                $this->jsObject['culturaViva'] = [
+                    'agenteIndividual' => $agenteIndividual,
+                    'agenteEntidade' => $agenteEntidade,
+                    'agentePonto' => $agentePonto,
+                    'inscricao' => $inscricao
+                ];
+            }
         }
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
@@ -99,9 +102,9 @@ class Theme extends BaseV1\Theme{
     }
     
     protected function _enqueueScripts(){
-       $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js');
-       $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js');
-       $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js');
+        $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js');
+        $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
+        $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
     }
     
     protected function _publishAssets(){
