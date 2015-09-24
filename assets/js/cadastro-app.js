@@ -7,8 +7,4 @@
         'Notifications'
     ]);
 
-    app.constant('context', {
-        'agentId': ((MapasCulturais||{}).redeCulturaViva||{}).agenteIndividual || null
-    });
-
 })(angular);

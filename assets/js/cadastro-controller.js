@@ -3,11 +3,12 @@
 
     var app = angular.module('culturaviva.controllers', []);
 
-    app.controller('ResponsibleCtrl', ['$scope', 'context', 'Responsible',
-       function($scope, context, Responsible){
+    app.controller('ResponsibleCtrl', ['$scope', 'Responsible', 'MapasCulturais',
+        function($scope, Responsible, MapasCulturais){
+            var responsible_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 
             $scope.agent = Responsible.get({
-                'id': context.agentId
+                'id': responsible_id
             });
             var _saved_agent = angular.copy($scope.agent);
 
