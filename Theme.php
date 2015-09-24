@@ -78,6 +78,8 @@ class Theme extends BaseV1\Theme{
     }
 
     public function register() {
+        parent::register();
+        
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
