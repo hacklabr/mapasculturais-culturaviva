@@ -274,6 +274,21 @@ section{
             margin: 4%;
         }
 
+        p{
+            color: #999999;
+            text-align: left;
+            padding: 0px;
+            margin: 10px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        a{
+            color: #078979;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
         span{
             display: block;
             color: #999999;
@@ -312,7 +327,7 @@ section{
 
         .destaque{
             color: #078979;
-            font-weigth:bold;
+            font-weight:bold;
 
             i{
                 background: #f7931e;
@@ -453,9 +468,9 @@ section{
                 width:200px; 
                 display:inline-block;
                 margin-left: 10px;
-            }
-            
+            }   
         }
+        
 
         .recursos-projeto{
             table{
@@ -560,6 +575,12 @@ section{
     .colunm-50{
         float:left;
         width:46%;
+        margin-left: 4%;
+    }
+
+    .colunm-20{
+        float:left;
+        width:20%;
         margin-left: 4%;
     }
 
