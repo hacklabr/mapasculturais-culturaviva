@@ -125,7 +125,7 @@
         <div class="row">
             <label class="colunm1">
                 <span>Estado*</span>
-                <select ng-blur="save_field('local_acao_estado')" ng-model="agent.local_acao_estado">
+                <select ng-blur="save_field('local_de_acao_estado')" ng-model="agent.local_de_acao_estado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
                     <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
@@ -145,7 +145,7 @@
 
             <label class="colunm2">
                 <span>Cidade*</span>
-                <input type="text" ng-blur="save_field('local_acao_cidade')" ng-model="agent.local_acao_cidade"/>
+                <input type="text" ng-blur="save_field('local_de_acao_cidade')" ng-model="agent.local_de_acao_cidade"/>
             </label>
         </div>
 
@@ -154,22 +154,22 @@
 
             <div ng-repeat="espaco in espacos" ng-if="$index % 3 == 0" class="row">
                 <label>
-                    <input ng-checked="local_acao_espaco(espacos[$index])"
-                           ng-click="local_acao_espaco(espacos[$index], 'toggle')"
+                    <input ng-checked="check_espaco(espacos[$index])"
+                           ng-click="toggle_espaco(espacos[$index])"
                            type="checkbox" />
                     <span>{{ espacos[$index] }}</span>
                 </label>
 
                 <label ng-if="espacos[$index + 1]">
-                    <input ng-checked="local_acao_espaco(espacos[$index + 1])"
-                           ng-click="local_acao_espaco(espacos[$index + 1], 'toggle')"
+                    <input ng-checked="check_espaco(espacos[$index + 1])"
+                           ng-click="toggle_espaco(espacos[$index + 1])"
                            type="checkbox" />
                     <span>{{ espacos[$index + 1] }}</span>
                 </label>
 
                 <label ng-if="espacos[$index + 2]">
-                    <input ng-checked="local_acao_espaco(espacos[$index + 2])"
-                           ng-click="local_acao_espaco(espacos[$index + 2], 'toggle')"
+                    <input ng-checked="check_espaco(espacos[$index + 2])"
+                           ng-click="toggle_espaco(espacos[$index + 2])"
                            type="checkbox" />
                     <span>{{ espacos[$index + 2] }}</span>
                 </label>
