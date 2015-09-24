@@ -54,7 +54,16 @@
                 patchObj.id = this.id;
                 patchObj[field] = this[field] || "";
 
-                return $http({method:'PATCH', url: patchUrl, data: patchObj});
+                var headers = {
+                    'MapasSDK-REQUEST': true
+                };
+
+                return $http({
+                    method:'PATCH',
+                    url: patchUrl,
+                    data: patchObj,
+                    headers: headers
+                });
             };
 
             return Responsible;
