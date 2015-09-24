@@ -8,156 +8,174 @@
 ?>
 
 
-<form ng-controller="ResponsibleCtrl">
+<form ng-controller="PointCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
+        
         <div class="row">
             <label class="colunm1">
-                <span>Nome completo*</span>
-                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
-            </label>
-
-            <label class="colunm2">
-                <span>RG*</span>
-                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
-            </label>
-
-            <label class="colunm3">
-                <span>Órgão expeditor*</span>
-                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
-                    <option value="SSP">Secretaria de Segurança Pública</option>
-                </select>
+                <span>Nome do Ponto/Pontão de Cultura*</span>
+                <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
             </label>
         </div>  
+
         <div class="clear"></div>
+
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="save_field('relacao_ponto')" ng-model="agent.relacao_ponto"/>
+                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i>?</i></span>
+                <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
+            </label>
+        </div>  
+
+        <div class="clear"></div>
+
+        <div class="row">
+
+            <label class="colunm1">
+                <span>CEP do Ponto de Cultura*</span>
+                <input type="text" ng-blur="save_field('cep')" ng-model="agent.cep"/>
             </label>
 
             <label class="colunm2">
-                <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
-            </label>
+                <span>O pontão tem sede própria*</span>
+                <select ng-blur="save_field('endereco')" ng-model="agent.endereco"></select>
 
-            <label class="colunm3">
+                <input type="checkbox" />
+                mesmo endereço cadastrado no CNPJ da entidade</span>
+            </label>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <span class="colunm1">
+                <span class="destaque">Endereço* <i>?</i></span>
+            </span>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <label class="colunm1">
                 <span>Estado*</span>
-                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
+                <select ng-blur="save_field('estado')" ng-model="agent.estado">
+                    <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>  <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>             <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>       <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>      <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>           <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>        <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option> <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>           <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>         <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                 </select>
             </label>
-        </div>
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm1">
-                <span>E-mail Pessoal*</span>
-                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
-            </label>
 
             <label class="colunm2">
-                <span>Telefone Pessoal (com DDD)*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1"/>
+                <span>Cidade*</span>
+                <input type="text" ng-blur="save_field('cidade')" ng-model="agent.cidade"/>
             </label>
 
             <label class="colunm3">
-                <span>Operadora*</span>
-                <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-                    <option>51 Brasil</option>                <option>Intelig</option>
-                    <option>Aerotech</option>                 <option>ITACEU</option>
-                    <option>Alpamayo</option>                 <option>Konecta</option>
-                    <option>Alpha Nobilis*</option>           <option>LigueMAX</option>
-                    <option>America Net</option>              <option>LinkNET</option>
-                    <option>Amigo</option>                    <option>Locaweb</option>
-                    <option>BBT Brasil</option>               <option>Nebracam</option>
-                    <option>Cabo Telecom</option>             <option>Neotelecom</option>
-                    <option>Cambridge</option>                <option>Nextel</option>
-                    <option>Convergia</option>                <option>Nexus</option>
-                    <option>CTBC</option>                     <option>Oi</option>
-                    <option>DIALDATA TELECOM</option>         <option>Ostara</option>
-                    <option>Dollarphone</option>              <option>OTS</option>
-                    <option>DSLI</option>                     <option>Plenna</option>
-                    <option>Easytone</option>                 <option>Redevox</option>
-                    <option>Embratel / NET / Claro</option>   <option>Sercomtel</option>
-                    <option>Engevox</option>                  <option>Sermatel</option>
-                    <option>Epsilon</option>                  <option>SmartTelecom|76Telecom</option>
-                    <option>Espas</option>                    <option>Spin</option>
-                    <option>Fale 65</option>                  <option>Telebit</option>
-                    <option>Falkland/IPCorp</option>          <option>Teledados</option>
-                    <option>Fonar</option>                    <option>TIM</option>
-                    <option>Global Crossing(Impsat)</option>  <option>Transit Telecom</option>
-                    <option>Golden Line</option>              <option>Viacom</option>
-                    <option>GT Group</option>                 <option>Viper</option>
-                    <option>GVT</option>                      <option>Vipway</option>
-                    <option>Hello Brazil</option>             <option>Vivo</option>
-                    <option>Hit Telecomunicações</option>     <option>Voitel</option>
-                    <option>Hoje</option>
-                    <option>IDT (Minas Gerais)</option>
-                </select>
+                <span>Bairro*</span>
+                <input type="text" ng-blur="save_field('bairro')" ng-model="agent.bairro"/>
+            </label>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <label class="colunm1">
+                <span>Número*</span>
+                <input type="text" ng-blur="save_field('numero')" ng-model="agent.numero"/>
+            </label>
+
+            <label class="colunm2">
+                <span>Rua*</span>
+                <input type="text" ng-blur="save_field('rua')" ng-model="agent.rua"/>
+            </label>
+
+            <label class="colunm3">
+                <span>Complemento*</span>
+                <input type="text" ng-blur="save_field('complemento')" ng-model="agent.complemento"/>
             </label>
         </div>
         <div class="clear"></div>
     </div>
+
+
+    <div class="form form-mapa">
+
+    </div>
+
+
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
-        <div class="img_updade">
-            <img src="<?php $this->asset('img/incluir_img.png') ?>">
+
+        <label>
+            <span class="destaque">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
+        </label>
+
+        <div class="row">
+            <label class="colunm1">
+                <span>Estado*</span>
+                <select ng-blur="save_field('local_acao_estado')" ng-model="agent.local_acao_estado">
+                    <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>  <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>             <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>       <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>      <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>           <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>        <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option> <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>           <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>         <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </label>
+
+            <label class="colunm2">
+                <span>Cidade*</span>
+                <input type="text" ng-blur="save_field('local_acao_cidade')" ng-model="agent.local_acao_cidade"/>
+            </label>
         </div>
-        <label class="upadete_foto">
-            <span>Incluir foto</span>
-            <input type="file" ng-blur="save_field('photo')" ng-model="agent.photo"/>
-        </label>
 
-        <label class="nome_chamado">
-            <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
-            <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
-        </label>
 
-        <label class="cidade">
-            <span>Cidade</span>
-            <input type="text" ng-blur="save_field('city')" ng-model="agent.city"/>
-        </label>
+        <div data-ng-init="espacos=['Escolas', 'Universidades', 'Praças', 'Salas', 'CEUs', 'Feiras', 'Eventos', 'Outros locais']">
 
-        <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
-        <label class="facebook">
-            <span>Seu perfil no Facebook</span>
-            <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
-        </label>
+            <div ng-repeat="espaco in espacos" ng-if="$index % 3 == 0" class="row">
+                <label>
+                    <input ng-checked="local_acao_espaco(espacos[$index])"
+                           ng-click="local_acao_espaco(espacos[$index], 'toggle')"
+                           type="checkbox" />
+                    <span>{{ espacos[$index] }}</span>
+                </label>
 
-        <label class="twitter">
-            <span>Seu perfil no Twitter</span>
-            <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
-        </label>
+                <label ng-if="espacos[$index + 1]">
+                    <input ng-checked="local_acao_espaco(espacos[$index + 1])"
+                           ng-click="local_acao_espaco(espacos[$index + 1], 'toggle')"
+                           type="checkbox" />
+                    <span>{{ espacos[$index + 1] }}</span>
+                </label>
 
-        <label class="googleplus">
-            <span>Seu perfil no Google+</span>
-            <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
-        </label>
+                <label ng-if="espacos[$index + 2]">
+                    <input ng-checked="local_acao_espaco(espacos[$index + 2])"
+                           ng-click="local_acao_espaco(espacos[$index + 2], 'toggle')"
+                           type="checkbox" />
+                    <span>{{ espacos[$index + 2] }}</span>
+                </label>
+            </div>
+
+        </div>
+
     </div>
 </form>
