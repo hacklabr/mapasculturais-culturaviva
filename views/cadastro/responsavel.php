@@ -33,7 +33,7 @@
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="save_field('relacao_ponto')" ng-model="agent.relacao_ponto"/>
+                <input type="text" ng-blur="save_field('relacaoPonto')" ng-model="agent.relacaoPonto"/>
             </label>
 
             <label class="colunm2">
@@ -141,7 +141,7 @@
 
         <label class="cidade">
             <span>Cidade</span>
-            <input type="text" ng-blur="save_field('city')" ng-model="agent.city"/>
+            <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
         </label>
 
         <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>

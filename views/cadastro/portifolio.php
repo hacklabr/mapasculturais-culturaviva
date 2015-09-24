@@ -12,21 +12,19 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
-            <label class="colunm1">
-                <span>Nome completo*</span>
-                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
+            <label class="colunm-20">
+                <span class="destaque">Atividades já* <i>?</i></span>
+                <img src="<?php $this->asset('img/incluir_img.png') ?>">
             </label>
 
-            <label class="colunm2">
-                <span>RG*</span>
-                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
-            </label>
-
-            <label class="colunm3">
-                <span>Órgão expeditor*</span>
-                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
-                    <option value="SSP">Secretaria de Segurança Pública</option>
-                </select>
+            <label class="colunm-50">
+                
+                <p>Caso não possua portifólio online, você também pode anexar arquivos no formato pdf, com no máximo 20kb.</p>
+                <span class="destaque"><i>?</i></span>
+                <p>Precisa de ajuda para montar seu portifólio?
+                    <br>
+                    <a href="#">Clique aqui</a> para baixar um modelo com orientações.
+                </p>
             </label>
         </div>  
         <div class="clear"></div>
