@@ -50,19 +50,13 @@
                     throw new Error('O agente não tem o endereço para PATCH');
                 }
 
-                var headers = {
-                    'MapasSDK-REQUEST': true,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                };
-
-                var data = encodeURIComponent(field) + '=' +
-                           encodeURIComponent(this[field]);
-
+                var data = {};
+                data[field] = this[field];
+                
                 return $http({
                     method:'PATCH',
                     url: patchUrl,
-                    data: data,
-                    headers: headers
+                    data:data
                 });
             };
 
