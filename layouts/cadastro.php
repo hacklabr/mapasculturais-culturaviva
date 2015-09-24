@@ -2,7 +2,7 @@
 $this->part('header');
 ?>
 
-<div id="page-<?php echo $this->cadastroPageClass ?>">
+<div class="page-<?php echo $this->cadastroPageClass ?>">
 
     <header>
 

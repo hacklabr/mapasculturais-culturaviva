@@ -221,8 +221,10 @@ section{
 }
 
 
-
-#page-responsavel{
+/* 
+* Estrutra Base Forms 
+*/
+.page-base-form{
     background: #fff;
     padding-bottom:50px;
     
@@ -357,9 +359,114 @@ section{
             font-weight: 100;
         }
     }
-
-
 }
+/* 
+* Fim Estrutura Base Forms 
+**
+**
+** 
+* Estrutura Form Especifico, Backgrounds, Colors 
+*/
+.page-responsavel{
+    header{
+        background:$base-color-info-responsavel; 
+
+        .circle-status{
+            color: $base-color-info-responsavel;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-info-responsavel;
+        }
+    }
+}
+
+.page-ponto-mapa{
+    header{
+        background: $base-color-ponto-mapa; 
+
+        .circle-status{
+            color: $base-color-ponto-mapa;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-ponto-mapa;
+        }
+    }
+}
+
+.page-dados-entidade{
+    header{
+        background: $base-color-entidade-dados; 
+
+        .circle-status{
+            color: $base-color-entidade-dados;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-entidade-dados;
+        }
+    }
+}
+
+.page-portfolio{
+    header{
+        background: $base-color-portfolio; 
+
+        .circle-status{
+            color: $base-color-portfolio;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-portfolio;
+        }
+    }
+}
+
+.page-contato-entidade{
+    header{
+        background: $base-color-entidade-contato; 
+
+        .circle-status{
+            color: $base-color-entidade-contato;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-entidade-contato;
+        }
+    }
+}
+
+.page-ponto-mais{
+    header{
+        background: $base-color-fale-mais-ponto; 
+
+        .circle-status{
+            color: $base-color-fale-mais-ponto;
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-fale-mais-ponto;
+        }
+    }
+}
+
+/* 
+* FIM Estrutura Form Especifico, Backgrounds, Colors 
+*/
+
 
 .row{
     margin: 1%;
