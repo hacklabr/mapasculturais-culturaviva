@@ -14,17 +14,17 @@
         <div class="row">
             <label class="colunm1">
                 <span>Nome completo*</span>
-                <input type="text" ng-blur="agent.patch('nomeCompleto')" ng-model="agent.nomeCompleto" />
+                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
             </label>
 
             <label class="colunm2">
                 <span>RG*</span>
-                <input type="text" ng-blur="agent.patch('rg')" ng-model="agent.rg"/>
+                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
             </label>
 
             <label class="colunm3">
                 <span>Órgão expeditor*</span>
-                <select ng-blur="agent.patch('rg_orgao')" ng-model="agent.rg_orgao">
+                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
                     <option value="SSP">Secretaria de Segurança Pública</option>
                 </select>
             </label>
@@ -33,17 +33,17 @@
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="agent.patch('relacao_ponto')" ng-model="agent.relacao_ponto"/>
+                <input type="text" ng-blur="save_field('relacao_ponto')" ng-model="agent.relacao_ponto"/>
             </label>
 
             <label class="colunm2">
                 <span>CPF*</span>
-                <input type="text" ng-blur="agent.patch('cpf')" ng-model="agent.cpf" />
+                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
             </label>
 
             <label class="colunm3">
                 <span>Estado*</span>
-                <select ng-blur="agent.patch('geoEstado')" ng-model="agent.geoEstado">
+                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -78,17 +78,17 @@
         <div class="row">
             <label class="colunm1">
                 <span>E-mail Pessoal*</span>
-                <input type="email" ng-blur="agent.patch('emailPrivado')" ng-model="agent.emailPrivado" />
+                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
 
             <label class="colunm2">
                 <span>Telefone Pessoal (com DDD)*</span>
-                <input type="text" ng-blur="agent.patch('telefone1')" ng-model="agent.telefone1"/>
+                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1"/>
             </label>
 
             <label class="colunm3">
                 <span>Operadora*</span>
-                <select ng-blur="agent.patch('telefone1_operadora')" ng-model="agent.telefone1_operadora">
+                <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
                     <option>51 Brasil</option>                <option>Intelig</option>
                     <option>Aerotech</option>                 <option>ITACEU</option>
                     <option>Alpamayo</option>                 <option>Konecta</option>
@@ -131,33 +131,33 @@
         </div>
         <label class="upadete_foto">
             <span>Incluir foto</span>
-            <input type="file" ng-blur="agent.patch('photo')" ng-model="agent.photo"/>
+            <input type="file" ng-blur="save_field('photo')" ng-model="agent.photo"/>
         </label>
 
         <label class="nome_chamado">
             <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
-            <input type="text" ng-blur="agent.patch('name')" ng-model="agent.name"/>
+            <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
         </label>
 
         <label class="cidade">
             <span>Cidade</span>
-            <input type="text" ng-blur="agent.patch('city')" ng-model="agent.city"/>
+            <input type="text" ng-blur="save_field('city')" ng-model="agent.city"/>
         </label>
 
         <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
         <label class="facebook">
             <span>Seu perfil no Facebook</span>
-            <input type="text" ng-blur="agent.patch('facebook')" ng-model="agent.facebook" placeholder="http://"/>
+            <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
         </label>
 
         <label class="twitter">
             <span>Seu perfil no Twitter</span>
-            <input type="text" ng-blur="agent.patch('twitter')" ng-model="agent.twitter" placeholder="http://"/>
+            <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
         </label>
 
         <label class="googleplus">
             <span>Seu perfil no Google+</span>
-            <input type="text" ng-blur="agent.patch('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
+            <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
         </label>
     </div>
 </form>
