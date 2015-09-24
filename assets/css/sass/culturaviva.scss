@@ -280,25 +280,49 @@ section{
             font-size: 13px;
             height: 30px;
         }
+        
+        label{
+            color: #999999;
+            font-size: 13px;
+        }
 
         input, select{
             width: 100%;
             margin-top: 0px;
             border-radius: 5px;
         }
+        
+        textarea{
+            width: 90%;
+            height:60px;
+            margin-top: 0px;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"], input[type="radio"]{
+            color: #999999;
+            width:auto;
+            margin-right: 6px;
+        }
+
+        .label-radio{
+            display:inline-block;
+            margin-right:20px;
+        }
 
         .destaque{
             color: #078979;
+            font-weigth:bold;
+
             i{
                 background: #f7931e;
                 border-radius: 10px;
                 padding: 1px 7px;
                 color: #fff;
                 font-style: normal;
+                cursor: pointer;
             }
         }
-
-
     }
 
     .form-opcional{
@@ -412,7 +436,59 @@ section{
         h4{
             background: $base-color-entidade-dados;
         }
+
+        input, select{
+            width: 90%;
+            margin-top: 0px;
+            border-radius: 5px;
+        }
+
+        .vigencia{
+            span{
+                display:inline-block;
+            }
+
+            select{
+                border-radius:0px;
+                width:200px; 
+                display:inline-block;
+                margin-left: 10px;
+            }
+            
+        }
+
+        .recursos-projeto{
+            table{
+                border:1px solid #e6e6e6;
+                display: inline-block;
+                padding:2px;
+                
+                td{
+                   color:#999999; 
+                   text-align:left;
+                   border:0px;
+                }   
+    
+                .cinza{
+                    background:#e6e6e6;
+                }
+            }
+        }
+
+        .naoseaplica{
+            font-size:12px;
+            color: #999999;
+            margin-top: -10px;
+
+            .destaque{
+                display:inline-block;
+                i{
+                    font-size:11px;
+                }
+            }
+        }
     }
+
 }
 
 .page-portfolio{
@@ -469,10 +545,24 @@ section{
 
 
 .row{
-    margin: 1%;
+    margin: 3% 0;
+
     .clear{
         clear:both;
     }
+
+    .colunm-full{
+        float:left;
+        width:100%;
+        margin-left: 4%;    
+    }
+
+    .colunm-50{
+        float:left;
+        width:46%;
+        margin-left: 4%;
+    }
+
     .colunm1{
         width: 400px;
         margin-left:35px;

@@ -12,152 +12,212 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
-            <label class="colunm1">
-                <span>Nome completo*</span>
-                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
-            </label>
-
-            <label class="colunm2">
-                <span>RG*</span>
-                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
-            </label>
-
-            <label class="colunm3">
-                <span>Órgão expeditor*</span>
-                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
-                    <option value="SSP">Secretaria de Segurança Pública</option>
-                </select>
-            </label>
-        </div>  
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="save_field('relacao_ponto')" ng-model="agent.relacao_ponto"/>
-            </label>
-
-            <label class="colunm2">
-                <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
-            </label>
-
-            <label class="colunm3">
-                <span>Estado*</span>
-                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
+            <label class="colunm-50">
+                <span class="destaque">Quero ser* <i>?</i></span>
+                <select ng-blur="save_field('')" ng-model="queroser">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
+                </select>
+            </label>
+
+            <label class="colunm-50">
+                <span class="destaque">Tipo de organização* <i>?</i></span>
+                <select ng-blur="save_field('')" ng-model="organization">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                </select>
+            </label>
+        </div> 
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span>CNPJ da Entidade*</span>
+                <input type="text" ng-blur="save_field('')" ng-model="entity"  >
+                <div class="naoseaplica">
+                    <input type="checkbox" ng-blur="save_field('')" ng-model="naocnpj" >não se aplica <span class="destaque"><i>?</i></span>
+                </div>
+            </label>
+
+            <label class="colunm-50">
+                <span class="destaque">Nome da Razão Social da Entidade* <i>?</i></span>
+                <input type="text" ng-blur="save_field('')" ng-model="rg" >
+            </label>
+        </div> 
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span class="destaque">Nome do Representante Legal* <i>?</i></span>
+                <input type="text" ng-blur="save_field('')" ng-model="represent" >
+            </label>
+
+            <label class="colunm-50">
+                <span class="destaque">Nome Fantasia* <i>?</i></span>
+                <input type="text" ng-blur="save_field('')" ng-model="nameFantastic" >
+            </label>
+        </div>   
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span class="destaque">Tipo de Certificação* <i>?</i></span>
+                <select ng-blur="save_field('')" ng-model="cerfification">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
                 </select>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
-            <label class="colunm1">
-                <span>E-mail Pessoal*</span>
-                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
+            <label class="colunm-50">
+                <span class="destaque">Você já foi fomentado pelo MinC* <i>?</i></span>
+                <span class="label-radio">
+                    <input type="radio" name="formentominc" value="sim" ng-blur="save_field('')" ng-model="yes" > sim
+                </span>
+                <span class="label-radio">
+                <input type="radio" name="formentominc" value="nao" ng-blur="save_field('')" ng-model="no"  > Não
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Tipo de Reconhecimento* <i>?</i></span>
+                <span class="label-radio"><input type="radio" name="tiporeconhecimento" value="minc" ng-blur="save_field('')" ng-model="yes" > Direto com o MinC</span>
+                <span class="label-radio"><input type="radio" name="tiporeconhecimento" value="estadual" ng-blur="save_field('')" ng-model="yes" > Estadual</span>
+                <span class="label-radio"><input type="radio" name="tiporeconhecimento" value="municipal" ng-blur="save_field('')" ng-model="yes" > Municipal</span>
+                <span class="label-radio"><input type="radio" name="tiporeconhecimento" value="intermunicipal" ng-blur="save_field('')" ng-model="yes" > Intermunicipal</span>
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span>Número do Edital de Seleção*</span>
+                <input type="text" ng-blur="save_field('')" ng-model="numeroeditalselection" >
             </label>
 
-            <label class="colunm2">
-                <span>Telefone Pessoal (com DDD)*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1"/>
+            <label class="colunm-50">
+                <span>Ano do Edital de Seleção*</span>
+                <input type="text" ng-blur="save_field('')" ng-model="year" >
+            </label>
+        </div>   
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span>Nome do Projeto*</span>
+                <input type="text" ng-blur="save_field('')" ng-model="nameproject" >
             </label>
 
-            <label class="colunm3">
-                <span>Operadora*</span>
-                <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-                    <option>51 Brasil</option>                <option>Intelig</option>
-                    <option>Aerotech</option>                 <option>ITACEU</option>
-                    <option>Alpamayo</option>                 <option>Konecta</option>
-                    <option>Alpha Nobilis*</option>           <option>LigueMAX</option>
-                    <option>America Net</option>              <option>LinkNET</option>
-                    <option>Amigo</option>                    <option>Locaweb</option>
-                    <option>BBT Brasil</option>               <option>Nebracam</option>
-                    <option>Cabo Telecom</option>             <option>Neotelecom</option>
-                    <option>Cambridge</option>                <option>Nextel</option>
-                    <option>Convergia</option>                <option>Nexus</option>
-                    <option>CTBC</option>                     <option>Oi</option>
-                    <option>DIALDATA TELECOM</option>         <option>Ostara</option>
-                    <option>Dollarphone</option>              <option>OTS</option>
-                    <option>DSLI</option>                     <option>Plenna</option>
-                    <option>Easytone</option>                 <option>Redevox</option>
-                    <option>Embratel / NET / Claro</option>   <option>Sercomtel</option>
-                    <option>Engevox</option>                  <option>Sermatel</option>
-                    <option>Epsilon</option>                  <option>SmartTelecom|76Telecom</option>
-                    <option>Espas</option>                    <option>Spin</option>
-                    <option>Fale 65</option>                  <option>Telebit</option>
-                    <option>Falkland/IPCorp</option>          <option>Teledados</option>
-                    <option>Fonar</option>                    <option>TIM</option>
-                    <option>Global Crossing(Impsat)</option>  <option>Transit Telecom</option>
-                    <option>Golden Line</option>              <option>Viacom</option>
-                    <option>GT Group</option>                 <option>Viper</option>
-                    <option>GVT</option>                      <option>Vipway</option>
-                    <option>Hello Brazil</option>             <option>Vivo</option>
-                    <option>Hit Telecomunicações</option>     <option>Voitel</option>
-                    <option>Hoje</option>
-                    <option>IDT (Minas Gerais)</option>
+            <label class="colunm-50">
+                <span class="destaque">Local de Realização* <i>?</i></span>
+                <select ng-blur="save_field('')" ng-model="locationrealization">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                </select>
+            </label>
+        </div>   
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span class="destaque">Etapa do Projeto* <i>?</i></span>
+                <span class="label-radio"><input type="radio" name="etapaprojeto" value="sim" ng-blur="save_field('')" ng-model="yes" > Em Execução</span>
+                <span class="label-radio"><input type="radio" name="etapaprojeto" value="nao" ng-blur="save_field('')" ng-model="no"  > Já executado</span>
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span>Proponente* </span>
+                <input type="text" ng-blur="save_field('')" ng-model="proponente" >
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Resumo do projeto(objeto)* <i>?</i></span>
+                <textarea ng-blur="save_field('')" ng-model="resume"> </textarea>
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-full recursos-projeto">
+                <span class="destaque">Recursos do Projeto selecionado* <i>?</i></span>
+                <table>
+                    <tr>
+                        <td width="200"></td>
+                        <td width="150" class="cinza">Custeio*</td>
+                        <td width="150" class="cinza">Capital*</td>
+                        <td width="150" class="cinza">Total*</td>
+                    </tr>
+                    <tr>
+                        <td class="cinza">Valor Total(R$)*</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="cinza">
+                        <td >Ação*</td>
+                        <td colspan="3">Valor das Parcelas(R$)*</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="cinza">Total das Parcelas (R$)*</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span class="destaque">Prestação de Contas* <i>?</i></span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="enviada" ng-blur="save_field('')" ng-model="yes" > Enviada</span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="naoenviada" ng-blur="save_field('')" ng-model="no"  > Não Enviada</span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="premiado" ng-blur="save_field('')" ng-model="yes" > Ponto de Cultura Premiado</span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="Aprovada" ng-blur="save_field('')" ng-model="no"  > Aprovada</span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="naoaprovado" ng-blur="save_field('')" ng-model="yes" > Não Aprovada</span>
+                <span class="label-radio"><input type="radio" name="prestacaocontas" value="analise" ng-blur="save_field('')" ng-model="no"  > Em Análise</span>
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-full vigencia">
+                <span >Vigência*: </span>
+                <select  placeholder="de 00/00/0000"  ng-blur="save_field('')" ng-model="vigentede">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                </select>
+                <select  placeholder="a 00/00/0000"  ng-blur="save_field('')" ng-model="locationrealization">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
                 </select>
             </label>
         </div>
         <div class="clear"></div>
-    </div>
-    <div class="form form-opcional">
-        <h4>Informações Opcionais</h4>
-        <div class="img_updade">
-            <img src="<?php $this->asset('img/incluir_img.png') ?>">
+        <div class="row">
+            <label class="colunm-full">
+               <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                <span class="label-radio"><input type="radio" name="financiamentos" value="sim" ng-blur="save_field('')" ng-model="yes" > Sim</span>
+                <span class="label-radio"><input type="radio" name="financiamentos" value="nao" ng-blur="save_field('')" ng-model="no"  > Não</span>
+            </label>
         </div>
-        <label class="upadete_foto">
-            <span>Incluir foto</span>
-            <input type="file" ng-blur="save_field('photo')" ng-model="agent.photo"/>
-        </label>
-
-        <label class="nome_chamado">
-            <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
-            <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
-        </label>
-
-        <label class="cidade">
-            <span>Cidade</span>
-            <input type="text" ng-blur="save_field('city')" ng-model="agent.city"/>
-        </label>
-
-        <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
-        <label class="facebook">
-            <span>Seu perfil no Facebook</span>
-            <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
-        </label>
-
-        <label class="twitter">
-            <span>Seu perfil no Twitter</span>
-            <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
-        </label>
-
-        <label class="googleplus">
-            <span>Seu perfil no Google+</span>
-            <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
-        </label>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm-50">
+                <span>Quais ?</span>
+                <input type="text" ng-blur="save_field('')" ng-model="quais" >
+            </label>
+        </div>
+        <div class="clear"></div>
     </div>
 </form>
