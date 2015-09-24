@@ -1,8 +1,8 @@
 </section>
 <footer id="main-footer">
-    <section>
+    <section class="footer-primary">
         <div class="colunm">
-            <h3>Informações úteis</h3>
+            <h4>Informações úteis</h4>
             <ul>
                 <li><a href="#" class="" >Sobre a Lei Cultura Viva</a></li>
                 <li><a href="#" class="" >Critérios da Autodeclaração</a></li>
@@ -13,14 +13,19 @@
             </ul>
         </div>
         <div class="colunm">
-            <a href="#"> <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / --> </a>
-            <a href="#"> <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / --> </a>
-            <a href="#"> <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / --> </a>
+            <ul>
+                <li><a href="#"><img src="<?php $this->asset('img/secretaria_da_cidadania.png'); ?>" title="Secretaria da Cidadania e da Diversidade Cultural"/></a></li>
+                <li><a href="#"><img src="<?php $this->asset('img/ministerio-da-cultura.png'); ?>" title="Ministerio da Cultura"/></a></li>
+                <li><a href="#"><img src="<?php $this->asset('img/logo__governo-federal__primary.png'); ?>" title="Governo Federal"/></a></li>
+            </ul>
         </div>
     </section>
-    <section>
-        <a href="#"> <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / --> </a>
-        <a href="#"> <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / --> </a>
+    <section class="footer-secondary">
+        <div class="imgs-federal">
+            <a href="#"><img src="<?php $this->asset('img/logo__governo-federal__secondary.png'); ?>" title="Governo Federal"/></a>
+            <a href="#"><img src="<?php $this->asset('img/secretaria-geral-presidencia.png'); ?>" title="Secretaria-Geral da Presidênia da República"/></a>
+            <a href="#"><img src="<?php $this->asset('img/acesso-a-informacao.png'); ?>" title="Acesso à informação"/></a>
+        </div>
     </section>
 </footer>
 <?php $this->part('templates'); ?>
