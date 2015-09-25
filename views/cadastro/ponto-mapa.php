@@ -16,6 +16,7 @@
             <label class="colunm1">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
+                <span class="error" ng-repeat="error in errors.name">{{ error }}</span>
             </label>
         </div>  
 
@@ -25,6 +26,7 @@
             <label class="colunm1">
                 <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i>?</i></span>
                 <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
+                <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
         </div>  
 
@@ -35,14 +37,18 @@
             <label class="colunm1">
                 <span>CEP do Ponto de Cultura*</span>
                 <input type="text" ng-blur="save_field('cep')" ng-model="agent.cep"/>
+                <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>O pontão tem sede própria*</span>
-                <select ng-blur="save_field('endereco')" ng-model="agent.endereco"></select>
+                <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede"></select>
 
-                <input type="checkbox" />
-                mesmo endereço cadastrado no CNPJ da entidade</span>
+                <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
+
+                <span>mesmo endereço cadastrado no CNPJ da entidade</span>
+
+                <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
             </label>
         </div>
 
@@ -75,16 +81,19 @@
                     <option value="SP">São Paulo</option>         <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                 </select>
+                <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>Cidade*</span>
                 <input type="text" ng-blur="save_field('cidade')" ng-model="agent.cidade"/>
+                <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>
             </label>
 
             <label class="colunm3">
                 <span>Bairro*</span>
                 <input type="text" ng-blur="save_field('bairro')" ng-model="agent.bairro"/>
+                <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
         </div>
 
@@ -94,16 +103,19 @@
             <label class="colunm1">
                 <span>Número*</span>
                 <input type="text" ng-blur="save_field('numero')" ng-model="agent.numero"/>
+                <span class="error" ng-repeat="error in errors.numero">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>Rua*</span>
                 <input type="text" ng-blur="save_field('rua')" ng-model="agent.rua"/>
+                <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
 
             <label class="colunm3">
                 <span>Complemento*</span>
                 <input type="text" ng-blur="save_field('complemento')" ng-model="agent.complemento"/>
+                <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>
         </div>
         <div class="clear"></div>
@@ -141,11 +153,13 @@
                     <option value="SP">São Paulo</option>         <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                 </select>
+                <span class="error" ng-repeat="error in errors.local_de_acao_estado">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>Cidade*</span>
                 <input type="text" ng-blur="save_field('local_de_acao_cidade')" ng-model="agent.local_de_acao_cidade"/>
+                <span class="error" ng-repeat="error in errors.local_de_acao_cidade">{{ error }}</span>
             </label>
         </div>
 
@@ -175,6 +189,7 @@
                 </label>
             </div>
 
+            <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
 
     </div>

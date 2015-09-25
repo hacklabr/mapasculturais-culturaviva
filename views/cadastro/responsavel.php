@@ -38,7 +38,7 @@
 
             <label class="colunm2">
                 <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
+                <input type="text" ng-blur="save_field('documento')" ng-model="agent.documento" />
             </label>
 
             <label class="colunm3">
@@ -145,18 +145,18 @@
         </label>
 
         <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
-        <label class="facebook">
-            <span>Seu perfil no Facebook</span>
+        <label class="colunm-redes facebook">
+            <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
             <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
         </label>
 
-        <label class="twitter">
-            <span>Seu perfil no Twitter</span>
+        <label class="colunm-redes twitter">
+            <span><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
             <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
         </label>
 
-        <label class="googleplus">
-            <span>Seu perfil no Google+</span>
+        <label class="colunm-redes googleplus">
+            <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
             <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
         </label>
     </div>
