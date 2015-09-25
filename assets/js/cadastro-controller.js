@@ -50,9 +50,12 @@
     ]);
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais',
-        function PointCtrl($scope, Agent, MapasCulturais)
+    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'geocoder', 'cepcoder',
+        function PointCtrl($scope, Agent, MapasCulturais, geocoder, cepcoder)
         {
+            window.geocoder = geocoder;
+            window.cepcoder = cepcoder;
+
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
 
@@ -82,6 +85,52 @@
                     }
                 }
                 $scope.save_field('local_de_acao_espaco');
+            };
+
+            $scope.cepcoder = {
+                busy: false,
+                code: function(cep){
+                    $scope.cepcoder.busy = true;
+                    cepcoder.code(cep).then(function(res){
+                        var addr = res.data;
+                        $scope.agent.cidade = addr.localidade;
+                        $scope.save_field('cidade');
+                        $scope.agent.bairro = addr.bairro;
+                        $scope.save_field('bairro');
+                        $scope.agent.rua = addr.logradouro;
+                        $scope.save_field('rua');
+                        $scope.agent.estado = addr.uf;
+                        $scope.save_field('estado');
+                        console.log(addr);
+                    }).finally(function(){
+                        $scope.cepcoder.busy = true;
+                    });
+                }
+            };
+        }
+    ]);
+
+    app.controller('EntityCtrl', ['$scope', 'Entity', 'MapasCulturais',
+        function($scope, Entity, MapasCulturais){
+            var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal' +
+                    'tipoCertificacao,foiFomentado,' +
+                    'tipoReconhecimentonumEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
+                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,vigenciaProjeto' +
+                    'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+
+                '@permissions': 'view'
+            };
+
+            $scope.entity = Entity.get(params);
+
+            $scope.save_field = function save_field(field) {
+                var entity_update = {};
+                entity_update[field] = $scope.entity[field];
+                Entity.patch({'id': agent_id}, entity_update);
             };
         }
     ]);
