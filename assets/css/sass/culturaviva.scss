@@ -293,7 +293,6 @@ section{
             display: block;
             color: #999999;
             font-size: 13px;
-            height: 30px;
         }
         
         label{
@@ -431,6 +430,30 @@ section{
             text-decoration: underline;
             font-size:14px;
             font-weight: 100;
+            cursor:pointer;
+            
+            i{
+                background:#078979;
+                cursor:pointer;
+                color:#fff;
+                display: inline-block;
+                font-size: 20px;
+                padding: 7px 9px 5px;
+                margin-left:10px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                -webkit-box-shadow: 0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+                -moz-box-shadow:    0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+                box-shadow:         0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+            }
+        }
+
+        a:hover{
+            i{
+                color:#078979;
+                background:#b3b3b3;
+            }
         }
     }
 }
@@ -614,6 +637,40 @@ section{
         h4{
             background: $base-color-fale-mais-ponto;
         }
+
+        label{
+            font-size:16px; 
+            margin-bottom:10px;   
+            
+            span{
+                display:inline-block;
+            }
+        }
+
+        input[type="checkbox"]{
+            width:15px;
+            height:15px;
+            vertical-align:top;
+            cursor:pointer;
+            margin-top:8px;
+            
+        }
+        
+        input[type=checkbox]:checked + label{
+            color:#f50;
+        }
+
+        .colunm1{
+            width:280px;
+        }
+
+        .colunm2{
+            width:280px;
+        }
+
+        .colunm3{
+            width:280px;
+        }
     }
 }
 
@@ -630,51 +687,60 @@ section{
     }
 
     .colunm-full{
-        float:left;
+        display:inline-block;
         width:90%;
-        margin-left: 4%;    
+        margin-left: 4%;  
+        vertical-align:top;  
     }
 
     .colunm-50{
-        float:left;
-        width:46%;
+        display:inline-block;
+        width:45%;
         margin-left: 4%;
+        vertical-align:top;
     }
 
     .colunm-20{
-        float:left;
+        display:inline-block;
         width:20%;
         margin-left: 4%;
+        vertical-align:top;
     }
 
     .colunm1{
         width: 400px;
         margin-left:35px;
-        float:left;
+        display:inline-block;
+        vertical-align:top;
     }
 
     .colunm05{
         width: 200px;
         margin-left:35px;
-        float:left;
+        display:inline-block;
+        vertical-align:top;
     }
 
     .colunm02{
         width: 140px;
         margin-left:35px;
-        float:left;
+        display:inline-block;
+        vertical-align:top;
     }
 
     .colunm2{
         width: 200px;
         margin-left:35px;
-        float:left;
+        display:inline-block;
+        vertical-align:top;
     }
 
     .colunm3{
         width: 180px;
         margin-left:35px;
-        float:left;
+        display:inline-block;
+        vertical-align:top;
+
     }
 
 }
