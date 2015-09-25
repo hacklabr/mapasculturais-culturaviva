@@ -123,7 +123,8 @@
 
 
     <div class="form form-mapa">
-
+        <style type="text/css">.leaflet-canvas { min-height: 300px; }</style>
+        <leaflet markers="markers"></leaflet>
     </div>
 
 

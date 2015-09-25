@@ -53,11 +53,15 @@
     app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'geocoder', 'cepcoder',
         function PointCtrl($scope, Agent, MapasCulturais, geocoder, cepcoder)
         {
-            window.geocoder = geocoder;
-            window.cepcoder = cepcoder;
-
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
+
+            $scope.markers = {
+                main: {
+                    lng: -47.12927539999998,
+                    lat: -23.5287033,
+                }
+            };
 
             // verifica se agente tem o local fornecido
             $scope.check_espaco = function check_espaco(espaco) {
@@ -95,15 +99,27 @@
                         var addr = res.data;
                         $scope.agent.cidade = addr.localidade;
                         $scope.save_field('cidade');
+
                         $scope.agent.bairro = addr.bairro;
                         $scope.save_field('bairro');
+
                         $scope.agent.rua = addr.logradouro;
                         $scope.save_field('rua');
+
                         $scope.agent.estado = addr.uf;
                         $scope.save_field('estado');
-                        console.log(addr);
+
+                        var string = (addr.logradouro ? addr.logradouro+', ':'') +
+                                     (addr.bairro ? addr.bairro+', ':'') +
+                                     (addr.localidade ? addr.localidade+', ':'') +
+                                     (addr.uf ? addr.uf+' - ':'');
+
+                        return geocoder.code(string);
+                    }).then(function(point){
+                        point.zoom = 14;
+                        $scope.markers.main = point;
                     }).finally(function(){
-                        $scope.cepcoder.busy = true;
+                        $scope.cepcoder.busy = false;
                     });
                 }
             };

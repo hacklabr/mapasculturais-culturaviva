@@ -4,6 +4,7 @@
     var app = angular.module('culturaviva', [
         'culturaviva.controllers',
         'culturaviva.services',
+        'culturaviva.directives',
         'Notifications'
     ]);
 

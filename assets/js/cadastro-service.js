@@ -46,7 +46,16 @@
 
             this._coder.geocode({'address': address}, function(results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    deferred.resolve(results[0]);
+                    var obj = results[0];
+
+                    var point = {
+                        'lng': obj.geometry.location.lng(),
+                        'lat': obj.geometry.location.lat(),
+                        'message': obj.formatted_address || '',
+                        '_coded': obj
+                    };
+
+                    deferred.resolve(point);
                 } else {
                     deferred.reject('Endereço não encontrado');
                 }
