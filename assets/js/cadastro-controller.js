@@ -70,4 +70,20 @@
         }
     ]);
 
+    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais',
+        function($scope, Entity, MapasCulturais){
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            'params':{
+                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal' +
+                    'tipoCertificacao,foiFomentado,' +
+                    'tipoReconhecimentonumEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
+                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,vigenciaProjeto' +
+                    'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+
+                '@permissions': 'view'
+            }
+        }
+    ]);
+
 })(angular);
