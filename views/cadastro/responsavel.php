@@ -38,7 +38,7 @@
 
             <label class="colunm2">
                 <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
+                <input type="text" ng-blur="save_field('documento')" ng-model="agent.documento" />
             </label>
 
             <label class="colunm3">

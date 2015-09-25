@@ -166,11 +166,65 @@ class Theme extends BaseV1\Theme{
                         'intermunicpal' => 'Intermunicipal'
                     )
                 ],
-                
+
                 'mesmoEndereco' => [
                     'label' => 'Mesmo Endereco',
                     'required' => false,
                     'private' => true
+                ],
+
+                'tem_sede' => [
+                    'label' => 'Tem sede propria?',
+                    'required' => true
+                ],
+                'sede_cnpj' => [
+                    'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
+                    'required' => false
+                ],
+
+                'cep' => [
+                    'label' => 'CEP',
+                    'required' => true,
+                    'validations' => array(
+                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
+                    )
+                ],
+                'estado' => [
+                    'label' => 'Estado',
+                    'required' => true
+                ],
+                'cidade' => [
+                    'label' => 'Cidade',
+                    'required' => true
+                ],
+                'bairro' => [
+                    'label' => 'Bairro',
+                    'required' => true
+                ],
+                'numero' => [
+                    'label' => 'Numero',
+                    'required' => true
+                ],
+                'rua' => [
+                    'label' => 'Rua',
+                    'required' => true
+                ],
+                'complemento' => [
+                    'label' => 'Rua',
+                    'required' => false
+                ],
+
+                'local_de_acao_estado' => [
+                    'label' => 'Estado',
+                    'required' => false
+                ],
+                'local_de_acao_cidade' => [
+                    'label' => 'Cidade',
+                    'required' => false
+                ],
+                'local_de_acao_espaco' => [
+                    'label' => 'Espaço',
+                    'required' => false
                 ],
             ]
         ];
