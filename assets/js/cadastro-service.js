@@ -19,7 +19,7 @@
                     'params':{
                         '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,'+
                                    'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
-                                   'geoMunicipio,facebook,twitter,googleplus',
+                                   'geoCidade,facebook,twitter,googleplus',
                         '@permissions': 'view'
                     }
                 }
@@ -49,48 +49,14 @@
         }
     ]);
 
-    app.factory('Entity', ['$resource', '$http', 'MapasCulturais',
-        function($resource, $http, MapasCulturais){
-            var resourceConfig = {
-                'get':  {
-                    'method':'GET'
-                },
-                'patch': {
-                    'method': 'PATCH'
+    app.factory('Entity', ['$resource',
+        function($resource){
+            return $resource('/api/agent/findOne?id=EQ(:id)', {'id': '@id'}, {
+                patch: {
+                    url: '/agente/:id/',
+                    method: 'PATCH'
                 }
-            };
-
-            var getUrl = '/api/agent/findOne?id=EQ(:id)';
-            var Responsible = $resource(getUrl, {'id': '@id'}, resourceConfig);
-
-            // 1) o angular não deixa selecionar individualmente o campos para patch
-            // 2) a api do mapas não devolve o objeto (nem parte dele) após a consulta
-            Responsible.prototype.patch = function patch_responsible(field) {
-                if(!this.id) {
-                    throw new Error('Não é possível salvar sem o id');
-                }
-
-                if(!this.hasOwnProperty(field)){
-                    throw new Error('Não foi informado o campo que se quer salvar');
-                }
-
-                // TODO: @rafa - Qual o endereço para patch?
-                var patchUrl = MapasCulturais.createUrl('agent','single',[this.id]);
-                if(!patchUrl) {
-                    throw new Error('O agente não tem o endereço para PATCH');
-                }
-
-                var data = {};
-                data[field] = this[field];
-
-                return $http({
-                    method:'PATCH',
-                    url: patchUrl,
-                    data:data
-                });
-            };
-
-            return Responsible;
+            });
         }
     ]);
 

@@ -70,11 +70,12 @@
         }
     ]);
 
-    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais',
+    app.controller('EntityCtrl', ['$scope', 'Entity', 'MapasCulturais',
         function($scope, Entity, MapasCulturais){
-            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
-            'params':{
+            var params = {
+                'id': agent_id,
                 '@select': 'id,name,nomeCompleto,cnpj,representanteLegal' +
                     'tipoCertificacao,foiFomentado,' +
                     'tipoReconhecimentonumEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
@@ -82,7 +83,15 @@
                     'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
 
                 '@permissions': 'view'
-            }
+            };
+
+            $scope.entity = Entity.get(params);
+
+            $scope.save_field = function save_field(field) {
+                var entity_update = {};
+                entity_update[field] = $scope.entity[field];
+                Entity.patch({'id': agent_id}, entity_update);
+            };
         }
     ]);
 

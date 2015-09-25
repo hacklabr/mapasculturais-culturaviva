@@ -7,7 +7,7 @@
         'Notifications'
     ]);
 
-    app.config(['$httpProvider', function ($httpProvider) {
+    app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
             $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
             $httpProvider.defaults.headers.patch['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
             $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
@@ -17,7 +17,7 @@
 
                 return result;
             };
+            $resourceProvider.defaults.stripTrailingSlashes = false;
         }]);
-
 
 })(angular);
