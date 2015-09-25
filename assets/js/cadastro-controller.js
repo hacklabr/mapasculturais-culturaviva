@@ -56,12 +56,7 @@
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
 
-            $scope.markers = {
-                main: {
-                    lng: -47.12927539999998,
-                    lat: -23.5287033,
-                }
-            };
+            $scope.markers = {};
 
             // verifica se agente tem o local fornecido
             $scope.check_espaco = function check_espaco(espaco) {
@@ -118,6 +113,8 @@
                     }).then(function(point){
                         point.zoom = 14;
                         $scope.markers.main = point;
+                    })['catch'](function(){
+                        $scope.markers.main = undefined;
                     }).finally(function(){
                         $scope.cepcoder.busy = false;
                     });

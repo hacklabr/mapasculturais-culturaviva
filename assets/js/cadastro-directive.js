@@ -74,7 +74,10 @@
                     }
 
                     if (markers.main) {
+                        map.setZoom((points.main||{}).zoom || 14, true);
                         map.panTo(markers.main.getLatLng());
+                    } else {
+                        map.setZoom(3, true);
                     }
                 }
 
