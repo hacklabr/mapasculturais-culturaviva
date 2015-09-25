@@ -50,9 +50,12 @@
     ]);
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais',
-        function PointCtrl($scope, Agent, MapasCulturais)
+    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'geocoder', 'cepcoder',
+        function PointCtrl($scope, Agent, MapasCulturais, geocoder, cepcoder)
         {
+            window.geocoder = geocoder;
+            window.cepcoder = cepcoder;
+
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
 
