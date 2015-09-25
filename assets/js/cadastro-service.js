@@ -19,7 +19,7 @@
                     'params':{
                         '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,'+
                                    'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
-                                   'geoMunicipio,facebook,twitter,googleplus',
+                                   'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco',
                         '@permissions': 'view'
                     }
                 }

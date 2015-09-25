@@ -166,6 +166,12 @@ class Theme extends BaseV1\Theme{
                         'intermunicpal' => 'Intermunicipal'
                     )
                 ],
+                
+                'mesmoEndereco' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => false,
+                    'private' => true
+                ],
             ]
         ];
 

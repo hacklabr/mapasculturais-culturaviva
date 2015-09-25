@@ -41,7 +41,7 @@
                 <span>O pontão tem sede própria*</span>
                 <select ng-blur="save_field('endereco')" ng-model="agent.endereco"></select>
 
-                <input type="checkbox" />
+                <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
                 mesmo endereço cadastrado no CNPJ da entidade</span>
             </label>
         </div>
