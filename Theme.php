@@ -248,7 +248,7 @@ class Theme extends BaseV1\Theme{
         foreach ($taxonomies as $slug => $description){
             $id++;
             $def = new \MapasCulturais\Definitions\Taxonomy($id, $slug, $description);
-            $app->registerTaxonomy($slug, $def);
+            $app->registerTaxonomy('MapasCulturais\Entities\Agent', $def);
         }
     }
 }
