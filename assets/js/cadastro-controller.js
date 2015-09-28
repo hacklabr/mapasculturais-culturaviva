@@ -38,6 +38,27 @@
                 });
             }
         };
+        
+        $scope.toggle_term = function(taxonomy, term){
+            var agent = $scope.agent;
+            
+            if(!angular.isArray(agent.terms[taxonomy])) {
+                agent.terms[taxonomy] = [term];
+            } else {
+                var idx = agent.terms[taxonomy].indexOf(term);
+                if(idx < 0)
+                {
+                    agent.terms[taxonomy].push(term);
+                }
+                else
+                {
+                    agent.terms[taxonomy].splice(idx, 1);
+                }
+            }
+            $scope.save_field('terms');
+        };
+        
+        
     }
 
     // Controller do 'Informações do responsável'
@@ -55,34 +76,9 @@
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
+            
+            $scope.locaisRealizacao = ['Escolas', 'Universidades', 'Praças', 'Salas', 'CEUs', 'Feiras', 'Eventos'];
 
-            // verifica se agente tem o local fornecido
-            $scope.check_espaco = function check_espaco(espaco) {
-                var agent = $scope.agent;
-                return agent && espaco &&
-                       angular.isArray(agent.local_de_acao_espaco) &&
-                       agent.local_de_acao_espaco.indexOf(espaco) > -1;
-            };
-
-            // seleciona ou remove um espaco do agente e salva na api
-            $scope.toggle_espaco = function toggle_espaco(espaco) {
-                var agent = $scope.agent;
-                
-                if(!angular.isArray(agent.local_de_acao_espaco)) {
-                    agent.local_de_acao_espaco = [espaco];
-                } else {
-                    var idx = agent.local_de_acao_espaco.indexOf(espaco);
-                    if(idx < 0)
-                    {
-                        agent.local_de_acao_espaco.push(espaco);
-                    }
-                    else
-                    {
-                        agent.local_de_acao_espaco.splice(idx, 1);
-                    }
-                }
-                $scope.save_field('local_de_acao_espaco');
-            };
         }
     ]);
 

@@ -17,9 +17,9 @@
                 'get':  {
                     'method':'GET',
                     'params':{
-                        '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,'+
+                        '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                                    'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
-                                   'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco',
+                                   'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
                         '@permissions': 'view'
                     }
                 }

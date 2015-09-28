@@ -164,30 +164,21 @@
         </div>
 
 
-        <div data-ng-init="espacos=['Escolas', 'Universidades', 'Praças', 'Salas', 'CEUs', 'Feiras', 'Eventos', 'Outros locais']">
+        <div class="row">
 
-            <div ng-repeat="espaco in espacos" ng-if="$index % 3 == 0" class="row">
-                <label>
-                    <input ng-checked="check_espaco(espacos[$index])"
-                           ng-click="toggle_espaco(espacos[$index])"
-                           type="checkbox" />
-                    <span>{{ espacos[$index] }}</span>
+            <div class="row">
+                <label ng-repeat="espaco in locaisRealizacao" class="colunm{{$index % 3 + 1}}"> 
+                    <input ng-checked="agent.terms.local_realizacao.indexOf(espaco) >= 0" ng-click="toggle_term('local_realizacao', espaco)" type="checkbox" >
+                    {{ espaco }}
                 </label>
-
-                <label ng-if="espacos[$index + 1]">
-                    <input ng-checked="check_espaco(espacos[$index + 1])"
-                           ng-click="toggle_espaco(espacos[$index + 1])"
-                           type="checkbox" />
-                    <span>{{ espacos[$index + 1] }}</span>
+                <label class="colunm{{locaisRealizacao.length % 3 + 1}}"> 
+                    <input ng-model="outrosLocais" type="checkbox" >
+                    Outros Locais
                 </label>
-
-                <label ng-if="espacos[$index + 2]">
-                    <input ng-checked="check_espaco(espacos[$index + 2])"
-                           ng-click="toggle_espaco(espacos[$index + 2])"
-                           type="checkbox" />
-                    <span>{{ espacos[$index + 2] }}</span>
-                </label>
+                <input type="text" class="colunm3" ng-show="outrosLocais" ng-disabled="!outrosLocais" >
             </div>
+            
+            <div class="clear"></div>
 
             <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
