@@ -1,5 +1,5 @@
 
-<section class="contanier">
+<section id="page-entrada">
     <article>
         <div class="row">
             <h3>
