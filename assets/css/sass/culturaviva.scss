@@ -576,7 +576,7 @@ section{
         }
         
         textarea{
-            width: 90%;
+            width: 100%;
             height:60px;
             margin-top: 0px;
             border-radius: 5px;
@@ -586,6 +586,10 @@ section{
             color: #999999;
             width:auto;
             margin-right: 6px;
+        }
+
+        span.check{
+            display:inline-block;
         }
 
         .label-radio{
@@ -766,6 +770,8 @@ section{
 .page-ponto-mapa{
     header{
         background: $base-color-ponto-mapa; 
+        
+
 
         .circle-status{
             &:after{
@@ -785,6 +791,23 @@ section{
                 border-color: #075579;
             }
         }
+    }
+
+    span.destaque-opcional{
+        color: #078979;
+        font-weight:100;
+        margin-left:4%;
+        font-size:14px;
+        width:60%;
+    }
+
+    span.destaque-img{
+        color: #078979;
+        font-weight: bold;
+        font-size: 14px;
+        width: 40%;
+        text-align: center;
+        margin-left: 30%;
     }
 
     .form{
@@ -832,14 +855,31 @@ section{
         .vigencia{
             span{
                 display:inline-block;
+                width:auto;
             }
 
-            select{
-                border-radius:0px;
-                width:200px; 
-                display:inline-block;
-                margin-left: 10px;
-            }   
+            input{
+                border:0px;
+                display:inline-block; 
+                width: 100px; 
+                margin-bottom: 0px; 
+                cursor:pointer;  
+            }
+            
+            .vigencia-box{
+                border:1px solid #ccc;
+                border-radius:3px;
+                padding: 0px 10px;                   
+            }
+
+            .vigiencia-de{
+                margin-left:10px;
+            }
+
+            .vigiencia-ate{
+                margin-left:30px;
+            }
+  
         }
         
 
