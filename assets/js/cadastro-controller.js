@@ -253,11 +253,12 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal' +
-                    'tipoCertificacao,foiFomentado,' +
-                    'tipoReconhecimentonumEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
-                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,vigenciaProjeto' +
-                    'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+
+                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
+                    'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
+                    'tipoReconhecimento,numEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
+                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,inicioVigenciaProjeto,' +
+                    'fimVigenciaProjeto,recebeOutrosFinanciamentos,descOutrosFinanciamentos',
                 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 
@@ -270,6 +271,7 @@
                 var entity_update = {};
                 entity_update[field] = $scope.entity[field];
                 Entity.patch({'id': agent_id}, entity_update);
+//                $scope.entity.$patch({'id': agent_id}, entity_update);
             };
         }
     ]);

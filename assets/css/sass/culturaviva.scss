@@ -116,20 +116,24 @@ section{
                 }
             }
             .infos{
-                padding:10px 0px 20px;
+                padding:10px 10px 30px 0px;
 
                 .texto{
                     margin-left: 5%;
-                    margin-top: 40px;
+                    margin-top: 20px;
                     width: 70%;
                     display: inline-block;
+                    
+                    p{
+                        font-size:0.9em;
+                    }
                 }
 
 
                 .circle-status{
                     cursor: pointer;
                     font-size: 3.5em;
-                    margin-top: 10%;
+                    margin-top: 6%;
                     display: inline-block;
                     float: right;
                 }
@@ -146,6 +150,19 @@ section{
                     width: 50%;
                 }
             }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                        span{
+                            color:#F7C908;
+                        }
+                    }
+                    .fill, .bar{
+                        border-color: #F7C908;
+                    }
+                }
+            }
         }
 
         article.box-ponto-mapa{
@@ -156,6 +173,21 @@ section{
                     width: 30%;
                 }
             }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                        span{
+                            color:#075579;
+                        }
+                    }
+
+                    .fill, .bar{
+                        border-color: #075579;
+                    }
+                }
+            }
+
         }
 
         article.box-entidade-dados{
@@ -164,6 +196,19 @@ section{
 
                 h4{
                     width: 30%;
+                }
+            }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                        span{
+                            color:#D82E5F;
+                        }
+                    }
+                    .fill, .bar{
+                        border-color: #D82E5F;
+                    }
                 }
             }
         }
@@ -177,6 +222,19 @@ section{
                     padding: 12px 0px;
                 }
             }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                        span{
+                            color:#249604;
+                        }
+                    }
+                    .fill, .bar{
+                        border-color: #417034;
+                    }
+                }
+            }
         }
 
         article.box-entidade-contato{
@@ -185,6 +243,20 @@ section{
 
                 h4{
                     width: 30%;
+                }
+            }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                            span{
+                                color:#F7931E;
+                            }
+                    }
+                        
+                    .fill, .bar{
+                        border-color: #F7931E;
+                    }
                 }
             }
         }
@@ -197,6 +269,21 @@ section{
                     width: 35%;
                 }
             }
+
+            .infos{
+                .circle-status{
+            
+                    &:hover{
+                        span{
+                            color:#7B4AAF;
+                        }
+                    }
+      
+                    .fill, .bar{
+                        border-color: #7B4AAF;
+                    }
+                }
+            }
         }
 
     }
@@ -204,8 +291,9 @@ section{
     section.box-status{
         article{
             background:#fff;
+            padding: 40px 0px;
             .status{
-                width: 16%;
+                width: 14%;
                 height: auto;
                 float: left;
                 padding: 0.3%;
@@ -215,6 +303,90 @@ section{
 
         article.validar-ponto{
             background: #078979;
+            color:#fff;
+            
+            h5{
+                float: left;
+                font-size: 20px;
+                color: #fff;
+                margin-left: 5%;
+                margin-top: 30px;
+                font-weight: 100;
+               i{
+                   display:block;
+                   font-size:22px;
+               }
+            }
+
+            p{
+                display:inline-block;
+                float:right;
+                text-align:center;
+                font-size:14px;
+                width: 25%;
+                margin-right:10%;
+                margin-top: 20px;
+            }
+        }
+
+
+        article.content-status{
+
+            .infos-messenge{
+                background-color: #F9B462;
+                width: 70%;
+                padding: 10px 20px;
+                color: #fff;
+                margin: 0px auto;
+                text-align: center;
+
+                p{
+                    margin-bottom:0px;
+                    padding:0px;
+                }
+
+                .close{
+                    color: #fff;
+                    float: right;
+                }
+            }
+            
+            .btn-validar{
+                background: #E6E6E6;
+                color: #B3B3B3;
+                border: 0px;
+                cursor: pointer;
+                font-size: 18px;
+                padding: 15px 40px;
+                display: inline-block;
+                height: auto;
+                margin-left: 44%;
+                margin-top: 30px;
+            }
+            
+            //Box Status
+            .status{
+
+                + .status{
+                    border-left:1px solid #666;   
+                }
+
+                padding:10px;
+                
+                .circle-status{
+                    font-size: 50px;
+                    margin-left: 33%;
+                }
+
+                span.icon{
+                    display: inline-block;
+                    width: 100%;
+                }
+
+                p{
+                    display:block;
+                }
+            }
         }
     }
 
@@ -236,6 +408,10 @@ section{
             font-size:25px;
             color:#fff; 
             margin: 20px 0 0 2%;
+        }
+
+        .circle-status{
+            
         }
 
         h3{
@@ -467,9 +643,23 @@ section{
 .page-responsavel{
     header{
         background:$base-color-info-responsavel; 
-
         .circle-status{
-            color: $base-color-info-responsavel;
+            &:after{
+                background:$base-color-info-responsavel;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #FFE889;
+                }
+            }
+            .fill, .bar{
+                border-color: #FFE889;
+            }
         }
     }
 
@@ -485,7 +675,22 @@ section{
         background: $base-color-ponto-mapa; 
 
         .circle-status{
-            color: $base-color-ponto-mapa;
+            &:after{
+                background:$base-color-ponto-mapa;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #075579;
+                }
+            }
+            .fill, .bar{
+                border-color: #075579;
+            }
         }
     }
 
@@ -501,7 +706,22 @@ section{
         background: $base-color-entidade-dados; 
 
         .circle-status{
-            color: $base-color-entidade-dados;
+            &:after{
+                background:$base-color-entidade-dados;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #E26D8F;
+                }
+            }
+            .fill, .bar{
+                border-color: #E26D8F;
+            }
         }
     }
 
@@ -569,7 +789,22 @@ section{
         background: $base-color-portfolio; 
 
         .circle-status{
-            color: $base-color-portfolio;
+            &:after{
+                background:$base-color-portfolio;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #74B362;
+                }
+            }
+            .fill, .bar{
+                border-color: #74B362;
+            }
         }
 
     }
@@ -613,7 +848,22 @@ section{
         background: $base-color-entidade-contato; 
 
         .circle-status{
-            color: $base-color-entidade-contato;
+            &:after{
+                background:$base-color-entidade-contato;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #F9B86C;
+                }
+            }
+            .fill, .bar{
+                border-color: #F9B86C;
+            }
         }
     }
 
@@ -629,7 +879,22 @@ section{
         background: $base-color-fale-mais-ponto; 
 
         .circle-status{
-            color: $base-color-fale-mais-ponto;
+            &:after{
+                background:$base-color-fale-mais-ponto;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
         }
     }
 

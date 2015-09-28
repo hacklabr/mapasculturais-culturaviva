@@ -22,19 +22,36 @@
         </a>
     </span>
 <?php $fake_options = ob_get_clean(); endif; ?>
-
 <nav id="main-nav" class="clearfix">
     <ul class="menu entities-menu clearfix">
-        <li id="entities-menu-event" ng-class="{'active':data.global.filterEntity === 'event'}" ng-click="tabClick('event')">
+        <li id="entities-menu-opportunities">
             <a href="<?php if ($this->controller->action !== 'search') echo $app->createUrl('busca') . '##(global:(enabled:(event:!t),filterEntity:event))'; ?>">
-                <div class="icon icon-event"></div>
-                <div class="menu-item-label">Eventos</div>
+                <div class="icon icon-dollar"></div>
+                <div class="menu-item-label">Oportunidades</div>
             </a>
         </li>
-        <li id="entities-menu-agent" ng-class="{'active':data.global.filterEntity === 'agent'}" ng-click="tabClick('agent')">
+        <li id="entities-menu-economy">
             <a href="<?php if ($this->controller->action !== 'search') echo $app->createUrl('busca') . '##(global:(enabled:(agent:!t),filterEntity:agent))'; ?>">
-                <div class="icon icon-agent"></div>
-                <div class="menu-item-label">Pontos</div>
+                <div class="icon icon-vcard"></div>
+                <div class="menu-item-label">Economia Viva</div>
+            </a>
+        </li>
+        <li id="entities-menu-formation">
+            <a href="<?php if ($this->controller->action !== 'search') echo $app->createUrl('busca') . '##(global:(enabled:(agent:!t),filterEntity:agent))'; ?>">
+                <div class="icon icon-user"></div>
+                <div class="menu-item-label">Formação</div>
+            </a>
+        </li>
+        <li id="entities-menu-points-culture">
+            <a href="<?php if ($this->controller->action !== 'search') echo $app->createUrl('busca') . '##(global:(enabled:(agent:!t),filterEntity:agent))'; ?>">
+                <div class="icon icon-location"></div>
+                <div class="menu-item-label">Pontos de Cultura</div>
+            </a>
+        </li>
+        <li id="entities-menu-event">
+            <a href="<?php if ($this->controller->action !== 'search') echo $app->createUrl('busca') . '##(global:(enabled:(agent:!t),filterEntity:agent))'; ?>">
+                <div class="icon icon-calendar"></div>
+                <div class="menu-item-label">Eventos</div>
             </a>
         </li>
     </ul>
