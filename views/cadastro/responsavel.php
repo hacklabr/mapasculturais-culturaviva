@@ -126,40 +126,44 @@
     </div>
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
-        <div class="img_updade">
-            <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
-                <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+        <div class="row">
+            <div class="img_updade">
+                <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                    <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+                </div>
+                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                </div>
             </div>
-            <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
-                <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
-            </div>
+
+            <label class="nome_chamado">
+                <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
+                <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
+            </label>
+
+            <label class="cidade">
+                <span>Cidade</span>
+                <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
+            </label>
+            <div class="clear"></div>
         </div>
+        <div class="row">
+            <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
+            <label class="colunm-redes facebook">
+                <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
+                <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
+            </label>
 
-        <label class="nome_chamado">
-            <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
-            <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
-        </label>
+            <label class="colunm-redes twitter">
+                <span><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
+                <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
+            </label>
 
-        <label class="cidade">
-            <span>Cidade</span>
-            <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
-        </label>
-
-        <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
-        <label class="colunm-redes facebook">
-            <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
-            <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
-        </label>
-
-        <label class="colunm-redes twitter">
-            <span><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
-            <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
-        </label>
-
-        <label class="colunm-redes googleplus">
-            <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
-            <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
-        </label>
+            <label class="colunm-redes googleplus">
+                <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
+                <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
+            </label>
+        </div>
     </div>
 </form>

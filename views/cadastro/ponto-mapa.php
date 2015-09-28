@@ -13,7 +13,7 @@
         <h4>Informações Obrigatórias</h4>
         
         <div class="row">
-            <label class="colunm1">
+            <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
                 <span class="error" ng-repeat="error in errors.name">{{ error }}</span>
@@ -23,7 +23,7 @@
         <div class="clear"></div>
 
         <div class="row">
-            <label class="colunm1">
+            <label class="colunm-full">
                 <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i>?</i></span>
                 <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
@@ -40,13 +40,13 @@
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
-            <label class="colunm2">
+            <label class="colunm1">
                 <span>O pontão tem sede própria*</span>
                 <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede"></select>
 
                 <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
 
-                <span>mesmo endereço cadastrado no CNPJ da entidade</span>
+                <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
             </label>
@@ -130,11 +130,10 @@
 
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
-
         <label>
-            <span class="destaque">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
+            <span class="destaque-opcional">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
         </label>
-
+      
         <div class="row">
             <label class="colunm1">
                 <span>Estado*</span>
@@ -187,7 +186,7 @@
             </div>
             
             <label>
-                <span class="destaque">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
+                <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
             </label>
         </div>
         <div class="clear"></div>
