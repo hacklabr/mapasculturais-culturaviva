@@ -209,8 +209,8 @@
                 '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
                     'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
                     'tipoReconhecimento,numEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
-                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,vigenciaProjeto' +
-                    'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,inicioVigenciaProjeto,' +
+                    'fimVigenciaProjeto,recebeOutrosFinanciamentos,descOutrosFinanciamentos',
 
                 '@permissions': 'view'
             };

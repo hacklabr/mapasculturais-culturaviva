@@ -19,7 +19,7 @@ class Theme extends BaseV1\Theme{
 
     protected function _init(){
         parent::_init();
-        
+
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
@@ -45,7 +45,7 @@ class Theme extends BaseV1\Theme{
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
-        
+
         $app->hook('view.render(<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
@@ -264,7 +264,12 @@ class Theme extends BaseV1\Theme{
                         'analise' => 'Em análise'
                     )
                 ],
-                 'vigenciaProjeto' => [
+                'inicioVigenciaProjeto' => [
+                    'label' => 'Vigência',
+                    'required' => true,
+                    'private' => true
+                ],
+                'fimVigenciaProjeto' => [
                     'label' => 'Vigência',
                     'required' => true,
                     'private' => true

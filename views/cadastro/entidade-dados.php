@@ -36,7 +36,10 @@
         <div class="row">
             <label class="colunm-50">
                 <span class="destaque">CNPJ da Entidade*</span>
-                <input type="text" ng-blur="save_field('cnpj')" ng-model="entity.cnpj" disabled="entity.semCNPJ>
+                <input type="text"
+                       ng-blur="save_field('cnpj')"
+                       ng-model="entity.cnpj"
+                       disabled="entity.semCNPJ>
                 <p ng-show="true"></p>
                 <div class="naoseaplica">
                     <input type="checkbox"
@@ -230,28 +233,44 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Prestação de Contas* <i>?</i></span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasEnvio" ng-value="enviada" ng-blur="save_field('prestacaoContasEnvio')" ng-model="entity.prestacaoContasEnvio" > Enviada</span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasEnvio" ng-value="naoEnviada" ng-blur="save_field('prestacaoContasEnvio')" ng-model="entity.prestacaoContasEnvio"  > Não Enviada</span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasEnvio" ng-value="premiado" ng-blur="save_field('prestacaoContasEnvio')" ng-model="entity.prestacaoContasEnvio" > Ponto de Cultura Premiado</span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasStatus" ng-value="aprovada" ng-blur="save_field('prestacaoContasStatus')" ng-model="entity.prestacaoContasStatus"  > Aprovada</span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasStatus" ng-value="naoaprovada" ng-blur="save_field('prestacaoContasStatus')" ng-model="entity.prestacaoContasStatus" > Não Aprovada</span>
-                    <span class="label-radio"><input type="radio" name="prestacaoContasStatus" ng-value="analise" ng-blur="save_field('prestacaoContasStatus')" ng-model="entity.prestacaoContasStatus"  > Em Análise</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasEnvio"
+                                                     ng-value="enviada"
+                                                     ng-blur="save_field('prestacaoContasEnvio')"
+                                                     ng-model="entity.prestacaoContasEnvio" > Enviada</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasEnvio"
+                                                     ng-value="naoEnviada"
+                                                     ng-blur="save_field('prestacaoContasEnvio')" ng-model="entity.prestacaoContasEnvio"  > Não Enviada</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasEnvio"
+                                                     ng-value="premiado"
+                                                     ng-blur="save_field('prestacaoContasEnvio')"
+                                                     ng-model="entity.prestacaoContasEnvio" > Ponto de Cultura Premiado</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasStatus"
+                                                     ng-value="aprovada"
+                                                     ng-blur="save_field('prestacaoContasStatus')"
+                                                     ng-model="entity.prestacaoContasStatus"  > Aprovada</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasStatus"
+                                                     ng-value="naoaprovada"
+                                                     ng-blur="save_field('prestacaoContasStatus')"
+                                                     ng-model="entity.prestacaoContasStatus" > Não Aprovada</span>
+                    <span class="label-radio"><input type="radio"
+                                                     name="prestacaoContasStatus"
+                                                     ng-value="analise"
+                                                     ng-blur="save_field('prestacaoContasStatus')"
+                                                     ng-model="entity.prestacaoContasStatus"  > Em Análise</span>
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full vigencia">
-                    <span >Vigência*: </span>
-                    <select  placeholder="de 00/00/0000"  ng-blur="save_field('')" ng-model="entity.vigentede">
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                    </select>
-                    <select  placeholder="a 00/00/0000"  ng-blur="save_field('')" ng-model="entity.locationrealization">
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                    </select>
+                    <span >Vigência*:   De  </span>
+                    <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('inicioVigenciaProjeto')" ng-model="entity.inicioVigenciaProjeto">
+                    <span >Até</span>
+                    <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('fimVigenciaProjeto')" ng-model="entity.fimVigenciaProjeto">
                 </label>
             </div>
             <div class="clear"></div>
