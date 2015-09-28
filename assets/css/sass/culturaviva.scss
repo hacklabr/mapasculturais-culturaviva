@@ -16,18 +16,89 @@ body{
     background: url("../img/bg.png"), linear-gradient(to right, #075579 0%, #078979 51%, #075579 100%);
 }
 
-.clear{
-    clear:both;
+.clear {
+    clear: both;
 }
+
+$yellow_btn: #FBED1D;
 
 #main-section{
-    background:transparent;
-}
+    background: transparent;
+    margin: 78px auto 0 auto;
+    max-width: 960px;
+    text-align: center;
+    width: 100%;
 
-section{
-    max-width:960px;
-    width:100%;
-    margin:0 auto;
+    p {
+        color: #FFFFFF;
+    }
+
+    .btn__active {
+        background: $yellow_btn;
+        border: none;
+        border-radius: 6px;
+        color: $base-color-portfolio;
+        height: auto;
+        font-size: 14px;
+        padding: 10px 36px;
+        text-transform: uppercase;
+        width: 220px;
+    }
+
+    .contanier {
+        h1, h4 {
+            color: $yellow_btn;
+            text-transform: uppercase;
+        }
+
+        article {
+            &.slide-home {
+                background: url('../img/slider-home-topo/Home01.jpg');
+                height: 450px;
+                padding-top: 30px;
+                max-height: 480px;
+
+                img {
+                    margin-bottom: 30px;
+                    width: 360px;
+                }
+
+                > p {
+                    max-width: 630px;
+                    font-family: DroidSans;
+                    font-weight: bold;
+                    font-size: 16px;
+                    text-shadow: 2px 2px 0px #000000;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .btn__active {
+                    margin: 26px 0;
+                }
+                a {
+                    &.what {
+                        color: #FFFFFF;
+                        display: block;
+                        font-size: 14px;
+                        text-decoration: underline;
+                        text-shadow: 2px 2px 0px #000000;
+                    }
+                }
+            }
+            &.points_culture {
+                .row {
+                    > p {
+                        max-width: 630px;
+                        font-family: DroidSans;
+                        font-weight: bold;
+                        font-size: 16px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #page-cadastro{
@@ -42,7 +113,7 @@ section{
             text-transform: uppercase;
             font-weight: 600;
             font-size: 2.5em;
-        
+
             span{
                 font-weight: 100;
                 font-size: 0.7em;
@@ -55,7 +126,7 @@ section{
             font-size:0.9em;
             padding: 5px 20%;
             margin: 10px;
-        } 
+        }
 
         .messenger{
             background-color: #af7f37;
@@ -74,9 +145,9 @@ section{
                 color: #fff;
                 float: right;
             }
-        }  
+        }
     }
-    
+
 
     section.boxs-cadastro{
         margin-top:50px;
@@ -86,7 +157,7 @@ section{
             float:left;
             background: #fff;
 
-            header{                
+            header{
                 a{
                     text-decoration:none;
                 }
@@ -135,7 +206,7 @@ section{
                 }
 
             }
- 
+
         }
 
         article.box-info-responsavel{
@@ -221,20 +292,20 @@ section{
 }
 
 
-/* 
-* Estrutra Base Forms 
+/*
+* Estrutra Base Forms
 */
 .page-base-form{
     background: #fff;
     padding-bottom:50px;
-    
+
     header{
-        background:$base-color-info-responsavel; 
+        background:$base-color-info-responsavel;
         height: 130px;
 
         .icon{
             font-size:25px;
-            color:#fff; 
+            color:#fff;
             margin: 20px 0 0 2%;
         }
 
@@ -294,7 +365,7 @@ section{
             color: #999999;
             font-size: 13px;
         }
-        
+
         label{
             color: #999999;
             font-size: 13px;
@@ -305,7 +376,7 @@ section{
             margin-top: 0px;
             border-radius: 5px;
         }
-        
+
         textarea{
             width: 90%;
             height:60px;
@@ -367,46 +438,46 @@ section{
             margin-left:37px;
             margin-top:37px;
         }
-        
+
         .colunm-redes{
             width:270px;
             display:inline-block;
             margin-right:20px;
         }
-            
+
         i{
             font-size: 20px;
-            vertical-align: middle;    
+            vertical-align: middle;
         }
 
         .site-oficial{
             margin-left:37px;
             i{
-                color:#417034; 
+                color:#417034;
             }
-           
+
         }
 
-        .facebook{      
+        .facebook{
             margin-left:37px;
             i{
-              color:#576c94;  
+              color:#576c94;
             }
-            
+
         }
 
         .twitter{
             i{
-               color:#55acee; 
+               color:#55acee;
             }
-           
+
         }
 
         .googleplus{
             i{
-               color:#d54732; 
+               color:#d54732;
             }
-            
+
         }
 
         .flick{
@@ -414,24 +485,24 @@ section{
         }
 
         .diaspora{
-            
+
         }
 
         .youtube{
-            
+
         }
     }
 
     .btn_voltar{
         float:right;
         margin-right: 50px;
-        a{ 
+        a{
             color: #b3b3b3;
             text-decoration: underline;
             font-size:14px;
             font-weight: 100;
             cursor:pointer;
-            
+
             i{
                 background:#078979;
                 cursor:pointer;
@@ -457,16 +528,16 @@ section{
         }
     }
 }
-/* 
-* Fim Estrutura Base Forms 
+/*
+* Fim Estrutura Base Forms
 **
 **
-** 
-* Estrutura Form Especifico, Backgrounds, Colors 
+**
+* Estrutura Form Especifico, Backgrounds, Colors
 */
 .page-responsavel{
     header{
-        background:$base-color-info-responsavel; 
+        background:$base-color-info-responsavel;
 
         .circle-status{
             color: $base-color-info-responsavel;
@@ -482,7 +553,7 @@ section{
 
 .page-ponto-mapa{
     header{
-        background: $base-color-ponto-mapa; 
+        background: $base-color-ponto-mapa;
 
         .circle-status{
             color: $base-color-ponto-mapa;
@@ -498,7 +569,7 @@ section{
 
 .page-dados-entidade{
     header{
-        background: $base-color-entidade-dados; 
+        background: $base-color-entidade-dados;
 
         .circle-status{
             color: $base-color-entidade-dados;
@@ -523,25 +594,25 @@ section{
 
             select{
                 border-radius:0px;
-                width:200px; 
+                width:200px;
                 display:inline-block;
                 margin-left: 10px;
-            }   
+            }
         }
-        
+
 
         .recursos-projeto{
             table{
                 border:1px solid #e6e6e6;
                 display: inline-block;
                 padding:2px;
-                
+
                 td{
-                   color:#999999; 
+                   color:#999999;
                    text-align:left;
                    border:0px;
-                }   
-    
+                }
+
                 .cinza{
                     background:#e6e6e6;
                 }
@@ -566,7 +637,7 @@ section{
 
 .page-portfolio{
     header{
-        background: $base-color-portfolio; 
+        background: $base-color-portfolio;
 
         .circle-status{
             color: $base-color-portfolio;
@@ -610,7 +681,7 @@ section{
 
 .page-contato-entidade{
     header{
-        background: $base-color-entidade-contato; 
+        background: $base-color-entidade-contato;
 
         .circle-status{
             color: $base-color-entidade-contato;
@@ -626,7 +697,7 @@ section{
 
 .page-ponto-mais{
     header{
-        background: $base-color-fale-mais-ponto; 
+        background: $base-color-fale-mais-ponto;
 
         .circle-status{
             color: $base-color-fale-mais-ponto;
@@ -639,9 +710,9 @@ section{
         }
 
         label{
-            font-size:16px; 
-            margin-bottom:10px;   
-            
+            font-size:16px;
+            margin-bottom:10px;
+
             span{
                 display:inline-block;
             }
@@ -653,9 +724,9 @@ section{
             vertical-align:top;
             cursor:pointer;
             margin-top:8px;
-            
+
         }
-        
+
         input[type=checkbox]:checked + label{
             color:#f50;
         }
@@ -674,8 +745,8 @@ section{
     }
 }
 
-/* 
-* FIM Estrutura Form Especifico, Backgrounds, Colors 
+/*
+* FIM Estrutura Form Especifico, Backgrounds, Colors
 */
 
 
@@ -689,8 +760,8 @@ section{
     .colunm-full{
         display:inline-block;
         width:90%;
-        margin-left: 4%;  
-        vertical-align:top;  
+        margin-left: 4%;
+        vertical-align:top;
     }
 
     .colunm-50{
