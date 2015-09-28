@@ -19,11 +19,13 @@ class Theme extends BaseV1\Theme{
 
     protected function _init(){
         parent::_init();
+        
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
 
         $app = App::i();
+        
 
         if (!$app->user->is('guest')) {
             $ids = json_decode($app->user->redeCulturaViva);
@@ -36,6 +38,12 @@ class Theme extends BaseV1\Theme{
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
+        
+        $app->hook('view.render(<<*>>):before', function() use($app) {
+            $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
+            $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
+            $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
+        });
     }
 
 

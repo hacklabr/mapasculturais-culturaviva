@@ -166,17 +166,8 @@
 
 
         <div class="row">
-
             <div class="row">
-                <label ng-repeat="espaco in locaisRealizacao" class="colunm{{$index % 3 + 1}}"> 
-                    <input ng-checked="agent.terms.local_realizacao.indexOf(espaco) >= 0" ng-click="toggle_term('local_realizacao', espaco)" type="checkbox" >
-                    {{ espaco }}
-                </label>
-                <label class="colunm{{locaisRealizacao.length % 3 + 1}}"> 
-                    <input ng-model="outrosLocais" type="checkbox" >
-                    Outros Locais
-                </label>
-                <input type="text" class="colunm3" ng-show="outrosLocais" ng-disabled="!outrosLocais" >
+                <taxonomy-checkboxes taxonomy="local_realizacao" entity="agent" terms="termos.local_realizacao"></taxonomy-checkboxes>
             </div>
             
             <div class="clear"></div>
