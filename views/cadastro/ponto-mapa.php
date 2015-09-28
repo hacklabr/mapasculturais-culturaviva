@@ -34,9 +34,9 @@
 
         <div class="row">
 
-            <label class="colunm1">
+            <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
                 <span>CEP do Ponto de Cultura*</span>
-                <input type="text" ng-blur="save_field('cep')" ng-model="agent.cep"/>
+                <input type="text" ng-blur="save_field('cep'); cepcoder.code(agent.cep)" ng-model="agent.cep"/>
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
@@ -123,7 +123,8 @@
 
 
     <div class="form form-mapa">
-
+        <style type="text/css">.leaflet-canvas { min-height: 300px; }</style>
+        <leaflet markers="markers"></leaflet>
     </div>
 
 

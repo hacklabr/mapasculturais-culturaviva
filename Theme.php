@@ -49,6 +49,7 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js', ['angular-resource']);
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
+        $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
     }
 
     protected function _publishAssets(){
@@ -79,7 +80,7 @@ class Theme extends BaseV1\Theme{
 
     public function register() {
         parent::register();
-        
+
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
@@ -123,6 +124,16 @@ class Theme extends BaseV1\Theme{
                 ],
 
                 // Metados do Agente tipo Entidade
+                'tipoPontoCulturaDesejado' => [
+                    'label' => 'Tipo de Ponto de Cultura',
+                    'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'ponto' => 'Ponto',
+                        'pontao' => 'Pontão'
+                    )
+                ],
                 'tipoOrganizacao' => [
                     'label' => 'Tipo de Organização',
                     'required' => true,
@@ -133,7 +144,6 @@ class Theme extends BaseV1\Theme{
                         'entidades' => 'Entidade Cultural'
                     )
                 ],
-
                 'cnpj' => [
                     'label' => 'CNPJ',
                     'required' => true,
@@ -166,7 +176,86 @@ class Theme extends BaseV1\Theme{
                         'intermunicpal' => 'Intermunicipal'
                     )
                 ],
+                'numEdital' => [
+                    'label' => 'Número do Edital de Seleção',
+                    'required' => true,
+                    'private' => true
+                ],
+                'anoEdital' => [
+                    'label' => 'Ano do Edital de Seleção',
+                    'required' => true,
+                    'private' => true
+                ],
+                'nomeProjeto' => [
+                    'label' => 'Nome do Projeto',
+                    'required' => true,
+                    'private' => true
+                ],
+                'localRealizacao' => [
+                    'label' => 'Local de Realização',
+                    'required' => true,
+                    'private' => true
+                ],
+                'etapaProjeto' => [
+                    'label' => 'Etapa do Projeto',
+                    'required' => true,
+                    'private' => true
+                ],
+                'proponente' => [
+                    'label' => 'Proponente',
+                    'required' => true,
+                    'private' => true
+                ],
+                'resumoProjeto' => [
+                    'label' => 'Resumo do projeto (objeto)',
+                    'required' => true,
+                    'private' => true
+                ],
+//                Este metadado é uma tabela no formulário. Precisamos estudar como vai ser.
+//                'recursosProjeto' => [
+//                    'label' => 'Recursos do Projeto Selecionado',
+//                    'required' => true,
+//                    'private' => true
+//                ],
+                'prestacaoContasEnvio' => [
+                    'label' => 'Prestação de Contas - Envio',
+                    'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'enviada' => 'Enviada',
+                        'naoEnviada' => 'Não Enviada',
+                        'premiado' => 'Ponto de Cultura Premiado'
+                    )
+                ],
+                'prestacaoContasStatus' => [
+                    'label' => 'Prestação de Contas - Status',
+                    'required' => false,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'aprovada' => 'Aprovada',
+                        'naoaprovada' => 'Não Aprovada',
+                        'analise' => 'Em análise'
+                    )
+                ],
+                 'vigenciaProjeto' => [
+                    'label' => 'Vigência',
+                    'required' => true,
+                    'private' => true
+                ],
+                'recebeOutrosFinanciamentos' => [
+                    'label' => 'Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
+                    'required' => true,
+                    'private' => true
+                ],
+                'descOutrosFinanciamentos' => [
+                    'label' => 'Descrição dos outros financiamentos (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
+                    'required' => false,
+                    'private' => true
+                ],
 
+                // Seu Ponto no Mapa
                 'mesmoEndereco' => [
                     'label' => 'Mesmo Endereco',
                     'required' => false,

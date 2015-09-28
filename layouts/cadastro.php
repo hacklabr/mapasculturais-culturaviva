@@ -23,7 +23,7 @@ $this->part('header');
     <?php echo $TEMPLATE_CONTENT; ?>
 
     <div class="btn_voltar"> 
-       <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" >voltar ao início</a>
+       <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>">voltar ao início <i class="icon icon-home"></i></a>
     </div>
     <div class="clear"></div>
 </div>

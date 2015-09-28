@@ -12,152 +12,295 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+            </label>
             <label class="colunm1">
-                <span>Nome completo*</span>
-                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
+                <input type="checkbox" name="ministerio" value=""> <span>Ponto de Cultura</span>
             </label>
-
             <label class="colunm2">
-                <span>RG*</span>
-                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
+                <input type="checkbox" name="ministerio" value=""> <span>Pontão de Cultura</span>
             </label>
-
             <label class="colunm3">
-                <span>Órgão expeditor*</span>
-                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
-                    <option value="SSP">Secretaria de Segurança Pública</option>
-                </select>
+                <input type="checkbox" name="ministerio" value=""> <span>Ponto de Mídia Livre</span>
             </label>
-        </div>  
-        <div class="clear"></div>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Ponto de Memória</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Ponto de Leitura</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Ponto de Cultura Indígena</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Pontinho de Cultura</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Pontão de Bens Registrados</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Ainda não fui contemplado</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Outro</span>
+                <span>Quais?*</span>
+                <input type="text" >
+            </label>
+        </div>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Quais são as ações estruturantes do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Conhecimentos<br>tradicionais</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura, comunicação e<br>mídia livre</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura e educação</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Economia criativa e<br>solidária</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura digital</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura e juventude</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Intercâmbio e<br>residências<br>artístico-culturais</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura e saúde</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura e direitos<br>humanos</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Livro, Leitura e<br>literatura</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Memória e patrimônio<br>cultural</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura e meio<br>ambiente</span>
+            </label>
+             <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura, infância e<br> adolescência</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Agente cultura viva</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura circense</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Outro</span>
+                <span>Quais?*</span>
+                <input type="text" >
+            </label>
+        </div>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Quais são as áreas do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Produção Cultural</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Artes Cênicas</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Artes Visuais</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Artesanato</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Audiovisual</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Capacitação</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Capoeira</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Contador de Histórias</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura Afro</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura Digital</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura Indígenas</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Cultura Populares</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Comunicação</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Direitos Humanos</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Esporte</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Fotografia</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Gastronomia</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Gênero</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Hip Hop</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Juventude</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Literatura</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Meio Ambiente</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Moda</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Música</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Patrimônio<br>Cultural</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Software Livre</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Tradição Oral</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Turismo</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Áreas de Fronteira</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Internacional</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Outro
+                <span>Quais?*</span>
+                <input type="text" >
+            </label>
+        </div>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Quais os públicos que participam das ações do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Afro-Brasileiros</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Ciganos</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Estudantes</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Grupos artísticos e<br>culturais<br>independentes</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Idosos </span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Imigrantes</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Indígenas</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Crianças e<br>Adolescentes</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Juventude</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>LGBT</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Mulheres</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Pescadores</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Pessoas com<br>deficiência</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Pessoas em situação<br>de sofrimento psíquico</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>População de Rua</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>População em regime<br>prisional</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Povos e Comunidades<br>Tradicionais de Matriz<br>Africana</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Público em Geral</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Quilombolas</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Ribeirinhos</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>População Rural</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>População de Baixa<br>Renda</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Grupos assentados de<br>reforma agrária</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Mestres, praticantes,<br>brincantes e grupos culturais<br>populares, urbanos e ruraisv
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Pessoas ou grupos<br>vítimas de violência</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>População sem teto</span>
+            </label>
+            <label class="colunm3">
+                <input type="checkbox" name="ministerio" value=""> <span>Populações atingida<br>por barragens</span>
+            </label>
+            <label class="colunm1">
+                <input type="checkbox" name="ministerio" value=""> <span>Populações de regiões<br>fronteiriças</span>
+            </label>
+            <label class="colunm2">
+                <input type="checkbox" name="ministerio" value=""> <span>Populações em áreas de<br>vulnerabilidade social</span>
+            </label>
+        </div>
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="save_field('relacao_ponto')" ng-model="agent.relacao_ponto"/>
-            </label>
-
-            <label class="colunm2">
-                <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
-            </label>
-
-            <label class="colunm3">
-                <span>Estado*</span>
-                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
+                <input type="checkbox" name="ministerio" value=""> <span>Outro
+                <span>Quais?*</span>
+                <input type="text" >
             </label>
         </div>
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm1">
-                <span>E-mail Pessoal*</span>
-                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
-            </label>
-
-            <label class="colunm2">
-                <span>Telefone Pessoal (com DDD)*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1"/>
-            </label>
-
-            <label class="colunm3">
-                <span>Operadora*</span>
-                <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-                    <option>51 Brasil</option>                <option>Intelig</option>
-                    <option>Aerotech</option>                 <option>ITACEU</option>
-                    <option>Alpamayo</option>                 <option>Konecta</option>
-                    <option>Alpha Nobilis*</option>           <option>LigueMAX</option>
-                    <option>America Net</option>              <option>LinkNET</option>
-                    <option>Amigo</option>                    <option>Locaweb</option>
-                    <option>BBT Brasil</option>               <option>Nebracam</option>
-                    <option>Cabo Telecom</option>             <option>Neotelecom</option>
-                    <option>Cambridge</option>                <option>Nextel</option>
-                    <option>Convergia</option>                <option>Nexus</option>
-                    <option>CTBC</option>                     <option>Oi</option>
-                    <option>DIALDATA TELECOM</option>         <option>Ostara</option>
-                    <option>Dollarphone</option>              <option>OTS</option>
-                    <option>DSLI</option>                     <option>Plenna</option>
-                    <option>Easytone</option>                 <option>Redevox</option>
-                    <option>Embratel / NET / Claro</option>   <option>Sercomtel</option>
-                    <option>Engevox</option>                  <option>Sermatel</option>
-                    <option>Epsilon</option>                  <option>SmartTelecom|76Telecom</option>
-                    <option>Espas</option>                    <option>Spin</option>
-                    <option>Fale 65</option>                  <option>Telebit</option>
-                    <option>Falkland/IPCorp</option>          <option>Teledados</option>
-                    <option>Fonar</option>                    <option>TIM</option>
-                    <option>Global Crossing(Impsat)</option>  <option>Transit Telecom</option>
-                    <option>Golden Line</option>              <option>Viacom</option>
-                    <option>GT Group</option>                 <option>Viper</option>
-                    <option>GVT</option>                      <option>Vipway</option>
-                    <option>Hello Brazil</option>             <option>Vivo</option>
-                    <option>Hit Telecomunicações</option>     <option>Voitel</option>
-                    <option>Hoje</option>
-                    <option>IDT (Minas Gerais)</option>
-                </select>
-            </label>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="form form-opcional">
-        <h4>Informações Opcionais</h4>
-        <div class="img_updade">
-            <img src="<?php $this->asset('img/incluir_img.png') ?>">
-        </div>
-        <label class="upadete_foto">
-            <span>Incluir foto</span>
-            <input type="file" ng-blur="save_field('photo')" ng-model="agent.photo"/>
-        </label>
-
-        <label class="nome_chamado">
-            <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
-            <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
-        </label>
-
-        <label class="cidade">
-            <span>Cidade</span>
-            <input type="text" ng-blur="save_field('city')" ng-model="agent.city"/>
-        </label>
-
-        <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
-        <label class="facebook">
-            <span>Seu perfil no Facebook</span>
-            <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
-        </label>
-
-        <label class="twitter">
-            <span>Seu perfil no Twitter</span>
-            <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
-        </label>
-
-        <label class="googleplus">
-            <span>Seu perfil no Google+</span>
-            <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
-        </label>
     </div>
 </form>
