@@ -19,6 +19,7 @@ class Theme extends BaseV1\Theme{
 
     protected function _init(){
         parent::_init();
+        
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
@@ -44,6 +45,12 @@ class Theme extends BaseV1\Theme{
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
+        
+        $app->hook('view.render(<<*>>):before', function() use($app) {
+            $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
+            $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
+            $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
+        });
     }
 
 
@@ -57,6 +64,7 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js', ['angular-resource']);
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
+        $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
     }
 
     protected function _publishAssets(){
@@ -87,7 +95,7 @@ class Theme extends BaseV1\Theme{
 
     public function register() {
         parent::register();
-        
+
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
@@ -131,6 +139,16 @@ class Theme extends BaseV1\Theme{
                 ],
 
                 // Metados do Agente tipo Entidade
+                'tipoPontoCulturaDesejado' => [
+                    'label' => 'Tipo de Ponto de Cultura',
+                    'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'ponto' => 'Ponto',
+                        'pontao' => 'Pontão'
+                    )
+                ],
                 'tipoOrganizacao' => [
                     'label' => 'Tipo de Organização',
                     'required' => true,
@@ -141,7 +159,6 @@ class Theme extends BaseV1\Theme{
                         'entidades' => 'Entidade Cultural'
                     )
                 ],
-
                 'cnpj' => [
                     'label' => 'CNPJ',
                     'required' => true,
@@ -174,6 +191,145 @@ class Theme extends BaseV1\Theme{
                         'intermunicpal' => 'Intermunicipal'
                     )
                 ],
+                'numEdital' => [
+                    'label' => 'Número do Edital de Seleção',
+                    'required' => true,
+                    'private' => true
+                ],
+                'anoEdital' => [
+                    'label' => 'Ano do Edital de Seleção',
+                    'required' => true,
+                    'private' => true
+                ],
+                'nomeProjeto' => [
+                    'label' => 'Nome do Projeto',
+                    'required' => true,
+                    'private' => true
+                ],
+                'localRealizacao' => [
+                    'label' => 'Local de Realização',
+                    'required' => true,
+                    'private' => true
+                ],
+                'etapaProjeto' => [
+                    'label' => 'Etapa do Projeto',
+                    'required' => true,
+                    'private' => true
+                ],
+                'proponente' => [
+                    'label' => 'Proponente',
+                    'required' => true,
+                    'private' => true
+                ],
+                'resumoProjeto' => [
+                    'label' => 'Resumo do projeto (objeto)',
+                    'required' => true,
+                    'private' => true
+                ],
+//                Este metadado é uma tabela no formulário. Precisamos estudar como vai ser.
+//                'recursosProjeto' => [
+//                    'label' => 'Recursos do Projeto Selecionado',
+//                    'required' => true,
+//                    'private' => true
+//                ],
+                'prestacaoContasEnvio' => [
+                    'label' => 'Prestação de Contas - Envio',
+                    'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'enviada' => 'Enviada',
+                        'naoEnviada' => 'Não Enviada',
+                        'premiado' => 'Ponto de Cultura Premiado'
+                    )
+                ],
+                'prestacaoContasStatus' => [
+                    'label' => 'Prestação de Contas - Status',
+                    'required' => false,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'aprovada' => 'Aprovada',
+                        'naoaprovada' => 'Não Aprovada',
+                        'analise' => 'Em análise'
+                    )
+                ],
+                 'vigenciaProjeto' => [
+                    'label' => 'Vigência',
+                    'required' => true,
+                    'private' => true
+                ],
+                'recebeOutrosFinanciamentos' => [
+                    'label' => 'Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
+                    'required' => true,
+                    'private' => true
+                ],
+                'descOutrosFinanciamentos' => [
+                    'label' => 'Descrição dos outros financiamentos (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
+                    'required' => false,
+                    'private' => true
+                ],
+
+                // Seu Ponto no Mapa
+                'mesmoEndereco' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => false,
+                    'private' => true
+                ],
+
+                'tem_sede' => [
+                    'label' => 'Tem sede propria?',
+                    'required' => true
+                ],
+                'sede_cnpj' => [
+                    'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
+                    'required' => false
+                ],
+
+                'cep' => [
+                    'label' => 'CEP',
+                    'required' => true,
+                    'validations' => array(
+                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
+                    )
+                ],
+                'estado' => [
+                    'label' => 'Estado',
+                    'required' => true
+                ],
+                'cidade' => [
+                    'label' => 'Cidade',
+                    'required' => true
+                ],
+                'bairro' => [
+                    'label' => 'Bairro',
+                    'required' => true
+                ],
+                'numero' => [
+                    'label' => 'Numero',
+                    'required' => true
+                ],
+                'rua' => [
+                    'label' => 'Rua',
+                    'required' => true
+                ],
+                'complemento' => [
+                    'label' => 'Rua',
+                    'required' => false
+                ],
+
+                'local_de_acao_estado' => [
+                    'label' => 'Estado',
+                    'required' => false
+                ],
+                'local_de_acao_cidade' => [
+                    'label' => 'Cidade',
+                    'required' => false
+                ],
+                'local_de_acao_espaco' => [
+                    'label' => 'Espaço',
+                    'required' => false
+                ],
             ]
         ];
 
@@ -196,7 +352,7 @@ class Theme extends BaseV1\Theme{
         foreach ($taxonomies as $slug => $description){
             $id++;
             $def = new \MapasCulturais\Definitions\Taxonomy($id, $slug, $description);
-            $app->registerTaxonomy($slug, $def);
+            $app->registerTaxonomy('MapasCulturais\Entities\Agent', $def);
         }
     }
 }
