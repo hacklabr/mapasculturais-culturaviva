@@ -5,7 +5,8 @@
         'culturaviva.controllers',
         'culturaviva.services',
         'culturaviva.directives',
-        'Notifications'
+        'Notifications',
+        'ngFileUpload'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {

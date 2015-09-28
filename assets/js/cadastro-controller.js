@@ -4,12 +4,23 @@
     var app = angular.module('culturaviva.controllers', []);
 
     // Função base para os outros controllers """herdarem"""
-    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id)
+    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout)
     {
         $scope.errors = {};
         $scope.agent = Agent.get({
             'id': agent_id
         });
+        
+        $scope.config = {
+            images: {
+                maxUploadSize: '2MB',
+                validation: 'image/(p?jpeg|png)'
+            },
+            pdf: {
+                maxUploadSize: '8MB',
+                validation: 'application/pdf'
+            }
+        };
 
         var _saved_agent = angular.copy($scope.agent);
 
@@ -38,6 +49,42 @@
                     $scope.errors[field] = ['O sistema não conseguir interpretar essa informação'];
                 });
             }
+        };
+        
+        $scope.uploadFile = function(file, group) {
+            $scope.f = file;
+            if (file && !file.$error) {
+                var data = {};
+                data[group] = file;
+                file.upload = Upload.upload({
+                    url: MapasCulturais.createUrl('agent', 'upload', [agent_id]),
+                    data: data
+                });
+
+                file.upload.then(function (response) {
+                    if(group === 'avatar'){
+                        $scope.agent['@files:avatar.avatarBig'] = {url: response.data.avatar.files.avatarBig.url};
+                        
+                    }else if(group === 'portifolio'){
+                        $scope.agent['@files:portifolio'] = {url: response.data.portifolio.url};
+                        
+                    }else if(group === 'gallery'){
+                        $scope.agent['@files:gallery.avatarBig'] = $scope.agent['@files:gallery.avatarBig'] || [];
+                        $scope.agent['@files:gallery.avatarBig'].push({url: response.data.gallery[0].files.avatarBig.url});
+                    }
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                });
+
+                file.upload.progress(function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 * 
+                                                           evt.loaded / evt.total));
+                });
+            }   
         };
         
         $scope.termos = {
@@ -118,20 +165,20 @@
     }
 
     // Controller do 'Informações do responsável'
-    app.controller('ResponsibleCtrl', ['$scope', 'Agent', 'MapasCulturais',
-        function ResponsibleCtrl($scope, Agent, MapasCulturais)
+    app.controller('ResponsibleCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout',
+        function ResponsibleCtrl($scope, Agent, MapasCulturais, Upload, $timeout)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
-            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
+            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
        }
     ]);
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'geocoder', 'cepcoder',
-        function PointCtrl($scope, Agent, MapasCulturais, geocoder, cepcoder)
+    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
+        function PointCtrl($scope, Agent, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
-            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id);
+            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
             
             $scope.markers = {};
 
@@ -211,6 +258,8 @@
                     'tipoReconhecimentonumEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
                     'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,vigenciaProjeto' +
                     'recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+                
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 
                 '@permissions': 'view'
             };

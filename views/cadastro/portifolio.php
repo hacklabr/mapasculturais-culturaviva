@@ -12,10 +12,16 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
-            <label class="colunm-20">
-                <span class="destaque">Atividades já* <i>?</i></span>
-                <img src="<?php $this->asset('img/incluir_img.png') ?>">
-            </label>
+            <span class="destaque">Atividades já realizadas* <i>?</i></span>
+            <div class="colunm-20">
+                <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent['@files:portifolio'] ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
+                    <img ng-if="!agent['@files:portifolio']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent['@files:portifolio']" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                </div>
+                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                </div>
+            </div>
 
             <label class="colunm-50">
                 
@@ -89,12 +95,20 @@
         </div>
         <div class="clear"></div>
         <div class="row">
-            <label class="colunm-full">
-                <span class="destaque">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
-                <img src="<?php $this->asset('img/incluir_img.png') ?>" />
-                <p>Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
-            </label>
-
-        </div>  
+            <span class="destaque">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
+            <p>Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
+            <div class="img_updade" ng-repeat="f in agent['@files:gallery.avatarBig']">
+                <img src="{{f.url}}" width="160" height="138">
+            </div>
+            <div class="img_updade">
+                <div type="file" ngf-select="uploadFile($file, 'gallery')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                    <img src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                </div>
+                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
 </form>

@@ -44,6 +44,10 @@ class Theme extends BaseV1\Theme{
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
             $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
         });
+        
+        $app->hook('entity(<<agent>>).file(gallery).insert:after', function() {
+            $this->transform('avatarBig');
+        });
     }
 
 
@@ -58,6 +62,8 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
+        
+        $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
     }
 
     protected function _publishAssets(){
@@ -92,6 +98,8 @@ class Theme extends BaseV1\Theme{
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
+        
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
