@@ -1,6 +1,6 @@
 <section id="page-rede" >
     <article class="slide-home">
-            <img src="<?php $this->asset('img/logo-rede-cultural-viva.png'); ?>" />
+            <img src="<?php $this->asset('img/cultura-viva-share.png'); ?>" />
             <p>Como faço para me autodeclarar um Ponto de Cultura? Insira sus dados no cadastro e apartir de uma análise simplificada a ser feita pelo Ministério da Cultura, a entidade ou coletivo passará fazer parte da Rede Cultura Viva, um ambiente de trocas de experiências, serviços, conhecimentos e informações. E se você já é ponto de Cultura entre na refe e faça parte do Circuito Cultura vida</p>
             <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra') ?>">
                 <button type="submit" class="btn btn__active">Entrar na Rede</button>
