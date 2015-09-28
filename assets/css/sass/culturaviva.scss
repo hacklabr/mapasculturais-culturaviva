@@ -85,8 +85,12 @@ $yellow_btn: #FBED1D;
                     }
                 }
             }
+
             &.points_culture {
                 .row {
+                    &:nth-child(1) {
+                        margin-bottom: 80px !important;
+                    }
                     > p {
                         max-width: 630px;
                         font-family: DroidSans;
@@ -94,6 +98,16 @@ $yellow_btn: #FBED1D;
                         font-size: 16px;
                         margin-left: auto;
                         margin-right: auto;
+                    }
+
+                    .colunm {
+                        @extend .colunm-50;
+                        margin: 0 !important;
+                        padding: 0 45px;
+                        box-sizing: border-box;
+                        img {
+                            margin-bottom: 18px;
+                        }
                     }
                 }
             }

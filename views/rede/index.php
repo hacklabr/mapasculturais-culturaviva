@@ -16,26 +16,26 @@
         </div>
         <div class="row">
             <div class="colunm">
-                <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / -->
+                <img src="<?php $this->asset('img/o-que-e-ponto-cultura.png') ?>" />
                 <h4>O que é ponto de cultura?</h4>
                 <p>Pontos de cultura são grupos, coletivos e entidades de natureza ou finalidade cultural, que desenvolvem e articulam atividades culturais em suas comunidades e redes.</p>
             </div>
             <div class="colunm">
-             <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / -->
-                <h4>O que é ponto de cultura?</h4>
-                <p>Pontos de cultura são grupos, coletivos e entidades de natureza ou finalidade cultural, que desenvolvem e articulam atividades culturais em suas comunidades e redes.</p>
+             <img src="<?php $this->asset('img/porque-ser-um.png') ?>" />
+                <h4>Por que ser um<br />ponto de cultura?</h4>
+                <p>O reconhecimento como Ponto de Cultura garante uma chancela institucional, que pode ser importante para obtenção de apoios e parcerias.</p>
             </div>
         </div>
         <div class="row">
             <div class="colunm">
-                <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / -->
-                <h4>O que é ponto de cultura?</h4>
-                <p>Pontos de cultura são grupos, coletivos e entidades de natureza ou finalidade cultural, que desenvolvem e articulam atividades culturais em suas comunidades e redes.</p>
+                <img src="<?php $this->asset('img/o-que-ganho.png') ?>" />
+                <h4>O que ganho<br/>com isso?</h4>
+                <p>A partir deste mapeamento dos conhecimentos e capacidades da rede será possível organizar circuitos de formação e intercâmbio virtuais e presenciais.</p>
             </div>
             <div class="colunm">
-               <!-- img src="< ?php $this->asset('img/logo-rede-cultura-viva.png') ?>" / -->
-                <h4>O que é ponto de cultura?</h4>
-                <p>Pontos de cultura são grupos, coletivos e entidades de natureza ou finalidade cultural, que desenvolvem e articulam atividades culturais em suas comunidades e redes.</p>
+               <img src="<?php $this->asset('img/o-que-e-cultura-viva.png') ?>" />
+                <h4>O que é o<br/>cultura viva?</h4>
+                <p>Iniciativas ligadas à cultura de base comunitária, Indígenas, Quilombolas, de Matriz Africana, economia, solidária, produção cultural, urbana, e periférica, cultural digital, entre outras.</p>
             </div>
         </div>
     </article>
