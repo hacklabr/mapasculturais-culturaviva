@@ -139,6 +139,11 @@ class Theme extends BaseV1\Theme{
                 ],
 
                 // Metados do Agente tipo Entidade
+                'semCNPJ' => [
+                    'label' => 'CNPJ',
+                    'required' => true,
+                    'private' => true
+                ],
                 'tipoPontoCulturaDesejado' => [
                     'label' => 'Tipo de Ponto de Cultura',
                     'required' => true,
@@ -172,7 +177,12 @@ class Theme extends BaseV1\Theme{
                 'tipoCertificacao' => [
                     'label' => 'Tipo de Certificação',
                     'required' => true,
-                    'private' => true
+                    'private' => true,
+                    'options' => array(
+                        'ponto_coletivo' => 'Ponto de Cultura - Grupo ou Coletivo',
+                        'ponto_entidade' => 'Ponto de Cultura - Entidade',
+                        'pontao_entidade' => 'Pontão de Cultura - Entidade'
+                    )
                 ],
                 'foiFomentado' => [
                     'label' => 'Você já foi fomentado pelo MinC',
