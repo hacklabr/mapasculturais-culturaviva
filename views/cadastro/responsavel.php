@@ -102,8 +102,8 @@
                     <option>CTBC</option>                     <option>Oi</option>
                     <option>DIALDATA TELECOM</option>         <option>Ostara</option>
                     <option>Dollarphone</option>              <option>OTS</option>
-                    <option>DSLI</option>                     <option>Plenna</option>
                     <option>Easytone</option>                 <option>Redevox</option>
+                    <option>DSLI</option>                     <option>Plenna</option>
                     <option>Embratel / NET / Claro</option>   <option>Sercomtel</option>
                     <option>Engevox</option>                  <option>Sermatel</option>
                     <option>Epsilon</option>                  <option>SmartTelecom|76Telecom</option>
@@ -127,12 +127,14 @@
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
         <div class="img_updade">
-            <img src="<?php $this->asset('img/incluir_img.png') ?>">
+            <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+            </div>
+            <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
+                <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+            </div>
         </div>
-        <label class="upadete_foto">
-            <span>Incluir foto</span>
-            <input type="file" ng-blur="save_field('photo')" ng-model="agent.photo"/>
-        </label>
 
         <label class="nome_chamado">
             <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>

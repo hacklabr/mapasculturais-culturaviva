@@ -74,6 +74,8 @@
                         '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                                    'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                                    'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
+                               
+                        '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                         '@permissions': 'view'
                     }
                 }

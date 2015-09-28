@@ -175,5 +175,21 @@
             <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
 
+        <div class="row">
+            <div class="img_updade">
+                <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                    <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+                </div>
+                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                </div>
+            </div>
+            
+            <label>
+                <span class="destaque">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
+            </label>
+        </div>
+        <div class="clear"></div>
     </div>
 </form>

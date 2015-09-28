@@ -5,7 +5,10 @@
         'culturaviva.controllers',
         'culturaviva.services',
         'culturaviva.directives',
-        'Notifications'
+        'Notifications',
+        'ngFileUpload',
+        'ui.date'
+//        'ui.mask'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
