@@ -410,6 +410,10 @@ section{
             margin: 20px 0 0 2%;
         }
 
+        .circle-status{
+            
+        }
+
         h3{
             color: #fff;
             font-size: 20px;
@@ -639,9 +643,23 @@ section{
 .page-responsavel{
     header{
         background:$base-color-info-responsavel; 
-
         .circle-status{
-            color: $base-color-info-responsavel;
+            &:after{
+                background:$base-color-info-responsavel;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #FFE889;
+                }
+            }
+            .fill, .bar{
+                border-color: #FFE889;
+            }
         }
     }
 
@@ -657,7 +675,22 @@ section{
         background: $base-color-ponto-mapa; 
 
         .circle-status{
-            color: $base-color-ponto-mapa;
+            &:after{
+                background:$base-color-ponto-mapa;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #075579;
+                }
+            }
+            .fill, .bar{
+                border-color: #075579;
+            }
         }
     }
 
@@ -673,7 +706,22 @@ section{
         background: $base-color-entidade-dados; 
 
         .circle-status{
-            color: $base-color-entidade-dados;
+            &:after{
+                background:$base-color-entidade-dados;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #E26D8F;
+                }
+            }
+            .fill, .bar{
+                border-color: #E26D8F;
+            }
         }
     }
 
@@ -741,7 +789,22 @@ section{
         background: $base-color-portfolio; 
 
         .circle-status{
-            color: $base-color-portfolio;
+            &:after{
+                background:$base-color-portfolio;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #74B362;
+                }
+            }
+            .fill, .bar{
+                border-color: #74B362;
+            }
         }
 
     }
@@ -785,7 +848,22 @@ section{
         background: $base-color-entidade-contato; 
 
         .circle-status{
-            color: $base-color-entidade-contato;
+            &:after{
+                background:$base-color-entidade-contato;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #F9B86C;
+                }
+            }
+            .fill, .bar{
+                border-color: #F9B86C;
+            }
         }
     }
 
@@ -801,7 +879,22 @@ section{
         background: $base-color-fale-mais-ponto; 
 
         .circle-status{
-            color: $base-color-fale-mais-ponto;
+            &:after{
+                background:$base-color-fale-mais-ponto;
+            }
+                
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
         }
     }
 
