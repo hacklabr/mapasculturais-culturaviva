@@ -24,6 +24,14 @@ class Theme extends BaseV1\Theme{
         $this->_publishAssets();
 
         $app = App::i();
+        $app->hook('mapasculturais.body:before', function() {
+            echo '
+            <div id="barra-brasil">
+                <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Portal do Governo Brasileiro</a>
+            </div>
+            <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+            ';
+        });
 
         if (!$app->user->is('guest')) {
             $ids = json_decode($app->user->redeCulturaViva);
