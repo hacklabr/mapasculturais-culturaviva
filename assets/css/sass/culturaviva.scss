@@ -28,6 +28,25 @@ section{
     max-width:960px;
     width:100%;
     margin:0 auto;
+    
+    .btn_active {
+        background: $yellow_btn;
+        border: none;
+        border-radius: 6px;
+        color: $base-color-portfolio;
+        height: auto;
+        font-size: 14px;
+        padding: 10px 36px;
+        text-transform: uppercase;
+        width: 220px;
+    }
+
+}
+
+#page-entrada{
+        h3, h4{
+            color: #FBED1D;
+        }
 }
 
 #page-rede{ 
@@ -44,18 +63,6 @@ section{
      h1, h4 {
         color: $yellow_btn;
         text-transform: uppercase;
-    }
-
-    .btn__active {
-        background: $yellow_btn;
-        border: none;
-        border-radius: 6px;
-        color: $base-color-portfolio;
-        height: auto;
-        font-size: 14px;
-        padding: 10px 36px;
-        text-transform: uppercase;
-        width: 220px;
     }
 
     article {
