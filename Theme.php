@@ -69,7 +69,8 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
-        
+        $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/culturaviva.js');
+
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
     }
 
