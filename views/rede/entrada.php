@@ -7,8 +7,8 @@
                 Você já possui um CNPJ?
             </h3>
             <p>Responda e verificaremos se já temos informações sobre seu ponto ou </p>
-            <a href="#" class="btn js-btn-sem-cnpj">Sem CNPJ</a>
-            <a href="#" class="btn js-btn-com-cnpj">com CNPJ</a>
+            <a href="#" class="btn js-btn-sem-cnpj btn_active">Sem CNPJ</a>
+            <a href="#" class="btn js-btn-com-cnpj btn_active">com CNPJ</a>
         </div>
         <div class="row">
             <div class="com-cnpj esconde">
@@ -31,7 +31,7 @@
                     <br />
                     Continue com a validação em nome do seu Coletivo Cultural.
                 </p>
-                <a href="#" class="btn">Continuar</a>
+                <a href="#" class="btn btn_active">Continuar</a>
             </div>
         <div />
     </article>

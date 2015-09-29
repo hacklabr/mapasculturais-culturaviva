@@ -267,10 +267,14 @@
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full vigencia">
-                    <span >Vigência*:   De  </span>
-                    <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('inicioVigenciaProjeto')" ng-model="entity.inicioVigenciaProjeto">
-                    <span >Até</span>
-                    <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('fimVigenciaProjeto')" ng-model="entity.fimVigenciaProjeto">
+                    <span >Vigência*:    </span>
+                    <span class="vigencia-box vigiencia-de "> 
+                        de <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('inicioVigenciaProjeto')" ng-model="entity.inicioVigenciaProjeto">
+                    </span>
+                    <span class="vigencia-box vigiencia-ate">
+                        até  <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('fimVigenciaProjeto')" ng-model="entity.fimVigenciaProjeto">
+                    </span>
+                   
                 </label>
             </div>
             <div class="clear"></div>

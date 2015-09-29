@@ -12,7 +12,7 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
-            <span class="destaque">Atividades já realizadas* <i>?</i></span>
+            <span class="destaque espacoleft">Atividades já realizadas* <i>?</i></span>
             <div class="colunm-20">
                 <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent['@files:portifolio'] ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
                     <img ng-if="!agent['@files:portifolio']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
@@ -95,8 +95,8 @@
         </div>
         <div class="clear"></div>
         <div class="row">
-            <span class="destaque">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
-            <p>Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
+            <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
+            <p class="espacoleft">Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
             <div class="img_updade" ng-repeat="f in agent['@files:gallery.avatarBig']">
                 <img src="{{f.url}}" width="160" height="138">
             </div>
