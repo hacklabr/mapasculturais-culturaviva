@@ -271,7 +271,31 @@
                 var entity_update = {};
                 entity_update[field] = $scope.entity[field];
                 Entity.patch({'id': agent_id}, entity_update);
-//                $scope.entity.$patch({'id': agent_id}, entity_update);
+            };
+        }
+    ]);
+    
+    app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais',
+        function($scope, Entity, MapasCulturais){
+            var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
+
+            var params = {
+                'id': agent_id,
+
+                '@select': 'id,emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
+                    'responsavelNome,responsavelEmail,responsavelCargo,responsavelTelefone',
+                
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+
+                '@permissions': 'view'
+            };
+
+            $scope.entity = Entity.get(params);
+
+            $scope.save_field = function save_field(field) {
+                var entity_update = {};
+                entity_update[field] = $scope.entity[field];
+                Entity.patch({'id': agent_id}, entity_update);
             };
         }
     ]);
