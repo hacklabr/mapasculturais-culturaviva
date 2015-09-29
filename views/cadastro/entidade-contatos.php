@@ -8,29 +8,29 @@
 ?>
 
 
-<form ng-controller="ResponsibleCtrl">
+<form ng-controller="EntityContactCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
             <label class="colunm-full">
                 <span>Email institucional*</span>
-                <input type="text" ng-blur="save_field('')" ng-model="email" />
+                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="entity.emailPrivado" />
             </label>
-        </div>  
+        </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
                 <span>Telefone institucional(com DD)*</span>
-                <input type="text" ng-blur="save_field('')" ng-model="phone"/>
+                <input type="text" ng-blur="save_field('telefone1')" ng-model="entity.telefone1"/>
             </label>
 
             <label class="colunm02">
                 <span>Operadora*</span>
-                <select ng-blur="save_field('')" ng-model="">
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
+                <select ng-blur="save_field('telefone1_operadora')" ng-model="entity.telefone1_operadora">
+                    <option value="claro">Claro</option>
+                    <option value="tim">TIM</option>
+                    <option value="oi">Oi</option>
+                    <option value="nextel">Nextel</option>
                 </select>
             </label>
         </div>
@@ -38,16 +38,16 @@
         <div class="row">
             <label class="colunm05">
                 <span>Outro Telefone(com DD)*</span>
-                <input type="text" ng-blur="save_field('')" ng-model="phone"/>
+                <input type="text" ng-blur="save_field('telefone2')" ng-model="entity.telefone2"/>
             </label>
 
             <label class="colunm02">
                 <span>Operadora*</span>
-                <select ng-blur="save_field('')" ng-model="">
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
+                <select ng-blur="save_field('telefone2_operadora')" ng-model="entity.telefone2_operadora">
+                    <option value="claro">Claro</option>
+                    <option value="tim">TIM</option>
+                    <option value="oi">Oi</option>
+                    <option value="nextel">Nextel</option>
                 </select>
             </label>
         </div>
@@ -55,24 +55,24 @@
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Nome do Responsável* <i>?</i></span>
-                <input type="text" ng-blur="save_field('name')" ng-model="name" />
+                <input type="text" ng-blur="save_field('responsavelNome')" ng-model="entity.responsavelNome" />
             </label>
 
             <label class="colunm2">
                 <span>Cargo do Responsável*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('responsavelCargo')" ng-model="entity.responsavelCargo"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
                 <span>Email do Responsável* </span>
-                <input type="email" ng-blur="save_field('')" ng-model="email" />
+                <input type="email" ng-blur="save_field('responsavelEmail')" ng-model="entity.responsavelEmail" />
             </label>
 
             <label class="colunm2">
                 <span>Telefone do Responsável*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('responsavelTelefone')" ng-model="entity.responsavelTelefone"/>
             </label>
         </div>
         <div class="clear"></div>
@@ -85,7 +85,7 @@
         <div class="row">
             <label class="colunm05">
                 <span>Estado*</span>
-                <select ng-blur="save_field('')" ng-model="">
+                <select ng-blur="save_field('geoEstado')" ng-model="entity.geoEstado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -117,27 +117,27 @@
             </label>
             <label class="colunm2">
                 <span>Cidade*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="entity.geoMunicipio"/>
             </label>
             <label class="colunm3">
                 <span>Bairro*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('En_Bairro')" ng-model="entity.En_Bairro"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
                 <span>Número* </span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('En_Num')" ng-model="entity.En_Num"/>
             </label>
 
             <label class="colunm2">
                 <span>Rua*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="entity.En_Nome_Logradouro"/>
             </label>
             <label class="colunm3">
                 <span>Complemento*</span>
-                <input type="text" ng-blur="save_field('')" ng-model=""/>
+                <input type="text" ng-blur="save_field('En_Complemento')" ng-model="entity.En_Complemento"/>
             </label>
         </div>
         <div class="clear"></div>
