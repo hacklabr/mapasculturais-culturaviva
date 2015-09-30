@@ -938,6 +938,21 @@ section{
                 }
             }
         }
+        
+        .progress{
+            background: #525050;
+            border-radius: 10px;
+            height: 15px;
+            overflow: hidden;
+            span{
+                color:#fff;
+                text-align:center;
+                font-size: 11px;
+                line-height: 15px;
+                background: url("../img/bg.png"), linear-gradient(to right, #075579 0%, #078979 51%, #075579 100%);
+                padding-right:5px;
+            }
+        }
 
         span{
             display: block;

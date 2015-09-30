@@ -18,8 +18,8 @@
                     <img ng-if="!agent['@files:portifolio']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                     <img ng-if="agent['@files:portifolio']" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                 </div>
-                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
-                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                <div class="progress row" ng-show="f.progress >= 0">
+                    <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
 
@@ -105,8 +105,8 @@
                 <div type="file" ngf-select="uploadFile($file, 'gallery')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
                     <img src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                 </div>
-                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
-                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                <div class="progress row" ng-show="f.progress >= 0">
+                    <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
         </div>
