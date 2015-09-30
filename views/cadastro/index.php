@@ -1,9 +1,9 @@
 <div id="page-cadastro">
     <section class="texto">
-        <div class="messenger">
+<!--        <div class="messenger">
             <a href="#" class="close">X</a>
             <p>Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Confira com essas informações antes de validá-las!</p>
-        </div>
+        </div>-->
         <article>
             <h2>NOME DO PONTO<br /><span>Página do seu ponto</span></h2>
             <p>Esta é a página do seu ponto de cultura. Apenas você tem acesso a ela.</p>
@@ -24,13 +24,13 @@
                 <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56 small">
+<!--                <div class="circle-status c100 p56 small">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
         <article class="box-ponto-mapa">
@@ -45,13 +45,13 @@
                 <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56">
+<!--                <div class="circle-status c100 p56">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
         <article class="box-entidade-dados">
@@ -66,13 +66,13 @@
                 <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56">
+<!--                <div class="circle-status c100 p56">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
         <article class="box-portfolio">
@@ -87,13 +87,13 @@
                 <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56">
+<!--                <div class="circle-status c100 p56">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
         <article class="box-entidade-contato">
@@ -108,13 +108,13 @@
                <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56">
+<!--                <div class="circle-status c100 p56">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
         <article class="box-fale-mais-ponto">
@@ -129,22 +129,22 @@
                <div class="texto">
                      <p>Precisamos saber quem é você e pegar seus contatos!</p>
                 </div>
-                <div class="circle-status c100 p56">
+<!--                <div class="circle-status c100 p56">
                     <span>56%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </article>
     </section>
     <section class="box-status">
-        <article class="validar-ponto">
+<!--        <article class="validar-ponto">
             <h5><i class="icon-publish"></i>Validar</h5>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
-        </article>
+        </article>-->
         <article class="content-status">
             <?php /*
             <div class="status">
@@ -214,14 +214,14 @@
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="clear"></div>
-            */ ?>
+
             <div class="infos-messenge">
                 <a href="#" class="close">X</a>
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
-    
+            */ ?>
             <button class="btn-validar">Validar</button>
-            
+
             </div>
         </article>
     </section>
