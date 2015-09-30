@@ -98,6 +98,7 @@
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
             <p class="espacoleft">Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
             <div class="img_updade" ng-repeat="f in agent['@files:gallery.avatarBig']">
+                 <a href="#" class="exclui">x</a>
                 <img src="{{f.url}}" width="160" height="138">
             </div>
             <div class="img_updade">
