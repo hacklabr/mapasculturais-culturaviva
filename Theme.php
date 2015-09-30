@@ -55,26 +55,26 @@ class Theme extends BaseV1\Theme{
         $app->hook('entity(agent).file(gallery).insert:after', function() {
             $this->transform('avatarBig');
         });
-        
+
         /** DESABILITANDO ROTAS  **/
-        
+
         if(!$app->user->is('admin') && !$app->user->is('guest')){
             $ids = json_decode($app->user->redeCulturaViva);
             $inscricao = $app->repo('Registration')->find($ids->inscricao);
-            
-            
+
+
             // ROTAS DESLIGADAS PARA USUÁRIOS QUE NÃO TIVERAM SUA INSCRIÇÃO APROVADA
             if($inscricao->status <= 0){
                 // desabilita o painel
                 $app->hook('GET(panel.<<*>>):before', function() use($app){
                     $app->redirect($app->createUrl('cadastro', 'index'), 307);
                 });
-                
+
                 // desabilita criação de agentes e espaços
                 $app->hook('GET(<<<project|event>>.<<create|edit>>):before', function() use($app){
                     $app->pass();
                 });
-                
+
                 $app->hook('POST(<<project|event>>.index):before', function() use($app){
                     $app->pass();
                 });
@@ -143,7 +143,8 @@ class Theme extends BaseV1\Theme{
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
 
-        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
+//        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
