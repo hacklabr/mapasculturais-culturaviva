@@ -11,14 +11,14 @@
 <form ng-controller="PointCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-        
+
         <div class="row">
             <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
                 <span class="error" ng-repeat="error in errors.name">{{ error }}</span>
             </label>
-        </div>  
+        </div>
 
         <div class="clear"></div>
 
@@ -28,7 +28,7 @@
                 <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
-        </div>  
+        </div>
 
         <div class="clear"></div>
 
@@ -36,7 +36,7 @@
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
                 <span>CEP do Ponto de Cultura*</span>
-                <input type="text" ng-blur="save_field('cep'); cepcoder.code(agent.cep)" ng-model="agent.cep"/>
+                <input type="text" ng-blur="save_field('cep'); cepcoder.code(agent.cep)" ng-model="agent.cep">
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
@@ -113,7 +113,7 @@
             </label>
 
             <label class="colunm3">
-                <span>Complemento*</span>
+                <span>Complemento</span>
                 <input type="text" ng-blur="save_field('complemento')" ng-model="agent.complemento"/>
                 <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>
@@ -123,7 +123,16 @@
 
 
     <div class="form form-mapa">
-        <style type="text/css">.leaflet-canvas { min-height: 300px; }</style>
+        <?php /*
+        <div class="mapa js-map-container">
+            <div class="clearfix js-leaflet-control" data-leaflet-target=".leaflet-top.leaflet-left">
+                <a id ="button-locate-me" class="control-infobox-open hltip botoes-do-mapa" title="Encontrar minha localização"></a>
+            </div>
+            <div id="single-map-container" class="js-map" data-lat="-46.633328" data-lng="-23.548991"></div>
+            <input type="hidden" id="map-target" data-name="location" class="js-editable" data-edit="location" data-value="">
+        </div>
+        */ ?>
+        <style type="text/css">.leaflet-canvas { min-height: 400px; }</style>
         <leaflet markers="markers"></leaflet>
     </div>
 
@@ -133,7 +142,7 @@
         <label>
             <span class="destaque-opcional">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
         </label>
-      
+
         <div class="row">
             <label class="colunm1">
                 <span>Estado*</span>
@@ -168,13 +177,13 @@
             <div class="row">
                 <taxonomy-checkboxes taxonomy="local_realizacao" entity="agent" terms="termos.local_realizacao"></taxonomy-checkboxes>
             </div>
-            
+
             <div class="clear"></div>
 
             <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
 
-        <div class="row">
+        <div class="row" ng-controller="ImageUploadCtrl">
             <div class="img_updade">
                 <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
                     <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
@@ -184,7 +193,7 @@
                     <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
                 </div>
             </div>
-            
+
             <label>
                 <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
             </label>

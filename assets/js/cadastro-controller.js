@@ -173,12 +173,110 @@
        }
     ]);
 
+    // FIXME Refatorar daqui pra cima! Nao reutilizar daqui pra cima!!!!
+    
+    // TODO: Tranforma em diretiva
+     app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
+        function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout) {
+            
+            // FIXME passar como parametro para generalizar
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+            
+            $scope.config = {
+                images: {
+                    maxUploadSize: '2MB',
+                    validation: 'image/(p?jpeg|png)'
+                },
+                pdf: {
+                    maxUploadSize: '8MB',
+                    validation: 'application/pdf'
+                }
+            };
+            
+            $scope.uploadFile = function(file, group) {
+                $scope.f = file;
+                if (file && !file.$error) {
+                    var data = {};
+                    data[group] = file;
+                    file.upload = Upload.upload({
+                        url: MapasCulturais.createUrl('agent', 'upload', [agent_id]),
+                        data: data
+                    });
+
+                    file.upload.then(function (response) {
+                        if(group === 'avatar'){
+                            $scope.agent['@files:avatar.avatarBig'] = {url: response.data.avatar.files.avatarBig.url};
+
+                        }else if(group === 'portifolio'){
+                            $scope.agent['@files:portifolio'] = {url: response.data.portifolio.url};
+
+                        }else if(group === 'gallery'){
+                            $scope.agent['@files:gallery.avatarBig'] = $scope.agent['@files:gallery.avatarBig'] || [];
+                            $scope.agent['@files:gallery.avatarBig'].push({url: response.data.gallery[0].files.avatarBig.url});
+                        }
+                        $timeout(function () {
+                            file.result = response.data;
+                        });
+                    }, function (response) {
+                        if (response.status > 0)
+                            $scope.errorMsg = response.status + ': ' + response.data;
+                    });
+
+                    file.upload.progress(function (evt) {
+                        file.progress = Math.min(100, parseInt(100.0 * 
+                                                               evt.loaded / evt.total));
+                    });
+                }   
+            };
+            
+       }
+    ]);
+    
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
-        function PointCtrl($scope, Agent, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
+    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
+        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
-            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,terms,name,shortDescription,cep,tem_sede,mesmoEndereco,estado,cidade,'+
+                    'bairro,numero,rua,complemento,local_de_acao_estado,local_de_acao_cidade,'+
+                    'local_de_acao_cidade,local_de_acao_espaco',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+            
+            $scope.save_field = function save_field(field) {
+                var agent_update = {};
+                agent_update[field] = $scope.agent[field];
+                Entity.patch({'id': agent_id}, agent_update);
+            };
+
+            $scope.termos = {
+                area: MapasCulturais.areasDeAtuacao,
+
+                local_realizacao: [
+                    'Escolas', 
+                    'Universidades', 
+                    'Praças', 
+                    'Salas', 
+                    'CEUs', 
+                    'Feiras', 
+                    'Eventos'
+                ]
+            };
             
             $scope.markers = {};
 
@@ -213,6 +311,8 @@
             $scope.cepcoder = {
                 busy: false,
                 code: function(cep){
+                    $scope.agent.cep = cep;
+                    $scope.save_field('cep');
                     $scope.cepcoder.busy = true;
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
@@ -283,7 +383,8 @@
                 'id': agent_id,
 
                 '@select': 'id,emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
-                    'responsavelNome,responsavelEmail,responsavelCargo,responsavelTelefone',
+                    'responsavelNome,responsavelEmail,responsavelCargo,responsavelTelefone,' +
+                    'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
                 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 

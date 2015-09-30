@@ -396,9 +396,10 @@ class Theme extends BaseV1\Theme{
                 'cep' => [
                     'label' => 'CEP',
                     'required' => true,
-                    'validations' => array(
-                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
-                    )
+                    'private' => true
+//                    'validations' => array(
+//                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
+//                    )
                 ],
                 'estado' => [
                     'label' => 'Estado',
