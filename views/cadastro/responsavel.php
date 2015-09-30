@@ -28,7 +28,7 @@
                     <option value="SSP">Secretaria de Segurança Pública</option>
                 </select>
             </label>
-        </div>  
+        </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
@@ -127,7 +127,7 @@
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
         <div class="row">
-            <div class="img_updade">
+            <div class="img_updade" ng-controller="ImageUploadCtrl">
                 <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
                     <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                     <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">

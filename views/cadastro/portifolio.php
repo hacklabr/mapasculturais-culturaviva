@@ -11,7 +11,7 @@
 <form ng-controller="ResponsibleCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-        <div class="row">
+        <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Atividades já realizadas* <i>?</i></span>
             <div class="colunm-20">
                 <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent['@files:portifolio'] ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
@@ -24,22 +24,22 @@
             </div>
 
             <label class="colunm-50">
-                
+
                 <p>Caso não possua portifólio online, você também pode anexar arquivos no formato pdf, com no máximo 20kb.</p>
-                
+
                 <p><span class="destaque"><i>?</i></span>
                     Precisa de ajuda para montar seu portifólio?
                     <br>
                     <a href="#">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
-        </div>  
+        </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Atividades culturais em realização* <i>?</i></span>
                 <textarea></textarea>
-            </label>          
+            </label>
         </div>
         <div class="clear"></div>
     </div>
@@ -91,10 +91,10 @@
             <label class="colunm-full">
                 <span class="destaque">Conte um pouco(800 caractres) sobre a história do ponto de Cultura <i>?</i></span>
                 <textarea></textarea>
-            </label>          
+            </label>
         </div>
         <div class="clear"></div>
-        <div class="row">
+        <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
             <p class="espacoleft">Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
             <div class="img_updade" ng-repeat="f in agent['@files:gallery.avatarBig']">
