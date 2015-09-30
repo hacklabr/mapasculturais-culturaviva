@@ -46,15 +46,50 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
 
-        $app->hook('view.render(<<*>>):before', function() use($app) {
+        $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
             $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
         });
 
-        $app->hook('entity(<<agent>>).file(gallery).insert:after', function() {
+        $app->hook('entity(agent).file(gallery).insert:after', function() {
             $this->transform('avatarBig');
         });
+        
+        /** DESABILITANDO ROTAS  **/
+        
+        if(!$app->user->is('admin') && !$app->user->is('guest')){
+            $ids = json_decode($app->user->redeCulturaViva);
+            $inscricao = $app->repo('Registration')->find($ids->inscricao);
+            
+            
+            // ROTAS DESLIGADAS PARA USUÁRIOS QUE NÃO TIVERAM SUA INSCRIÇÃO APROVADA
+            if($inscricao->status <= 0){
+                // desabilita o painel
+                $app->hook('GET(panel.<<*>>):before', function() use($app){
+                    $app->redirect($app->createUrl('cadastro', 'index'), 307);
+                });
+                
+                // desabilita criação de agentes e espaços
+                $app->hook('GET(<<<project|event>>.<<create|edit>>):before', function() use($app){
+                    $app->pass();
+                });
+                
+                $app->hook('POST(<<project|event>>.index):before', function() use($app){
+                    $app->pass();
+                });
+            }
+
+            // desabilita criação de agentes e espaços para usuários não admin
+            $app->hook('GET(<<agent|space>>.<<create|edit>>):before', function() use($app){
+                $app->pass();
+            });
+
+            $app->hook('POST(<<agent|space>>.index):before', function() use($app){
+                $app->pass();
+            });
+
+        }
     }
 
 

@@ -39,7 +39,7 @@
                 <input type="text"
                        ng-blur="save_field('cnpj')"
                        ng-model="entity.cnpj"
-                       disabled="entity.semCNPJ>
+                       ng-disabled="entity.semCNPJ">
                 <p ng-show="true"></p>
                 <div class="naoseaplica">
                     <input type="checkbox"

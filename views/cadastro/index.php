@@ -33,7 +33,7 @@
                 </div>-->
             </div>
         </article>
-        <article class="box-ponto-mapa">
+        <article class="box-ponto-mapa border-left">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
                     <span class="icon icon_profile"></span>
@@ -75,7 +75,7 @@
                 </div>-->
             </div>
         </article>
-        <article class="box-portfolio">
+        <article class="box-portfolio border-left">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
                     <span class="icon"></span>
@@ -117,7 +117,7 @@
                 </div>-->
             </div>
         </article>
-        <article class="box-fale-mais-ponto">
+        <article class="box-fale-mais-ponto border-left">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMais'); ?>">
                     <span class="icon"></span>
