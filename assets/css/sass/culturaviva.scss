@@ -518,6 +518,22 @@ section{
             width:50%;
             float:left;
             background: #fff;
+           
+
+            &.border-left{
+                &:before{
+                    content: "";
+                    border-left: 1px solid #ccc;
+                    border-bottom: 1px solid #ccc;
+                    height: 20%;
+                    position: absolute;
+                }
+                
+            }
+
+           
+            
+            
 
             header{
                 a{
@@ -671,6 +687,8 @@ section{
         }
 
         article.box-entidade-contato{
+            border-bottom: 1px solid #ccc;
+            height: 244px;
             header{
                 background: $base-color-entidade-contato;
 
@@ -695,6 +713,8 @@ section{
         }
 
         article.box-fale-mais-ponto{
+            border-bottom: 1px solid #ccc;
+            height: 244px;
             header{
                 background: $base-color-fale-mais-ponto;
 
@@ -717,6 +737,8 @@ section{
                     }
                 }
             }
+
+
         }
 
     }
