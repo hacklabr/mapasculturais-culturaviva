@@ -46,15 +46,50 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
 
-        $app->hook('view.render(<<*>>):before', function() use($app) {
+        $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
             $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
         });
-        
-        $app->hook('entity(<<agent>>).file(gallery).insert:after', function() {
+
+        $app->hook('entity(agent).file(gallery).insert:after', function() {
             $this->transform('avatarBig');
         });
+
+        /** DESABILITANDO ROTAS  **/
+
+        if(!$app->user->is('admin') && !$app->user->is('guest')){
+            $ids = json_decode($app->user->redeCulturaViva);
+            $inscricao = $app->repo('Registration')->find($ids->inscricao);
+
+
+            // ROTAS DESLIGADAS PARA USUÁRIOS QUE NÃO TIVERAM SUA INSCRIÇÃO APROVADA
+            if($inscricao->status <= 0){
+                // desabilita o painel
+                $app->hook('GET(panel.<<*>>):before', function() use($app){
+                    $app->redirect($app->createUrl('cadastro', 'index'), 307);
+                });
+
+                // desabilita criação de agentes e espaços
+                $app->hook('GET(<<<project|event>>.<<create|edit>>):before', function() use($app){
+                    $app->pass();
+                });
+
+                $app->hook('POST(<<project|event>>.index):before', function() use($app){
+                    $app->pass();
+                });
+            }
+
+            // desabilita criação de agentes e espaços para usuários não admin
+            $app->hook('GET(<<agent|space>>.<<create|edit>>):before', function() use($app){
+                $app->pass();
+            });
+
+            $app->hook('POST(<<agent|space>>.index):before', function() use($app){
+                $app->pass();
+            });
+
+        }
     }
 
 
@@ -69,7 +104,9 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
-        
+
+        $this->enqueueScript('culturaviva', 'cadastro-culturaviva', 'js/culturaviva.js');
+
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
     }
 
@@ -105,8 +142,9 @@ class Theme extends BaseV1\Theme{
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
-        
-        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
+
+//        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
@@ -293,6 +331,88 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
 
+                // Contato Entidade
+                'emailPrivado' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'telefone1' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+//                Já tem para Infos. do resp, usamos o mesmo?
+//                'telefone1_operadora' => [
+//                    'label' => 'Mesmo Endereco',
+//                    'required' => true,
+//                    'private' => true
+//                ],
+                'telefone2' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'telefone2_operadora' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'responsavelNome' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'responsavelCargo' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'responsavelEmail' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'responsavelTelefone' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'geoEstado' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'En_Bairro' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'En_Num' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'En_Nome_Logradouro' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'En_Nome_Logradouro' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+                'En_Complemento' => [
+                    'label' => 'Mesmo Endereco',
+                    'required' => true,
+                    'private' => true
+                ],
+
+
+
+
+
                 // Seu Ponto no Mapa
                 'mesmoEndereco' => [
                     'label' => 'Mesmo Endereco',
@@ -312,9 +432,10 @@ class Theme extends BaseV1\Theme{
                 'cep' => [
                     'label' => 'CEP',
                     'required' => true,
-                    'validations' => array(
-                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
-                    )
+                    'private' => true
+//                    'validations' => array(
+//                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
+//                    )
                 ],
                 'estado' => [
                     'label' => 'Estado',

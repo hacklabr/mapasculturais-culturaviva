@@ -46,9 +46,253 @@ section{
 }
 
 #page-entrada{
-        h3, h4{
-            color: #FBED1D;
+    margin-top:150px;
+    h3, h4{
+        color: #FBED1D;
+        font-weight:normal;
+        text-align:center;
+        strong{
+            font-weight:bold;
         }
+    }
+
+    p{
+        color:#fff;
+        
+        text-align:center;
+        margin:0 auto;
+    }
+
+    hr{
+        background-color: #FBED1D;
+        border: none;
+        clear: both;
+        height: 1px;
+        margin: 5em 12em;
+    }
+
+    .title{
+        h3, h4{
+            width:50%;
+            margin:50px auto;
+        }
+
+        p{
+          width:50%;  
+        }
+    }
+
+    .esconde{
+        display:none;
+    }
+    
+
+
+    .btn-cnpj{
+        margin-top: 50px;
+        display: inline-block;
+        width: auto;
+        font-size: 18px;
+            
+    }
+
+    .btn-sem-cnpj{
+        margin-left:20%;
+    }
+
+    .btn-com-cnpj{
+        float: right;
+        width: auto;
+        margin-right:20%; 
+    }
+
+    .bg-laranja{
+        background:#F99922;
+        color:#fff;
+    }
+
+    .js-sem-cnpj{
+        p{
+            margin-top:60px;
+        }
+
+        .btn_continuar{
+            margin-top: 60px;
+            margin-left: 40%;
+        }    
+    }
+
+    .criterios{
+        h4{
+            font-size: 1.7em;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        p{
+            font-size: 1.2em;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .js-icons{
+            border-top: 4px solid #FBED1D;
+            width: 78%;
+            margin: 0 auto;
+            span{
+                color: #FBED1D;
+                font-size: 21px;
+                padding: 10px;
+                margin-top: -4px;
+                display: inline-block;
+                cursor:pointer;
+                border-top:4px solid #FBED1D;
+                
+                &:hover{
+                    color: #F39523;
+                    border-top:4px solid #F39523;
+                }
+
+                &.active{
+                    color: #F39523;
+                    border-top:4px solid #F39523;
+                }
+            }  
+            
+
+        }
+    }
+
+    
+
+    .slide{
+        display:none;
+        
+        p{
+            font-size:0.9em;    
+        }
+
+        span{
+            color: #FBED1D;
+            font-size: 35px;
+            margin-left: 40%;
+        }
+    }
+
+    .sl1{
+        display:block;
+    }
+
+    .cnpj-form{
+        float:right;
+        margin-right: 12%;
+        label{
+            color: #FBED1D;
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            margin-top: -10px;
+        }
+
+        input{
+            width:100%;
+        }
+
+        input[type="submit"]{
+            float:right;
+            text-transform:uppercase;
+            padding: 3px 15px;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .resposta-cnpj{
+        width: 70%;
+        margin: 0 auto;
+        font-weight: 100;
+        margin-top: 50px;
+        
+        a{
+            display:block;
+            margin:0 auto;
+            margin-top:40px;
+        }
+        
+        a.ja-sou{
+            color: #FBED1D;
+            font-size:0.8em;
+            margin-top:20px;
+            margin-left:20%;
+            
+            span{
+                color:#fff;
+                background: #F99922;
+                padding: 1px 7px;
+                font-size: 14px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+            }
+        }
+    }
+
+    .modal{
+        display:none;
+        position: absolute;
+        background-color: #fff;
+        z-index: 999;
+        top: 400px;
+        width: 60%;
+        margin-left: 19%;
+        -webkit-box-shadow: 0px 0px 18px 15px rgba(68, 169, 178, 0.42);
+        -moz-box-shadow:    0px 0px 18px 15px rgba(68, 169, 178, 0.42);
+        box-shadow:         0px 0px 18px 15px rgba(68, 169, 178, 0.42); 
+        padding: 15px 40px;
+        h6{
+            color:#B3B3B3;
+            font-size: 0.9em;
+            font-weight: 100;      
+            span{
+                color:#fff;
+                background: #F99922;
+                padding: 1px 7px;
+                font-size: 12px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                margin-left: -30px;
+                margin-right: 10px;
+            }
+        }
+
+        p{
+            color:#08826D;
+            font-size: 0.8em;
+            text-align: left;
+            line-height: 1.5em;
+            margin-bottom: 10px;
+            a{
+                color:#08826D;   
+            }
+        }
+
+        .js-close-modal{ 
+            position: absolute;
+            right: 10px;
+            color: #076179;
+            top: 0px;
+        }
+
+    }
 }
 
 #page-rede{
@@ -274,7 +518,19 @@ section{
             width:50%;
             float:left;
             background: #fff;
+           
 
+            &.border-left{
+                &:before{
+                    content: "";
+                    border-left: 1px solid #ccc;
+                    border-bottom: 1px solid #ccc;
+                    height: 19%;
+                    position: absolute;
+                }
+                
+            }
+            
             header{
                 a{
                     text-decoration:none;
@@ -427,6 +683,8 @@ section{
         }
 
         article.box-entidade-contato{
+            border-bottom: 1px solid #ccc;
+            height: 244px;
             header{
                 background: $base-color-entidade-contato;
 
@@ -451,6 +709,8 @@ section{
         }
 
         article.box-fale-mais-ponto{
+            border-bottom: 1px solid #ccc;
+            height: 244px;
             header{
                 background: $base-color-fale-mais-ponto;
 
@@ -473,6 +733,8 @@ section{
                     }
                 }
             }
+
+
         }
 
     }
@@ -588,6 +850,7 @@ section{
 .page-base-form{
     background: #fff;
     padding-bottom:50px;
+    
 
     header{
         background:$base-color-info-responsavel;
@@ -652,6 +915,43 @@ section{
             color: #078979;
             font-weight:bold;
             text-decoration:none;
+            
+            &.exclui{
+                background: #525050;
+                color: #fff;
+                display: block;
+                border-radius: 20px;
+                font-weight: normal;
+                font-size: 11px;
+                line-height: 11px;
+                vertical-align: top;
+                padding: 3px 7px 6px;
+                -moz-box-shadow: 0px 0px 7px 2px rgba(50, 50, 50, 0.25);
+                box-shadow: 0px 0px 7px 2px rgba(50, 50, 50, 0.25);
+                position: absolute;
+                left: 188px;
+                margin-top: -11px;
+                
+                &:hover{
+                    color: #525050;
+                    background: #fff;
+                }
+            }
+        }
+        
+        .progress{
+            background: #525050;
+            border-radius: 10px;
+            height: 15px;
+            overflow: hidden;
+            span{
+                color:#fff;
+                text-align:center;
+                font-size: 11px;
+                line-height: 15px;
+                background: url("../img/bg.png"), linear-gradient(to right, #075579 0%, #078979 51%, #075579 100%);
+                padding-right:5px;
+            }
         }
 
         span{
@@ -738,7 +1038,7 @@ section{
         }
 
         .colunm-redes{
-            width:270px;
+            width: 28%;
             display:inline-block;
             margin-right:20px;
         }
@@ -1249,3 +1549,111 @@ section{
     }
 
 }
+
+@media (max-width: 589px) {
+    .page-base-form{
+        .form-opcional{
+            .colunm-redes{
+                width:80%;
+                margin-left:10%;
+            }
+        }
+    }
+    #page-cadastro{
+        section.texto{
+            h2{
+                padding:10px;
+            }   
+            
+            p{
+                padding:5px 10px;
+            } 
+        }
+
+        section.boxs-cadastro {
+            article{
+                width:100%;
+                h4{
+                    width:40%;    
+                }
+
+                header{
+                    .btn_mais{
+                        left:90%
+                    }
+                }
+            }
+        }  
+    }
+ }
+
+
+@media (max-width: 770px) {
+    .page-base-form{
+        .form{
+            input, select{
+                width:80%;
+            }
+        }
+        .form-opcional{
+            input, select{
+                width:80%;
+            }
+            .nome_chamado{
+                width:80%;
+            }
+            .cidade{
+                width:80%;
+            }
+        }
+    }
+    #page-cadastro{
+        section.texto{
+            h2{
+                padding:10px;
+            }   
+            
+            p{
+                padding:5px 10px;
+            } 
+        }
+
+        section.boxs-cadastro {
+            article{
+                header{
+                    h4{
+                        width:60%;
+                    }
+
+                    .btn_mais{
+                        left:80%
+                    }
+                }
+            }
+
+            article.box-ponto-mapa{
+                header{
+                    h4{
+                        width:40%;
+                    }
+                }
+            }
+
+             article.box-fale-mais-ponto {
+                header{
+                    h4{
+                        width:40%;
+                    }
+                }
+            }
+        }  
+    }
+
+    .row{
+        .colunm1{
+            width:80%;
+        }
+    }
+ }
+
+
