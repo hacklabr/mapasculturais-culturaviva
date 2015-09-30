@@ -525,16 +525,12 @@ section{
                     content: "";
                     border-left: 1px solid #ccc;
                     border-bottom: 1px solid #ccc;
-                    height: 20%;
+                    height: 19%;
                     position: absolute;
                 }
                 
             }
-
-           
             
-            
-
             header{
                 a{
                     text-decoration:none;
@@ -1004,7 +1000,7 @@ section{
         }
 
         .colunm-redes{
-            width:270px;
+            width: 28%;
             display:inline-block;
             margin-right:20px;
         }
@@ -1515,3 +1511,111 @@ section{
     }
 
 }
+
+@media (max-width: 589px) {
+    .page-base-form{
+        .form-opcional{
+            .colunm-redes{
+                width:80%;
+                margin-left:10%;
+            }
+        }
+    }
+    #page-cadastro{
+        section.texto{
+            h2{
+                padding:10px;
+            }   
+            
+            p{
+                padding:5px 10px;
+            } 
+        }
+
+        section.boxs-cadastro {
+            article{
+                width:100%;
+                h4{
+                    width:40%;    
+                }
+
+                header{
+                    .btn_mais{
+                        left:90%
+                    }
+                }
+            }
+        }  
+    }
+ }
+
+
+@media (max-width: 770px) {
+    .page-base-form{
+        .form{
+            input, select{
+                width:80%;
+            }
+        }
+        .form-opcional{
+            input, select{
+                width:80%;
+            }
+            .nome_chamado{
+                width:80%;
+            }
+            .cidade{
+                width:80%;
+            }
+        }
+    }
+    #page-cadastro{
+        section.texto{
+            h2{
+                padding:10px;
+            }   
+            
+            p{
+                padding:5px 10px;
+            } 
+        }
+
+        section.boxs-cadastro {
+            article{
+                header{
+                    h4{
+                        width:60%;
+                    }
+
+                    .btn_mais{
+                        left:80%
+                    }
+                }
+            }
+
+            article.box-ponto-mapa{
+                header{
+                    h4{
+                        width:40%;
+                    }
+                }
+            }
+
+             article.box-fale-mais-ponto {
+                header{
+                    h4{
+                        width:40%;
+                    }
+                }
+            }
+        }  
+    }
+
+    .row{
+        .colunm1{
+            width:80%;
+        }
+    }
+ }
+
+
