@@ -11,24 +11,24 @@
 <form ng-controller="PointCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-        
+
         <div class="row">
-            <label class="colunm1">
+            <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
                 <span class="error" ng-repeat="error in errors.name">{{ error }}</span>
             </label>
-        </div>  
+        </div>
 
         <div class="clear"></div>
 
         <div class="row">
-            <label class="colunm1">
+            <label class="colunm-full">
                 <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i>?</i></span>
                 <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
-        </div>  
+        </div>
 
         <div class="clear"></div>
 
@@ -36,17 +36,17 @@
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
                 <span>CEP do Ponto de Cultura*</span>
-                <input type="text" ng-blur="save_field('cep'); cepcoder.code(agent.cep)" ng-model="agent.cep"/>
+                <input type="text" ng-blur="save_field('cep'); cepcoder.code(agent.cep)" ng-model="agent.cep">
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
-            <label class="colunm2">
+            <label class="colunm1">
                 <span>O pontão tem sede própria*</span>
                 <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede"></select>
 
                 <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
 
-                <span>mesmo endereço cadastrado no CNPJ da entidade</span>
+                <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
             </label>
@@ -113,7 +113,7 @@
             </label>
 
             <label class="colunm3">
-                <span>Complemento*</span>
+                <span>Complemento</span>
                 <input type="text" ng-blur="save_field('complemento')" ng-model="agent.complemento"/>
                 <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>
@@ -123,16 +123,24 @@
 
 
     <div class="form form-mapa">
-        <style type="text/css">.leaflet-canvas { min-height: 300px; }</style>
+        <?php /*
+        <div class="mapa js-map-container">
+            <div class="clearfix js-leaflet-control" data-leaflet-target=".leaflet-top.leaflet-left">
+                <a id ="button-locate-me" class="control-infobox-open hltip botoes-do-mapa" title="Encontrar minha localização"></a>
+            </div>
+            <div id="single-map-container" class="js-map" data-lat="-46.633328" data-lng="-23.548991"></div>
+            <input type="hidden" id="map-target" data-name="location" class="js-editable" data-edit="location" data-value="">
+        </div>
+        */ ?>
+        <style type="text/css">.leaflet-canvas { min-height: 400px; }</style>
         <leaflet markers="markers"></leaflet>
     </div>
 
 
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
-
         <label>
-            <span class="destaque">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
+            <span class="destaque-opcional">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
         </label>
 
         <div class="row">
@@ -169,25 +177,26 @@
             <div class="row">
                 <taxonomy-checkboxes taxonomy="local_realizacao" entity="agent" terms="termos.local_realizacao"></taxonomy-checkboxes>
             </div>
-            
+
             <div class="clear"></div>
 
             <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
 
-        <div class="row">
+        <div class="row" ng-controller="ImageUploadCtrl">
             <div class="img_updade">
                 <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                     <a href="#" class="exclui">x</a>
                     <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                     <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
                 </div>
-                <div class="progress row" style="background: black;" ng-show="f.progress >= 0">
-                    <div style="width:{{f.progress}}%; background:green;" ng-bind="f.progress + '%'"></div>
+                <div class="progress row" ng-show="f.progress >= 0">
+                    <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
-            
+
             <label>
-                <span class="destaque">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
+                <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
             </label>
         </div>
         <div class="clear"></div>
