@@ -96,3 +96,14 @@ body {
         }
     }
 }
+
+body {
+    &.controller-panel {
+        #main-section {
+            background-color: $gray-lighter;
+            .panel-main-content {
+                width: 75%;
+            }
+        }
+    }
+}
