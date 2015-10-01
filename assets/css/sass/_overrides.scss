@@ -37,65 +37,6 @@ body {
 
 // Header
 
-#main-header {
-    background-color: #FFFFFF;
-    border: none;
-    margin-top: 33px;
-    .wrapper-header {
-        @extend .clearfix;
-        max-width: 960px;
-        margin: 0 auto;
-
-        #brand-logo {
-            padding-left: 0;
-        }
-
-        #main-nav {
-            .menu {
-                margin: 0;
-                li {
-                    border-top: none;
-                }
-                &:first-child {
-                    li {
-                        padding-top: 0.75rem;
-                    }
-                }
-            }
-
-            .entities-menu {
-                li a {
-                    color: #A3A3A3;
-
-                    &:hover {
-                        color: $base-color-footer-primary;
-                    }
-
-                    .icon {
-                        font-size: 1.45rem;
-                    }
-                }
-            }
-
-            #entities-menu {
-                &-opportunities {
-                    .icon {
-                        font-size: 1.725rem;
-                    }
-                }
-
-                &-opportunities,
-                &-economy {
-                    width: 7.5rem;
-                }
-
-                &-points-culture {
-                    width: 8.5rem;
-                }
-            }
-        }
-    }
-}
 
 body {
     &.controller-panel {

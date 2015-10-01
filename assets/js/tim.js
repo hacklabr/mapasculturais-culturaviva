@@ -475,6 +475,34 @@
             $slider.animate({marginLeft: ($slider.width() * -1) + 'px'}, 'fast');
         });
 
+        ////////// Carrega Header e Footer via Ajax //////////
+
+        var _url = 'http://dev.culturaviva.gov.br/wp-admin/admin-ajax.php';
+
+        $.ajax({
+            method: 'GET',
+            url: _url,
+            data: {
+                action: 'get_header'
+            }
+        }).done(function(_r) {
+            var $r = $(_r);
+            $r.find('a').css( "font-weight", 'normal');
+            $r.find('.menu').removeClass('menu');
+            $('#main-header').html($r);
+            //$('#main-header').html(_r);
+        });
+
+        $.ajax({
+            method: 'GET',
+            url: _url,
+            data: {
+                action: 'get_footer'
+            }
+        }).done(function(_r) {
+            $('#main-footer').html(_r);
+        });
+
     });
 
     $(document).ready(function() {
@@ -562,11 +590,4 @@
         }
     };
 
-    $(window).scroll(function(){
-        var top = $(this).scrollTop();
-        if(top > 33) {
-            top = 33;
-        }
-        $('body, #main-header').css('margin-top', 33 - top);
-    });
 })(jQuery);
