@@ -651,23 +651,23 @@
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Apoio/doação/colaboração (Cite)
-                <textarea></textarea>
+                <input type="text" value="">
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Troca direta e indireta (Cite)
-                <textarea></textarea>
+                <input type="text" value="">
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Empréstimo (Cite)
-                <textarea></textarea>
+                <input type="text" value="">
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Emprego/salário (Cite)
-                <textarea></textarea>
+                <input type="text" value="">
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Convênio com Órgão público (Cite)
-                <textarea></textarea>
+                <input type="text" value="">
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Moeda complementar (social). Qual (is)?
