@@ -13,11 +13,11 @@
 
         var _saved_agent = angular.copy($scope.agent);
 
-        $scope.save_field = function save_field(field, force_patch) 
+        $scope.save_field = function save_field(field, force_patch)
         {
-            
             var new_value = $scope.agent[field] || "";
             var old_value = _saved_agent[field] || "";
+
 
             if(force_patch || (new_value || old_value) && new_value !== old_value)
             {
@@ -42,14 +42,14 @@
 
         $scope.termos = {
             area: MapasCulturais.areasDeAtuacao,
-            
+
             local_realizacao: [
-                'Escolas', 
-                'Universidades', 
-                'Praças', 
-                'Salas', 
-                'CEUs', 
-                'Feiras', 
+                'Escolas',
+                'Universidades',
+                'Praças',
+                'Salas',
+                'CEUs',
+                'Feiras',
                 'Eventos'
             ],
 
@@ -127,11 +127,11 @@
     ]);
 
     // FIXME Refatorar daqui pra cima! Nao reutilizar daqui pra cima!!!!
-    
+
     // TODO: Tranforma em diretiva
      app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
         function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout) {
-            
+
             // FIXME passar como parametro para generalizar
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
@@ -143,7 +143,7 @@
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.config = {
                 images: {
                     maxUploadSize: '2MB',
@@ -154,7 +154,7 @@
                     validation: 'application/pdf'
                 }
             };
-            
+
             $scope.uploadFile = function(file, group) {
                 $scope.f = file;
                 if (file && !file.$error) {
@@ -188,15 +188,15 @@
                     });
 
                     file.upload.progress(function (evt) {
-                        file.progress = Math.min(100, parseInt(100.0 * 
+                        file.progress = Math.min(100, parseInt(100.0 *
                                                                evt.loaded / evt.total));
                     });
-                }   
+                }
             };
-            
+
        }
     ]);
-    
+
     // Controller do 'Seu ponto no Mapa'
     app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
         function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
@@ -205,15 +205,15 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,name,shortDescription,cep,tem_sede,mesmoEndereco,estado,cidade,'+
-                    'bairro,numero,rua,complemento,local_de_acao_estado,local_de_acao_cidade,'+
-                    'local_de_acao_cidade,local_de_acao_espaco',
+                '@select': 'id,terms,name,shortDescription,cep,tem_sede,mesmoEndereco,geoEstado,geoMunicipio,'+
+                    'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,local_de_acao_estado,local_de_acao_cidade,'+
+                    'local_de_acao_cidade,local_de_acao_espaco,location',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.save_field = function save_field(field) {
                 var agent_update = {};
                 agent_update[field] = $scope.agent[field];
@@ -224,16 +224,16 @@
                 area: MapasCulturais.areasDeAtuacao,
 
                 local_realizacao: [
-                    'Escolas', 
-                    'Universidades', 
-                    'Praças', 
-                    'Salas', 
-                    'CEUs', 
-                    'Feiras', 
+                    'Escolas',
+                    'Universidades',
+                    'Praças',
+                    'Salas',
+                    'CEUs',
+                    'Feiras',
                     'Eventos'
                 ]
             };
-            
+
             $scope.markers = {};
 
             // verifica se agente tem o local fornecido
@@ -247,7 +247,7 @@
             // seleciona ou remove um espaco do agente e salva na api
             $scope.toggle_espaco = function toggle_espaco(espaco) {
                 var agent = $scope.agent;
-                
+
                 if(!angular.isArray(agent.local_de_acao_espaco)) {
                     agent.local_de_acao_espaco = [espaco];
                 } else {
@@ -272,17 +272,18 @@
                     $scope.cepcoder.busy = true;
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
-                        $scope.agent.cidade = addr.localidade;
-                        $scope.save_field('cidade');
+                        $scope.agent.geoEstado = addr.uf;
+                        $scope.save_field('geoEstado');
 
-                        $scope.agent.bairro = addr.bairro;
-                        $scope.save_field('bairro');
+                        $scope.agent.geoMunicipio = addr.localidade;
+                        $scope.save_field('geoMunicipio');
 
-                        $scope.agent.rua = addr.logradouro;
-                        $scope.save_field('rua');
+                        $scope.agent.En_Bairro = addr.bairro;
+                        $scope.save_field('En_Bairro');
 
-                        $scope.agent.estado = addr.uf;
-                        $scope.save_field('estado');
+                        $scope.agent.En_Nome_Logradouro = addr.logradouro;
+                        $scope.save_field('En_Nome_Logradouro');
+
 
                         var string = (addr.logradouro ? addr.logradouro+', ':'') +
                                      (addr.bairro ? addr.bairro+', ':'') +
@@ -315,7 +316,7 @@
                     'tipoReconhecimento,numEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
                     'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,inicioVigenciaProjeto,' +
                     'fimVigenciaProjeto,recebeOutrosFinanciamentos,descOutrosFinanciamentos',
-                
+
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 
                 '@permissions': 'view'
@@ -330,7 +331,7 @@
             };
         }
     ]);
-    
+
     app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais',
         function($scope, Entity, MapasCulturais){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
@@ -341,7 +342,7 @@
                 '@select': 'id,emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
                     'responsavelNome,responsavelEmail,responsavelCargo,responsavelTelefone,' +
                     'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
-                
+
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 
                 '@permissions': 'view'
