@@ -138,6 +138,7 @@
                 </div>-->
             </div>
         </article>
+        <div class="clear"></div>
     </section>
     <section class="box-status">
         <article class="validar-ponto">
@@ -147,7 +148,7 @@
         </article>
         <article class="content-status">
             <div class="status">
-                <?php /*
+                <?php // /* ?>
                 <div class="circle-status c100 p45">
                     <span>45%</span>
                     <div class="slice">
@@ -155,74 +156,74 @@
                         <div class="fill"></div>
                     </div>
                 </div>
-                */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-user"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Informações do responável<br />(45% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php /*
-                <div class="circle-status c100 p59">
-                    <span>59%</span>
+                <?php // /* ?>
+                <div class="circle-status c100 p45">
+                    <span>45%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                 */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-location"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Seu Ponto no Mapa<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php /*
-                <div class="circle-status c100 p13">
-                    <span>13%</span>
+               <?php // /* ?>
+                <div class="circle-status c100 p45">
+                    <span>45%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-vcard"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Dados da Entidade Ou Coletivo Cultural<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php /*
-                <div class="circle-status c100 p87">
-                    <span>87%</span>
+               <?php // /* ?>
+                <div class="circle-status c100 p100">
+                    <span>100%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-picture"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Portifólio<br />(100% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php /*
-                <div class="circle-status c100 p98">
-                    <span>98%</span>
+                <?php // /* ?>
+                <div class="circle-status c100 p45">
+                    <span>45%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-phone"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Contato da Entidade<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php /*
-                <div class="circle-status c100 p5">
-                    <span>5%</span>
+                <?php // /* ?>
+                <div class="circle-status c100 p100">
+                    <span>100%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                */ ?>
+               <?php  // */ ?>
                 <span class="icon icon-chat"></span>
-                <p>Informações do responável<br />(50% informações opcionais)</p>
+                <p>Fale mais sobre seu Ponto<br />(100% informações opcionais)</p>
             </div>
             <div class="clear"></div>
             <?php /*
