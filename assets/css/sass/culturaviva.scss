@@ -525,7 +525,7 @@ section{
                     content: "";
                     border-left: 1px solid #ccc;
                     border-bottom: 1px solid #ccc;
-                    height: 19%;
+                    height: 244px;
                     position: absolute;
                 }
                 
@@ -640,7 +640,7 @@ section{
                 background: $base-color-entidade-dados;
 
                 h4{
-                    width: 30%;
+                    width: 40%;
                 }
             }
 
@@ -742,7 +742,7 @@ section{
     section.box-status{
         article{
             background:#fff;
-            padding: 40px 0px;
+            padding: 20px 0px;
             .status{
                 width: 14%;
                 height: auto;
@@ -788,7 +788,7 @@ section{
                 width: 70%;
                 padding: 10px 20px;
                 color: #fff;
-                margin: 0px auto;
+                margin: 30px auto;
                 text-align: center;
 
                 p{
@@ -817,25 +817,64 @@ section{
 
             //Box Status
             .status{
-
+                cursor:pointer;
+                height: 120px;
+                padding:10px;
+                    
                 + .status{
-                    border-left:1px solid #666;
+                    &:before{
+                        content: "";
+                        width:1px;
+                        height:90px;
+                        background: #d0d0d0;
+                        position:absolute;
+                    }
                 }
 
-                padding:10px;
+                
 
                 .circle-status{
                     font-size: 50px;
                     margin-left: 33%;
+                    .bar, .fill{
+                        border-color:#f50;
+                    }
+                    &.p100{
+                        .bar, .fill{
+                            border-color:#469200;
+                        }
+                    }
+                    
                 }
 
                 span.icon{
                     display: inline-block;
                     width: 100%;
+                    font-size: 24px;
+                    color: #8E8E8E;
+                    margin-top: 10px;
+                    
+                }
+
+                &:hover{
+                    > p{
+                       display:block; 
+                    }
+
+                    span.icon{
+                        color:#1502B3;
+                    }
+                    
                 }
 
                 p{
-                    display:block;
+                    display: none;
+                    font-size: 1em;
+                    font-weight: bold;
+                    line-height: 1.2em;
+                    text-align: center;
+                    width: 180px;
+                    margin-left: -5px;
                 }
             }
         }
@@ -893,13 +932,14 @@ section{
     }
 
     .form{
+        padding: 10px 4%;
+        
         h4{
             background: #f7c908;
             color: #fff;
             font-size: 16px;
             font-weight: 100;
             padding: 10px 20px;
-            margin: 4%;
         }
 
         p{
@@ -909,6 +949,7 @@ section{
             margin: 10px;
             font-weight: 500;
             font-size: 14px;
+            
         }
 
         a{
@@ -984,6 +1025,10 @@ section{
             margin-right: 6px;
         }
 
+        .colunm-full{
+            margin-left:1%;
+        }
+
         span.check{
             display:inline-block;
         }
@@ -992,7 +1037,7 @@ section{
             display:inline-block;
             margin-right:20px;
         }
-
+        
         .destaque{
             color: #078979;
             font-weight:bold;
@@ -1007,8 +1052,51 @@ section{
                 cursor: pointer;
             }
         }
+
+        .title{
+            font-size: 1em;
+            margin: 1%;
+        }
+
+        .subtitle{
+            margin: 1%;
+        }
+    }
+    .colunm-redes{
+            width: 27%;
+            display:inline-block;
+            margin-right:20px;
+            margin-left: 1%;
     }
 
+    .redessociais{
+        margin-bottom:10px;
+    }
+    .facebook{
+            
+        i{
+          color:#576c94;
+        }
+
+    }
+
+    .twitter{
+        i{
+           color:#55acee;
+        }
+
+    }
+
+    .googleplus{
+        i{
+           color:#d54732;
+        }
+
+    }
+
+    .flick{
+        margin-left:37px;
+    }
     .form-opcional{
         .upadete_foto{
             display:none;
@@ -1037,11 +1125,7 @@ section{
             margin-top:37px;
         }
 
-        .colunm-redes{
-            width: 28%;
-            display:inline-block;
-            margin-right:20px;
-        }
+        
 
         i{
             font-size: 20px;
@@ -1444,7 +1528,7 @@ section{
         }
 
         label{
-            font-size:16px;
+            font-size:14px;
             margin-bottom:10px;
 
             span{
@@ -1466,7 +1550,7 @@ section{
         }
 
         .colunm1{
-            width:280px;
+            width:270px;
         }
 
         .colunm2{
@@ -1494,55 +1578,55 @@ section{
     .colunm-full{
         display:inline-block;
         width:90%;
-        margin-left: 4%;
+        margin-left:2%;
         vertical-align:top;
     }
 
     .colunm-50{
         display:inline-block;
         width:45%;
-        margin-left: 4%;
+        margin-left: 2%;
         vertical-align:top;
     }
 
     .colunm-20{
         display:inline-block;
         width:20%;
-        margin-left: 4%;
+        margin-left: 2%;
         vertical-align:top;
     }
 
     .colunm1{
         width: 400px;
-        margin-left:35px;
+        margin-left: 1%;
         display:inline-block;
         vertical-align:top;
     }
 
     .colunm05{
         width: 200px;
-        margin-left:35px;
+        margin-left: 2%;
         display:inline-block;
         vertical-align:top;
     }
 
     .colunm02{
         width: 140px;
-        margin-left:35px;
+        margin-left: 2%;
         display:inline-block;
         vertical-align:top;
     }
 
     .colunm2{
         width: 200px;
-        margin-left:35px;
+        margin-left: 1%;
         display:inline-block;
         vertical-align:top;
     }
 
     .colunm3{
         width: 180px;
-        margin-left:35px;
+        margin-left: 1%;
         display:inline-block;
         vertical-align:top;
 
