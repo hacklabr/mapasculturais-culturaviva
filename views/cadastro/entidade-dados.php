@@ -39,13 +39,14 @@
                 <input type="text"
                        ng-blur="save_field('cnpj')"
                        ng-model="entity.cnpj"
-                       ng-disabled="entity.semCNPJ">
+                       ng-disabled="entity.semCNPJ"
+                       ui-mask="99.999.999/9999-99">
                 <p ng-show="true"></p>
                 <div class="naoseaplica">
                     <input type="checkbox"
                            ng-checked="entity.semCNPJ"
                            ng-change="save_field('semCNPJ')"
-                           ng-model="entity.semCNPJ" >não se aplica <span class="destaque"><i>?</i></span>
+                           ng-model="entity.semCNPJ" >não tenho CNPJ<span class="destaque"><i>?</i></span>
                 </div>
             </label>
 
@@ -69,6 +70,7 @@
             </label>
         </div>
         <div class="clear"></div>
+        <?php /*
         <div class="row" ng-hide="entity.semCNPJ">
             <label class="colunm-50">
                 <span class="destaque">Tipo de Certificação* <i>?</i></span>
@@ -82,10 +84,11 @@
             </label>
         </div>
         <div class="clear"></div>
-
+        */ ?>
         <div class="row">
             <label class="colunm-50">
-                <span class="destaque">Você já foi fomentado pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-hide="entity.semCNPJ">A Entidade já foi fomentado pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="entity.semCNPJ">O Coletivo já foi fomentado pelo MinC* <i>?</i></span>
                 <span class="label-radio">
                     <input type="radio" name="formentominc" value="sim"
                            ng-change="save_field('foiFomentado')"

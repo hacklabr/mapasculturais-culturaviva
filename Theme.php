@@ -100,6 +100,8 @@ class Theme extends BaseV1\Theme{
 
     protected function _enqueueScripts(){
         $this->enqueueScript('culturaviva', 'angular-resource', 'vendor/angular-resource.js');
+        $this->enqueueScript('culturaviva', 'ui-mask', 'vendor/mask.js');
+
         $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js', ['angular-resource']);
         $this->enqueueScript('culturaviva', 'cadastro-controller', 'js/cadastro-controller.js', ['cadastro-app']);
         $this->enqueueScript('culturaviva', 'cadastro-service', 'js/cadastro-service.js', ['cadastro-app']);

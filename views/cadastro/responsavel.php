@@ -19,7 +19,9 @@
 
             <label class="colunm2">
                 <span>RG*</span>
-                <input type="text" ng-blur="save_field('rg')" ng-model="agent.rg"/>
+                <input type="text"
+                       ng-blur="save_field('rg')"
+                       ng-model="agent.rg">
             </label>
 
             <label class="colunm3">
@@ -38,7 +40,10 @@
 
             <label class="colunm2">
                 <span>CPF*</span>
-                <input type="text" ng-blur="save_field('cpf')" ng-model="agent.cpf" />
+                <input type="text"
+                       ng-blur="save_field('cpf')"
+                       ng-model="agent.cpf"
+                       ui-mask="999.999.999-99">
             </label>
 
             <label class="colunm3">
