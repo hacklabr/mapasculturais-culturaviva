@@ -6,23 +6,17 @@ use MapasCulturais\App;
 class Theme extends BaseV1\Theme{
     private $_ids;
     
-    protected $_inscricao = null;
-    protected $_responsavel = null;
-    protected $_entidade = null;
-    protected $_ponto = null;
+    /**
+     * Controller Cadastro
+     * 
+     * @var \CulturaViva\Controller\Cadastro 
+     */
+    protected $_cadastro;
     
-    function getInscricao(){
-        return $this->_inscricao;
+    public function __construct(\MapasCulturais\AssetManager $asset_manager) {
+        parent::__construct($asset_manager);
     }
-    function getResponsavel(){
-        return $this->_responsavel;
-    }
-    function getEntidade(){
-        return $this->_entidade;
-    }
-    function getPonto(){
-        return $this->_ponto;
-    }
+    
 
     protected static function _getTexts(){
         return array(
@@ -38,26 +32,16 @@ class Theme extends BaseV1\Theme{
     
     protected function _init(){
         parent::_init();
+        $this->_cadastro = Controllers\Cadastro::i();
+        
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
 
         $app = App::i();
 
-        if (!$app->user->is('guest')) {
-            $this->_ids = json_decode($app->user->redeCulturaViva);
-             
-
-            // TODO: verifica em que casos vem null
-            if($this->_ids) {
-                
-                $this->_inscricao   = $app->repo('Registration')->find($this->_ids->inscricao);
-                $this->_responsavel = $app->repo('Agent')->find($this->_ids->agenteIndividual);
-                $this->_entidade    = $app->repo('Agent')->find($this->_ids->agenteEntidade);
-                $this->_ponto       = $app->repo('Agent')->find($this->_ids->agentePonto);
-                
-                $this->jsObject['redeCulturaViva'] = $this->_ids;
-            }
+        if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
+            $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
         }
         
         
@@ -217,7 +201,8 @@ class Theme extends BaseV1\Theme{
                 'semCNPJ' => [
                     'label' => 'CNPJ',
 //                  'required' => true,
-                    'private' => true
+                    'private' => true,
+                    'type'=>'boolean'
                 ],
                 'tipoPontoCulturaDesejado' => [
                     'label' => 'Tipo de Ponto de Cultura',
@@ -451,7 +436,7 @@ class Theme extends BaseV1\Theme{
 
                 'tem_sede' => [
                     'label' => 'Tem sede propria?',
-                    'required' => true
+//                    'required' => true
                 ],
                 'sede_cnpj' => [
                     'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
@@ -485,7 +470,7 @@ class Theme extends BaseV1\Theme{
                 ]
             ]
         ];
-
+        
         foreach($metadata as $entity_class => $metas){
             foreach($metas as $key => $cfg){
                 $def = new \MapasCulturais\Definitions\Metadata($key, $cfg);
