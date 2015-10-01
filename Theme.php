@@ -4,6 +4,25 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
+    private $_ids;
+    
+    protected $_inscricao = null;
+    protected $_responsavel = null;
+    protected $_entidade = null;
+    protected $_ponto = null;
+    
+    function getInscricao(){
+        return $this->_inscricao;
+    }
+    function getResponsavel(){
+        return $this->_responsavel;
+    }
+    function getEntidade(){
+        return $this->_entidade;
+    }
+    function getPonto(){
+        return $this->_ponto;
+    }
 
     protected static function _getTexts(){
         return array(
@@ -16,15 +35,32 @@ class Theme extends BaseV1\Theme{
     static function getThemeFolder() {
         return __DIR__;
     }
-
+    
     protected function _init(){
         parent::_init();
-
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
 
         $app = App::i();
+
+        if (!$app->user->is('guest')) {
+            $this->_ids = json_decode($app->user->redeCulturaViva);
+             
+
+            // TODO: verifica em que casos vem null
+            if($this->_ids) {
+                
+                $this->_inscricao   = $app->repo('Registration')->find($this->_ids->inscricao);
+                $this->_responsavel = $app->repo('Agent')->find($this->_ids->agenteIndividual);
+                $this->_entidade    = $app->repo('Agent')->find($this->_ids->agenteEntidade);
+                $this->_ponto       = $app->repo('Agent')->find($this->_ids->agentePonto);
+                
+                $this->jsObject['redeCulturaViva'] = $this->_ids;
+            }
+        }
+        
+        
         $app->hook('mapasculturais.body:before', function() {
             echo '
             <div id="barra-brasil">
@@ -33,15 +69,6 @@ class Theme extends BaseV1\Theme{
             <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
             ';
         });
-
-        if (!$app->user->is('guest')) {
-            $ids = json_decode($app->user->redeCulturaViva);
-
-            // TODO: verifica em que casos vem null
-            if($ids !== null) {
-                $this->jsObject['redeCulturaViva'] = $ids;
-            }
-        }
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
 
@@ -57,6 +84,7 @@ class Theme extends BaseV1\Theme{
         });
         
         /** DESABILITANDO ROTAS  **/
+        return ;
         
         if(!$app->user->is('admin') && !$app->user->is('guest')){
             $ids = json_decode($app->user->redeCulturaViva);
@@ -153,27 +181,27 @@ class Theme extends BaseV1\Theme{
             'MapasCulturais\Entities\Agent' => [
                 'rg' => [
                     'label' => 'RG',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'rg_orgao' => [
                     'label' => 'Órgão Expedidor',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'cpf' => [
                     'label' => 'CPF',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'telefone1_operadora' => [
                     'label' => 'Operadora do Telefone 1',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'relacaoPonto' => [
                     'label' => 'Relação com o Ponto de Cultura',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
@@ -186,12 +214,12 @@ class Theme extends BaseV1\Theme{
                 // Metados do Agente tipo Entidade
                 'semCNPJ' => [
                     'label' => 'CNPJ',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'tipoPontoCulturaDesejado' => [
                     'label' => 'Tipo de Ponto de Cultura',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
@@ -201,7 +229,7 @@ class Theme extends BaseV1\Theme{
                 ],
                 'tipoOrganizacao' => [
                     'label' => 'Tipo de Organização',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
@@ -211,17 +239,17 @@ class Theme extends BaseV1\Theme{
                 ],
                 'cnpj' => [
                     'label' => 'CNPJ',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'representanteLegal' => [
                     'label' => 'Representante Legal',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'tipoCertificacao' => [
                     'label' => 'Tipo de Certificação',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'options' => array(
                         'ponto_coletivo' => 'Ponto de Cultura - Grupo ou Coletivo',
@@ -231,12 +259,12 @@ class Theme extends BaseV1\Theme{
                 ],
                 'foiFomentado' => [
                     'label' => 'Você já foi fomentado pelo MinC',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'tipoReconhecimento' => [
                     'label' => 'Tipo de Reconhecimento',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
@@ -248,48 +276,48 @@ class Theme extends BaseV1\Theme{
                 ],
                 'numEdital' => [
                     'label' => 'Número do Edital de Seleção',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'anoEdital' => [
                     'label' => 'Ano do Edital de Seleção',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'nomeProjeto' => [
                     'label' => 'Nome do Projeto',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'localRealizacao' => [
                     'label' => 'Local de Realização',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'etapaProjeto' => [
                     'label' => 'Etapa do Projeto',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'proponente' => [
                     'label' => 'Proponente',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'resumoProjeto' => [
                     'label' => 'Resumo do projeto (objeto)',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
 //                Este metadado é uma tabela no formulário. Precisamos estudar como vai ser.
 //                'recursosProjeto' => [
 //                    'label' => 'Recursos do Projeto Selecionado',
-//                    'required' => true,
+////                  'required' => true,
 //                    'private' => true
 //                ],
                 'prestacaoContasEnvio' => [
                     'label' => 'Prestação de Contas - Envio',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
@@ -311,17 +339,17 @@ class Theme extends BaseV1\Theme{
                 ],
                 'inicioVigenciaProjeto' => [
                     'label' => 'Vigência',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'fimVigenciaProjeto' => [
                     'label' => 'Vigência',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'recebeOutrosFinanciamentos' => [
                     'label' => 'Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'descOutrosFinanciamentos' => [
@@ -333,78 +361,78 @@ class Theme extends BaseV1\Theme{
                 // Contato Entidade
                 'emailPrivado' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'telefone1' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
 //                Já tem para Infos. do resp, usamos o mesmo?
 //                'telefone1_operadora' => [
 //                    'label' => 'Mesmo Endereco',
-//                    'required' => true,
+////                  'required' => true,
 //                    'private' => true
 //                ],
                 'telefone2' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'telefone2_operadora' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'responsavelNome' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'responsavelCargo' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'responsavelEmail' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'responsavelTelefone' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'geoEstado' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'En_Bairro' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'En_Num' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'En_Nome_Logradouro' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'En_Nome_Logradouro' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
                 'En_Complemento' => [
                     'label' => 'Mesmo Endereco',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
                 ],
 
@@ -430,37 +458,12 @@ class Theme extends BaseV1\Theme{
 
                 'cep' => [
                     'label' => 'CEP',
-                    'required' => true,
+//                  'required' => true,
                     'private' => true
 //                    'validations' => array(
 //                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
 //                    )
                 ],
-                'estado' => [
-                    'label' => 'Estado',
-                    'required' => true
-                ],
-                'cidade' => [
-                    'label' => 'Cidade',
-                    'required' => true
-                ],
-                'bairro' => [
-                    'label' => 'Bairro',
-                    'required' => true
-                ],
-                'numero' => [
-                    'label' => 'Numero',
-                    'required' => true
-                ],
-                'rua' => [
-                    'label' => 'Rua',
-                    'required' => true
-                ],
-                'complemento' => [
-                    'label' => 'Rua',
-                    'required' => false
-                ],
-
                 'local_de_acao_estado' => [
                     'label' => 'Estado',
                     'required' => false
@@ -473,6 +476,11 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Espaço',
                     'required' => false
                 ],
+                
+                // portifólio
+                'atividadesEmRealizacao' => [
+                    'label' => 'Atividades culturais em realização'
+                ]
             ]
         ];
 
