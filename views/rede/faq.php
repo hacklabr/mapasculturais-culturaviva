@@ -64,7 +64,6 @@
             <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra') ?>">
                 <button type="submit" class="btn btn__active">Entrar na Rede</button>
             </form>
-            <a class="what" href="#"><span class="icon icon-help-circled"></span>quais são os critérios para me autodeclarar um Ponto de Cultura?</a>
         </div>
     </article>
 </section>

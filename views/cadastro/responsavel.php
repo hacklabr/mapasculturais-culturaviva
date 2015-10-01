@@ -18,27 +18,6 @@
             </label>
 
             <label class="colunm2">
-                <span>RG*</span>
-                <input type="text"
-                       ng-blur="save_field('rg')"
-                       ng-model="agent.rg">
-            </label>
-
-            <label class="colunm3">
-                <span>Órgão expeditor*</span>
-                <select ng-blur="save_field('rg_orgao')" ng-model="agent.rg_orgao">
-                    <option value="SSP">Secretaria de Segurança Pública</option>
-                </select>
-            </label>
-        </div>
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
-                <input type="text" ng-blur="save_field('relacaoPonto')" ng-model="agent.relacaoPonto"/>
-            </label>
-
-            <label class="colunm2">
                 <span>CPF*</span>
                 <input type="text"
                        ng-blur="save_field('cpf')"
@@ -46,38 +25,21 @@
                        ui-mask="999.999.999-99">
             </label>
 
-            <label class="colunm3">
-                <span>Estado*</span>
-                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
+            <?php /*
+            <label class="colunm2">
+                <span>RG*</span>
+                <input type="text"
+                       ng-blur="save_field('rg')"
+                       ng-model="agent.rg">
             </label>
+            <label class="colunm3">
+                <span>Órgão expeditor*</span>
+                <input type="text"
+                       ng-blur="save_field('rg_orgao')"
+                       ng-model="agent.rg_orgao">
+            </label>
+
+            */ ?>
         </div>
         <div class="clear"></div>
         <div class="row">
@@ -128,6 +90,17 @@
             </label>
         </div>
         <div class="clear"></div>
+        <div class="row">
+            <label class="colunm1">
+                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
+                <select ng-blur="save_field('relacaoPonto')" ng-model="agent.relacaoPonto">
+                    <option value="responsavel">Sou o responsável pelo Ponto/Pontão de Cultura</option>
+                    <option value="funcionario">Trabalho no Ponto/Pontão de Cultura</option>
+                    <option value="parceiro">Sou parceiro do Ponto/Pontão e estou ajudando a cadastrar</option>
+                </select>
+            </label>
+        </div>
+        <div class="clear"></div>
     </div>
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
@@ -151,6 +124,38 @@
             <label class="cidade">
                 <span>Cidade</span>
                 <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
+            </label>
+            <label class="colunm3">
+                <span>Naturalidade - Estado*</span>
+                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
             </label>
             <div class="clear"></div>
         </div>
