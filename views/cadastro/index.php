@@ -140,14 +140,14 @@
         </article>
     </section>
     <section class="box-status">
-<!--        <article class="validar-ponto">
+        <article class="validar-ponto">
             <h5><i class="icon-publish"></i>Validar</h5>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
-        </article>-->
+        </article>
         <article class="content-status">
-            <?php /*
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p45">
                     <span>45%</span>
                     <div class="slice">
@@ -155,10 +155,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                */ ?>
                 <span class="icon icon-user"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p59">
                     <span>59%</span>
                     <div class="slice">
@@ -166,10 +168,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                 */ ?>
                 <span class="icon icon-location"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p13">
                     <span>13%</span>
                     <div class="slice">
@@ -177,10 +181,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                */ ?>
                 <span class="icon icon-vcard"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p87">
                     <span>87%</span>
                     <div class="slice">
@@ -188,10 +194,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                */ ?>
                 <span class="icon icon-picture"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p98">
                     <span>98%</span>
                     <div class="slice">
@@ -199,10 +207,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                */ ?>
                 <span class="icon icon-phone"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
+                <?php /*
                 <div class="circle-status c100 p5">
                     <span>5%</span>
                     <div class="slice">
@@ -210,11 +220,12 @@
                         <div class="fill"></div>
                     </div>
                 </div>
+                */ ?>
                 <span class="icon icon-chat"></span>
                 <p>Informações do responável<br />(50% informações opcionais)</p>
             </div>
             <div class="clear"></div>
-
+            <?php /*
             <div class="infos-messenge">
                 <a href="#" class="close">X</a>
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
