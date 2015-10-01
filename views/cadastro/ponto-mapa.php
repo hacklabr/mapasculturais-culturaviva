@@ -42,7 +42,11 @@
 
             <label class="colunm1">
                 <span>O pontão tem sede própria*</span>
-                <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede"></select>
+                <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
+                    <option></option>
+                    <option value="sim">Sim</option>
+                    <option value="não">Não</option>
+                </select>
 
                 <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
 
@@ -65,7 +69,7 @@
         <div class="row">
             <label class="colunm1">
                 <span>Estado*</span>
-                <select ng-blur="save_field('estado')" ng-model="agent.estado">
+                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
                     <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
@@ -86,13 +90,13 @@
 
             <label class="colunm2">
                 <span>Cidade*</span>
-                <input type="text" ng-blur="save_field('cidade')" ng-model="agent.cidade"/>
+                <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
                 <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>
             </label>
 
             <label class="colunm3">
                 <span>Bairro*</span>
-                <input type="text" ng-blur="save_field('bairro')" ng-model="agent.bairro"/>
+                <input type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
         </div>
@@ -102,19 +106,19 @@
         <div class="row">
             <label class="colunm1">
                 <span>Número*</span>
-                <input type="text" ng-blur="save_field('numero')" ng-model="agent.numero"/>
+                <input type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
                 <span class="error" ng-repeat="error in errors.numero">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>Rua*</span>
-                <input type="text" ng-blur="save_field('rua')" ng-model="agent.rua"/>
+                <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
 
             <label class="colunm3">
                 <span>Complemento</span>
-                <input type="text" ng-blur="save_field('complemento')" ng-model="agent.complemento"/>
+                <input type="text" ng-blur="save_field('En_Complemento')" ng-model="agent.En_Complemento"/>
                 <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>
         </div>
