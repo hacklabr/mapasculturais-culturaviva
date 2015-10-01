@@ -106,16 +106,16 @@
             </div>
         </div>
         <div class="clear"></div>
-        <div class="row">
-            <label class="colunm-50">
-                <span>Que tipo de financiamento recebe ou recebeu?</span>
-                <input type="text"
-                       ng-blur="save_field('descOutrosFinanciamentos')"
-                       ng-model="entity.descOutrosFinanciamentos" >
-            </label>
-        </div>
-        <div class="clear"></div>
-        <div ng-hide="entity.semCNPJ">
+        <div ng-show="entity.foiFomentado">
+            <div class="row">
+                <label class="colunm-50">
+                    <span>Que tipo de financiamento recebe ou recebeu?</span>
+                    <input type="text"
+                           ng-blur="save_field('descOutrosFinanciamentos')"
+                           ng-model="entity.descOutrosFinanciamentos" >
+                </label>
+            </div>
+            <div class="clear"></div>
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
@@ -286,31 +286,31 @@
                 </label>
             </div>
             <div class="clear"></div>
-            <div class="row">
-                <div class="colunm-full">
-                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
-                    <label class="label-radio">
-                        <input type="radio"
-                               name="financiamentos"
-                               ng-value="1"
-                               ng-change="save_field('recebeOutrosFinanciamentos')"
-                               ng-model="entity.recebeOutrosFinanciamentos"> Sim</label>
-                    <label class="label-radio">
-                        <input type="radio"
-                               name="financiamentos"
-                               ng-value="1"
-                               ng-change="save_field('recebeOutrosFinanciamentos')"
-                               ng-model="entity.recebeOutrosFinanciamentos"> Não</label>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="row" ng-show="entity.recebeOutrosFinanciamentos">
-                <label class="colunm-50">
-                    <span>Quais ?</span>
-                    <input type="text" ng-blur="save_field('descOutrosFinanciamentos')" ng-model="entity.descOutrosFinanciamentos" >
-                </label>
-            </div>
-            <div class="clear"></div>
         </div>
+        <div class="row">
+            <div class="colunm-full">
+               <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="financiamentos"
+                           ng-value="1"
+                           ng-change="save_field('recebeOutrosFinanciamentos')"
+                           ng-model="entity.recebeOutrosFinanciamentos"> Sim</label>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="financiamentos"
+                           ng-value="0"
+                           ng-change="save_field('recebeOutrosFinanciamentos')"
+                           ng-model="entity.recebeOutrosFinanciamentos"> Não</label>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row" ng-show="entity.recebeOutrosFinanciamentos">
+            <label class="colunm-50">
+                <span>Quais ?</span>
+                <input type="text" ng-blur="save_field('descOutrosFinanciamentos')" ng-model="entity.descOutrosFinanciamentos" >
+            </label>
+        </div>
+        <div class="clear"></div>
     </div>
 </form>
