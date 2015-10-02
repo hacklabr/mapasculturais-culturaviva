@@ -1,12 +1,15 @@
 <?php
+
 $config['routes']['default_controller_id'] = 'rede';
 
 return [
+    'app.siteName' => 'Rede Cultura Viva',
+    'app.siteDescription' => '',
+    
     'app.geoDivisionsHierarchy' => [
-        'estado'    => 'Estado',        // metadata: geoEstado
-        'municipio' => 'Município',     // metadata: geoMunicipio
+        'estado' => 'Estado',       // metadata: geoEstado
+        'municipio' => 'Município', // metadata: geoMunicipio
     ],
-
     'redeCulturaViva.projectId' => 1,
     'registration.ownerDefinition' => [
         'required' => true,
@@ -34,4 +37,39 @@ return [
             'requiredProperties' => []
         ]
     ],
+    'registration.propertiesToExport' => array(
+        'id',
+        'name',
+        'nomeCompleto',
+        'shortDescription',
+        'cep',
+        'tem_sede',
+        'geoEstado',
+        'geoMunicipio',
+        'En_Bairro',
+        'En_Num',
+        'En_Nome_Logradouro',
+        'location', // ponto no mapa
+
+        //portifólio
+        'atividadesEmRealizacao',
+        'cpf',
+        'cnpj',
+        'endereco',
+        'telefone1',
+        'telefone1_operadora',
+        'telefone2',
+        'telefone2_operadora',
+        'telefonePublico',
+        'telefonePublico_operadora',
+        'emailPrivado',
+        'emailPublico',
+        'site',
+        'googleplus',
+        'facebook',
+        'twitter',
+        'flickr',
+        'diaspora',
+        'youtube'
+    ),
 ];
