@@ -99,6 +99,7 @@
 
             }else if(new_status === 'saving'){
                 $scope.messages.text = 'salvando alterações';
+
             }
 
             $timeout(function(){
@@ -136,6 +137,7 @@
             };
         }
     ]);
+
 
     // TODO: Tranforma em diretiva
      app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', '$http',
