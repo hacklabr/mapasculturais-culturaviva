@@ -8,7 +8,7 @@
     
 ?>
 
-<form ng-controller="ResponsibleCtrl">
+<form ng-controller="PointCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">

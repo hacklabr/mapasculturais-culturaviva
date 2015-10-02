@@ -12,7 +12,7 @@ return [
         $project->useRegistrations = true;
         $project->categories = ['Ponto de Cultura', 'Pontão de Cultura'];
         $project->registrationFrom = new \DateTime('2015-01-01');
-        $project->registrationTo = new \DateTime('1000-01-01');
+        $project->registrationTo = new \DateTime('2099-12-31');
         $project->type = 9;
         $project->save(true);
     },

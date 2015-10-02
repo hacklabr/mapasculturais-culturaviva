@@ -1,4 +1,7 @@
-<div id="page-cadastro">
+<?php
+$this->bodyProperties['ng-app'] = "culturaviva";
+?>
+<div id="page-cadastro" ng-controller="DashboardCtrl">
     <section class="texto">
 <!--        <div class="messenger">
             <a href="#" class="close">X</a>
@@ -232,9 +235,10 @@
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
             */ ?>
-            <button class="btn-validar">Validar</button>
+            
+            <button class="btn-validar" ng-click="enviar()">Validar</button>
 
-            </div>
+            
         </article>
     </section>
 </div>

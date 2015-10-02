@@ -8,7 +8,7 @@
 ?>
 
 
-<form ng-controller="ResponsibleCtrl">
+<form ng-controller="PortifolioCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row" ng-controller="ImageUploadCtrl">
@@ -35,13 +35,15 @@
             </label>
         </div>
         <div class="clear"></div>
+        <?php /*
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Atividades culturais em realização* <i>?</i></span>
                 <textarea ng-blur="save_field('atividadesEmRealizacao')" ng-model="agent.atividadesEmRealizacao"></textarea>
-            </label>          
+            </label>
         </div>
         <div class="clear"></div>
+        */ ?>
     </div>
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
@@ -51,7 +53,7 @@
         <div class="row">
             <label class="colunm-redes site-oficial">
                 <span><i class="icon icon-location"></i> Site oficial</span>
-                <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
+                <input type="text" ng-blur="save_field('site')" ng-model="agent.site" placeholder="http://"/>
             </label>
         </div>
         <div class="row">
@@ -73,17 +75,17 @@
         <div class="row">
             <label class="colunm-redes flick">
                 <span><img src="<?php $this->asset('img/icon_flicker.png') ?>"> Página no Flickr</span>
-                <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
+                <input type="text" ng-blur="save_field('flickr')" ng-model="agent.flickr" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes diaspora">
                 <span><img src="<?php $this->asset('img/icon_diaspora.png') ?>"> Perfil na Diáspora:</span>
-                <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
+                <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes youtube">
                 <span><img src="<?php $this->asset('img/icon_youtube.png') ?>"> Perfil no Youtube:</span>
-                <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
+                <input type="text" ng-blur="save_field('youtube')" ng-model="agent.youtube" placeholder="http://"/>
             </label>
         </div>
         <div class="clear"></div>
@@ -91,7 +93,7 @@
             <label class="colunm-full">
                 <span class="destaque">Conte um pouco(800 caractres) sobre a história do ponto de Cultura <i>?</i></span>
                 <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
-            </label>          
+            </label>
 
         </div>
         <div class="clear"></div>
