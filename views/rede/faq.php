@@ -74,4 +74,5 @@ IV - Preencha as informações de Cadastro na Plataforma Rede Cultura Viva e ace
             </form>
         </div>
     </article>
+    <a href="#" class="btn-volta-topo"><img src="<?php $this->asset('img/seta_topo.png') ?>" /></a>
 </section>
