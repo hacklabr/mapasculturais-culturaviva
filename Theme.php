@@ -49,17 +49,8 @@ class Theme extends BaseV1\Theme{
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
         }
 
-
-        $app->hook('mapasculturais.body:before', function() {
-            echo '
-            <div id="barra-brasil">
-                <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Portal do Governo Brasileiro</a>
-            </div>
-            <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
-            ';
-        });
-
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
+        $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
 
 
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
