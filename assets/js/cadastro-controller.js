@@ -80,12 +80,17 @@
     var app = angular.module('culturaviva.controllers', []);
 
     // Função base para os outros controllers """herdarem"""
-    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout, $http)
+    function BaseAgentCtrl($scope, Entity, MapasCulturais, agent_id, Upload, $timeout, $http)
     {
         $scope.errors = {};
-        $scope.agent = Agent.get({
-            'id': agent_id
-        });
+
+        var params = {
+            'id': agent_id,
+            '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,emailPrivado,telefone1,telefone1_operadora,nomeCompleto,geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
+            '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+            '@permissions': 'view'
+        };
+        $scope.agent = Entity.get(params);
 
         var _saved_agent = angular.copy($scope.agent);
 
@@ -94,10 +99,12 @@
             var new_value = $scope.agent[field] || "";
             var old_value = _saved_agent[field] || "";
 
-
+            // vê se o campo realmente mudou antes de salvar
             if(force_patch || (new_value || old_value) && new_value !== old_value)
             {
-                $scope.agent.patch(field).then(function(res)
+                var data = {};
+                data[field] = new_value;
+                Entity.patch({'id': agent_id}, data).$promise.then(function(res)
                 {
                     if(res.data && res.data.error)
                     {   // aconteceu algum erro de validação
@@ -133,11 +140,11 @@
     ]);
 
     // Controller do 'Informações do responsável'
-    app.controller('ResponsibleCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout',
-        function ResponsibleCtrl($scope, Agent, MapasCulturais, Upload, $timeout)
+    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
+        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
-            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
+            BaseAgentCtrl.call(this, $scope, Entity, MapasCulturais, agent_id, Upload, $timeout);
        }
     ]);
 
