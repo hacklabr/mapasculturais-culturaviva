@@ -13,27 +13,6 @@
         ga('send', 'pageview');
     }
 
-    var _heightHeader   = null,
-        _heightEditable = null,
-        _marginHeader   = null,
-        _marginEditable = null;
-
-    $(window).load(function() {
-        var $mainHeader = $('#main-header');
-        var headerHeight = $mainHeader.outerHeight(false);
-
-        $editableEntity = $('#editable-entity');
-        _heightHeader = $mainHeader.height();
-
-        if ($('#editable-entity').length && $('#editable-entity').is(':visible')) {
-            $('#main-section').css('margin-top', headerHeight + $editableEntity.outerHeight(true) );
-
-            _marginEditable = headerHeight + $editableEntity.height();
-
-            $editableEntity.css('top', _marginEditable);
-        }
-    });
-
     $(document).ready(function() {
 
         var deviceAgent = navigator.userAgent.toLowerCase();
@@ -58,12 +37,17 @@
         var lastScrollTop = 0;
 
         var $mainHeader = $('#main-header');
-        var headerHeight = $mainHeader.outerHeight(true);
+        //var headerHeight = $mainHeader.outerHeight(true);
+        /*
+         * var headerHeight inicializa com valor padrão 111, logo após a janela se carregada por completo
+         * o valor pode mudar
+         */
+        var headerHeight = 111;
 
         var header_animation_status = 0;
 
         if ($('#editable-entity').length && $('#editable-entity').is(':visible')) {
-            $('#main-section').css('margin-top', headerHeight + $('#editable-entity').outerHeight(true));
+            $('#main-section').css('margin-top', $('#editable-entity').outerHeight(true));
         }
 
         // inicializa a galeria
@@ -155,15 +139,16 @@
             if ($('#editable-entity:visible').length) {
                 $editableEntity = $('#editable-entity');
 
-                var _topEditable = 0;
+                var _editableTop  = headerHeight;
 
-                if(lastScrollTop <= 40) {
-                    _topEditable = newHeaderTop + _marginEditable;
+                if ( $(window).scrollTop() - headerHeight >= 0 ) {
+                    _editableTop = 0;
                 } else {
-                    _topEditable = _heightHeader;
+                    _editableTop = headerHeight - $(window).scrollTop();
                 }
 
-                $editableEntity.css('top', (newHeaderTop + _marginEditable < 0) ?  0 : _topEditable);
+                $editableEntity.css('top', _editableTop);
+
 
                 //Sugestão de colocar o logo e outras coisas na edit bar:
                 // if scrolltop > x
