@@ -4,6 +4,7 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
+
     private $_ids;
 
     /**
@@ -30,8 +31,14 @@ class Theme extends BaseV1\Theme{
         return __DIR__;
     }
 
+    function aprovado(){
+        $inscricao = $this->_cadastro->getInscricao();
+        return $inscricao->status === \MapasCulturais\Entities\Registration::STATUS_APPROVED;
+    }
+
     protected function _init(){
         parent::_init();
+
         $this->_cadastro = Controllers\Cadastro::i();
 
         $this->_enqueueStyles();
@@ -165,6 +172,29 @@ class Theme extends BaseV1\Theme{
                 'redeCulturaViva' => [ 'private' => true, 'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição' ]
             ],
 
+            'MapasCulturais\Entities\Space' => [
+                'En_Bairro' => [
+                    'label' => 'Bairro',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Num' => [
+                    'label' => 'Número',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Nome_Logradouro' => [
+                    'label' => 'Logradouro',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Complemento' => [
+                    'label' => 'Complemento',
+//                  'required' => true,
+                    'private' => true
+                ]
+            ],
+
             'MapasCulturais\Entities\Agent' => [
                 'rg' => [
                     'label' => 'RG',
@@ -281,37 +311,37 @@ class Theme extends BaseV1\Theme{
                         'intermunicpal' => 'Intermunicipal'
                     )
                 ],
-                'numEdital' => [
+                'edital_num' => [
                     'label' => 'Número do Edital de Seleção',
 //                  'required' => true,
                     'private' => true
                 ],
-                'anoEdital' => [
+                'edital_ano' => [
                     'label' => 'Ano do Edital de Seleção',
 //                  'required' => true,
                     'private' => true
                 ],
-                'nomeProjeto' => [
+                'edital_projeto_nome' => [
                     'label' => 'Nome do Projeto',
 //                  'required' => true,
                     'private' => true
                 ],
-                'localRealizacao' => [
+                'edital_localRealizacao' => [
                     'label' => 'Local de Realização',
 //                  'required' => true,
                     'private' => true
                 ],
-                'etapaProjeto' => [
+                'edital_projeto_etapa' => [
                     'label' => 'Etapa do Projeto',
 //                  'required' => true,
                     'private' => true
                 ],
-                'proponente' => [
+                'edital_proponente' => [
                     'label' => 'Proponente',
 //                  'required' => true,
                     'private' => true
                 ],
-                'resumoProjeto' => [
+                'edital_projeto_resumo' => [
                     'label' => 'Resumo do projeto (objeto)',
 //                  'required' => true,
                     'private' => true
@@ -322,7 +352,7 @@ class Theme extends BaseV1\Theme{
 ////                  'required' => true,
 //                    'private' => true
 //                ],
-                'prestacaoContasEnvio' => [
+                'edital_prestacaoContas_envio' => [
                     'label' => 'Prestação de Contas - Envio',
 //                  'required' => true,
                     'private' => true,
@@ -333,7 +363,7 @@ class Theme extends BaseV1\Theme{
                         'premiado' => 'Ponto de Cultura Premiado'
                     )
                 ],
-                'prestacaoContasStatus' => [
+                'edital_prestacaoContas_status' => [
                     'label' => 'Prestação de Contas - Status',
                     'required' => false,
                     'private' => true,
@@ -344,101 +374,69 @@ class Theme extends BaseV1\Theme{
                         'analise' => 'Em análise'
                     )
                 ],
-                'inicioVigenciaProjeto' => [
+                'edital_projeto_vigencia_inicio' => [
                     'label' => 'Vigência',
 //                  'required' => true,
                     'private' => true
                 ],
-                'fimVigenciaProjeto' => [
+                'edital_projeto_vigencia_fim' => [
                     'label' => 'Vigência',
 //                  'required' => true,
                     'private' => true
                 ],
-                'recebeOutrosFinanciamentos' => [
+                'outrosFinanciamentos' => [
                     'label' => 'Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
 //                  'required' => true,
                     'private' => true
                 ],
-                'descOutrosFinanciamentos' => [
+                'outrosFinanciamentos_descricao' => [
                     'label' => 'Descrição dos outros financiamentos (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
                     'required' => false,
                     'private' => true
                 ],
-
-                // Contato Entidade
-                'emailPrivado' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
-                'telefone1' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
-//                Já tem para Infos. do resp, usamos o mesmo?
-//                'telefone1_operadora' => [
-//                    'label' => 'Mesmo Endereco',
-////                  'required' => true,
-//                    'private' => true
-//                ],
-                'telefone2' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
                 'telefone2_operadora' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Operadora',
 //                  'required' => true,
                     'private' => true
                 ],
-                'responsavelNome' => [
-                    'label' => 'Mesmo Endereco',
+                'responsavel_nome' => [
+                    'label' => 'Nome do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
-                'responsavelCargo' => [
-                    'label' => 'Mesmo Endereco',
+                'responsavel_cargo' => [
+                    'label' => 'Cargo do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
-                'responsavelEmail' => [
-                    'label' => 'Mesmo Endereco',
+                'responsavel_email' => [
+                    'label' => 'Email do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
-                'responsavelTelefone' => [
-                    'label' => 'Mesmo Endereco',
+                'responsavel_telefone' => [
+                    'label' => 'Telefone do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
-                'geoEstado' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
+
                 'En_Bairro' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Bairro',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Num' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Número',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Nome_Logradouro' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
-                'En_Nome_Logradouro' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Logradouro',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Complemento' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Complemento',
 //                  'required' => true,
                     'private' => true
                 ],
@@ -458,6 +456,12 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tem sede propria?',
 //                    'required' => true
                 ],
+
+                'sede_realizaAtividades' => [
+                    'label' => 'Realiza atividades culturais na sede',
+//                    'required' => true
+                ],
+
                 'sede_cnpj' => [
                     'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
                     'required' => false
@@ -471,11 +475,11 @@ class Theme extends BaseV1\Theme{
 //                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
 //                    )
                 ],
-                'local_de_acao_estado' => [
+                'localRealizacao_estado' => [
                     'label' => 'Estado',
                     'required' => false
                 ],
-                'local_de_acao_cidade' => [
+                'localRealizacao_cidade' => [
                     'label' => 'Cidade',
                     'required' => false
                 ],
@@ -487,7 +491,26 @@ class Theme extends BaseV1\Theme{
                 // portifólio
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
-                ]
+                ],
+                'flickr' => [
+                    'label' => 'Flickr',
+                    'validations' => array(
+                        "v::url('flickr.com')" => "A url informada é inválida."
+                    )
+                ],
+                'diaspora' => [
+                    'label' => 'Diáspora',
+                    'validations' => array(
+                        "v::url()" => "A url informada é inválida."
+                    )
+                ],
+                'youtube' => [
+                    'label' => 'Youtube',
+                    'validations' => array(
+                        "v::url()" => "A url informada é inválida."
+                    )
+                ],
+
             ]
         ];
 

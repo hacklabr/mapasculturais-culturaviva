@@ -55,24 +55,24 @@
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Nome do Responsável* <i>?</i></span>
-                <input type="text" ng-blur="save_field('responsavelNome')" ng-model="entity.responsavelNome" />
+                <input type="text" ng-blur="save_field('responsavel_nome')" ng-model="entity.responsavel_nome" />
             </label>
 
             <label class="colunm2">
                 <span>Cargo do Responsável*</span>
-                <input type="text" ng-blur="save_field('responsavelCargo')" ng-model="entity.responsavelCargo"/>
+                <input type="text" ng-blur="save_field('responsavel_cargo')" ng-model="entity.responsavel_cargo"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
                 <span>Email do Responsável* </span>
-                <input type="email" ng-blur="save_field('responsavelEmail')" ng-model="entity.responsavelEmail" />
+                <input type="email" ng-blur="save_field('responsavel_email')" ng-model="entity.responsavel_email" />
             </label>
 
             <label class="colunm2">
                 <span>Telefone do Responsável*</span>
-                <input type="text" ng-blur="save_field('responsavelTelefone')" ng-model="entity.responsavelTelefone"/>
+                <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="entity.responsavel_telefone"/>
             </label>
         </div>
         <div class="clear"></div>
