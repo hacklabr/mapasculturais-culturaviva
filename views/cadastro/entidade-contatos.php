@@ -10,6 +10,7 @@
 
 
 <form ng-controller="EntityContactCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">

@@ -1,5 +1,6 @@
 (function(angular){
     'use strict';
+    var app = angular.module('culturaviva.controllers', []);
 
     var termos = {
             area: MapasCulturais.areasDeAtuacao,
@@ -77,46 +78,51 @@
             ]
         };
 
-    var app = angular.module('culturaviva.controllers', []);
-
-    // Função base para os outros controllers """herdarem"""
-    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout, $http)
-    {
-        $scope.errors = {};
-        $scope.agent = Agent.get({
-            'id': agent_id
-        });
-
-        var _saved_agent = angular.copy($scope.agent);
-
-        $scope.save_field = function save_field(field, force_patch)
-        {
-            var new_value = $scope.agent[field] || "";
-            var old_value = _saved_agent[field] || "";
-
-
-            if(force_patch || (new_value || old_value) && new_value !== old_value)
-            {
-                $scope.agent.patch(field).then(function(res)
-                {
-                    if(res.data && res.data.error)
-                    {   // aconteceu algum erro de validação
-                        $scope.errors[field] = res.data.data[field];
-                    }
-                    else
-                    {   // deu tudo certo
-                        $scope.errors[field] = null;
-                        _saved_agent[field] = angular.copy(new_value);
-                    }
-                })
-                ['catch'](function()
-                {
-                    $scope.errors[field] = ['O sistema não conseguir interpretar essa informação'];
-                });
-            }
+    function extendController($scope, $timeout, Entity, agent_id){
+        $scope.messages = {
+            status: null,
+            text: ''
         };
 
-        $scope.termos = termos;
+        $scope.$watch('messages.status', function(new_status, old_status){
+            if(new_status === null){
+                $scope.messages.text = '';
+                return;
+            }
+
+            var timeout = 1500;
+
+            if(new_status === 'error'){
+                timeout = 5000;
+            }else if(new_status === 'saved'){
+                $scope.messages.text = 'alterações salvas';
+
+            }else if(new_status === 'saving'){
+                $scope.messages.text = 'salvando alterações';
+
+            }
+
+            $timeout(function(){
+                $scope.messages.status = null;
+            }, timeout);
+        });
+
+        $scope.save_field = function save_field(field) {
+            var agent_update = {};
+            agent_update[field] = $scope.agent[field];
+            $scope.messages.status = 'saving';
+            Entity.patch({'id': agent_id}, agent_update, function(agent){
+                $scope.messages.status = 'saved';
+            }, function(error){
+                try{
+                    $scope.messages.text = error.data.data[field].toString();
+                    $scope.messages.status = 'error';
+                }catch(e){
+                    $scope.messages.text = '';
+                    $scope.messages.status = '';
+                }
+            });
+        };
     }
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
@@ -132,32 +138,24 @@
         }
     ]);
 
-    // Controller do 'Informações do responsável'
-    app.controller('ResponsibleCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout',
-        function ResponsibleCtrl($scope, Agent, MapasCulturais, Upload, $timeout)
-        {
-            var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
-            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
-       }
-    ]);
-
-    // FIXME Refatorar daqui pra cima! Nao reutilizar daqui pra cima!!!!
 
     // TODO: Tranforma em diretiva
-     app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
-        function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout) {
+     app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', '$http',
+        function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout, $http) {
 
             // FIXME passar como parametro para generalizar
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,files',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
+            $scope.agent.$promise.then(function(){
+                $scope.agent.files.gallery = $scope.agent.files.gallery || [];
+            });
 
             $scope.config = {
                 images: {
@@ -168,6 +166,23 @@
                     maxUploadSize: '8MB',
                     validation: 'application/pdf'
                 }
+            };
+
+            $scope.deleteFile = function(file){
+
+                $http.delete(MapasCulturais.createUrl('file','single',[file.id])).then(function(){
+                    if(file.group === 'gallery'){
+                        $scope.agent.files.gallery.forEach(function(f, index){
+                            if(file.id === f.id){
+                                $scope.agent.files.gallery.splice(index,1);
+                            }
+                        });
+                    }else{
+                        $scope.agent.files[file.group] = null;
+                    }
+                }, function(a,b,c){
+                    console.log('não foi possível apagar a imagem', a,b,c);
+                });
             };
 
             $scope.uploadFile = function(file, group) {
@@ -181,22 +196,23 @@
                     });
 
                     file.upload.then(function (response) {
-                        if(group === 'avatar'){
-                            $scope.agent['@files:avatar.avatarBig'] = {url: response.data.avatar.files.avatarBig.url};
-
-                        } else if(group === 'portifolio'){
-                            if (response.data.error) {
-                                alert(response.data.data.portifolio);
-                            } else {
-                                $scope.agent['@files:portifolio'] = {url: response.data.portifolio.url};
-                            }
-                        } else if(group === 'gallery'){
-                            $scope.agent['@files:gallery.avatarBig'] = $scope.agent['@files:gallery.avatarBig'] || [];
-                            $scope.agent['@files:gallery.avatarBig'].push({url: response.data.gallery[0].files.avatarBig.url});
+                        if (response.data.error) {
+                            alert(response.data.data.portifolio);
+                            return;
                         }
+                        if (group === 'gallery') {
+                            $scope.agent.files.gallery.push(response.data.gallery[0]);
+                        } else {
+                            $scope.agent.files[group] = response.data[group];
+                        }
+
                         $timeout(function () {
                             file.result = response.data;
                         });
+
+                        $timeout(function(){
+                            $scope.f = 0;
+                        }, 1500);
                     }, function (response) {
                         if (response.status > 0)
                             $scope.errorMsg = response.status + ': ' + response.data;
@@ -212,12 +228,37 @@
        }
     ]);
 
+
+    // Controller do 'Informações do responsável'
+    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
+        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
+//            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
+                           'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
+                           'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
+
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+
+            extendController($scope, $timeout, Entity, agent_id);
+
+       }
+    ]);
+
     app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
         function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
-                var params = {
+            var params = {
                 'id': agent_id,
                 '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
@@ -226,11 +267,7 @@
 
             $scope.agent = Entity.get(params);
 
-            $scope.save_field = function save_field(field) {
-                var agent_update = {};
-                agent_update[field] = $scope.agent[field];
-                Entity.patch({'id': agent_id}, agent_update);
-            };
+            extendController($scope, $timeout, Entity, agent_id);
         }
     ]);
 
@@ -259,11 +296,7 @@
                 };
             });
 
-            $scope.save_field = function save_field(field) {
-                var agent_update = {};
-                agent_update[field] = $scope.agent[field];
-                Entity.patch({'id': agent_id}, agent_update);
-            };
+            extendController($scope, $timeout, Entity, agent_id);
 
             $scope.termos = termos;
 
@@ -341,39 +374,13 @@
 
             $scope.entity = Entity.get(params);
 
-            $scope.msgs = {};
-            $scope.timeouts = {};
+            extendController($scope, $timeout, Entity, agent_id);
 
-            $scope.clear_saved_msg = function(field) {
-                if ($scope.msgs[field] !== undefined) {
-                    $scope.msgs[field]['saved'] = false;
-                }
-            }
-
-            $scope.save_field = function save_field(field) {
-                if ($scope.msgs[field] === undefined) {
-                    $scope.msgs[field] = {};
-                }
-                $scope.msgs[field]['saved'] = false;
-                $scope.msgs[field]['saving'] = true;
-                if ($scope.timeouts[field]) {
-                    $timeout.cancel($scope.timeouts[field]);
-                }
-                var entity_update = {};
-                entity_update[field] = $scope.entity[field];
-                Entity.patch({'id': agent_id}, entity_update, function(entity){
-                    $scope.msgs[field]['saving'] = false;
-                    $scope.msgs[field]['saved'] = true;
-                    $scope.timeouts[field] =  $timeout(function() {
-                                                  $scope.clear_saved_msg(field);
-                                            }, 3000);
-                });
-            };
         }
     ]);
 
-    app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais',
-        function($scope, Entity, MapasCulturais){
+    app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
+        function($scope, Entity, MapasCulturais, $timeout){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
@@ -390,16 +397,8 @@
 
             $scope.entity = Entity.get(params);
 
-            $scope.msgs = {};
+            extendController($scope, $timeout, Entity, agent_id);
 
-            $scope.save_field = function save_field(field) {
-                $scope.msgs[field] = 'saving';
-                var entity_update = {};
-                entity_update[field] = $scope.entity[field];
-                Entity.patch({'id': agent_id}, entity_update, function(entity){
-                    $scope.msgs[field] = 'saved';
-                });
-            };
         }
     ]);
 

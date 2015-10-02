@@ -8,17 +8,21 @@
     $this->cadastroLinkContinuar = 'pontoMais';
 ?>
 
-
 <form ng-controller="PortifolioCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Atividades já realizadas* <i>?</i></span>
             <div class="colunm-20">
-                <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent['@files:portifolio'] ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
-                    <img ng-if="!agent['@files:portifolio']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                    <img ng-if="agent['@files:portifolio']" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                <div class="file-item">
+                    <a ng-if="agent.files.portifolio" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir arquivo">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.portifolio ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
+                        <img ng-if="!agent.files.portifolio" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                        <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                    </div>
                 </div>
+                <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">{{agent.files.portifolio.name}}</a>
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
@@ -101,12 +105,12 @@
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
             <p class="espacoleft">Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
-            <div class="img_updade" ng-repeat="f in agent['@files:gallery.avatarBig']">
-                 <a href="#" class="exclui">x</a>
-                <img src="{{f.url}}" width="160" height="138">
+            <div class="img_updade file-item" ng-repeat="f in agent.files.gallery">
+                <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
+                <img src="{{f.files.avatarBig.url}}" width="160" height="138">
             </div>
-            <div class="img_updade">
-                <div type="file" ngf-select="uploadFile($file, 'gallery')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+            <div class="img_updade file-item">
+                <div type="file" ngf-select="uploadFile($file, 'gallery')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="Clique para incluir uma foto">
                     <img src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                 </div>
                 <div class="progress row" ng-show="f.progress >= 0">

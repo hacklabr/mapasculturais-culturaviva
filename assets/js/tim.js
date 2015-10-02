@@ -13,7 +13,6 @@
         ga('send', 'pageview');
     }
 
-
     $(document).ready(function() {
 
         var deviceAgent = navigator.userAgent.toLowerCase();
@@ -38,12 +37,17 @@
         var lastScrollTop = 0;
 
         var $mainHeader = $('#main-header');
-        var headerHeight = $mainHeader.outerHeight(true);
+        //var headerHeight = $mainHeader.outerHeight(true);
+        /*
+         * var headerHeight inicializa com valor padrão 111, logo após a janela se carregada por completo
+         * o valor pode mudar
+         */
+        var headerHeight = 111;
 
         var header_animation_status = 0;
 
         if ($('#editable-entity').length && $('#editable-entity').is(':visible')) {
-            $('#main-section').css('margin-top', headerHeight + $('#editable-entity').outerHeight(true));
+            $('#main-section').css('margin-top', $('#editable-entity').outerHeight(true));
         }
 
         // inicializa a galeria
@@ -132,12 +136,19 @@
                 $mainHeader.addClass('sombra');
 
 
-
-
             if ($('#editable-entity:visible').length) {
                 $editableEntity = $('#editable-entity');
 
-                $editableEntity.css('top', newHeaderTop + headerHeight);
+                var _editableTop  = headerHeight;
+
+                if ( $(window).scrollTop() - headerHeight >= 0 ) {
+                    _editableTop = 0;
+                } else {
+                    _editableTop = headerHeight - $(window).scrollTop();
+                }
+
+                $editableEntity.css('top', _editableTop);
+
 
                 //Sugestão de colocar o logo e outras coisas na edit bar:
                 // if scrolltop > x

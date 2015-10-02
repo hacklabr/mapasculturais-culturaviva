@@ -10,6 +10,7 @@
 
 
 <form ng-controller="ResponsibleCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -107,10 +108,12 @@
         <h4>Informações Opcionais</h4>
         <div class="row">
             <div class="img_updade" ng-controller="ImageUploadCtrl">
-                <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
-                    <a href="#" class="exclui">x</a>
-                    <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                    <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+                <div class="file-item">
+                    <a ng-if="agent.files.avatar" class="exclui" ng-click="deleteFile(agent.files.avatar)" title="Excluir arquivo">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.avatar ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                        <img ng-if="!agent.files.avatar" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                        <img ng-if="agent.files.avatar" src="{{agent.files.avatar.files.avatarBig.url}}" width="160" height="138">
+                    </div>
                 </div>
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>

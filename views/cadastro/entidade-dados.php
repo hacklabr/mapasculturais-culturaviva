@@ -10,6 +10,7 @@
 
 
 <form ng-controller="EntityCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -33,6 +34,7 @@
             </label>
         </div>
         <div class="clear"></div>
+
         <div ng-show="entity.tipoOrganizacao==='coletivo'">
             <div class="row">
                 <label class="colunm-50">
