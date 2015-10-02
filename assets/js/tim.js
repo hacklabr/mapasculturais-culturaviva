@@ -131,7 +131,6 @@
             else
                 $mainHeader.addClass('sombra');
 
-            $mainHeader.css('top', newHeaderTop);
 
 
 

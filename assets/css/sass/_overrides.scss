@@ -36,7 +36,16 @@ body {
 }
 
 // Header
+#main-header {
+    background-color: #FFFFFF;
+    border: none;
+    position: static;
+}
 
+// Section
+#main-section {
+    margin-top: 0;
+}
 
 body {
     &.controller-panel {
