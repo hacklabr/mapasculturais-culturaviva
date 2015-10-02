@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    
+
     var termos = {
             area: MapasCulturais.areasDeAtuacao,
 
@@ -118,7 +118,7 @@
 
         $scope.termos = termos;
     }
-    
+
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
         function($scope, Entity, MapasCulturais, $http){
             $scope.enviar = function(){
@@ -211,12 +211,12 @@
 
        }
     ]);
-    
+
     app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
         function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
-            
+
                 var params = {
                 'id': agent_id,
                 '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
@@ -225,7 +225,7 @@
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.save_field = function save_field(field) {
                 var agent_update = {};
                 agent_update[field] = $scope.agent[field];
@@ -250,7 +250,14 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.markers = {};
+            $scope.agent = Entity.get(params, function(agent){
+                $scope.markers.main = {
+                    lat: agent.location.latitude,
+                    lng: agent.location.longitude,
+                    message: agent.endereco
+                };
+            });
 
             $scope.save_field = function save_field(field) {
                 var agent_update = {};
@@ -260,7 +267,14 @@
 
             $scope.termos = termos;
 
-            $scope.markers = {};
+
+
+            $scope.$watch('markers.main', function(point){
+                if(point && point.lat && point.lng) {
+                    $scope.agent['location'] = [point.lng, point.lat];
+                    $scope.save_field('location');
+                }
+            }, true);
 
             $scope.cepcoder = {
                 busy: false,
@@ -270,25 +284,28 @@
                     $scope.cepcoder.busy = true;
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
-                        $scope.agent.geoEstado = addr.uf;
-                        $scope.save_field('geoEstado');
+                        if(addr){
+                            $scope.agent.geoEstado = addr.uf;
+                            $scope.save_field('geoEstado');
 
-                        $scope.agent.geoMunicipio = addr.localidade;
-                        $scope.save_field('geoMunicipio');
+                            $scope.agent.geoMunicipio = addr.localidade;
+                            $scope.save_field('geoMunicipio');
 
-                        $scope.agent.En_Bairro = addr.bairro;
-                        $scope.save_field('En_Bairro');
+                            $scope.agent.En_Bairro = addr.bairro;
+                            $scope.save_field('En_Bairro');
 
-                        $scope.agent.En_Nome_Logradouro = addr.logradouro;
-                        $scope.save_field('En_Nome_Logradouro');
+                            $scope.agent.En_Nome_Logradouro = addr.logradouro;
+                            $scope.save_field('En_Nome_Logradouro');
 
+                            var string = (addr.logradouro ? addr.logradouro+', ':'') +
+                                         (addr.bairro ? addr.bairro+', ':'') +
+                                         (addr.localidade ? addr.localidade+', ':'') +
+                                         (addr.uf ? addr.uf+' - ':'');
 
-                        var string = (addr.logradouro ? addr.logradouro+', ':'') +
-                                     (addr.bairro ? addr.bairro+', ':'') +
-                                     (addr.localidade ? addr.localidade+', ':'') +
-                                     (addr.uf ? addr.uf+' - ':'');
+                        }
 
                         return geocoder.code(string);
+
                     }).then(function(point){
                         point.zoom = 14;
                         $scope.markers.main = point;
@@ -311,9 +328,9 @@
 
                 '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
                     'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
-                    'fomento_tipo,fomento_tipo_outros,fomento_tipoReconhecimento,edital_num,' + 
+                    'fomento_tipo,fomento_tipo_outros,fomento_tipoReconhecimento,edital_num,' +
                     'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
-                    'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' + 
+                    'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                     'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
                     'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao',
 
@@ -326,7 +343,7 @@
 
             $scope.msgs = {};
             $scope.timeouts = {};
-                    
+
             $scope.clear_saved_msg = function(field) {
                 if ($scope.msgs[field] !== undefined) {
                     $scope.msgs[field]['saved'] = false;
@@ -372,7 +389,7 @@
             };
 
             $scope.entity = Entity.get(params);
-            
+
             $scope.msgs = {};
 
             $scope.save_field = function save_field(field) {

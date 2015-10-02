@@ -39,6 +39,11 @@
         this.code = function(address) {
             var deferred = $q.defer();
 
+            if(!address){
+                deferred.reject('Não foi fornecido endereço.');
+                return deferred.promise;
+            }
+
             var cepMatch = address.match(/^\s*(\d\d\d\d\d)-?(\d\d\d)\s*$/);
             if(cepMatch) {
                 address = cepMatch[1]+'-'+cepMatch[2]+', Brasil';
@@ -51,8 +56,7 @@
                     var point = {
                         'lng': obj.geometry.location.lng(),
                         'lat': obj.geometry.location.lat(),
-                        'message': obj.formatted_address || '',
-                        '_coded': obj
+                        'message': obj.formatted_address || ''
                     };
 
                     deferred.resolve(point);
@@ -74,7 +78,7 @@
                         '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                                    'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                                    'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
-                               
+
                         '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                         '@permissions': 'view'
                     }
@@ -93,7 +97,7 @@
 
                 var data = {};
                 data[field] = this[field];
-                
+
                 return $http({
                     method:'PATCH',
                     url: patchUrl,
