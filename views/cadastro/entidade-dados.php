@@ -35,15 +35,17 @@
         <div class="row">
             <label class="colunm-50">
                 <span class="destaque">CNPJ da Entidade*</span>
+                
                 <input type="text"
                        ng-blur="save_field('cnpj')"
                        ng-model="entity.cnpj"
-                       ng-disabled="entity.semCNPJ"
+                       ng-disabled="entity.semCNPJ == '1'"
                        ui-mask="99.999.999/9999-99">
                 <p ng-show="true"></p>
                 <div class="naoseaplica">
                     <input type="checkbox"
-                           ng-checked="entity.semCNPJ"
+                           ng-true-value="1"
+                           ng-false-value="0"
                            ng-change="save_field('semCNPJ')"
                            ng-model="entity.semCNPJ" >não tenho CNPJ<span class="destaque"><i>?</i></span>
                 </div>
