@@ -120,52 +120,34 @@ class Cadastro extends \MapasCulturais\Controller{
      */
     function getEntidadeRequiredProperties(){
         $agent = $this->getEntidade();
-
-        if($agent->semCNPJ && $agent->semCNPJ !== 'false'){
-            $required_properties = [
-                // dados da entidade
-                'tipoPontoCulturaDesejado',
-                'tipoOrganizacao',
-                'name',
-                'foiFomentado',
-                'descOutrosFinanciamentos',
-
-                // contatos da entiadade
-                'emailPrivado',
-                'telefone1',
-                'telefone1_operadora',
-                'telefone2',
-                'telefone2_operadora',
-                'responsavelNome',
-                'responsavelCargo',
-                'responsavelEmail',
-                'responsavelTelefone',
-                'geoEstado',
-                'geoMunicipio',
-                'En_Bairro',
-                'En_Num',
-                'En_Nome_Logradouro'
-            ];
-        }else{
-            $required_properties = [
-                'cnpj',
-                'name',
-                'nomeCompleto',
-                'representanteLegal',
-                'foiFomentado',
-                'tipoCertificacao',
-                'tipoReconhecimento',
-                'numEdital',
-                'anoEdital',
-                'localRealizacao',
-                'etapaProjeto',
-                'proponente',
-                'resumoProjeto',
-                'prestacaoContasEnvio',
-                'prestacaoContasStatus',
-                'recebeOutrosFinanciamentos',
-                'descOutrosFinanciamentos'
-            ];
+        $required_properties = [
+            'name',
+            'tipoOrganizacao',
+            'foiFomentado',
+            'fomento_tipo',
+            'fomento_tipo_outros',
+            'fomento_tipoReconhecimento',
+            'edital_num',
+            'edital_ano',
+            'edital_projeto_nome',
+            'edital_localRealizacao',
+            'edital_projeto_etapa',
+            'edital_proponente',
+            'edital_projeto_resumo',
+            'edital_prestacaoContas_envio',
+            'edital_projeto_vigencia_inicio',
+            'edital_projeto_vigencia_fim',
+            'outrosFinanciamentos',
+            
+        ];
+        
+        if(!$agent->semCNPJ){
+            $required_properties[] = 'cnpj';
+            $required_properties[] = 'nomeCompleto';
+        }
+        
+        if($agent->edital_prestacaoContas_envio === 'enviada'){
+            $required_properties[] = 'edital_prestacaoContas_status';
         }
 
         return $required_properties;
@@ -178,14 +160,12 @@ class Cadastro extends \MapasCulturais\Controller{
     function getResponsavelRequiredProperties(){
         return [
             'nomeCompleto',
-            'rg',
-            'rg_orgao',
             'relacaoPonto',
             'cpf',
-            'geoEstado',
             'emailPrivado',
             'telefone1',
-            'telefone1_operadora'
+            'telefone1_operadora',
+            'relacaoPonto'
         ];
     }
 
@@ -378,6 +358,28 @@ class Cadastro extends \MapasCulturais\Controller{
             $responsavel->publish(true);
             $entidade->publish(true);
             $ponto->publish(true);
+            
+            if($ponto->sede_realizaAtividades){
+                $espaco = new \MapasCulturais\Entities\Space;
+                $espaco->type = 125; // ponto de cultura
+                $espaco->owner = $ponto;
+                $espaco->name = $ponto->name;
+                $espaco->nomeCompleto = $ponto->nomeCompleto;
+                $espaco->shortDescription = $ponto->shortDescription;
+                $espaco->longDescription = $ponto->longDescription;
+                $espaco->location = $ponto->location;
+                $espaco->geoEstado = $ponto->geoEstado;
+                $espaco->geoMunicipio = $ponto->geoMunicipio;
+                $espaco->En_Bairro = $ponto->En_Bairro;
+                $espaco->En_Num = $ponto->En_Num;
+                $espaco->En_Nome_Logradouro = $ponto->En_Nome_Logradouro;
+                $espaco->En_Complemento = $ponto->En_Complemento;
+                $espaco->endereco = "{$espaco->En_Nome_Logradouro} {$espaco->En_Num}, {$espaco->En_Bairro}, {$espaco->geoMunicipio}, {$espaco->geoEstado}";
+                $espaco->terms = $ponto->terms;
+                
+                $espaco->save(true);
+                
+            }
 
             $inscricao->send();
 
