@@ -1,11 +1,13 @@
 <section id="page-rede" >
     <article class="slide-home">
-           <h3>Declare seu Ponto de Cultura!</h3>
-            <p>Um ambiente de trocas, experiências, serviços, conhecimentos e informações. E se você já é Ponto de Cultura entre na rede e conheça um mundo de novas possibilidades </p>
+            <div class="text-banner">
+                <h3>Declare seu Ponto de Cultura!</h3>
+                <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva:</p>
+            </div>
             <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra') ?>">
                 <button type="submit" class="btn btn__active">Entrar para a Rede >>></button>
             </form>
-            <a class="what" href="#">Vamos conhecer a plataforma Cultura Viva?</a>
+            <span class="bg-transparent"></span>
     </article>
 
     <article class="points_culture">
@@ -45,16 +47,16 @@
     </article>
     <article class="row redes">
         <a href="#" class="facebook">
-            <i class="icon icon-facebook-squared"></i>
+            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-01.png') ?>" />
         </a>
         <a href="#" class="twitter">
-            <i class="icon icon-twitter"></i>
+            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
         </a>
         <a href="#" class="youtube">
-            <i class="icon icon-twitter"></i>
+            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
         </a>
         <a href="#" class="instagram">
-            <i class="icon icon-twitter"></i>
+            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
         </a>
 
     </article>
