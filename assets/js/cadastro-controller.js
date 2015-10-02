@@ -1,46 +1,7 @@
 (function(angular){
     'use strict';
-
-    var app = angular.module('culturaviva.controllers', []);
-
-    // Função base para os outros controllers """herdarem"""
-    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout, $http)
-    {
-        $scope.errors = {};
-        $scope.agent = Agent.get({
-            'id': agent_id
-        });
-
-        var _saved_agent = angular.copy($scope.agent);
-
-        $scope.save_field = function save_field(field, force_patch)
-        {
-            var new_value = $scope.agent[field] || "";
-            var old_value = _saved_agent[field] || "";
-
-
-            if(force_patch || (new_value || old_value) && new_value !== old_value)
-            {
-                $scope.agent.patch(field).then(function(res)
-                {
-                    if(res.data && res.data.error)
-                    {   // aconteceu algum erro de validação
-                        $scope.errors[field] = res.data.data[field];
-                    }
-                    else
-                    {   // deu tudo certo
-                        $scope.errors[field] = null;
-                        _saved_agent[field] = angular.copy(new_value);
-                    }
-                })
-                ['catch'](function()
-                {
-                    $scope.errors[field] = ['O sistema não conseguir interpretar essa informação'];
-                });
-            }
-        };
-
-        $scope.termos = {
+    
+    var termos = {
             area: MapasCulturais.areasDeAtuacao,
 
             local_realizacao: [
@@ -115,6 +76,47 @@
                 'Populações em áreas de vulnerabilidade social'
             ]
         };
+
+    var app = angular.module('culturaviva.controllers', []);
+
+    // Função base para os outros controllers """herdarem"""
+    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout, $http)
+    {
+        $scope.errors = {};
+        $scope.agent = Agent.get({
+            'id': agent_id
+        });
+
+        var _saved_agent = angular.copy($scope.agent);
+
+        $scope.save_field = function save_field(field, force_patch)
+        {
+            var new_value = $scope.agent[field] || "";
+            var old_value = _saved_agent[field] || "";
+
+
+            if(force_patch || (new_value || old_value) && new_value !== old_value)
+            {
+                $scope.agent.patch(field).then(function(res)
+                {
+                    if(res.data && res.data.error)
+                    {   // aconteceu algum erro de validação
+                        $scope.errors[field] = res.data.data[field];
+                    }
+                    else
+                    {   // deu tudo certo
+                        $scope.errors[field] = null;
+                        _saved_agent[field] = angular.copy(new_value);
+                    }
+                })
+                ['catch'](function()
+                {
+                    $scope.errors[field] = ['O sistema não conseguir interpretar essa informação'];
+                });
+            }
+        };
+
+        $scope.termos = termos;
     }
     
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
@@ -241,7 +243,7 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,name,shortDescription,cep,tem_sede,mesmoEndereco,geoEstado,geoMunicipio,'+
+                '@select': 'id,terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,geoEstado,geoMunicipio,'+
                     'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
                     'localRealizacao_cidade,localRealizacao_espaco,location',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
@@ -256,19 +258,7 @@
                 Entity.patch({'id': agent_id}, agent_update);
             };
 
-            $scope.termos = {
-                area: MapasCulturais.areasDeAtuacao,
-
-                local_realizacao: [
-                    'Escolas',
-                    'Universidades',
-                    'Praças',
-                    'Salas',
-                    'CEUs',
-                    'Feiras',
-                    'Eventos'
-                ]
-            };
+            $scope.termos = termos;
 
             $scope.markers = {};
 
