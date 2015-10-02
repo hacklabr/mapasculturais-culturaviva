@@ -1,8 +1,8 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Dados da Entidade';
-    $this->cadastroText = 'Inclua os dados da Entidade responsável pelo Ponto de Cultura';
+    $this->cadastroTitle = 'Dados da Entidade ou Coletivo Cultural';
+    $this->cadastroText = 'Inclua os dados da Entidade ou Coletivo Cultural responsável pelo Ponto de Cultura';
     $this->cadastroIcon = 'icon-vcard';
     $this->cadastroPageClass = 'dados-entidade page-base-form';
 ?>
@@ -11,17 +11,7 @@
 <form ng-controller="EntityCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-        <div class="row" ng-show="entity.semCNPJ">
-            <label class="colunm-50">
-                <span class="destaque">Quero ser* <i>?</i></span>
-                <select name="tipoPontoCulturaDesejado"
-                        ng-change="save_field('tipoPontoCulturaDesejado')"
-                        ng-model="entity.tipoPontoCulturaDesejado">
-                    <option value="ponto">Ponto</option>
-                    <option value="pontao">Pontão</option>
-                </select>
-            </label>
-
+        <div class="row">
             <label class="colunm-50">
                 <span class="destaque">Tipo de organização* <i>?</i></span>
                 <select name="tipoOrganizacao"
@@ -31,21 +21,33 @@
                     <option value="entidades">Entidade Cultural</option>
                 </select>
             </label>
+            <label class="colunm-50" ng-show="entity.tipoOrganizacao==='coletivo'">
+                <span class="destaque">Quero ser* <i>?</i></span>
+                <select name="tipoPontoCulturaDesejado"
+                        ng-change="save_field('tipoPontoCulturaDesejado')"
+                        ng-model="entity.tipoPontoCulturaDesejado">
+                    <option value="ponto">Ponto</option>
+                    <option value="pontao">Pontão</option>
+                </select>
+            </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm-50">
                 <span class="destaque">CNPJ da Entidade*</span>
+                
                 <input type="text"
                        ng-blur="save_field('cnpj')"
                        ng-model="entity.cnpj"
-                       ng-disabled="entity.semCNPJ">
+                       ng-disabled="entity.semCNPJ == '1'"
+                       ui-mask="99.999.999/9999-99">
                 <p ng-show="true"></p>
                 <div class="naoseaplica">
                     <input type="checkbox"
-                           ng-checked="entity.semCNPJ"
+                           ng-true-value="1"
+                           ng-false-value="0"
                            ng-change="save_field('semCNPJ')"
-                           ng-model="entity.semCNPJ" >não se aplica <span class="destaque"><i>?</i></span>
+                           ng-model="entity.semCNPJ" >não tenho CNPJ<span class="destaque"><i>?</i></span>
                 </div>
             </label>
 
@@ -64,11 +66,22 @@
 
             <label class="colunm-50">
                 <span class="destaque" ng-hide="entity.semCNPJ">Nome Fantasia* <i>?</i></span>
-                <span class="destaque" ng-show="entity.semCNPJ">Nome do Coletivo Cultura* <i>?</i></span>
+                <span class="destaque" ng-show="entity.semCNPJ">Nome do Coletivo Cultura* <i>?</i>
+                </span>
+                <div ng-messages="entity.semCNPJ.$error" style="color:maroon" role="alert">
+                    <div ng-message="required">You did not enter a field</div>
+                    <div ng-message="minlength">Your field is too short</div>
+                    <div ng-message="maxlength">Your field is too long</div>
+                </div>
+                <div ng-messages="msgs.name" style="color:maroon" role="success">
+                    <div ng-message="saving">salvando...</div>
+                    <div ng-message="saved">Salvo!</div>
+                </div>
                 <input type="text" ng-blur="save_field('name')" ng-model="entity.name" >
             </label>
         </div>
         <div class="clear"></div>
+        <?php /*
         <div class="row" ng-hide="entity.semCNPJ">
             <label class="colunm-50">
                 <span class="destaque">Tipo de Certificação* <i>?</i></span>
@@ -82,81 +95,96 @@
             </label>
         </div>
         <div class="clear"></div>
-
+        */ ?>
         <div class="row">
-            <label class="colunm-50">
-                <span class="destaque">Você já foi fomentado pelo MinC* <i>?</i></span>
-                <span class="label-radio">
-                    <input type="radio" name="formentominc" value="sim"
+            <div class="colunm-50">
+                <span class="destaque" ng-hide="entity.semCNPJ">A Entidade já foi fomentado pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="entity.semCNPJ">O Coletivo já foi fomentado pelo MinC* <i>?</i></span>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="formentominc"
+                           ng-value="1"
                            ng-change="save_field('foiFomentado')"
-                           ng-model="entity.foiFomentado"> sim
-                </span>
-                <span class="label-radio">
-                <input type="radio" name="formentominc" value="nao"
-                       ng-change="save_field('foiFomentado')"
-                       ng-model="entity.foiFomentado"> Não
-                </span>
-            </label>
+                           ng-model="entity.foiFomentado"> Sim
+                </label>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="formentominc"
+                           ng-value="0"
+                           ng-change="save_field('foiFomentado')"
+                           ng-model="entity.foiFomentado"> Não
+                </label>
+            </div>
         </div>
         <div class="clear"></div>
-        <div class="row" ng-show="entity.semCNPJ && entity.foiFomentado">
-            <label class="colunm-50">
-                <span>Que tipo de financiamento recebe ou recebeu?</span>
-                <input type="text"
-                       ng-blur="save_field('descOutrosFinanciamentos')"
-                       ng-model="entity.descOutrosFinanciamentos" >
-            </label>
-        </div>
-        <div class="clear"></div>
-        <div ng-hide="entity.semCNPJ">
+        <div ng-show="entity.foiFomentado">
+            <div class="row">
+                <label class="colunm-50">
+                    <span class="destaque" ng-hide="entity.semCNPJ">Qual o principal financiamento que a Entidade recebe ou recebeu?</span>
+                    <span class="destaque" ng-show="entity.semCNPJ">Qual o principal financiamento que o Coletivo recebe ou recebeu?</span>
+                    <select name="tipoCertificacao"
+                            ng-change="save_field('fomento_tipo')"
+                            ng-model="entity.fomento_tipo">
+                        <option value="convenio">Convênio</option>
+                        <option value="tcc">TCC</option>
+                        <option value="bolsa">Bolsa</option>
+                        <option value="premio">Prêmio</option>
+                        <option value="rouanet">Lei Rouanet</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <input type="text"
+                           ng-show="entity.fomento_tipo==='outros'"
+                           ng-blur="save_field('fomento_tipo_outros')"
+                           ng-model="entity.fomento_tipo_outros">
+                </label>
+            </div>
             <div class="clear"></div>
             <div class="row">
-                <label class="colunm-full">
+                <div class="colunm-full">
                     <span class="destaque">Tipo de Reconhecimento* <i>?</i></span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="tiporeconhecimento"
+                    <label class="label-radio"><input type="radio"
+                                                     name="fomento_tipoReconhecimento"
                                                      value="minc"
-                                                     ng-change="save_field('tipoReconhecimento')"
-                                                     ng-model="entity.tipoReconhecimento" > Direto com o MinC</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="tiporeconhecimento"
+                                                     ng-change="save_field('fomento_tipoReconhecimento')"
+                                                     ng-model="entity.fomento_tipoReconhecimento" > Direto com o MinC</label>
+                    <label class="label-radio"><input type="radio"
+                                                     name="fomento_tipoReconhecimento"
                                                      value="estadual"
-                                                     ng-change="save_field('tipoReconhecimento')"
-                                                     ng-model="entity.tipoReconhecimento" > Estadual</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="tiporeconhecimento"
+                                                     ng-change="save_field('fomento_tipoReconhecimento')"
+                                                     ng-model="entity.fomento_tipoReconhecimento" > Estadual</label>
+                    <label class="label-radio"><input type="radio"
+                                                     name="fomento_tipoReconhecimento"
                                                      value="municipal"
-                                                     ng-change="save_field('tipoReconhecimento')"
-                                                     ng-model="entity.tipoReconhecimento" > Municipal</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="tiporeconhecimento"
+                                                     ng-change="save_field('fomento_tipoReconhecimento')"
+                                                     ng-model="entity.fomento_tipoReconhecimento" > Municipal</label>
+                    <label class="label-radio"><input type="radio"
+                                                     name="fomento_tipoReconhecimento"
                                                      value="intermunicipal"
-                                                     ng-change="save_field('tipoReconhecimento')"
-                                                     ng-model="entity.tipoReconhecimento" > Intermunicipal</span>
+                                                     ng-change="save_field('fomento_tipoReconhecimento')"
+                                                     ng-model="entity.fomento_tipoReconhecimento" > Intermunicipal</label>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+                <label class="colunm-50">
+                    <span class="destaque">Número do Edital de Seleção*</span>
+                    <input type="text" ng-blur="save_field('edital_num')" ng-model="entity.edital_num" >
+                </label>
+                <label class="colunm-50">
+                    <span class="destaque">Ano do Edital de Seleção*</span>
+                    <input type="text" ng-blur="save_field('edital_ano')" ng-model="entity.edital_ano" >
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-50">
-                    <span>Número do Edital de Seleção*</span>
-                    <input type="text" ng-blur="save_field('numEdital')" ng-model="entity.numEdital" >
-                </label>
-
-                <label class="colunm-50">
-                    <span>Ano do Edital de Seleção*</span>
-                    <input type="text" ng-blur="save_field('anoEdital')" ng-model="entity.anoEdital" >
-                </label>
-            </div>
-            <div class="clear"></div>
-            <div class="row">
-                <label class="colunm-50">
-                    <span>Nome do Projeto*</span>
-                    <input type="text" ng-blur="save_field('nomeProjeto')" ng-model="entity.nomeProjeto" >
+                    <span class="destaque">Título do Projeto*</span>
+                    <input type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="entity.edital_projeto_nome" >
                 </label>
 
                 <label class="colunm-50">
                     <span class="destaque">Local de Realização* <i>?</i></span>
-                    <input type="text" ng-blur="save_field('localRealizacao')" ng-model="entity.localRealizacao" >
+                    <input type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="entity.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="entity.locationrealization">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -166,32 +194,32 @@
             </div>
             <div class="clear"></div>
             <div class="row">
-                <label class="colunm-50">
+                <div class="colunm-50">
                     <span class="destaque">Etapa do Projeto* <i>?</i></span>
-                    <span class="label-radio"><input type="radio"
+                    <label class="label-radio"><input type="radio"
                                                      name="etapaprojeto"
                                                      value="emexecucao"
-                                                     ng-change="save_field('etapaProjeto')"
-                                                     ng-model="entity.etapaProjeto"> Em Execução</span>
-                    <span class="label-radio"><input type="radio"
+                                                     ng-change="save_field('edital_projeto_etapa')"
+                                                     ng-model="entity.edital_projeto_etapa"> Em Execução</label>
+                    <label class="label-radio"><input type="radio"
                                                      name="etapaprojeto"
                                                      value="executado"
-                                                     ng-change="save_field('etapaProjeto')"
-                                                     ng-model="entity.etapaProjeto"> Já executado</span>
-                </label>
+                                                     ng-change="save_field('edital_projeto_etapa')"
+                                                     ng-model="entity.edital_projeto_etapa"> Já executado</label>
+                </div>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-50">
-                    <span>Proponente* </span>
-                    <input type="text" ng-blur="save_field('proponente')" ng-model="entity.proponente" >
+                    <span class="destaque">Proponente* </span>
+                    <input type="text" ng-blur="save_field('edital_proponente')" ng-model="entity.edital_proponente" >
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
                     <span class="destaque">Resumo do projeto(objeto)* <i>?</i></span>
-                    <textarea ng-blur="save_field('resumoProjeto')" ng-model="entity.resumoProjeto"> </textarea>
+                    <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="entity.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
             <div class="clear"></div>
@@ -231,69 +259,88 @@
                 </label>
             </div>-->
             <div class="clear"></div>
-            <div class="row">
-                <label class="colunm-50">
-                    <span class="destaque">Prestação de Contas* <i>?</i></span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasEnvio"
-                                                     value="enviada"
-                                                     ng-blur="save_field('prestacaoContasEnvio')"
-                                                     ng-model="entity.prestacaoContasEnvio" > Enviada</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasEnvio"
-                                                     value="naoEnviada"
-                                                     ng-blur="save_field('prestacaoContasEnvio')" ng-model="entity.prestacaoContasEnvio"  > Não Enviada</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasEnvio"
-                                                     value="premiado"
-                                                     ng-blur="save_field('prestacaoContasEnvio')"
-                                                     ng-model="entity.prestacaoContasEnvio" > Ponto de Cultura Premiado</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasStatus"
-                                                     value="aprovada"
-                                                     ng-blur="save_field('prestacaoContasStatus')"
-                                                     ng-model="entity.prestacaoContasStatus"  > Aprovada</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasStatus"
-                                                     value="naoaprovada"
-                                                     ng-blur="save_field('prestacaoContasStatus')"
-                                                     ng-model="entity.prestacaoContasStatus" > Não Aprovada</span>
-                    <span class="label-radio"><input type="radio"
-                                                     name="prestacaoContasStatus"
-                                                     value="analise"
-                                                     ng-blur="save_field('prestacaoContasStatus')"
-                                                     ng-model="entity.prestacaoContasStatus"  > Em Análise</span>
-                </label>
+            <div ng-show="entity.edital_projeto_etapa==='executado'">
+                <div class="row">
+                    <div class="colunm-50">
+                        <span class="destaque">Prestação de Contas* <i>?</i></span>
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_envio"
+                                                         value="enviada"
+                                                         ng-blur="save_field('edital_prestacaoContas_envio')"
+                                                         ng-model="entity.edital_prestacaoContas_envio" > Enviada</label>
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_envio"
+                                                         value="naoEnviada"
+                                                         ng-blur="save_field('edital_prestacaoContas_envio')"
+                                                         ng-model="entity.edital_prestacaoContas_envio"  > Não Enviada</label>
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_envio"
+                                                         value="premiado"
+                                                         ng-blur="save_field('edital_prestacaoContas_envio')"
+                                                         ng-model="entity.edital_prestacaoContas_envio" > Ponto de Cultura Premiado</label>
+                    </div>
+                </div>
+                <div class="row" ng-show="entity.edital_prestacaoContas_envio==='enviada'">
+                    <div class="colunm-50">
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_status"
+                                                         value="aprovada"
+                                                         ng-blur="save_field('edital_prestacaoContas_status')"
+                                                         ng-model="entity.edital_prestacaoContas_status"  > Aprovada</label>
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_status"
+                                                         value="naoaprovada"
+                                                         ng-blur="save_field('edital_prestacaoContas_status')"
+                                                         ng-model="entity.edital_prestacaoContas_status" > Não Aprovada</label>
+                        <label class="label-radio"><input type="radio"
+                                                         name="edital_prestacaoContas_status"
+                                                         value="analise"
+                                                         ng-blur="save_field('edital_prestacaoContas_status')"
+                                                         ng-model="entity.edital_prestacaoContas_status"  > Em Análise</label>
+                    </div>
+                </div>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full vigencia">
-                    <span >Vigência*:    </span>
+                    <span class="destaque">Vigência*:    </span>
                     <span class="vigencia-box vigiencia-de ">
-                        de <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('inicioVigenciaProjeto')" ng-model="entity.inicioVigenciaProjeto">
+                        de <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="entity.edital_projeto_vigencia_inicio">
                     </span>
                     <span class="vigencia-box vigiencia-ate">
-                        até  <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('fimVigenciaProjeto')" ng-model="entity.fimVigenciaProjeto">
+                        até  <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="entity.edital_projeto_vigencia_fim">
                     </span>
 
                 </label>
             </div>
             <div class="clear"></div>
-            <div class="row">
-                <label class="colunm-full">
-                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
-                    <span class="label-radio"><input type="radio" name="financiamentos" value="sim" ng-change="save_field('recebeOutrosFinanciamentos')" ng-model="entity.recebeOutrosFinanciamentos"> Sim</span>
-                    <span class="label-radio"><input type="radio" name="financiamentos" value="nao" ng-change="save_field('recebeOutrosFinanciamentos')" ng-model="entity.recebeOutrosFinanciamentos"> Não</span>
-                </label>
-            </div>
-            <div class="clear"></div>
-            <div class="row" ng-show="entity.recebeOutrosFinanciamentos==='sim'">
-                <label class="colunm-50">
-                    <span>Quais ?</span>
-                    <input type="text" ng-blur="save_field('descOutrosFinanciamentos')" ng-model="entity.descOutrosFinanciamentos" >
-                </label>
-            </div>
-            <div class="clear"></div>
         </div>
+        <div class="row">
+            <div class="colunm-full">
+               <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="financiamentos"
+                           ng-value="1"
+                           ng-change="save_field('outrosFinanciamentos')"
+                           ng-model="entity.outrosFinanciamentos"> Sim</label>
+                <label class="label-radio">
+                    <input type="radio"
+                           name="financiamentos"
+                           ng-value="0"
+                           ng-change="save_field('outrosFinanciamentos')"
+                           ng-model="entity.outrosFinanciamentos"> Não</label>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <?php /*
+        <div class="row" ng-show="entity.recebeOutrosFinanciamentos">
+            <label class="colunm-50">
+                <span class="destaque">Quais ?</span>
+                <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="entity.outrosFinanciamentos_descricao" >
+            </label>
+        </div>
+        <div class="clear"></div>
+        */ ?>
     </div>
 </form>

@@ -7,8 +7,9 @@
         'culturaviva.directives',
         'Notifications',
         'ngFileUpload',
-        'ui.date'
-//        'ui.mask'
+        'ngMessages',
+        'ui.date',
+        'ui.mask'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
