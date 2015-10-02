@@ -4,7 +4,6 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
-
     private $_ids;
 
     /**
@@ -38,7 +37,6 @@ class Theme extends BaseV1\Theme{
 
     protected function _init(){
         parent::_init();
-
         $this->_cadastro = Controllers\Cadastro::i();
 
         $this->_enqueueStyles();
@@ -252,7 +250,7 @@ class Theme extends BaseV1\Theme{
                     'type' => 'select',
                     'options' => array(
                         'coletivo' => 'Coletivo Cultural',
-                        'entidades' => 'Entidade Cultural'
+                        'entidade' => 'Entidade Cultural'
                     )
                 ],
                 'cnpj' => [
