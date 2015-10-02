@@ -5,10 +5,12 @@
     $this->cadastroText = 'Inclua os dados da Entidade ou Coletivo Cultural responsável pelo Ponto de Cultura';
     $this->cadastroIcon = 'icon-vcard';
     $this->cadastroPageClass = 'dados-entidade page-base-form';
+    $this->cadastroLinkContinuar = 'entidadeContatos';
 ?>
 
 
 <form ng-controller="EntityCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -18,10 +20,10 @@
                         ng-change="save_field('tipoOrganizacao')"
                         ng-model="entity.tipoOrganizacao">
                     <option value="coletivo">Coletivo Cultural</option>
-                    <option value="entidades">Entidade Cultural</option>
+                    <option value="entidade">Entidade (CNPJ)</option>
                 </select>
             </label>
-            <label class="colunm-50" ng-show="entity.tipoOrganizacao==='coletivo'">
+            <label class="colunm-50" ng-show="entity.tipoOrganizacao">
                 <span class="destaque">Quero ser* <i>?</i></span>
                 <select name="tipoPontoCulturaDesejado"
                         ng-change="save_field('tipoPontoCulturaDesejado')"
@@ -32,74 +34,70 @@
             </label>
         </div>
         <div class="clear"></div>
-        <div class="row">
-            <label class="colunm-50">
-                <span class="destaque">CNPJ da Entidade*</span>
-                
-                <input type="text"
-                       ng-blur="save_field('cnpj')"
-                       ng-model="entity.cnpj"
-                       ng-disabled="entity.semCNPJ == '1'"
-                       ui-mask="99.999.999/9999-99">
-                <p ng-show="true"></p>
-                <div class="naoseaplica">
-                    <input type="checkbox"
-                           ng-true-value="1"
-                           ng-false-value="0"
-                           ng-change="save_field('semCNPJ')"
-                           ng-model="entity.semCNPJ" >não tenho CNPJ<span class="destaque"><i>?</i></span>
-                </div>
-            </label>
 
-            <label class="colunm-50" ng-hide="entity.semCNPJ">
-                <span class="destaque">Nome da Razão Social da Entidade* <i>?</i></span>
-                <input type="text" ng-blur="save_field('nomeCompleto')" ng-model="entity.nomeCompleto" >
-            </label>
+        <div ng-show="entity.tipoOrganizacao==='coletivo'">
+            <div class="row">
+                <label class="colunm-50">
+                    <span class="destaque">Nome do Coletivo Cultura* <i>?</i>
+                    </span>
+                    <input type="text" ng-blur="save_field('name')" ng-model="entity.name">
+                </label>
+            </div>
+            <div class="clear"></div>
         </div>
-        <!--<div ng-show="entity.semCNPJ">-->
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm-50" ng-hide="entity.semCNPJ">
-                <span class="destaque">Nome do Representante Legal* <i>?</i></span>
-                <input type="text" ng-blur="save_field('representanteLegal')" ng-model="entity.representanteLegal" >
-            </label>
 
-            <label class="colunm-50">
-                <span class="destaque" ng-hide="entity.semCNPJ">Nome Fantasia* <i>?</i></span>
-                <span class="destaque" ng-show="entity.semCNPJ">Nome do Coletivo Cultura* <i>?</i>
-                </span>
-                <div ng-messages="entity.semCNPJ.$error" style="color:maroon" role="alert">
-                    <div ng-message="required">You did not enter a field</div>
-                    <div ng-message="minlength">Your field is too short</div>
-                    <div ng-message="maxlength">Your field is too long</div>
+        <div ng-show="entity.tipoOrganizacao">
+            <div ng-show="entity.tipoOrganizacao==='entidade'">
+                <div class="row">
+                    <label class="colunm-50">
+                        <span class="destaque">CNPJ da Entidade*</span>
+                        <input type="text"
+                               ng-blur="save_field('cnpj')"
+                               ng-model="entity.cnpj"
+                               ng-disabled="entity.semCNPJ == '1'"
+                               ui-mask="99.999.999/9999-99">
+                    </label>
                 </div>
-                <div ng-messages="msgs.name" style="color:maroon" role="success">
-                    <div ng-message="saving">salvando...</div>
-                    <div ng-message="saved">Salvo!</div>
+                <!--<div ng-show="entity.semCNPJ">-->
+                <div class="clear"></div>
+                <div class="row">
+                    <label class="colunm-50">
+                        <span class="destaque">Nome do Representante Legal* <i>?</i></span>
+                        <input type="text" ng-blur="save_field('representanteLegal')" ng-model="entity.representanteLegal" >
+                    </label>
+
+                    <label class="colunm-50">
+                        <span class="destaque">Nome Fantasia* <i>?</i></span>
+                        </span>
+                        <div ng-messages="entity.name.$error" style="color:maroon" role="alert">
+                            <div ng-message="required">You did not enter a field</div>
+                            <div ng-message="minlength">Your field is too short</div>
+                            <div ng-message="maxlength">Your field is too long</div>
+                        </div>
+                        <input type="text" ng-blur="save_field('name')" ng-model="entity.name" >
+                    </label>
                 </div>
-                <input type="text" ng-blur="save_field('name')" ng-model="entity.name" >
-            </label>
-        </div>
-        <div class="clear"></div>
-        <?php /*
-        <div class="row" ng-hide="entity.semCNPJ">
-            <label class="colunm-50">
-                <span class="destaque">Tipo de Certificação* <i>?</i></span>
-                <select name="tipoCertificacao"
-                        ng-change="save_field('tipoCertificacao')"
-                        ng-model="entity.tipoCertificacao">
-                    <option value="ponto_coletivo">Ponto de Cultura - Grupo ou Coletivo</option>
-                    <option value="ponto_entidade">Ponto de Cultura - Entidade</option>
-                    <option value="pontao_entidade">Pontão de Cultura - Entidade</option>
-                </select>
-            </label>
-        </div>
-        <div class="clear"></div>
-        */ ?>
-        <div class="row">
+                <div class="clear"></div>
+                <?php /*
+                <div class="row">
+                    <label class="colunm-50">
+                        <span class="destaque">Tipo de Certificação* <i>?</i></span>
+                        <select name="tipoCertificacao"
+                                ng-change="save_field('tipoCertificacao')"
+                                ng-model="entity.tipoCertificacao">
+                            <option value="ponto_coletivo">Ponto de Cultura - Grupo ou Coletivo</option>
+                            <option value="ponto_entidade">Ponto de Cultura - Entidade</option>
+                            <option value="pontao_entidade">Pontão de Cultura - Entidade</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="clear"></div>
+                */ ?>
+            </div>
+            <div class="row">
             <div class="colunm-50">
-                <span class="destaque" ng-hide="entity.semCNPJ">A Entidade já foi fomentado pelo MinC* <i>?</i></span>
-                <span class="destaque" ng-show="entity.semCNPJ">O Coletivo já foi fomentado pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="entity.tipoOrganizacao==='entidade'">A Entidade já foi financiada pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="entity.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC* <i>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
                            name="formentominc"
@@ -120,8 +118,8 @@
         <div ng-show="entity.foiFomentado">
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque" ng-hide="entity.semCNPJ">Qual o principal financiamento que a Entidade recebe ou recebeu?</span>
-                    <span class="destaque" ng-show="entity.semCNPJ">Qual o principal financiamento que o Coletivo recebe ou recebeu?</span>
+                    <span class="destaque" ng-show="entity.tipoOrganizacao==='entidade'">Qual o principal financiamento que a Entidade recebe ou recebeu?</span>
+                    <span class="destaque" ng-show="entity.tipoOrganizacao==='coletivo'">Qual o principal financiamento que o Coletivo recebe ou recebeu?</span>
                     <select name="tipoCertificacao"
                             ng-change="save_field('fomento_tipo')"
                             ng-model="entity.fomento_tipo">
@@ -257,8 +255,8 @@
                         </tr>
                     </table>
                 </label>
-            </div>-->
-            <div class="clear"></div>
+            </div>
+            <div class="clear"></div>-->
             <div ng-show="entity.edital_projeto_etapa==='executado'">
                 <div class="row">
                     <div class="colunm-50">
@@ -314,33 +312,33 @@
                 </label>
             </div>
             <div class="clear"></div>
-        </div>
-        <div class="row">
-            <div class="colunm-full">
-               <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
-                <label class="label-radio">
-                    <input type="radio"
-                           name="financiamentos"
-                           ng-value="1"
-                           ng-change="save_field('outrosFinanciamentos')"
-                           ng-model="entity.outrosFinanciamentos"> Sim</label>
-                <label class="label-radio">
-                    <input type="radio"
-                           name="financiamentos"
-                           ng-value="0"
-                           ng-change="save_field('outrosFinanciamentos')"
-                           ng-model="entity.outrosFinanciamentos"> Não</label>
+            <div class="row">
+                <div class="colunm-full">
+                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                    <label class="label-radio">
+                        <input type="radio"
+                               name="financiamentos"
+                               ng-value="1"
+                               ng-change="save_field('outrosFinanciamentos')"
+                               ng-model="entity.outrosFinanciamentos"> Sim</label>
+                    <label class="label-radio">
+                        <input type="radio"
+                               name="financiamentos"
+                               ng-value="0"
+                               ng-change="save_field('outrosFinanciamentos')"
+                               ng-model="entity.outrosFinanciamentos"> Não</label>
+                </div>
             </div>
+            <div class="clear"></div>
+            <?php /*
+            <div class="row" ng-show="entity.recebeOutrosFinanciamentos">
+                <label class="colunm-50">
+                    <span class="destaque">Quais ?</span>
+                    <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="entity.outrosFinanciamentos_descricao" >
+                </label>
+            </div>
+            <div class="clear"></div>
+            */ ?>
         </div>
-        <div class="clear"></div>
-        <?php /*
-        <div class="row" ng-show="entity.recebeOutrosFinanciamentos">
-            <label class="colunm-50">
-                <span class="destaque">Quais ?</span>
-                <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="entity.outrosFinanciamentos_descricao" >
-            </label>
-        </div>
-        <div class="clear"></div>
-        */ ?>
     </div>
 </form>

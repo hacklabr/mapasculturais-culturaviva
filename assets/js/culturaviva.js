@@ -72,4 +72,7 @@
         setInterval(slide,6000);
 
     });
+
+
+
 })(jQuery);

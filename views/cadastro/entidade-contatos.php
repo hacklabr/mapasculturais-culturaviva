@@ -5,10 +5,12 @@
     $this->cadastroText = 'Como o Minc pode contatar seu Ponto? Nos Ajude a garantir que você receberá informações importantes. :)';
     $this->cadastroIcon = 'icon-phone';
     $this->cadastroPageClass = 'contato-entidade page-base-form';
+    $this->cadastroLinkContinuar = 'pontoMapa';
 ?>
 
 
 <form ng-controller="EntityContactCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">

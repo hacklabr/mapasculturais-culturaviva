@@ -39,6 +39,11 @@
         this.code = function(address) {
             var deferred = $q.defer();
 
+            if(!address){
+                deferred.reject('Não foi fornecido endereço.');
+                return deferred.promise;
+            }
+
             var cepMatch = address.match(/^\s*(\d\d\d\d\d)-?(\d\d\d)\s*$/);
             if(cepMatch) {
                 address = cepMatch[1]+'-'+cepMatch[2]+', Brasil';
@@ -51,8 +56,7 @@
                     var point = {
                         'lng': obj.geometry.location.lng(),
                         'lat': obj.geometry.location.lat(),
-                        'message': obj.formatted_address || '',
-                        '_coded': obj
+                        'message': obj.formatted_address || ''
                     };
 
                     deferred.resolve(point);
@@ -64,46 +68,6 @@
             return deferred.promise;
         };
     }]);
-
-    app.factory('Agent', ['$resource', '$http', 'MapasCulturais',
-        function($resource, $http, MapasCulturais){
-            var resourceConfig = {
-                'get':  {
-                    'method':'GET',
-                    'params':{
-                        '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
-                                   'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
-                                   'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription',
-                               
-                        '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
-                        '@permissions': 'view'
-                    }
-                }
-            };
-
-            var getUrl = '/api/agent/findOne?id=EQ(:id)';
-            var Agent = $resource(getUrl, {'id': '@id'}, resourceConfig);
-
-            Agent.prototype.patch = function patch_responsible(field) {
-                var patchUrl = MapasCulturais.createUrl('agent','single',[this.id]);
-
-                if(!(this.id && this.hasOwnProperty(field) && patchUrl)) {
-                    throw new Error('REQUIRED: id:' + this.id + '; field:' + field + '; url:' + patchUrl);
-                }
-
-                var data = {};
-                data[field] = this[field];
-                
-                return $http({
-                    method:'PATCH',
-                    url: patchUrl,
-                    data:data
-                });
-            };
-
-            return Agent;
-        }
-    ]);
 
     app.factory('Entity', ['$resource',
         function($resource){

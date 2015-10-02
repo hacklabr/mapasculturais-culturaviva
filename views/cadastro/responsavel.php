@@ -1,14 +1,16 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Informações do Responsável';
+    $this->cadastroTitle = '1. Informações do Responsável';
     $this->cadastroText = 'Precisamos saber quem é você e pegar seus contatos! Afinal, comunicação é um requisito vital para que nossa rede se mantenha viva!';
     $this->cadastroIcon = 'icon-user';
     $this->cadastroPageClass = 'responsavel page-base-form';
+    $this->cadastroLinkContinuar = 'entidadeDados';
 ?>
 
 
 <form ng-controller="ResponsibleCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -106,10 +108,10 @@
         <h4>Informações Opcionais</h4>
         <div class="row">
             <div class="img_updade" ng-controller="ImageUploadCtrl">
-                <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent['@files:avatar.avatarBig'] ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
-                    <a href="#" class="exclui">x</a>
-                    <img ng-if="!agent['@files:avatar.avatarBig']" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                    <img ng-if="agent['@files:avatar.avatarBig']" src="{{agent['@files:avatar.avatarBig'].url}}" width="160" height="138">
+                <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.avatar ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                    <a href="#" class="exclui" ng-click="deleteFile(agent.files.avatar)">x</a>
+                    <img ng-if="!agent.files.avatar" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent.files.avatar" src="{{agent.files.avatar.files.avatarBig.url}}" width="160" height="138">
                 </div>
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
@@ -120,13 +122,15 @@
                 <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
             </label>
-
+            <div class="onde_voce_mora">
+                <span class="destaque">Onde você mora?</span>
+            </div>
             <label class="cidade">
                 <span>Cidade</span>
                 <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
             <label class="colunm3">
-                <span>Naturalidade - Estado*</span>
+                <span>Estado</span>
                 <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>

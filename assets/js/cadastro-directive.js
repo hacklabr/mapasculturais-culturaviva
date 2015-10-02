@@ -2,7 +2,7 @@
     'use strict';
 
     var app = angular.module('culturaviva.directives', []);
-    
+
     app.directive('taxonomyCheckboxes', function () {
         return {
             restrict: 'E',
@@ -20,13 +20,13 @@
                     show: false,
                     outros: ''
                 };
-                
+
                 // inicializa a diretiva
                 entity.$promise.then(function(){
                     setOutros();
                     $scope.cfg.show = $scope.cfg.outros.length > 0;
                 });
-                
+
                 function sanitize(term){
                     if($scope.restrictedTerms){
                         return term;
@@ -34,13 +34,13 @@
                         return term.toLowerCase().trim();
                     }
                 }
-                
+
                 // cria um array com os termos lowe case
                 var terms = $scope.terms.map(function(term){
                     return sanitize(term);
                 });
-                
-                
+
+
                 // define a variavel de escopo "outros", model do input outros
                 function setOutros(virgula){
                     var _outros = [];
@@ -49,51 +49,51 @@
                             _outros.push(term);
                         }
                     });
-                    
+
                     $scope.cfg.outros = _outros.join(', ');
-                    
+
                     if(virgula && $scope.cfg.outros.trim().length > 0){
                         $scope.cfg.outros += ',';
                     }
                 }
-                
-                
+
+
                 // verifica se um checkbox deve estar checkado ou não
                 $scope.checked = function(term){
                     term = sanitize(term);
                     return entity.$resolved && entity.terms[taxonomy].indexOf(term) >= 0;
                 };
-                
+
                 // função chamada no click do checkbox
                 $scope.toggleTerm = function (term) {
                     term = sanitize(term);
-                    
+
                     if (!angular.isArray(entity.terms[taxonomy])) {
                         entity.terms[taxonomy] = [term];
                     } else {
                         var idx = entity.terms[taxonomy].indexOf(term);
-                        
+
                         if (idx < 0) {
                             entity.terms[taxonomy].push(term);
                         } else {
                             entity.terms[taxonomy].splice(idx, 1);
                         }
                     }
-                    
+
                     $scope.$parent.save_field('terms');
                 };
-                
+
                 // função chamada pelo input text "outros"
                 $scope.update = function(e){
                     if(!e || e && e.keyCode === 188 && !e.shiftKey){
                         var _outros = $scope.cfg.outros.split(',').map(function(term){
                             return term.toLowerCase().trim();
                         });
-                        
-                        
+
+
                         _outros.forEach(function (term, i){
                             term = _outros[i] = term.trim();
-                            
+
                             if(term.length && entity.terms[taxonomy].indexOf(term) === -1){
                                 entity.terms[taxonomy].push(term);
                             }
@@ -110,7 +110,7 @@
             }
         };
     });
-    
+
     app.directive('leaflet', function() {
         return {
             'restrict': 'E',
@@ -126,19 +126,41 @@
                     zoom: 3
                 };
 
+                L.Icon.Default.imagePath = MapasCulturais.assetURL + 'img/';
                 var map = L.map(target).setView(config.center, config.zoom);
                 var layer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
                 layer.addTo(map);
+
 
                 /* Controle de markers */
 
                 var markers = { };
 
-                function add_marker(idx, lat, lon, text) {console.log('3>', arguments);
-                    var marker = L.marker([lat, lon]);
-                    marker.bindPopup(text);
+                function add_marker(idx, point) {
+                    var marker = L.marker([point.lat, point.lng], {draggable: true});
+                    var icon = L.icon({
+                        iconUrl: MapasCulturais.assets.pinAgent,
+                        shadowUrl: MapasCulturais.assets.pinShadow,
+                        iconSize: [35, 43], // size of the icon
+                        shadowSize: [40, 16], // size of the shadow
+                        iconAnchor: [20, 30], // point of the icon which will correspond to marker's location
+                        shadowAnchor: [6, 3], // the same for the shadow
+                        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                    });
+                    marker.setIcon(icon);
+                    marker.bindPopup(point.message);
                     marker.addTo(map);
+                    marker.on('dragend', function(e) {
+                        scope.$apply(function(){
+                            var latLng = e.target.getLatLng();
+                            var point = scope.markers['main'];
 
+                            if(point){
+                                point.lat = latLng.lat;
+                                point.lng = latLng.lng;
+                            }
+                        });
+                    });
                     markers[idx] = marker;
                     return marker;
                 }
@@ -151,7 +173,7 @@
                     return marker;
                 }
 
-                function update_markers(points, points2)
+                function update_markers(points)
                 {
                     if(!points){
                         return;
@@ -163,11 +185,11 @@
                         point = points[idx];
 
                         if(marker){
-                            if(!point){
-                                remove_marker(idx);
-                            } else {
+                            if(point && point.lat && point.lng){
                                 marker.setLatLng({lat: point.lat, lon: point.lng});
                                 marker.setPopupContent(point.message);
+                            } else {
+                                remove_marker(idx);
                             }
                         }
                     }
@@ -176,8 +198,8 @@
                         marker = markers[idx];
                         point = points[idx];
 
-                        if(!marker && point) {console.log('2>', point);
-                            add_marker(idx, point.lat, point.lng, point.message);
+                        if(!marker && point && point.lat && point.lng) {
+                            add_marker(idx, point);
                         }
                     }
 
