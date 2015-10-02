@@ -4,7 +4,7 @@
     var app = angular.module('culturaviva.controllers', []);
 
     // Função base para os outros controllers """herdarem"""
-    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout)
+    function BaseAgentCtrl($scope, Agent, MapasCulturais, agent_id, Upload, $timeout, $http)
     {
         $scope.errors = {};
         $scope.agent = Agent.get({
@@ -116,6 +116,19 @@
             ]
         };
     }
+    
+    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
+        function($scope, Entity, MapasCulturais, $http){
+            $scope.enviar = function(){
+                $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
+                        then(function successCallback(response) {
+                            console.log('SUCESSO: ', response);
+                        }, function errorCallback(response) {
+                            console.log('ERRO: ', response);
+                        });
+            };
+        }
+    ]);
 
     // Controller do 'Informações do responsável'
     app.controller('ResponsibleCtrl', ['$scope', 'Agent', 'MapasCulturais', 'Upload', '$timeout',
