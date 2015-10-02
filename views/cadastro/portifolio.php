@@ -35,13 +35,15 @@
             </label>
         </div>
         <div class="clear"></div>
+        <?php /*
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Atividades culturais em realização* <i>?</i></span>
                 <textarea ng-blur="save_field('atividadesEmRealizacao')" ng-model="agent.atividadesEmRealizacao"></textarea>
-            </label>          
+            </label>
         </div>
         <div class="clear"></div>
+        */ ?>
     </div>
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
@@ -91,7 +93,7 @@
             <label class="colunm-full">
                 <span class="destaque">Conte um pouco(800 caractres) sobre a história do ponto de Cultura <i>?</i></span>
                 <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
-            </label>          
+            </label>
 
         </div>
         <div class="clear"></div>

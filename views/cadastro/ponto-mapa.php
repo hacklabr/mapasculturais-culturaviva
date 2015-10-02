@@ -50,12 +50,13 @@
                     <option value="1">Sim</option>
                     <option value="0">Não</option>
                 </select>
-
+                <?php /*
                 <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
 
                 <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
+                 */ ?>
             </label>
         </div>
 
@@ -113,7 +114,7 @@
                 <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
-            
+
             <label class="colunm2">
                 <span>Número*</span>
                 <input type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
