@@ -33,6 +33,11 @@ class Theme extends BaseV1\Theme{
         return __DIR__;
     }
     
+    function aprovado(){
+        $inscricao = $this->_cadastro->getInscricao();
+        return $inscricao->status === \MapasCulturais\Entities\Registration::STATUS_APPROVED;
+    }
+    
     protected function _init(){
         parent::_init();
         
@@ -166,6 +171,29 @@ class Theme extends BaseV1\Theme{
         $metadata = [
             'MapasCulturais\Entities\User' => [
                 'redeCulturaViva' => [ 'private' => true, 'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição' ]
+            ],
+            
+            'MapasCulturais\Entities\Space' => [
+                'En_Bairro' => [
+                    'label' => 'Bairro',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Num' => [
+                    'label' => 'Número',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Nome_Logradouro' => [
+                    'label' => 'Logradouro',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'En_Complemento' => [
+                    'label' => 'Complemento',
+//                  'required' => true,
+                    'private' => true
+                ]
             ],
 
             'MapasCulturais\Entities\Agent' => [
@@ -366,52 +394,48 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
                 'telefone2_operadora' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Operadora',
 //                  'required' => true,
                     'private' => true
                 ],
                 'responsavel_nome' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Nome do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
                 'responsavel_cargo' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Cargo do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
                 'responsavel_email' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Email do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
                 'responsavel_telefone' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Telefone do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
-                'geoEstado' => [
-                    'label' => 'Mesmo Endereco',
-//                  'required' => true,
-                    'private' => true
-                ],
+                
                 'En_Bairro' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Bairro',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Num' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Número',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Nome_Logradouro' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Logradouro',
 //                  'required' => true,
                     'private' => true
                 ],
                 'En_Complemento' => [
-                    'label' => 'Mesmo Endereco',
+                    'label' => 'Complemento',
 //                  'required' => true,
                     'private' => true
                 ],
@@ -431,6 +455,12 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tem sede propria?',
 //                    'required' => true
                 ],
+                
+                'sede_realizaAtividades' => [
+                    'label' => 'Realiza atividades culturais na sede',
+//                    'required' => true
+                ],
+                
                 'sede_cnpj' => [
                     'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
                     'required' => false
