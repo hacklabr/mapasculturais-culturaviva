@@ -126,9 +126,11 @@
                     zoom: 3
                 };
 
+                L.Icon.Default.imagePath = MapasCulturais.assetURL + 'img/';
                 var map = L.map(target).setView(config.center, config.zoom);
                 var layer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
                 layer.addTo(map);
+
 
                 /* Controle de markers */
 
@@ -136,6 +138,16 @@
 
                 function add_marker(idx, point) {
                     var marker = L.marker([point.lat, point.lng], {draggable: true});
+                    var icon = L.icon({
+                        iconUrl: MapasCulturais.assets.pinAgent,
+                        shadowUrl: MapasCulturais.assets.pinShadow,
+                        iconSize: [35, 43], // size of the icon
+                        shadowSize: [40, 16], // size of the shadow
+                        iconAnchor: [20, 30], // point of the icon which will correspond to marker's location
+                        shadowAnchor: [6, 3], // the same for the shadow
+                        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                    });
+                    marker.setIcon(icon);
                     marker.bindPopup(point.message);
                     marker.addTo(map);
                     marker.on('dragend', function(e) {

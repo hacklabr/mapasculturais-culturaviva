@@ -52,13 +52,17 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
         $this->assetManager->publishAsset('img/banner-home1.jpg', 'img/banner-home1.jpg');
-        
 
 
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
             $this->jsObject['areasDeAtuacao'] = array_values($area->restrictedTerms);
+
+            $this->jsObject['assets']['pinShadow'] = $this->asset('img/pin-sombra.png', false);
+            $this->jsObject['assets']['pinMarker'] = $this->asset('img/marker-icon.png', false);
+
+            $this->jsObject['assets']['pinAgent'] = $this->asset('img/pin-agente.png', false);
         });
 
         $app->hook('entity(agent).file(gallery).insert:after', function() {
