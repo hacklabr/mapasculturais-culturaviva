@@ -467,7 +467,26 @@ class Theme extends BaseV1\Theme{
                 // portifólio
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
-                ]
+                ],
+                'flickr' => [
+                    'label' => 'Flickr',
+                    'validations' => array(
+                        "v::url('flickr.com')" => "A url informada é inválida."
+                    )   
+                ],
+                'diaspora' => [
+                    'label' => 'Diáspora',
+                    'validations' => array(
+                        "v::url()" => "A url informada é inválida."
+                    )   
+                ],
+                'youtube' => [
+                    'label' => 'Youtube',
+                    'validations' => array(
+                        "v::url()" => "A url informada é inválida."
+                    )   
+                ],
+                
             ]
         ];
         
