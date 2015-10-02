@@ -1,5 +1,9 @@
 <?php
 $this->part('header');
+
+$link = $this->cadastroLinkContinuar;
+$link_continuar = $app->createUrl('cadastro', $link );
+
 ?>
 
 <div class="page-<?php echo $this->cadastroPageClass ?>">
@@ -21,7 +25,7 @@ $this->part('header');
     <p><?php echo $this->cadastroText ?></p>
 
     <?php echo $TEMPLATE_CONTENT; ?>
-    <button type="submit" class="btn btn__active">Continuar</button>
+    <a href="<?php echo $link_continuar;  ?>" class="btn btn_continuar">Continuar</a>
     <div class="btn_voltar">
        <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>">voltar ao início <i class="icon icon-home"></i></a>
     </div>

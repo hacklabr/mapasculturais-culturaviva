@@ -5,6 +5,7 @@
     $this->cadastroText = 'Incula fotos, links e redes sociais! Isto nos ajuda a enttender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
+    $this->cadastroLinkContinuar = 'pontoMais';
 ?>
 
 

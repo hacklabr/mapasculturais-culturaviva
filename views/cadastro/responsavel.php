@@ -5,6 +5,7 @@
     $this->cadastroText = 'Precisamos saber quem é você e pegar seus contatos! Afinal, comunicação é um requisito vital para que nossa rede se mantenha viva!';
     $this->cadastroIcon = 'icon-user';
     $this->cadastroPageClass = 'responsavel page-base-form';
+    $this->cadastroLinkContinuar = 'entidadeDados';
 ?>
 
 
@@ -120,7 +121,7 @@
                 <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
             </label>
-            <div class="colunm1">
+            <div class="onde_voce_mora">
                 <span class="destaque">Onde você mora?</span>
             </div>
             <label class="cidade">
