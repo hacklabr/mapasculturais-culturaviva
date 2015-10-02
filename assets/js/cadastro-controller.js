@@ -398,7 +398,6 @@
                 entity_update[field] = $scope.entity[field];
                 Entity.patch({'id': agent_id}, entity_update, function(entity){
                     $scope.msgs[field] = 'saved';
-                    alert('salvou!!!');
                 });
             };
         }

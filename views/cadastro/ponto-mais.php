@@ -5,6 +5,7 @@
     $this->cadastroText = 'Queremos entender melhor quais são as atividades realizadas pelo seu Ponto e quem é o público que as frequenta';
     $this->cadastroIcon = 'icon-vcard';
     $this->cadastroPageClass = 'ponto-mais page-base-form';
+    $this->cadastroLinkContinuar = 'responsavel';
     
 ?>
 
