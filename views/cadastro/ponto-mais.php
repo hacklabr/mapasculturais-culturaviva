@@ -5,10 +5,11 @@
     $this->cadastroText = 'Queremos entender melhor quais são as atividades realizadas pelo seu Ponto e quem é o público que as frequenta';
     $this->cadastroIcon = 'icon-vcard';
     $this->cadastroPageClass = 'ponto-mais page-base-form';
-    
+
 ?>
 
 <form ng-controller="PointCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -43,13 +44,13 @@
                 <span class="destaque">Infra-Estrutura*</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Acesso à internet 
+                <input type="checkbox" name="" >  Acesso à internet
             </label>
             <label class="colunm2">
                 <input type="checkbox" name="" > Sala de aula
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Auditório 
+                <input type="checkbox" name="" > Auditório
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Teatro
@@ -67,7 +68,7 @@
                 <input type="checkbox" name="" > Hackerspace
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Casa 
+                <input type="checkbox" name="" > Casa
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Apartamento
@@ -94,7 +95,7 @@
                 <input type="checkbox" name="" > Loja
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Outros Espaços. 
+                <input type="checkbox" name="" > Outros Espaços.
             </label>
             <div class="colunm-full">
                 <span class="destaque">Equipamentos*</span>
@@ -106,7 +107,7 @@
                 <input type="checkbox" name="" > Câmera filmadora
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Microfone 
+                <input type="checkbox" name="" > Microfone
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Fone de Ouvido
@@ -115,7 +116,7 @@
                 <input type="checkbox" name="" > Boom
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Spot de luz 
+                <input type="checkbox" name="" > Spot de luz
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Refletor
@@ -142,7 +143,7 @@
                 <input type="checkbox" name="" > Scanner
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Outros. Quais? 
+                <input type="checkbox" name="" > Outros. Quais?
             </label>
             <div class="colunm-full">
              <span class="destaque">Recursos Humanos</span>
@@ -154,7 +155,7 @@
                 <input type="checkbox" name="" > Dançarino / Dançarina
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Músico / Musicista 
+                <input type="checkbox" name="" > Músico / Musicista
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Pesquisador
@@ -163,7 +164,7 @@
                 <input type="checkbox" name="" > Oficineiro
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Produtor 
+                <input type="checkbox" name="" > Produtor
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Elaborador de Projeto Cultural
@@ -172,13 +173,13 @@
                 <input type="checkbox" name="" > Captador de Recursos
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Realizador audiovisual (Videomaker) 
+                <input type="checkbox" name="" > Realizador audiovisual (Videomaker)
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Designer
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Fotógrafo 
+                <input type="checkbox" name="" > Fotógrafo
             </label>
             <label class="colunm3">
                 <input type="checkbox" name="" > Hacker
@@ -374,7 +375,7 @@
                 <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
-            
+
             <span class="destaque title">Espaços de Aprendizagem</span>
             <div class="colunm-full">
                 <span class="destaque">Que tipo de espaço/plataforma quer registrar?</span>
@@ -570,7 +571,7 @@
                 <input type="checkbox" name="" > Gastronomia
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" > Gênero 
+                <input type="checkbox" name="" > Gênero
             </label>
             <label class="colunm2">
                 <input type="checkbox" name="" > Hip Hop
@@ -627,10 +628,10 @@
                 <input type="checkbox"> Apoiador (financia ou fomenta de alguma forma as atividades do Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="checkbox"> Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br /> 
+                <input type="checkbox"> Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br />
                 <span class="destaque">Descreva: </span>
                 <textarea></textarea>
-            </label>    
+            </label>
             <label class="colunm-full">
                 <input type="checkbox"> Movimentos (movimentos sociais, culturais, ambientais e outros que se relacionem com o Ponto/Pontão de Cultura)
             </label>
@@ -677,7 +678,7 @@
                 <input type="checkbox" name="" > Outros.<br >
                 <span class="destaque">Descreva: </span>
                 <textarea></textarea>
-            </label>  
+            </label>
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária* ? Como?</span>
             </div>
@@ -753,7 +754,7 @@
                 <span class="destaque">O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Sim. Que tipo de serviços e/ou produtos? 
+                <input type="checkbox" name="" >  Sim. Que tipo de serviços e/ou produtos?
                 <textarea></textarea>
             </label>
             <label class="colunm2">
@@ -780,7 +781,7 @@
                 <span class="destaque">Participa de algum movimento político-cultural? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="checkbox" name="" >  Não
             </label>
             <label class="colunm2">
                 <input type="checkbox" name="" >  Sim. Quais?*
@@ -790,7 +791,7 @@
                 <span class="destaque">Participa de algum Fórum de Cultura? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="checkbox" name="" >  Não
             </label>
             <label class="colunm2">
                 <input type="checkbox" name="" >  Sim. Quais?*
@@ -800,11 +801,11 @@
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Colegiados. Quais?* 
+                <input type="checkbox" name="" >  Colegiados. Quais?*
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Fóruns. Quais?* 
+                <input type="checkbox" name="" >  Fóruns. Quais?*
                 <textarea></textarea>
             </label>
             <label class="colunm3">
@@ -831,7 +832,7 @@
                 <span class="destaque">Possui parceria com o Poder Público? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="checkbox" name="" >  Não
             </label>
             <label class="colunm2">
                 <input type="checkbox" name="" >  Sim. Quais?*

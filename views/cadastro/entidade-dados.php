@@ -9,6 +9,7 @@
 
 
 <form ng-controller="EntityCtrl">
+    <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
@@ -35,7 +36,7 @@
         <div class="row">
             <label class="colunm-50">
                 <span class="destaque">CNPJ da Entidade*</span>
-                
+
                 <input type="text"
                        ng-blur="save_field('cnpj')"
                        ng-model="entity.cnpj"
