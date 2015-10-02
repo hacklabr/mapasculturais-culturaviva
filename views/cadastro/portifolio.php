@@ -109,7 +109,7 @@
                 <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
                 <img src="{{f.files.avatarBig.url}}" width="160" height="138">
             </div>
-            <div class="img_updade">
+            <div class="img_updade file-item">
                 <div type="file" ngf-select="uploadFile($file, 'gallery')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="Clique para incluir uma foto">
                     <img src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                 </div>
