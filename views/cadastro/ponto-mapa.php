@@ -60,6 +60,7 @@
                 */ ?>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
+                 */ ?>
             </label>
         </div>
 
@@ -117,7 +118,7 @@
                 <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
-            
+
             <label class="colunm2">
                 <span>Número*</span>
                 <input type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>

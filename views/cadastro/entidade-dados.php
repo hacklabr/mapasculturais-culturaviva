@@ -66,7 +66,17 @@
 
             <label class="colunm-50">
                 <span class="destaque" ng-hide="entity.semCNPJ">Nome Fantasia* <i>?</i></span>
-                <span class="destaque" ng-show="entity.semCNPJ">Nome do Coletivo Cultura* <i>?</i></span>
+                <span class="destaque" ng-show="entity.semCNPJ">Nome do Coletivo Cultura* <i>?</i>
+                </span>
+                <div ng-messages="entity.semCNPJ.$error" style="color:maroon" role="alert">
+                    <div ng-message="required">You did not enter a field</div>
+                    <div ng-message="minlength">Your field is too short</div>
+                    <div ng-message="maxlength">Your field is too long</div>
+                </div>
+                <div ng-messages="msgs.name" style="color:maroon" role="success">
+                    <div ng-message="saving">salvando...</div>
+                    <div ng-message="saved">Salvo!</div>
+                </div>
                 <input type="text" ng-blur="save_field('name')" ng-model="entity.name" >
             </label>
         </div>

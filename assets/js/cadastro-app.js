@@ -7,6 +7,7 @@
         'culturaviva.directives',
         'Notifications',
         'ngFileUpload',
+        'ngMessages',
         'ui.date',
         'ui.mask'
     ]);

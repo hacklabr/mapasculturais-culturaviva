@@ -4,22 +4,20 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
-    
-    protected $_requiredPropertiesByForm = [
-        ''
-    ];
-    
+
+    private $_ids;
+
     /**
      * Controller Cadastro
-     * 
-     * @var \CulturaViva\Controller\Cadastro 
+     *
+     * @var \CulturaViva\Controller\Cadastro
      */
     protected $_cadastro;
-    
+
     public function __construct(\MapasCulturais\AssetManager $asset_manager) {
         parent::__construct($asset_manager);
     }
-    
+
 
     protected static function _getTexts(){
         return array(
@@ -32,17 +30,17 @@ class Theme extends BaseV1\Theme{
     static function getThemeFolder() {
         return __DIR__;
     }
-    
+
     function aprovado(){
         $inscricao = $this->_cadastro->getInscricao();
         return $inscricao->status === \MapasCulturais\Entities\Registration::STATUS_APPROVED;
     }
-    
+
     protected function _init(){
         parent::_init();
-        
+
         $this->_cadastro = Controllers\Cadastro::i();
-        
+
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
@@ -52,16 +50,6 @@ class Theme extends BaseV1\Theme{
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
         }
-        
-        
-        $app->hook('mapasculturais.body:before', function() {
-            echo '
-            <div id="barra-brasil">
-                <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Portal do Governo Brasileiro</a>
-            </div>
-            <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
-            ';
-        });
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
@@ -121,6 +109,7 @@ class Theme extends BaseV1\Theme{
 
     protected function _enqueueScripts(){
         $this->enqueueScript('culturaviva', 'angular-resource', 'vendor/angular-resource.js');
+        $this->enqueueScript('culturaviva', 'angular-messages', 'vendor/angular-messages.js');
         $this->enqueueScript('culturaviva', 'ui-mask', 'vendor/mask.js');
 
         $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js', ['angular-resource']);
@@ -173,7 +162,7 @@ class Theme extends BaseV1\Theme{
             'MapasCulturais\Entities\User' => [
                 'redeCulturaViva' => [ 'private' => true, 'label' => 'Id do Agente, Agente Coletivo e Registro da inscrição' ]
             ],
-            
+
             'MapasCulturais\Entities\Space' => [
                 'En_Bairro' => [
                     'label' => 'Bairro',
@@ -282,24 +271,26 @@ class Theme extends BaseV1\Theme{
 //                  'required' => true,
                     'private' => true
                 ],
-                'fomento_tipo' => [
-                    'label' => 'Tipo de Fomento',
+                'tipoFomento' => [
+                    'label' => 'Você já foi fomentado pelo MinC',
 //                  'required' => true,
                     'private' => true,
                     'type' => 'select',
                     'options' => array(
-                        'minc' => 'Direto com o MinC',
-                        'estadual' => 'Estatual',
-                        'municipal' => 'Municipal',
-                        'intermunicpal' => 'Intermunicipal'
+                        'convenio' => 'Direto com o MinC',
+                        'tcc' => 'Estatual',
+                        'bolsa' => 'Municipal',
+                        'premio' => 'Intermunicipal',
+                        'rouanet' => 'Intermunicipal',
+                        'outros' => 'Outros'
                     )
                 ],
-                'fomento_tipo_outros' => [
-                    'label' => 'Outros tipos de fomento',
+                'tipoFomentoOutros' => [
+                    'label' => 'Você já foi fomentado pelo MinC',
 //                  'required' => true,
                     'private' => true
                 ],
-                'fomento_tipoReconhecimento' => [
+                'tipoReconhecimento' => [
                     'label' => 'Tipo de Reconhecimento',
 //                  'required' => true,
                     'private' => true,
@@ -419,7 +410,7 @@ class Theme extends BaseV1\Theme{
 //                  'required' => true,
                     'private' => true
                 ],
-                
+
                 'En_Bairro' => [
                     'label' => 'Bairro',
 //                  'required' => true,
@@ -456,12 +447,12 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tem sede propria?',
 //                    'required' => true
                 ],
-                
+
                 'sede_realizaAtividades' => [
                     'label' => 'Realiza atividades culturais na sede',
 //                    'required' => true
                 ],
-                
+
                 'sede_cnpj' => [
                     'label' => 'O endereço da sede é o mesmo registrado para o CNPJ?',
                     'required' => false
@@ -483,7 +474,11 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Cidade',
                     'required' => false
                 ],
-                
+                'local_de_acao_espaco' => [
+                    'label' => 'Espaço',
+                    'required' => false
+                ],
+
                 // portifólio
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
@@ -492,24 +487,24 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Flickr',
                     'validations' => array(
                         "v::url('flickr.com')" => "A url informada é inválida."
-                    )   
+                    )
                 ],
                 'diaspora' => [
                     'label' => 'Diáspora',
                     'validations' => array(
                         "v::url()" => "A url informada é inválida."
-                    )   
+                    )
                 ],
                 'youtube' => [
                     'label' => 'Youtube',
                     'validations' => array(
                         "v::url()" => "A url informada é inválida."
-                    )   
+                    )
                 ],
-                
+
             ]
         ];
-        
+
         foreach($metadata as $entity_class => $metas){
             foreach($metas as $key => $cfg){
                 $def = new \MapasCulturais\Definitions\Metadata($key, $cfg);
