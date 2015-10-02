@@ -209,6 +209,29 @@
 
        }
     ]);
+    
+    app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
+        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            
+                var params = {
+                'id': agent_id,
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+            
+            $scope.save_field = function save_field(field) {
+                var agent_update = {};
+                agent_update[field] = $scope.agent[field];
+                Entity.patch({'id': agent_id}, agent_update);
+            };
+        }
+    ]);
+
 
     // Controller do 'Seu ponto no Mapa'
     app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
