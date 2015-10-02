@@ -304,8 +304,8 @@
         }
     ]);
 
-    app.controller('EntityCtrl', ['$scope', 'Entity', 'MapasCulturais',
-        function($scope, Entity, MapasCulturais){
+    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais',
+        function($scope, $timeout, Entity, MapasCulturais){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
@@ -324,10 +324,32 @@
 
             $scope.entity = Entity.get(params);
 
+            $scope.msgs = {};
+            $scope.timeouts = {};
+                    
+            $scope.clear_saved_msg = function(field) {
+                if ($scope.msgs[field] !== undefined) {
+                    $scope.msgs[field]['saved'] = false;
+                }
+            }
             $scope.save_field = function save_field(field) {
+                if ($scope.msgs[field] === undefined) {
+                    $scope.msgs[field] = {};
+                }
+                $scope.msgs[field]['saved'] = false;
+                $scope.msgs[field]['saving'] = true;
+                if ($scope.timeouts[field]) {
+                    $timeout.cancel($scope.timeouts[field]);
+                }
                 var entity_update = {};
                 entity_update[field] = $scope.entity[field];
-                Entity.patch({'id': agent_id}, entity_update);
+                Entity.patch({'id': agent_id}, entity_update, function(entity){
+                    $scope.msgs[field]['saving'] = false;
+                    $scope.msgs[field]['saved'] = true;
+                    $scope.timeouts[field] =  $timeout(function() {
+                                                  $scope.clear_saved_msg(field);
+                                            }, 3000);
+                });
             };
         }
     ]);
@@ -349,11 +371,17 @@
             };
 
             $scope.entity = Entity.get(params);
+            
+            $scope.msgs = {};
 
             $scope.save_field = function save_field(field) {
+                $scope.msgs[field] = 'saving';
                 var entity_update = {};
                 entity_update[field] = $scope.entity[field];
-                Entity.patch({'id': agent_id}, entity_update);
+                Entity.patch({'id': agent_id}, entity_update, function(entity){
+                    $scope.msgs[field] = 'saved';
+                    alert('salvou!!!');
+                });
             };
         }
     ]);

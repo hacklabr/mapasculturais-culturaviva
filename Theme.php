@@ -5,18 +5,18 @@ use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
     private $_ids;
-    
+
     /**
      * Controller Cadastro
-     * 
-     * @var \CulturaViva\Controller\Cadastro 
+     *
+     * @var \CulturaViva\Controller\Cadastro
      */
     protected $_cadastro;
-    
+
     public function __construct(\MapasCulturais\AssetManager $asset_manager) {
         parent::__construct($asset_manager);
     }
-    
+
 
     protected static function _getTexts(){
         return array(
@@ -29,11 +29,11 @@ class Theme extends BaseV1\Theme{
     static function getThemeFolder() {
         return __DIR__;
     }
-    
+
     protected function _init(){
         parent::_init();
         $this->_cadastro = Controllers\Cadastro::i();
-        
+
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
@@ -43,8 +43,8 @@ class Theme extends BaseV1\Theme{
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
         }
-        
-        
+
+
         $app->hook('mapasculturais.body:before', function() {
             echo '
             <div id="barra-brasil">
@@ -111,6 +111,7 @@ class Theme extends BaseV1\Theme{
 
     protected function _enqueueScripts(){
         $this->enqueueScript('culturaviva', 'angular-resource', 'vendor/angular-resource.js');
+        $this->enqueueScript('culturaviva', 'angular-messages', 'vendor/angular-messages.js');
         $this->enqueueScript('culturaviva', 'ui-mask', 'vendor/mask.js');
 
         $this->enqueueScript('culturaviva', 'cadastro-app', 'js/cadastro-app.js', ['angular-resource']);
@@ -245,6 +246,25 @@ class Theme extends BaseV1\Theme{
                     )
                 ],
                 'foiFomentado' => [
+                    'label' => 'Você já foi fomentado pelo MinC',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'tipoFomento' => [
+                    'label' => 'Você já foi fomentado pelo MinC',
+//                  'required' => true,
+                    'private' => true,
+                    'type' => 'select',
+                    'options' => array(
+                        'convenio' => 'Direto com o MinC',
+                        'tcc' => 'Estatual',
+                        'bolsa' => 'Municipal',
+                        'premio' => 'Intermunicipal',
+                        'rouanet' => 'Intermunicipal',
+                        'outros' => 'Outros'
+                    )
+                ],
+                'tipoFomentoOutros' => [
                     'label' => 'Você já foi fomentado pelo MinC',
 //                  'required' => true,
                     'private' => true
@@ -463,14 +483,14 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Espaço',
                     'required' => false
                 ],
-                
+
                 // portifólio
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
                 ]
             ]
         ];
-        
+
         foreach($metadata as $entity_class => $metas){
             foreach($metas as $key => $cfg){
                 $def = new \MapasCulturais\Definitions\Metadata($key, $cfg);
