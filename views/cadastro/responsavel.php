@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Informações do Responsável';
+    $this->cadastroTitle = '1. Informações do Responsável';
     $this->cadastroText = 'Precisamos saber quem é você e pegar seus contatos! Afinal, comunicação é um requisito vital para que nossa rede se mantenha viva!';
     $this->cadastroIcon = 'icon-user';
     $this->cadastroPageClass = 'responsavel page-base-form';
@@ -120,13 +120,15 @@
                 <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
             </label>
-
+            <div class="colunm1">
+                <span class="destaque">Onde você mora?</span>
+            </div>
             <label class="cidade">
                 <span>Cidade</span>
                 <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
             <label class="colunm3">
-                <span>Naturalidade - Estado*</span>
+                <span>Estado</span>
                 <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
