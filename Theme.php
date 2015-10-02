@@ -64,6 +64,7 @@ class Theme extends BaseV1\Theme{
         });
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
+        $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
 
 
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
