@@ -1,6 +1,7 @@
 (function(angular){
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
+
     var termos = {
             area: MapasCulturais.areasDeAtuacao,
 
@@ -283,13 +284,27 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.markers = {};
+            $scope.agent = Entity.get(params, function(agent){
+                $scope.markers.main = {
+                    lat: agent.location.latitude,
+                    lng: agent.location.longitude,
+                    message: agent.endereco
+                };
+            });
 
             extendController($scope, $timeout, Entity, agent_id);
 
             $scope.termos = termos;
 
-            $scope.markers = {};
+
+
+            $scope.$watch('markers.main', function(point){
+                if(point && point.lat && point.lng) {
+                    $scope.agent['location'] = [point.lng, point.lat];
+                    $scope.save_field('location');
+                }
+            }, true);
 
             $scope.cepcoder = {
                 busy: false,
@@ -299,25 +314,28 @@
                     $scope.cepcoder.busy = true;
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
-                        $scope.agent.geoEstado = addr.uf;
-                        $scope.save_field('geoEstado');
+                        if(addr){
+                            $scope.agent.geoEstado = addr.uf;
+                            $scope.save_field('geoEstado');
 
-                        $scope.agent.geoMunicipio = addr.localidade;
-                        $scope.save_field('geoMunicipio');
+                            $scope.agent.geoMunicipio = addr.localidade;
+                            $scope.save_field('geoMunicipio');
 
-                        $scope.agent.En_Bairro = addr.bairro;
-                        $scope.save_field('En_Bairro');
+                            $scope.agent.En_Bairro = addr.bairro;
+                            $scope.save_field('En_Bairro');
 
-                        $scope.agent.En_Nome_Logradouro = addr.logradouro;
-                        $scope.save_field('En_Nome_Logradouro');
+                            $scope.agent.En_Nome_Logradouro = addr.logradouro;
+                            $scope.save_field('En_Nome_Logradouro');
 
+                            var string = (addr.logradouro ? addr.logradouro+', ':'') +
+                                         (addr.bairro ? addr.bairro+', ':'') +
+                                         (addr.localidade ? addr.localidade+', ':'') +
+                                         (addr.uf ? addr.uf+' - ':'');
 
-                        var string = (addr.logradouro ? addr.logradouro+', ':'') +
-                                     (addr.bairro ? addr.bairro+', ':'') +
-                                     (addr.localidade ? addr.localidade+', ':'') +
-                                     (addr.uf ? addr.uf+' - ':'');
+                        }
 
                         return geocoder.code(string);
+
                     }).then(function(point){
                         point.zoom = 14;
                         $scope.markers.main = point;
@@ -331,8 +349,8 @@
         }
     ]);
 
-    app.controller('EntityCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
-        function($scope, Entity, MapasCulturais, $timeout){
+    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais',
+        function($scope, $timeout, Entity, MapasCulturais){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
@@ -354,6 +372,7 @@
             $scope.entity = Entity.get(params);
 
             extendController($scope, $timeout, Entity, agent_id);
+
         }
     ]);
 
@@ -376,6 +395,7 @@
             $scope.entity = Entity.get(params);
 
             extendController($scope, $timeout, Entity, agent_id);
+
         }
     ]);
 

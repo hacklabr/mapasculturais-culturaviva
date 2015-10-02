@@ -5,6 +5,7 @@
     $this->cadastroText = 'Incula fotos, links e redes sociais! Isto nos ajuda a enttender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
+    $this->cadastroLinkContinuar = 'pontoMais';
 ?>
 
 <form ng-controller="PortifolioCtrl">
@@ -37,6 +38,7 @@
             </label>
         </div>
         <div class="clear"></div>
+        <?php /*
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Atividades culturais em realização* <i>?</i></span>
@@ -44,6 +46,7 @@
             </label>
         </div>
         <div class="clear"></div>
+        */ ?>
     </div>
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>

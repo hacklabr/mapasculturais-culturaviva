@@ -39,6 +39,11 @@
         this.code = function(address) {
             var deferred = $q.defer();
 
+            if(!address){
+                deferred.reject('Não foi fornecido endereço.');
+                return deferred.promise;
+            }
+
             var cepMatch = address.match(/^\s*(\d\d\d\d\d)-?(\d\d\d)\s*$/);
             if(cepMatch) {
                 address = cepMatch[1]+'-'+cepMatch[2]+', Brasil';
@@ -51,8 +56,7 @@
                     var point = {
                         'lng': obj.geometry.location.lng(),
                         'lat': obj.geometry.location.lat(),
-                        'message': obj.formatted_address || '',
-                        '_coded': obj
+                        'message': obj.formatted_address || ''
                     };
 
                     deferred.resolve(point);

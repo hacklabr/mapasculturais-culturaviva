@@ -297,7 +297,7 @@ section{
 
 #page-rede{
     background: transparent;
-    margin: 78px auto 0 auto;
+    margin: 0px auto;
     max-width: 960px;
     text-align: center;
     width: 100%;
@@ -313,10 +313,38 @@ section{
 
     article {
         &.slide-home {
-            background: url('../img/slider-home-topo/Home01.jpg');
+            background: url('../img/banner-home1.jpg');
             height: 450px;
             padding-top: 30px;
             max-height: 480px;
+            
+            .bg-transparent{
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+                filter: alpha(opacity=50);
+                -moz-opacity: 0.5;
+                -khtml-opacity: 0.5;
+                opacity: 0.5;
+                display: block;
+                position: relative;
+                width: 590px;
+                height: 145px;
+                background-color: #333;
+                top: -325px;
+                margin-left: 190px;
+            }
+
+            .text-banner{
+                position:relative;
+                z-index: 999;
+                margin-top: 100px;
+            }
+            
+            h3{
+                font-size: 2em;
+                color: #fff;
+                text-align: center;
+                margin: 2em auto 1em;
+            }
 
             img {
                 margin-bottom: 30px;
@@ -324,24 +352,24 @@ section{
             }
 
             > p {
-                max-width: 630px;
-                font-family: DroidSans;
-                font-weight: bold;
-                font-size: 16px;
-                text-shadow: 2px 2px 0px #000000;
-                margin-left: auto;
-                margin-right: auto;
+                    max-width: 360px;
+                    font-family: DroidSans;
+                    font-size: 16px;
+                    margin: 0 auto;
             }
             .btn__active {
-                margin: 26px 0;
+                    margin: 5em 0 8em;
+                    background-color: #fae824;
+                    border: 0px;
+                    text-transform: uppercase;
+                    color:#3a7c18;
             }
             a {
                 &.what {
                     color: #FFFFFF;
                     display: block;
                     font-size: 14px;
-                    text-decoration: underline;
-                    text-shadow: 2px 2px 0px #000000;
+                    font-weight: normal;
                 }
             }
         }
@@ -352,17 +380,17 @@ section{
                     margin-bottom: 80px !important;
                 }
                 > p {
-                    max-width: 630px;
-                    font-family: DroidSans;
-                    font-weight: bold;
-                    font-size: 16px;
-                    margin-left: auto;
-                    margin-right: auto;
+                        max-width: 700px;
+                        font-family: DroidSans;
+                        font-weight: normal;
+                        font-size: 16px;
+                        margin: 20px auto;
+                        text-align: justify;
                 }
 
                 .colunm {
-                    @extend .colunm-50;
-                    margin: 0 !important;
+                    width:40%;
+                    display:inline-block;
                     padding: 0 45px;
                     box-sizing: border-box;
                     img {
@@ -370,12 +398,97 @@ section{
                     }
                 }
             }
+
+            .box-faq{
+                background: #fff;
+                margin: 0px auto;
+                max-width: 720px;
+                 padding: 25px 0px 35px;;
+                .box{
+                    border-radius:10px;
+                    padding:20px;
+                    margin:0px 20px;
+                    h4{
+                        font-family: DroidSans;
+                        color:#fff;
+                        font-size:1.5em;
+                        font-weight:normal;
+                        line-height: 1.3em;
+                        margin: 0px;
+                    }
+
+                    a{
+                        text-decoration:none;
+                    }
+                }
+
+                .oquee{
+                    background:#f8931f;
+                }
+
+                .porqueser{
+                    background:#d62f5d;
+                }
+
+                .oqueganho{
+                    background:#f6ca0a;
+                    img{
+                        margin-bottom:-4px;
+                    }
+                }
+
+                .criterios{
+                    background:#9aa510; 
+                }
+            }
+        }
+
+        &.redes{
+            a{
+                border-radius: 10px;
+                color: #004a60;
+                padding: 10px;
+                font-size: 2em;
+                margin: 10px;
+                display: inline-block;
+                img{
+                    width:80px;
+                }
+            }
         }
     }
+
 }
 
 #page-faq {
     text-align: center;
+    -webkit-transition-property: top, bottom;
+    -webkit-transition-duration: 0.5s;
+        
+    .btn-volta-topo{
+        position: fixed;
+        bottom: 30px;
+        right:40px;
+        width:50px;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: alpha(opacity=50);
+        -moz-opacity: 0.5;
+        -khtml-opacity: 0.5;
+        opacity: 0.5;
+        /* transition */
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        transition: 1s;
+        
+        &:hover{
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            filter: alpha(opacity=100);
+            -moz-opacity: 1;
+            -khtml-opacity: 1;
+            opacity: 1;
+        }
+    }
+
     article {
         &.slide-home {
             background: url('../img/slider-home-topo/Home04.jpg');
@@ -461,6 +574,7 @@ section{
             }
         }
     }
+
 }
 
 #page-cadastro{
@@ -1113,6 +1227,12 @@ section{
             float: left;
             width: 410px;
         }
+        .onde_voce_mora{
+            width: 400px;
+            margin-left: 4%;
+            display: inline-block;
+            vertical-align: top;
+        }
 
         .cidade{
             width: 300px;
@@ -1208,6 +1328,15 @@ section{
                 background:#b3b3b3;
             }
         }
+    }
+
+    .btn_continuar{
+        background-color: #F7931E
+        ;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        margin-left:8%;
     }
 }
 /*

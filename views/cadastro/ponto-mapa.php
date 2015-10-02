@@ -5,6 +5,7 @@
     $this->cadastroText = 'Vamos colocar seu ponto no mapa! Isso vai ser importante para entendermos as regiões carentes e férteis em pontos de cultura, e para você pode ser encontrado por outros agentes e pontos!';
     $this->cadastroIcon = 'icon-location';
     $this->cadastroPageClass = 'ponto-mapa page-base-form';
+    $this->cadastroLinkContinuar = 'portifolio';
 ?>
 
 
@@ -12,7 +13,6 @@
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-
         <div class="row">
             <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>

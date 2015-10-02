@@ -15,14 +15,14 @@
         <div class="row">
             <h3 id="somos_todos">Somos todos Pontos de Cultura</h3>
             <p>O Programa Cultura Viva é uma política cultural voltada para o reconhecimento e apoio à  atividades e processos culturais já desenvolvidas, que estimula a participação social, a colaboração e a gestão compartilhada de políticas públicas no campo da cultura. Fomentar essas práticas é também aprofundar a democracia cultural e, por que não, a cultura democrática.</p>
-            <p>A Rede Cultura Viva é a plataforma do Cadastro Nacional de Pontos e Pontões de Cultura, instituído pela Lei Cultura Viva. É a ferramenta que permite a autodeclaração por parte das entidades e coletivos culturais, e o reconhecimento por parte do Estado, estabelecendo uma relação direta entre os Pontos de Cultura, o Ministério da Cultura, e os entes federados parceiros. A rede social dos fazedores e fazedoras de cultura do Brasil.</p>
-            <p>Para quem já é Ponto ou Pontão de Cultura, o Cadastro é uma forma de manter os dados atualizados, acompanhar a execução de plano de trabalho, enviar informação sobre atividades desenvolvidas, além de se manter informado a respeito de encontros, editais, apoios e articulações.</p>
+            <p>A Rede Cultura Viva é a plataforma do Cadastro Nacional de Pontos e Pontões de Cultura, instituído pela Lei Cultura Viva. É a ferramenta que permite a autodeclaração por parte das entidades e coletivos culturais, e o reconhecimento por parte do Estado, estabelecendo uma relação direta entre os Pontos de Cultura, o Ministério da Cultura, e os entes federados parceiros. A rede social dos fazedores e fazedoras de cultura do Brasil. </p>
+            <p>Para quem já é Ponto ou Pontão de Cultura, o Cadastro é uma forma de manter os dados atualizados, acompanhar a execução de plano de trabalho, enviar informação sobre atividades desenvolvidas, além de se manter informado a respeito de encontros, editais, apoios e articulações. </p>
             <p>Para quem quer ser Ponto ou Pontão de Cultura, é só chegar! Insira seus dados no Cadastro e, a partir de uma seleção simplificada e da adesão à Política Nacional de Cultura Viva, a entidade e coletivo cultural poderão ser reconhecidos como Ponto ou Pontão de Cultura, passando a integrar a rede da Política Nacional de Cultura Viva.</p>
             <p>Curtiu? Então seja mais um ponto nesta teia da diversidade cultural brasileira!</p>
         </div>
         <div class="row">
             <h3 id="cultura_viva">O que é Cultura Viva</h3>
-            <p>O Programa Cultura Viva, desde sua implementação em 2004, alcançou grande dimensão nacional, e atualmente é uma referência para políticas culturais em vários países da América Latina.</p>
+            <p>O Programa Cultura Viva, desde sua implementação em 2004, alcançou grande dimensão nacional, e atualmente é uma referência para políticas culturais em vários países da América Latina. </p>
             <p>Presente nos 27 estados brasileiros e em cerca de mil municípios, é um dos programas com mais capilaridade e visibilidade do Ministério da Cultura, atualmente com 4.502 Pontos fomentados. Até 2020 deverão ser fomentados mais 10.498 Pontos de Cultura para atingir a meta de 15 mil Pontos prevista no Plano Nacional de Cultura.</p>
             <p>Sua política foi desenhada para valorizar a cultura realizada na base da sociedade brasileira, a articulação em rede e a gestão compartilhada, com base nos princípios da autonomia, protagonismo e empoderamento da sociedade civil.</p>
             <p>A Política de Cultura Viva contempla iniciativas ligadas à cultura de base comunitária, Indígenas, Quilombolas, de Matriz Africana, economia solidária, produção cultural urbana e periférica, cultura digital, cultura  popular, com ampla incidência no segmento da juventude, abrangendo todos os tipos de linguagem artística e cultural como música, artes cênicas, cinema, circo, literatura, entre outras.</p>
@@ -31,13 +31,15 @@
         </div>
         <div class="row">
             <h3 id="ponto_e_pontao">O que é Ponto e Pontão de Cultura?</h3>
-            <p>Pontos de Cultura são grupos, coletivos e entidades de natureza ou finalidade cultural que desenvolvem e articulam atividades culturais em suas comunidades, reconhecidos, certificados ou fomentados pelo Ministério da Cultura por meio dos instrumentos da Política Nacional de Cultura Viva.</p>
+            <p>Pontos de Cultura são grupos, coletivos e entidades de natureza ou finalidade cultural que desenvolvem e articulam atividades culturais em suas comunidades, reconhecidos, certificados ou fomentados pelo Ministério da Cultura por meio dos instrumentos da Política Nacional de Cultura Viva.
+</p>
             <p>Pontões de Cultura são entidades de natureza ou finalidade cultural ou educativa que desenvolvem, acompanham e articulem atividades culturais articulando redes regionais, temáticas e identitárias de Pontos de Cultura e grupos culturais diversos. Ações de  mobilização,  troca de experiências e articulação entre os diferentes Pontos de Cultura que poderão se agrupar em nível estadual, regional ou por áreas temáticas, visando à capacitação, ao mapeamento e a ações conjuntas.</p>
             <p>Para se tornar Ponto ou Pontão de Cultura, basta aderir ao Cadastro Nacional de Pontos e Pontões de Cultura, seja por meio de acesso direto ao sítio eletrônico do Cadastro, ou se inscrevendo nos editais de apoio e fomento do Ministério da Cultura e dos estados e municípios parceiros.</p>
         </div>
         <div class="row">
-            <h3 id="por_que_ponto_e_postao">Por que ser Ponto ou Pontão de Cultura?</h3>
-            <p>O reconhecimento como Ponto ou Pontão de Cultura garante uma chancela institucional, que pode ser importante para a obtenção de apoios e parcerias, e permite que a entidade ou coletivo se articule com os outros pontos e pontões da rede, a partir de afinidades temáticas ou do pertencimento a um território. </p>
+            <h3 id="por_que_ser_ponto_ou_pontao">Por que ser Ponto ou Pontão de Cultura?</h3>
+            <p>O reconhecimento como Ponto ou Pontão de Cultura garante uma chancela institucional, que pode ser importante para a obtenção de apoios e parcerias, e permite que a entidade ou coletivo se articule com os outros pontos e pontões da rede, a partir de afinidades temáticas ou do pertencimento a um território. 
+</p>
             <p>A Política Nacional de Cultura Viva conta ainda com uma série de modalidades de apoio e fomento direto às entidades e coletivos culturais. Os editais do Cultura Viva possibilitam o fomento direto a Pontos e Pontões de Cultura, prêmios de incentivo e reconhecimento às iniciativas culturais, bolsas para agentes culturais, entre outras modalidades de apoio financeiro direto.</p>
         </div>
         <div class="row">
@@ -46,18 +48,24 @@
             <p>A Rede Cultura Viva é um ambiente de trocas, colaborações, articulações e encontros. Os Pontos e Pontões se fortalecem quando se articulam em rede e compartilham espaços, metodologias, produtos, serviços, processos criativos e ações coletivas.</p>
             <p>Os Pontos e Pontões de Cultura, articulados em rede, são co-gestores das políticas culturais e, nesse sentido, os espaços de participação social são fundamentais: encontros, fóruns, Teias, são instâncias de gestão compartilhada, onde as redes estão sempre em movimento. </p>
             <p>Ao preencher este Cadastro, você poderá formar parte da Rede Cultura Viva! A partir dele você estará se conectando e conhecendo mais pessoas e iniciativas que possuem a mesma vontade de produzir, se articular e de criar alternativas de vida e de trabalho empreendedor no campo da cultura.</p>
-            <p>Ao se cadastrar na Rede Cultura Viva você e seu Ponto/Pontão de Cultura terão acesso a informações, processos e experiências, que permitirão o compartilhamento de capacidades, conhecimentos, serviços e produtos conectados em rede. </p>
+            <p>Ao se cadastrar na Rede Cultura Viva você e seu Ponto/Pontão de Cultura terão acesso a informações, processos e experiências, que permitirão o compartilhamento de capacidades, conhecimentos, serviços e produtos conectados em rede. 
+</p>
         </div>
         <div class="row">
-            <h3 id="autodeclarar">Como me Autodeclarar Ponto ou Pontão de Cultura?</h3>
-            <p>A auto-declaração é uma iniciativa da sociedade civil, que pode ser feita por qualquer entidade ou coletivo cultural que se reconheça como Ponto ou Pontão de Cultura. No entanto, para obter o reconhecimento e a certificação pelo Ministério da Cultura, é necessário o preenchimento de algumas informações e o envio de dados e documentos, que serão analisados a partir de critérios que compõem o processo seletivo:</p>
-            <p>A) Dados Básicos do Responsável pelo Cadastro: Nome completo do responsável pelo cadastro, contatos, redes sociais entre outras informações.</p>
-            <p>B) Dados Básicos da Entidade ou Coletivo Cultural: Dados da entidade ou coletivo cultural, dados do representante legal, endereço, redes sociais.</p>
-            <p>C) História: Ano de fundação, resumo histórico, descrição, objetivos, portifólio de atividades culturais realizadas, atividades culturais em realização.</p>
-            <p>D) Tipo de atividade: categoria, ação estruturante, área de atuação e público envolvido.</p>
-            <p>E) Cartas de Reconhecimento: Anexar 02 cartas de reconhecimento à entidade ou coletivo cultural requerente, emitidas por instituições públicas, privadas, coletivos culturais ou comunidades, com ou sem constituição jurídica, relacionados à arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas. Não serão aceitas assinaturas digitais. </p>
-            <p>F) Aceitar o Termo de Participação da Política Nacional de Cultura Viva.</p>
-            <p>G)  Envio da informação: Clicar no botão "Enviar" e aguardar a resposta da seleção sobre o reconhecimento da sua organização.</p>
+            <h3 id="criterios">Quais são os Critérios para a autodeclaração?</h3>
+            <p>A autodeclaração de entidades e coletivos culturais como Pontos ou Pontões de Cultura é uma iniciativa da sociedade civil, e cabe ao Ministério da Cultura, estados e municípios oferecerem estímulo, apoio e instrumentos para que, a partir desta iniciativa de autodeclaração, as entidades e coletivos possam ser certificados e reconhecidos como Pontos ou Pontões  de Cultura, conforme previsto na Lei Cultura Viva e em sua regulamentação. </p>
+            <p>A plataforma Rede Cultura Viva é a interface digital do Cadastro Nacional dos Pontos e Pontões de Cultura, instrumento previsto na Lei Cultura Viva, conforme disposto no Inciso III do artigo 4 desta lei:</p>
+            <p>"III - Cadastro Nacional de Pontos e Pontões de Cultura: integrado pelos grupos, coletivos e pessoas jurídicas de direito privado sem fins lucrativos que desenvolvam ações culturais e que possuam certificação simplificada concedida pelo Ministério da Cultura. "</p>
+            <p>A Certificação Simplificada como Ponto ou Pontão de Cultura, através da Plataforma Rede Cultura Viva, será um processo seletivo simplificado, aberto permanentemente em fluxo contínuo, destinado ao reconhecimento de entidades e coletivos culturais como Pontos ou Pontões de Cultura. As propostas de certificação enviadas serão analisadas por uma comissão paritária composta por membros do poder público e da sociedade civil. A análise será realizada com base nos seguintes critérios, alinhados às diretrizes e normativos da Politica Nacional de Cultura Viva:
+</p>
+            <p><strong>Critérios:</strong></p>
+            <p>I – Ser pessoa jurídica de direito privado sem fins lucrativos, ou coletivo cultural sem constituição jurídica, de natureza ou finalidade cultural, que desenvolva e articule atividades culturais em suas comunidades;</p>
+            <p>II  - Comprove, no mínimo, 1 (um) ano de existência e desenvolvimento de atividade culturais, através de fotos, material gráfico de eventos, publicações impressas e em meios eletrônicos e outros materiais comprobatórios; </p>
+            <p>III  - Que tenha o apoio, por meio de cartas de reconhecimento, de no minimo 2 (dois) Pontos de Cultura, instituições públicas, privadas, coletivos culturais ou comunidades, com ou sem constituição jurídica, relacionados à arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas. Não serão aceitas assinaturas digitais. 
+IV - Preencha as informações de Cadastro na Plataforma Rede Cultura Viva e aceite os Termos de Uso e o Termo de Adesão à Política Nacional de Cultura Viva.</p>
+            <p>Para chegarmos aos 15 mil Pontos de Cultura fomentados em 2020, conforme previsto nas metas do Plano Nacional de Cultura, é preciso ampla mobilização da sociedade, e cabe ao Ministério da Cultura promover condições para mapear, reconhecer, dar visibilidade e promover intercâmbios e trocas em rede entre estas iniciativas culturais de todo o país. </p>
+            <p>A aprovação da Lei Cultura Viva foi uma conquista da sociedade,  e os pontos de cultura são uma experiência de política cultural reconhecida nacional e internacionalmente. O reconhecimento de entidades e coletivos culturais como pontos de cultura através da auto-declaração será fundamental para ampliar a escala, dar visibilidade e democratizar ainda mais esta experiência, alcançando os mais diversos segmentos da diversidade cultural brasileira. 
+</p>
         </div>
         <div class="row">
             <h2>Curtiu? Então seja mais um ponto nesta teia da<br/>diversidade cultural brasileira!</h2>
@@ -66,4 +74,5 @@
             </form>
         </div>
     </article>
+    <a href="#" class="btn-volta-topo"><img src="<?php $this->asset('img/seta_topo.png') ?>" /></a>
 </section>
