@@ -47,13 +47,17 @@
                 <span>O pontão tem sede própria*</span>
                 <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
                     <option></option>
-                    <option value="1">Sim</option>
-                    <option value="0">Não</option>
+                    <option value="1" ng-value="1">Sim</option>
+                    <option value="0" ng-value="0">Não</option>
                 </select>
-
+                <label class="check">
+                    <input type="checkbox" ng-change="save_field('sede_realizaAtividades', true)" ng-model="agent.sede_realizaAtividades" ng-checked="agent.sede_realizaAtividades"/>
+                    realiza atividades culturais na sede
+                </label>
+                <?php /*
                 <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
-
                 <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
+                */ ?>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
             </label>
