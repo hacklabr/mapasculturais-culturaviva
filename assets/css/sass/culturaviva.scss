@@ -1206,6 +1206,12 @@ section{
             float: left;
             width: 410px;
         }
+        .onde_voce_mora{
+            width: 400px;
+            margin-left: 4%;
+            display: inline-block;
+            vertical-align: top;
+        }
 
         .cidade{
             width: 300px;
@@ -1301,6 +1307,15 @@ section{
                 background:#b3b3b3;
             }
         }
+    }
+
+    .btn_continuar{
+        background-color: #F7931E
+        ;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        margin-left:8%;
     }
 }
 /*
