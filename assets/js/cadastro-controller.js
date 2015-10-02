@@ -242,8 +242,8 @@
             var params = {
                 'id': agent_id,
                 '@select': 'id,terms,name,shortDescription,cep,tem_sede,mesmoEndereco,geoEstado,geoMunicipio,'+
-                    'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,local_de_acao_estado,local_de_acao_cidade,'+
-                    'local_de_acao_cidade,local_de_acao_espaco,location',
+                    'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
+                    'localRealizacao_cidade,localRealizacao_espaco,location',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
             };
@@ -271,34 +271,6 @@
             };
 
             $scope.markers = {};
-
-            // verifica se agente tem o local fornecido
-            $scope.check_espaco = function check_espaco(espaco) {
-                var agent = $scope.agent;
-                return agent && espaco &&
-                       angular.isArray(agent.local_de_acao_espaco) &&
-                       agent.local_de_acao_espaco.indexOf(espaco) > -1;
-            };
-
-            // seleciona ou remove um espaco do agente e salva na api
-            $scope.toggle_espaco = function toggle_espaco(espaco) {
-                var agent = $scope.agent;
-
-                if(!angular.isArray(agent.local_de_acao_espaco)) {
-                    agent.local_de_acao_espaco = [espaco];
-                } else {
-                    var idx = agent.local_de_acao_espaco.indexOf(espaco);
-                    if(idx < 0)
-                    {
-                        agent.local_de_acao_espaco.push(espaco);
-                    }
-                    else
-                    {
-                        agent.local_de_acao_espaco.splice(idx, 1);
-                    }
-                }
-                $scope.save_field('local_de_acao_espaco');
-            };
 
             $scope.cepcoder = {
                 busy: false,
@@ -349,9 +321,11 @@
 
                 '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
                     'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
-                    'tipoReconhecimento,numEdital,anoEdital,nomeProjeto,localRealizacao,etapaProjeto,' +
-                    'proponente,resumoProjeto,prestacaoContasEnvio,prestacaoContasStatus,inicioVigenciaProjeto,' +
-                    'fimVigenciaProjeto,recebeOutrosFinanciamentos,descOutrosFinanciamentos',
+                    'fomento_tipo,fomento_tipo_outros,fomento_tipoReconhecimento,edital_num,' + 
+                    'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
+                    'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' + 
+                    'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
+                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao',
 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
 
@@ -359,7 +333,11 @@
             };
 
             $scope.entity = Entity.get(params);
-
+            
+            $scope.entity.$promise.then(function(){
+                console.log($scope.entity);
+            });
+            
             $scope.save_field = function save_field(field) {
                 var entity_update = {};
                 entity_update[field] = $scope.entity[field];
@@ -376,7 +354,7 @@
                 'id': agent_id,
 
                 '@select': 'id,emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
-                    'responsavelNome,responsavelEmail,responsavelCargo,responsavelTelefone,' +
+                    'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
                     'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',

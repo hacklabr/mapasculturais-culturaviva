@@ -154,7 +154,7 @@
         <div class="row">
             <label class="colunm1">
                 <span>Estado*</span>
-                <select ng-blur="save_field('local_de_acao_estado')" ng-model="agent.local_de_acao_estado">
+                <select ng-blur="save_field('localRealizacao_estado')" ng-model="agent.localRealizacao_estado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
                     <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
@@ -170,13 +170,13 @@
                     <option value="SP">São Paulo</option>         <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                 </select>
-                <span class="error" ng-repeat="error in errors.local_de_acao_estado">{{ error }}</span>
+                <span class="error" ng-repeat="error in errors.localRealizacao_estado">{{ error }}</span>
             </label>
 
             <label class="colunm2">
                 <span>Cidade*</span>
-                <input type="text" ng-blur="save_field('local_de_acao_cidade')" ng-model="agent.local_de_acao_cidade"/>
-                <span class="error" ng-repeat="error in errors.local_de_acao_cidade">{{ error }}</span>
+                <input type="text" ng-blur="save_field('localRealizacao_cidade')" ng-model="agent.localRealizacao_cidade"/>
+                <span class="error" ng-repeat="error in errors.localRealizacao_cidade">{{ error }}</span>
             </label>
         </div>
 
@@ -187,8 +187,6 @@
             </div>
 
             <div class="clear"></div>
-
-            <span class="error" ng-repeat="error in errors.local_de_acao_espaco">{{ error }}</span>
         </div>
 
         <div class="row" ng-controller="ImageUploadCtrl">
