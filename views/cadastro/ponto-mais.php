@@ -143,7 +143,7 @@
                 <input type="checkbox" name="" > Scanner
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Outros. Quais? 
+                <input type="checkbox" name="" > Outros
             </label>
             <div class="colunm-full">
              <span class="destaque">Recursos Humanos</span>
@@ -215,7 +215,7 @@
                 <input type="checkbox" name="" > Rede Médica Solidária
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Outros. Quais?
+                <input type="checkbox" name="" > Outros
             </label>
             <div class="colunm-full">
                 <span class="destaque">Hospedagem</span>
@@ -230,7 +230,7 @@
                 <input type="checkbox" name="" > Camping
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" > Outros. Quais?
+                <input type="checkbox" name="" > Outros
             </label>
             <div class="colunm-full">
                 <span class="destaque">Deslocamento/Transportes</span>
@@ -245,7 +245,7 @@
                 <input type="checkbox" name="" > Passagem Terrestre
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" > Outros. Quais?
+                <input type="checkbox" name="" > Outros
             </label>
             <div class="colunm-full">
                 <span class="destaque">Serviços de Comunicação</span>
@@ -297,7 +297,7 @@
             <p>Espaços culturais, sedes, eventos de formação e plataformas que possam ser consideradas espaços de aprendizagem.</p>
             <span class="destaque subtitle">3) Metodologias:</span>
             <p>Experiências de formação e aprendizagem, vivências, oficinas, cursos, palestras, dinâmicas de troca de conhecimento, entre outras metodologias.</p>
-            <span class="destaque subtitle">Categoria da inscrição:</span>
+            <!-- span class="destaque subtitle">Categoria da inscrição:</span>
             <span class="destaque title"> Formadores</span>
             <span class="destaque subtitle">Formador 1</span>
             <label class="colunm-full">
@@ -510,9 +510,11 @@
             <label class="colunm1">
                 <input type="checkbox" name="" > Pós-graduação
             </label>
-        </div>
+        </div -->
         <div class="row">
-            <h4>Áreas de atuação</h4>
+            <div class="colunm-full" >
+                <span class="destaque title">Áreas de atuação</span>
+            </div>
             <div class="row">
                 <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento:*</span>
             </div>
@@ -613,22 +615,22 @@
                 <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*</span>
             </div>
             <label class="colunm-full">
-                <input type="checkbox"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
+                <input type="text" size="10" maxlength="3" class="inputqtd"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="checkbox"> Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
-            </label>
-            <div class="colunm-full">
-                <span class="destaque">Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*</span>
-            </div>
-            <label class="colunm-full">
-                <input type="checkbox"> Parceiro (participa pontualmente de ações do Ponto/Pontão de Cultura fornecendo serviços, recursos ou estrutura)
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="checkbox"> Apoiador (financia ou fomenta de alguma forma as atividades do Ponto/Pontão de Cultura)
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*
             </label>
             <label class="colunm-full">
-                <input type="checkbox"> Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br /> 
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Parceiro (participa pontualmente de ações do Ponto/Pontão de Cultura fornecendo serviços, recursos ou estrutura)
+            </label>
+            <label class="colunm-full">
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Apoiador (financia ou fomenta de alguma forma as atividades do Ponto/Pontão de Cultura)
+            </label>
+            <label class="colunm-full">
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br /> 
                 <span class="destaque">Descreva: </span>
                 <textarea></textarea>
             </label>    
@@ -640,39 +642,39 @@
             </div>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Prestação de serviços. Quais?
-                <textarea></textarea>
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Venda de produtos. Quais?
-                <textarea></textarea>
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Patrocínio. Quais?
-                <textarea></textarea>
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm-full">
-                <input type="checkbox" name="" > Apoio/doação/colaboração (Cite)
+                <input type="checkbox" name="" > Apoio/doação/colaboração 
+                <!-- input type="text" value="" -->
+            </label>
+            <label class="colunm-full">
+                <input type="checkbox" name="" > Troca direta e indireta 
+                 <!-- input type="text" value="" -->
+            </label>
+            <label class="colunm-full">
+                <input type="checkbox" name="" > Empréstimo 
+                 <!-- input type="text" value="" -->
+            </label>
+            <label class="colunm-full">
+                <input type="checkbox" name="" > Emprego/salário 
+                 <!-- input type="text" value="" -->
+            </label>
+            <label class="colunm-full">
+                <input type="checkbox" name="" > Convênio com Órgão público
                 <input type="text" value="">
             </label>
             <label class="colunm-full">
-                <input type="checkbox" name="" > Troca direta e indireta (Cite)
-                <input type="text" value="">
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Empréstimo (Cite)
-                <input type="text" value="">
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Emprego/salário (Cite)
-                <input type="text" value="">
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Convênio com Órgão público (Cite)
-                <input type="text" value="">
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Moeda complementar (social). Qual (is)?
-                <textarea></textarea>
+                <input type="checkbox" name="" > Moeda complementar (social)
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm-full">
                 <input type="checkbox" name="" > Outros.<br >
@@ -683,50 +685,50 @@
                 <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária* ? Como?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" > Sim. Como?
+                <input type="radio" name="pontoeconomia" > Sim. Como?
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Não
+                <input type="radio" name="pontoeconomia" > Não
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Não, mas gostaria
+                <input type="radio" name="pontoeconomia" >  Não, mas gostaria
             </label>
             <div class="colunm-full">
                 <spanc class="destaque">O Ponto/Pontão de Cultura pratica Economia da cultura*?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" > Sim. Como?
+                <input type="radio" name="pontoeconomiacultura" > Sim. Como?
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Não
+                <input type="radio" name="pontoeconomiacultura" > Não
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Não, mas gostaria
+                <input type="radio" name="pontoeconomiacultura" > Não, mas gostaria
             </label>
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" > Sim, física. Qual?
+                <input type="radio" name="pontoeconomiasocial" > Sim, física. Qual?
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Sim, digital. Qual?
+                <input type="radio" name="pontoeconomiasocial" > Sim, digital. Qual?
                 <textarea></textarea>
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Não, mas está planejando seu lançamento
+                <input type="radio" name="pontoeconomiasocial" > Não, mas está planejando seu lançamento
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" > Não, mas pretende ter
+               <input type="radio" name="pontoeconomiasocial" > Não, mas pretende ter
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Não, porque não sabe o que é nem como funciona
+                <input type="radio" name="pontoeconomiasocial" > Não, porque não sabe o que é nem como funciona
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Não, e não pretende ter
+                <input type="radio" name="pontoeconomiasocial" > Não, e não pretende ter
             </label>
             <div class="colunm-full">
                 <span class="destaque">Em caso afirmativo, conte em um parágrafo a definição e o funcionamento da sua moeda, seja física ou digital.</span>
@@ -735,40 +737,40 @@
                 <span class="destaque">O Ponto/Pontão de Cultura está disponível para as trocas de serviços ou produtos?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" > Sim, parcialmente
+                <input type="radio" name="culturaprodutos" > Sim, parcialmente
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Sim, integralmente
+                <input type="radio" name="culturaprodutos" > Sim, integralmente
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" > Não
+                <input type="radio" name="culturaprodutos" > Não
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Depende de quem estará envolvido na troca
+                <input type="radio" name="culturaprodutos" >  Depende de quem estará envolvido na troca
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Outros
+                <input type="radio" name="culturaprodutos" > Outros
                 <textarea></textarea>
             </label>
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Sim. Que tipo de serviços e/ou produtos? 
+                <input type="radio" name="servicoprodutos" >  Sim. Que tipo de serviços e/ou produtos? 
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Não
+                <input type="radio" name="servicoprodutos" > Não
             </label>
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?*</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Sim. Quanto e para quem?
+                <input type="radio" name="projetosapoiou" > Sim. Quanto e para quem?
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" > Não
+                <input type="radio" name="projetosapoiou" >  Não
             </label>
             <label class="colunm-full">
                 <span>Quanto custa por ano o Ponto/Pontão de Cultura? (valore todas as atividades realizadas, pagamento de pessoal envolvido, aluguel e manutenção de sede e equipamentos, entre outros - custeados ou não com recursos do Ministério da Cultura).</span>
@@ -781,62 +783,62 @@
                 <span class="destaque">Participa de algum movimento político-cultural? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="radio" name="politicocultural" >   Não 
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Sim. Quais?*
-                <textarea></textarea>
+                <input type="radio" name="politicocultural" >  Sim*
+                <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
                 <span class="destaque">Participa de algum Fórum de Cultura? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="radio" name="forumcultural" >  Não 
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Sim. Quais?*
-                <textarea></textarea>
+                <input type="radio" name="forumcultural" > Sim*
+                <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Colegiados. Quais?* 
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Colegiados* 
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Fóruns. Quais?* 
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Fóruns* 
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" >  Comissões. Quais?
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Comissões
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" >  Conferência Nacional de Cultura
-                <textarea></textarea>
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Grupo de Trabalho. Quais?*
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Grupo de Trabalho*
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm3">
-                <input type="checkbox" name="" >  Conselhos. Quais?*
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Conselhos*
+                <!-- textarea></textarea -->
             </label>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Outros. Quais?*
-                <textarea></textarea>
+                <input type="checkbox" name="" >  Outros*
+                <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
                 <span class="destaque">Possui parceria com o Poder Público? *</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Não 
+                <input type="radio" name="poderpublico" > Não 
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Sim. Quais?*
-                <textarea></textarea>
+                <input type="radio" name="poderpublico" >  Sim*
+                <!-- textarea></textarea -->
             </label>
 
         </div>

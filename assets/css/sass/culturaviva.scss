@@ -451,7 +451,7 @@ section{
                 font-size: 2em;
                 margin: 10px;
                 display: inline-block;
-                img{
+                 img{
                     width:80px;
                 }
             }
@@ -1047,6 +1047,12 @@ section{
 
     .form{
         padding: 10px 4%;
+        
+        .inputqtd{
+            width: 40px;
+            display:inline-block;
+            margin-right: 10px;
+        }
         
         h4{
             background: #f7c908;
