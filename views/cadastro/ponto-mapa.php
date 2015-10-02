@@ -12,7 +12,6 @@
 <form ng-controller="PointCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-
         <div class="row">
             <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
@@ -61,7 +60,6 @@
                 */ ?>
 
                 <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
-                 */ ?>
             </label>
         </div>
 
