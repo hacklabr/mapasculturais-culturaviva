@@ -1,7 +1,7 @@
 <?php
 
 $config['routes']['default_controller_id'] = 'rede';
-$config['auth.config']['onCreateRedirectUrl'] = $config['base.url'] . 'rede';
+$config['auth.config']['onCreateRedirectUrl'] = $config['base.url'] . 'rede/';
 
 return [
     'app.siteName' => 'Rede Cultura Viva',
