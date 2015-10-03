@@ -169,6 +169,7 @@
             };
 
             $scope.deleteFile = function(file){
+
                 $http.delete(MapasCulturais.createUrl('file','single',[file.id])).then(function(){
                     if(file.group === 'gallery'){
                         $scope.agent.files.gallery.forEach(function(f, index){
@@ -177,7 +178,7 @@
                             }
                         });
                     }else{
-                        $scope.agent.files[group] = null;
+                        $scope.agent.files[file.group] = null;
                     }
                 }, function(a,b,c){
                     console.log('não foi possível apagar a imagem', a,b,c);
