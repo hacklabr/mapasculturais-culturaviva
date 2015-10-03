@@ -19,7 +19,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
                     <span class="icon icon_profile"></span>
-                    <h4>1. Informações do Responsável</h4>
+                    <h4> 1. Informações do Responsável</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -40,7 +40,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
                     <span class="icon icon_profile"></span>
-                    <h4>4. Seu Ponto no Mapa</h4>
+                    <h4> 4. Seu Ponto no Mapa</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -61,7 +61,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
                     <span class="icon"></span>
-                    <h4>2. Dados da Entidade ou Coletivo Cultural</h4>
+                    <h4> 2. Dados da Entidade ou Coletivo Cultural</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -82,7 +82,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
                     <span class="icon"></span>
-                    <h4>5. Portifólio</h4>
+                    <h4> 5. Portifólio</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -103,7 +103,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'entidadeContatos'); ?>">
                     <span class="icon"></span>
-                    <h4>3. Contado da Entidade</h4>
+                    <h4> 3. Contado da Entidade</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -124,7 +124,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMais'); ?>">
                     <span class="icon"></span>
-                    <h4>6. Fale mais sobre seu Ponto</h4>
+                    <h4> 6. Fale mais sobre seu Ponto</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
