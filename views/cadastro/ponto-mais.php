@@ -747,7 +747,7 @@
                 <input type="radio" name="culturaprodutos" > Não
             </label>
             <label class="colunm1">
-                <input type="radio" name="culturaprodutos" >  Depende de quem estará envolvido na troca
+                <input type="radio" name="culturaprodutos" > Depende de quem estará envolvido na troca
             </label>
             <label class="colunm2">
                 <input type="radio" name="culturaprodutos" > Outros
@@ -757,11 +757,8 @@
                 <span class="destaque">O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
-<<<<<<< HEAD
                 <input type="checkbox" name="" >  Sim. Que tipo de serviços e/ou produtos?
-=======
                 <input type="radio" name="servicoprodutos" >  Sim. Que tipo de serviços e/ou produtos?
->>>>>>> 10c26fb87459446d18890a4400918c4185920489
                 <textarea></textarea>
             </label>
             <label class="colunm2">
@@ -775,7 +772,7 @@
                 <textarea></textarea>
             </label>
             <label class="colunm2">
-                <input type="radio" name="projetosapoiou" >  Não
+                <input type="radio" name="projetosapoiou" > Não
             </label>
             <label class="colunm-full">
                 <span>Quanto custa por ano o Ponto/Pontão de Cultura? (valore todas as atividades realizadas, pagamento de pessoal envolvido, aluguel e manutenção de sede e equipamentos, entre outros - custeados ou não com recursos do Ministério da Cultura).</span>
