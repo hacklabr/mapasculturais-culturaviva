@@ -869,9 +869,10 @@ section{
         article.validar-ponto{
             background: #078979;
             color:#fff;
+            text-align: center;
 
             h5{
-                float: left;
+                
                 font-size: 20px;
                 color: #fff;
                 margin-left: 5%;
@@ -885,12 +886,9 @@ section{
 
             p{
                 display:inline-block;
-                float:right;
                 text-align:center;
                 font-size:14px;
-                width: 25%;
-                margin-right:10%;
-                margin-top: 20px;
+                width: 30%;
             }
         }
 
