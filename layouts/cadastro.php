@@ -25,10 +25,10 @@ $link_continuar = $app->createUrl('cadastro', $link );
     <p><?php echo $this->cadastroText ?></p>
 
     <?php echo $TEMPLATE_CONTENT; ?>
-    <a href="<?php echo $link_continuar;  ?>" class="btn btn_continuar">Continuar</a>
     <div class="btn_voltar">
        <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>">voltar ao início <i class="icon icon-home"></i></a>
     </div>
+    <a href="<?php echo $link_continuar;  ?>" class="btn btn_continuar">Continuar >> </a>
     <div class="clear"></div>
 </div>
 

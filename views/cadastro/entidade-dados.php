@@ -216,7 +216,7 @@
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
-                    <span class="destaque">Resumo do projeto(objeto)* <i>?</i></span>
+                    <span class="destaque">Resumo do projeto (objeto)* <i>?</i></span>
                     <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="entity.edital_projeto_resumo"> </textarea>
                 </label>
             </div>

@@ -58,7 +58,11 @@
             <label class="colunm3">
                 <span>Operadora*</span>
                 <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-                    <option>51 Brasil</option>                <option>Intelig</option>
+                    <option>TIM</option>                     <option>Vivo</option>
+                    <option>Claro</option>                   <option>Oi</option>
+                    <option>GVT</option>                     <option>Nextel</option>
+                    <option>Outra</option>
+                    <!--<option>51 Brasil</option>                <option>Intelig</option>
                     <option>Aerotech</option>                 <option>ITACEU</option>
                     <option>Alpamayo</option>                 <option>Konecta</option>
                     <option>Alpha Nobilis*</option>           <option>LigueMAX</option>
@@ -68,7 +72,7 @@
                     <option>Cabo Telecom</option>             <option>Neotelecom</option>
                     <option>Cambridge</option>                <option>Nextel</option>
                     <option>Convergia</option>                <option>Nexus</option>
-                    <option>CTBC</option>                     <option>Oi</option>
+                    <option>CTBC</option>
                     <option>DIALDATA TELECOM</option>         <option>Ostara</option>
                     <option>Dollarphone</option>              <option>OTS</option>
                     <option>Easytone</option>                 <option>Redevox</option>
@@ -84,10 +88,10 @@
                     <option>Golden Line</option>              <option>Viacom</option>
                     <option>GT Group</option>                 <option>Viper</option>
                     <option>GVT</option>                      <option>Vipway</option>
-                    <option>Hello Brazil</option>             <option>Vivo</option>
+                    <option>Hello Brazil</option>
                     <option>Hit Telecomunicações</option>     <option>Voitel</option>
                     <option>Hoje</option>
-                    <option>IDT (Minas Gerais)</option>
+                    <option>IDT (Minas Gerais)</option> -->
                 </select>
             </label>
         </div>

@@ -2,7 +2,7 @@
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
     $this->cadastroTitle = 'Portifólio';
-    $this->cadastroText = 'Incula fotos, links e redes sociais! Isto nos ajuda a enttender que tipo de atividades culturais você realiza como Ponto de Cultura!';
+    $this->cadastroText = 'Inclua suas fotos, links e redes sociais! Isto nos ajuda a entender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
     $this->cadastroLinkContinuar = 'pontoMais';
@@ -30,12 +30,12 @@
 
             <label class="colunm-50">
 
-                <p>Caso não possua portifólio online, você também pode anexar arquivos no formato pdf, com no máximo 20kb.</p>
+                <p>Caso não possua portfólio online, você também pode anexar arquivos no formato PDF, com no máximo 20MB.</p>
 
                 <p><span class="destaque"><i>?</i></span>
-                    Precisa de ajuda para montar seu portifólio?
+                    Precisa de ajuda para montar seu portfólio?
                     <br>
-                    <a href="#">Clique aqui</a> para baixar um modelo com orientações.
+                    <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
         </div>
@@ -104,7 +104,7 @@
         <div class="clear"></div>
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
-            <p class="espacoleft">Inclua no máximo x arquivos, no formato JPG ou PNG com até xxKB</p>
+            <p class="espacoleft">Inclua no máximo 4 arquivos, no formato JPG ou PNG com até 1MB</p>
             <div class="img_updade file-item" ng-repeat="f in agent.files.gallery">
                 <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
                 <img src="{{f.files.avatarBig.url}}" width="160" height="138">
