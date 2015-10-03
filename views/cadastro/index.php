@@ -8,10 +8,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <p>Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Confira com essas informações antes de validá-las!</p>
         </div>-->
         <article>
-            <h2>Seja bem vindo(a) à Rede Cultura Viva</h2>
-            <p>Esta é a página do seu ponto de cultura. Apenas você tem acesso a ela.</p>
-            <p>Fique a vontade para ir preenchendo as sessões -  você não precisa fazer tudo agora! Quando sua página estiver completa, clique em "validar dados" e aguarde de 30 à 60 dias para obter a homologação do Ministério da Cultura.</p>
-            <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o MinC, além de poder ser relacionar e trocar recursos e conhecimentos com outros pontos de cultura.</p>
+            <h2>Seja bem vindo(a) <br>à Rede Cultura Viva</h2>
+            <p>Esta é a página do seu Ponto de Cultura. Apenas você tem acesso a ela.</p>
+            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quanto sua página estiver completa clique em "validar dados".</p>
+            <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
     </section>
     <section class="boxs-cadastro">
@@ -19,7 +19,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
                     <span class="icon icon_profile"></span>
-                    <h4>Informações do Responsável</h4>
+                    <h4>1. Informações do Responsável</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -40,7 +40,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
                     <span class="icon icon_profile"></span>
-                    <h4>Seu Ponto no Mapa</h4>
+                    <h4>4. Seu Ponto no Mapa</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -61,13 +61,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
                     <span class="icon"></span>
-                    <h4>Dados da Entidade ou Coletivo Cultural</h4>
+                    <h4>2. Dados da Entidade ou Coletivo Cultural</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Vamos falar um pouco sobre a sua organização, não importa se ela tem um CNPJ ou não, pois você é um ponto de cultura, e não apenas um número!</p>
+                     <p>Vamos falar um pouco sobre a sua organização, não importa se ela tem um CNPJ ou não!</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -82,13 +82,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
                     <span class="icon"></span>
-                    <h4>Portifólio</h4>
+                    <h4>5. Portifólio</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Manda aí tudo o que você tem de bom pra mostrar! Queremos ver o que você já tem feito na sua caminhada.</p>
+                     <p>Manda aí tudo o que você tem de bom pra mostrar! </p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -103,13 +103,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'entidadeContatos'); ?>">
                     <span class="icon"></span>
-                    <h4>Contado da Entidade</h4>
+                    <h4>3. Contado da Entidade</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Como o MinC pode falar com o seu Ponto? Nos ajude a garantir que você receberá informações importantes.</p>
+                     <p>Como o MinC pode falar com o seu Ponto. </p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -124,13 +124,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMais'); ?>">
                     <span class="icon"></span>
-                    <h4>Fale mais sobre seu Ponto</h4>
+                    <h4>6. Fale mais sobre seu Ponto</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Vamos falar mais sobre as atividades realizadas pelo seu Ponto? Como são as pessoas que o frequentam, e o que ele tem de interessante para trocar e para ensinar para os outros.</p>
+                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto.</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -145,7 +145,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h5><i class="icon-publish"></i>Validar</h5>
+            <h4><i class="icon-publish"></i>Validar</h4>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
         </article>
