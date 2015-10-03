@@ -1310,8 +1310,9 @@ section{
     }
 
     .btn_voltar{
-        float:right;
+        float:left;
         margin-right: 50px;
+        margin-left: 66px;
         a{
             color: #b3b3b3;
             text-decoration: underline;
@@ -1345,6 +1346,8 @@ section{
     }
 
     .btn_continuar{
+        float: right;
+        margin-right: 100px;
         background-color: #F7931E
         ;
         border: none;
@@ -1882,5 +1885,3 @@ section{
         }
     }
  }
-
-
