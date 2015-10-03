@@ -23,7 +23,7 @@
         <div class="row">
             <label class="colunm05">
                 <span>Telefone institucional(com DD)*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="entity.telefone1"/>
+                <input type="text" ng-blur="save_field('telefone1')" ng-model="entity.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
             <label class="colunm02">
@@ -40,7 +40,7 @@
         <div class="row">
             <label class="colunm05">
                 <span>Outro Telefone(com DD)*</span>
-                <input type="text" ng-blur="save_field('telefone2')" ng-model="entity.telefone2"/>
+                <input type="text" ng-blur="save_field('telefone2')" ng-model="entity.telefone2" ui-mask="(99) ?99999-9999">
             </label>
 
             <label class="colunm02">
