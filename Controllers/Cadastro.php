@@ -138,14 +138,14 @@ class Cadastro extends \MapasCulturais\Controller{
             'edital_projeto_vigencia_inicio',
             'edital_projeto_vigencia_fim',
             'outrosFinanciamentos',
-            
+
         ];
-        
+
         if(!$agent->semCNPJ){
             $required_properties[] = 'cnpj';
             $required_properties[] = 'nomeCompleto';
         }
-        
+
         if($agent->edital_prestacaoContas_envio === 'enviada'){
             $required_properties[] = 'edital_prestacaoContas_status';
         }
@@ -243,10 +243,10 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->render('entidade-dados');
     }
 
-    function GET_entidadeContatos(){
+    function GET_entidadeFinanciamento(){
         $this->_validateUser();
 
-        $this->render('entidade-contatos');
+        $this->render('entidade-financiamento');
     }
 
     function GET_pontoMapa(){
@@ -261,10 +261,22 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->render('portifolio');
     }
 
-    function GET_pontoMais(){
+    function GET_articulacao(){
         $this->_validateUser();
 
-        $this->render('ponto-mais');
+        $this->render('ponto-articulacao');
+    }
+
+    function GET_economiaViva(){
+        $this->_validateUser();
+
+        $this->render('ponto-economia-viva');
+    }
+
+    function GET_formacao(){
+        $this->_validateUser();
+
+        $this->render('ponto-formacao');
     }
 
     function ALL_registra(){
@@ -358,7 +370,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $responsavel->publish(true);
             $entidade->publish(true);
             $ponto->publish(true);
-            
+
             if($ponto->sede_realizaAtividades){
                 $espaco = new \MapasCulturais\Entities\Space;
                 $espaco->type = 125; // ponto de cultura
@@ -376,9 +388,9 @@ class Cadastro extends \MapasCulturais\Controller{
                 $espaco->En_Complemento = $ponto->En_Complemento;
                 $espaco->endereco = "{$espaco->En_Nome_Logradouro} {$espaco->En_Num}, {$espaco->En_Bairro}, {$espaco->geoMunicipio}, {$espaco->geoEstado}";
                 $espaco->terms = $ponto->terms;
-                
+
                 $espaco->save(true);
-                
+
             }
 
             $inscricao->send();

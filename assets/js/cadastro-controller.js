@@ -361,7 +361,7 @@
 
                 '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
                     'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
-                    'fomento_tipo,fomento_tipo_outros,fomento_tipoReconhecimento,edital_num,' +
+                    'tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
                     'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
                     'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                     'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
@@ -372,7 +372,7 @@
                 '@permissions': 'view'
             };
 
-            $scope.entity = Entity.get(params);
+            $scope.agent = Entity.get(params);
 
             extendController($scope, $timeout, Entity, agent_id);
 
@@ -395,7 +395,7 @@
                 '@permissions': 'view'
             };
 
-            $scope.entity = Entity.get(params);
+            $scope.agent = Entity.get(params);
 
             extendController($scope, $timeout, Entity, agent_id);
 

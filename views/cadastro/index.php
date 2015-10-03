@@ -36,6 +36,48 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        <article class="box-entidade-dados border-left">
+            <header>
+                <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
+                    <span class="icon"></span>
+                    <h4> 2. Entidade ou Coletivo Cultural</h4>
+                    <span class="btn_mais"> + </span>
+                </a>
+            </header>
+            <div class="infos">
+                <div class="texto">
+                     <p>Vamos falar um pouco sobre a sua organização, não importa se ela tem um CNPJ ou não!</p>
+                </div>
+<!--                <div class="circle-status c100 p56">
+                    <span>56%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>-->
+            </div>
+        </article>
+        <article class="box-entidade-financiados">
+            <header>
+                <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
+                    <span class="icon"></span>
+                    <h4> 3. Projetos Financiados</h4>
+                    <span class="btn_mais"> + </span>
+                </a>
+            </header>
+            <div class="infos">
+               <div class="texto">
+                     <p>Como o MinC pode falar com o seu Ponto. </p>
+                </div>
+<!--                <div class="circle-status c100 p56">
+                    <span>56%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>-->
+            </div>
+        </article>
         <article class="box-ponto-mapa border-left">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
@@ -57,32 +99,11 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
-        <article class="box-entidade-dados">
-            <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
-                    <span class="icon"></span>
-                    <h4> 2. Entidade ou Coletivo Cultural</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
-            </header>
-            <div class="infos">
-                <div class="texto">
-                     <p>Vamos falar um pouco sobre a sua organização, não importa se ela tem um CNPJ ou não!</p>
-                </div>
-<!--                <div class="circle-status c100 p56">
-                    <span>56%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>-->
-            </div>
-        </article>
-        <article class="box-portfolio border-left">
+        <article class="box-portfolio">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
                     <span class="icon"></span>
-                    <h4> 5. Portifólio</h4>
+                    <h4> 5. Portifólio e Anexos</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
@@ -99,17 +120,17 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
-        <article class="box-entidade-contato">
+        <article class="box-atuacao-articulaco border-left">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'entidadeContatos'); ?>">
+                <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>">
                     <span class="icon"></span>
-                    <h4> 3. Contado da Entidade</h4>
+                    <h4> 6. Atuação e Articulação</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Como o MinC pode falar com o seu Ponto. </p>
+                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto.</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -120,17 +141,38 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
-        <article class="box-fale-mais-ponto border-left">
+        <article class="box-economia-viva">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'pontoMais'); ?>">
+                <a href="<?php echo $app->createUrl('cadastro', 'economiaViva'); ?>">
                     <span class="icon"></span>
-                    <h4> 6. Fale mais sobre seu Ponto</h4>
+                    <h4> 7. Economia Viva</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto.</p>
+                     <p>Economia Viva. </p>
+                </div>
+<!--                <div class="circle-status c100 p56">
+                    <span>56%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>-->
+            </div>
+        </article>
+        <article class="box-formacao border-left">
+            <header>
+                <a href="<?php echo $app->createUrl('cadastro', 'formacao'); ?>">
+                    <span class="icon"></span>
+                    <h4> 8. Formação</h4>
+                    <span class="btn_mais"> + </span>
+                </a>
+            </header>
+            <div class="infos">
+               <div class="texto">
+                     <p>Formação.</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>

@@ -723,32 +723,6 @@ section{
                 }
             }
         }
-
-        article.box-ponto-mapa{
-            header{
-                background: $base-color-ponto-mapa;
-
-                h4{
-                    width: 30%;
-                }
-            }
-
-            .infos{
-                .circle-status{
-                    &:hover{
-                        span{
-                            color:#075579;
-                        }
-                    }
-
-                    .fill, .bar{
-                        border-color: #075579;
-                    }
-                }
-            }
-
-        }
-
         article.box-entidade-dados{
             header{
                 background: $base-color-entidade-dados;
@@ -772,13 +746,61 @@ section{
             }
         }
 
+        article.box-entidade-financiados{
+            header{
+                background: $base-color-entidade-contato;
+
+                h4{
+                    width: 30%;
+                }
+            }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                            span{
+                                color:#F7931E;
+                            }
+                    }
+
+                    .fill, .bar{
+                        border-color: #F7931E;
+                    }
+                }
+            }
+        }
+
+        article.box-ponto-mapa{
+            header{
+                background: $base-color-ponto-mapa;
+
+                h4{
+                    width: 30%;
+                }
+            }
+
+            .infos{
+                .circle-status{
+                    &:hover{
+                        span{
+                            color:#075579;
+                        }
+                    }
+
+                    .fill, .bar{
+                        border-color: #075579;
+                    }
+                }
+            }
+        }
+
         article.box-portfolio{
             header{
                 background: $base-color-portfolio;
 
                 h4{
                     width: 30%;
-                    padding: 12px 0px;
+                    /*padding: 12px 0px;*/
                 }
             }
 
@@ -793,10 +815,34 @@ section{
                         border-color: #417034;
                     }
                 }
-            }
+            } 
         }
 
-        article.box-entidade-contato{
+        article.box-atuacao-articulaco{
+            header{
+                background: $base-color-fale-mais-ponto;
+
+                h4{
+                    width: 35%;
+                }
+            }
+
+            .infos{
+                .circle-status{
+
+                    &:hover{
+                        span{
+                            color:#7B4AAF;
+                        }
+                    }
+
+                    .fill, .bar{
+                        border-color: #7B4AAF;
+                    }
+                }
+            }
+        }
+        article.box-economia-viva{
             border-bottom: 1px solid #ccc;
             height: 244px;
             header{
@@ -822,7 +868,7 @@ section{
             }
         }
 
-        article.box-fale-mais-ponto{
+        article.box-formacao{
             border-bottom: 1px solid #ccc;
             height: 244px;
             header{
@@ -830,6 +876,7 @@ section{
 
                 h4{
                     width: 35%;
+                    padding: 12px 0px;
                 }
             }
 
@@ -847,10 +894,7 @@ section{
                     }
                 }
             }
-
-
         }
-
     }
 
     section.box-status{
