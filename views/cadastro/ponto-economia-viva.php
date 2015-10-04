@@ -9,7 +9,7 @@
 
 ?>
 
-<form ng-controller="PointCtrl">
+<form ng-controller="PontoEconomiaVivaCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <div class="row">

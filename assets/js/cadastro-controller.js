@@ -75,6 +75,39 @@
                 'Populações atingida por barragens',
                 'Populações de regiões fronteiriças',
                 'Populações em áreas de vulnerabilidade social'
+            ],
+            
+            area_atuacao: [
+                'Produção',
+                'Cultural',
+                'Artes Cênicas',
+                'Artes Visuais',
+                'Artesanato',
+                'Audiovisual',
+                'Capacitação',
+                'Capoeira',
+                'Contador de Histórias',
+                'Cultura Afro',
+                'Cultura Alimentar',
+                'Cultura Digital',
+                'Culturas Indígenas',
+                'Culturas Populares',
+                'Comunicação Direitos Humanos',
+                'Esporte',
+                'Fotografia',
+                'Gastronomia',
+                'Gênero',
+                'Hip Hop',
+                'Juventude',
+                'Literatura',
+                'Meio Ambiente', 
+                'Moda',
+                'Música', 
+                'Software Livre',
+                'Tradição Oral',
+                'Turismo',
+                'Internacional',
+                'Outros'
             ]
         };
 
@@ -254,7 +287,7 @@
     ]);
 
     app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
-        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
+        function PortifolioCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
@@ -349,6 +382,59 @@
                     });
                 }
             };
+        }
+    ]);
+
+    app.controller('PontoArticulacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
+        function PontoArticulacaoCtrl($scope, Entity, MapasCulturais, $timeout)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,terms',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+            
+            $scope.termos = termos;
+
+            extendController($scope, $timeout, Entity, agent_id);
+        }
+    ]);
+    
+    app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
+        function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+
+            extendController($scope, $timeout, Entity, agent_id);
+        }
+    ]);
+
+    app.controller('PontoFormacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
+        function PontoFormacaoCtrl($scope, Entity, MapasCulturais, $timeout)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+
+            extendController($scope, $timeout, Entity, agent_id);
         }
     ]);
 
