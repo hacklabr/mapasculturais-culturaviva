@@ -52,47 +52,12 @@
 
             <label class="colunm2">
                 <span>Telefone Pessoal (com DDD)*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1"/>
+                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999 9999">
             </label>
 
             <label class="colunm3">
                 <span>Operadora*</span>
-                <select ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-                    <option>TIM</option>                     <option>Vivo</option>
-                    <option>Claro</option>                   <option>Oi</option>
-                    <option>GVT</option>                     <option>Nextel</option>
-                    <option>Outra</option>
-                    <!--<option>51 Brasil</option>                <option>Intelig</option>
-                    <option>Aerotech</option>                 <option>ITACEU</option>
-                    <option>Alpamayo</option>                 <option>Konecta</option>
-                    <option>Alpha Nobilis*</option>           <option>LigueMAX</option>
-                    <option>America Net</option>              <option>LinkNET</option>
-                    <option>Amigo</option>                    <option>Locaweb</option>
-                    <option>BBT Brasil</option>               <option>Nebracam</option>
-                    <option>Cabo Telecom</option>             <option>Neotelecom</option>
-                    <option>Cambridge</option>                <option>Nextel</option>
-                    <option>Convergia</option>                <option>Nexus</option>
-                    <option>CTBC</option>
-                    <option>DIALDATA TELECOM</option>         <option>Ostara</option>
-                    <option>Dollarphone</option>              <option>OTS</option>
-                    <option>Easytone</option>                 <option>Redevox</option>
-                    <option>DSLI</option>                     <option>Plenna</option>
-                    <option>Embratel / NET / Claro</option>   <option>Sercomtel</option>
-                    <option>Engevox</option>                  <option>Sermatel</option>
-                    <option>Epsilon</option>                  <option>SmartTelecom|76Telecom</option>
-                    <option>Espas</option>                    <option>Spin</option>
-                    <option>Fale 65</option>                  <option>Telebit</option>
-                    <option>Falkland/IPCorp</option>          <option>Teledados</option>
-                    <option>Fonar</option>                    <option>TIM</option>
-                    <option>Global Crossing(Impsat)</option>  <option>Transit Telecom</option>
-                    <option>Golden Line</option>              <option>Viacom</option>
-                    <option>GT Group</option>                 <option>Viper</option>
-                    <option>GVT</option>                      <option>Vipway</option>
-                    <option>Hello Brazil</option>
-                    <option>Hit Telecomunicações</option>     <option>Voitel</option>
-                    <option>Hoje</option>
-                    <option>IDT (Minas Gerais)</option> -->
-                </select>
+                <input type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
         </div>
         <div class="clear"></div>

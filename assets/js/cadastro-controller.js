@@ -359,15 +359,11 @@
             var params = {
                 'id': agent_id,
 
-                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,semCNPJ,' +
-                    'tipoPontoCulturaDesejado,tipoOrganizacao,tipoCertificacao,foiFomentado,' +
-                    'tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
-                    'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
-                    'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
-                    'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
-                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao',
-
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,' +
+                    'tipoPontoCulturaDesejado,tipoOrganizacao,' +
+                    'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
+                    'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
+                    'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
 
                 '@permissions': 'view'
             };
@@ -386,11 +382,11 @@
             var params = {
                 'id': agent_id,
 
-                '@select': 'id,emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
-                    'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
-                    'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
-
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,tipoCertificacao,foiFomentado,tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
+                    'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
+                    'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
+                    'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
+                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao',
 
                 '@permissions': 'view'
             };
