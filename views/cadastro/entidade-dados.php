@@ -215,13 +215,6 @@
                 <input type="text" ng-blur="save_field('En_Complemento')" ng-model="agent.En_Complemento"/>
             </label>
         </div>
-        <div class="row">
-            <h4>Cartas de Reconhecimento</h4>
-
-            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas. Não serão aceitas assinaturas digitais.</p>
-
-            <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
-        </div>
         <div class="clear"></div>
     </div>
 </form>

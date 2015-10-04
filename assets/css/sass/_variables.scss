@@ -37,3 +37,11 @@ $base-font-droidsans: "DroidSans";
 
 
 $yellow_btn: #FBED1D;
+
+$unicode-telegram:            background url:("../img/icon-telegram") !default;
+// used on .icon-whatsapp on _icons.scss file
+$unicode-whatsapp:            background url:("../img/icon-whatsapp") !default;
+// used on .icon-diaspora on _icons.scss file
+$unicode-diaspora:            background url:("../img/icon-diaspora") !default;
+// used on .icon-instagram on _icons.scss file
+$unicode-instagram:            background url:("../img/icon-instagram") !default;

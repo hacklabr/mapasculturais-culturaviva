@@ -150,23 +150,23 @@
                 <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
-            <label class="colunm-redes telegram">
+            <label class="colunm-redes googleplus telegram">
                 <span><i class="icon icon-telegram"></i> Seu usuário no Telegram (@SeuNome)</span>
                 <input type="text" ng-blur="save_field('telegram')" ng-model="agent.telegram" placeholder="@SeuNome"/>
             </label>
-            <label class="colunm-redes whatsapp">
+            <label class="colunm-redes googleplus whatsapp">
                 <span><i class="icon icon-whatsapp"></i> Seu número do WhatsApp</span>
                 <input type="text" ng-blur="save_field('whatsapp')" ng-model="agent.whatsapp" placeholder="(11) _____-_____ "/>
             </label>
-            <label class="colunm-redes culturadigital">
+            <label class="colunm-redes googleplus culturadigital">
                 <span><i class="icon icon-culturadigital"></i> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
             </label>
-            <label class="colunm-redes diaspora">
+            <label class="colunm-redes googleplus diaspora">
                 <span><i class="icon icon-diaspora"></i> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
-            <label class="colunm-redes instagram">
+            <label class="colunm-redes googleplus instagram">
                 <span><i class="icon icon-instagram"></i> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('instagram')" ng-model="agent.instagram" placeholder="http://"/>
             </label>
