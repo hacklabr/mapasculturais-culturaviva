@@ -224,7 +224,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-vcard"></span>
+                <span class="icon icon-home"></span>
                 <p>Entidade ou Coletivo Cultural<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
