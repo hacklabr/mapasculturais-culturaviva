@@ -42,7 +42,6 @@
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Carta de recomendações <i>?</i></span>
             <div class="colunm-20">
-
               <div class="img_updade file-item" ng-repeat="f in agent.files.cartas">
                   <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
                   <img src="{{f.files.cartas.url}}" width="160" height="138">
@@ -55,6 +54,7 @@
                       <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                   </div>
               </div>
+          </div>
 <!--
                 <div class="file-item">
                     <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
@@ -68,7 +68,6 @@
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
 -->
-            </div>
 
             <label class="colunm-50">
 
