@@ -16,8 +16,8 @@
             <span class="destaque espacoleft">Atividades já realizadas* <i>?</i></span>
             <div class="colunm-20">
                 <div class="file-item">
-                    <a ng-if="agent.files.portifolio" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir arquivo">x</a>
-                    <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.portifolio ? 'Clique para alterar o documento' : 'Clique para incluir um documento'}}">
+                    <a ng-if="agent.files.portifolio" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'portifolio')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.portifolio ? 'Clique para alterar o Portfólio' : 'Clique para incluir um Portfólio'}}">
                         <img ng-if="!agent.files.portifolio" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                         <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                     </div>
@@ -36,6 +36,47 @@
                     Precisa de ajuda para montar seu portfólio?
                     <br>
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
+                </p>
+            </label>
+        </div>
+        <div class="row" ng-controller="ImageUploadCtrl">
+            <span class="destaque espacoleft">Carta de recomendações <i>?</i></span>
+            <div class="colunm-20">
+
+              <div class="img_updade file-item" ng-repeat="f in agent.files.cartas">
+                  <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
+                  <img src="{{f.files.cartas.url}}" width="160" height="138">
+              </div>
+              <div class="img_updade file-item">
+                  <div type="file" ngf-select="uploadFile($file, 'cartas')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="Clique para incluir uma foto">
+                      <img src="<?php $this->asset('img/incluir_pdf.png') ?>" width="160" height="138">
+                  </div>
+                  <div class="progress row" ng-show="f.progress >= 0">
+                      <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+                  </div>
+              </div>
+<!--
+                <div class="file-item">
+                    <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'carta1')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.portifolio ? 'Clique para alterar o Carta' : 'Clique para incluir Carta'}}">
+                        <img ng-if="!agent.files.carta1" src="<?php $this->asset('img/incluir_pdf.png') ?>" width="160" height="138">
+                        <img ng-if="agent.files.carta1" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                    </div>
+                </div>
+                <a ng-if="agent.files.carta1" href="{{agent.files.carta1.url}}" target="_blank">{{agent.files.carta1.name}}</a>
+                <div class="progress row" ng-show="f.progress >= 0">
+                    <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+                </div>
+            </div>
+-->
+            <label class="colunm-50">
+
+                <p>Caso não possua de recomendações, você também pode anexar arquivos no formato PDF, com no máximo 2MB.</p>
+
+                <p><span class="destaque"><i>?</i></span>
+                    Precisa de um modelo de carta?
+                    <br>
+                    <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=140&doc=RU5aaTNtVEo2OWE5ZGhFUXgzRnpON0VWTVVLcUhOY2lRSE9vYXBoL3VmUT0_IjE0MCI1" target="_blank">Clique aqui</a> para baixar um modelo.
                 </p>
             </label>
         </div>
@@ -117,6 +158,13 @@
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <h4>Cartas de Reconhecimento</h4>
+
+            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas. Não serão aceitas assinaturas digitais.</p>
+
+            <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
         <div class="clear"></div>
     </div>
