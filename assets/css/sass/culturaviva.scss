@@ -656,6 +656,15 @@ section{
                     font-size: 1.3em;
                     margin: 20px 5% 10px;
                 }
+                span.icon{
+                    display: inline-block;
+                    width: 40px;
+                    font-size: 36px;
+                    color: #FFFFFF;
+                    margin-top: 10px;
+                    margin-left: 25px;
+
+                }
 
                 .btn_mais{
                     padding: 2px 10px;
@@ -676,11 +685,13 @@ section{
             }
             .infos{
                 padding:10px 10px 30px 0px;
+                width: 480px;
+                height: 55px;
 
                 .texto{
                     margin-left: 5%;
                     margin-top: 20px;
-                    width: 70%;
+                    width: 85%;
                     display: inline-block;
 
                     p{
@@ -902,7 +913,7 @@ section{
             background:#fff;
             padding: 20px 0px;
             .status{
-                width: 14%;
+                width: 120px;
                 height: auto;
                 float: left;
                 padding: 0.3%;
@@ -942,14 +953,14 @@ section{
             .infos-messenge{
                 background-color: #F9B462;
                 width: 70%;
-                padding: 10px 20px;
+                padding: 0px;
                 color: #fff;
                 margin: 30px auto;
                 text-align: center;
 
                 p{
                     margin-bottom:0px;
-                    padding:0px;
+                    padding:0.3%;
                 }
 
                 .close{
@@ -975,7 +986,7 @@ section{
             .status{
                 cursor:pointer;
                 height: 120px;
-                padding:10px;
+                padding:0px;
 
                 + .status{
                     &:before{
@@ -991,7 +1002,7 @@ section{
 
                 .circle-status{
                     font-size: 50px;
-                    margin-left: 33%;
+                    margin-left: 31%;
                     .bar, .fill{
                         border-color:#f50;
                     }
@@ -1029,8 +1040,8 @@ section{
                     font-weight: bold;
                     line-height: 1.2em;
                     text-align: center;
-                    width: 180px;
-                    margin-left: -5px;
+                    width: 100%;
+                    margin-left: 0px;
                 }
             }
         }
@@ -1713,6 +1724,136 @@ section{
     .form{
         h4{
             background: $base-color-atuacao-articulacao;
+        }
+
+        label{
+            font-size:14px;
+            margin-bottom:10px;
+
+            span{
+                display:inline-block;
+            }
+        }
+
+        input[type="checkbox"]{
+            width:15px;
+            height:15px;
+            vertical-align:top;
+            cursor:pointer;
+            margin-top:8px;
+
+        }
+
+        input[type=checkbox]:checked + label{
+            color:#f50;
+        }
+
+        .colunm1{
+            width:270px;
+        }
+
+        .colunm2{
+            width:280px;
+        }
+
+        .colunm3{
+            width:280px;
+        }
+    }
+}
+
+.page-economia-viva{
+    header{
+        background: $base-color-economia-viva;
+
+        .circle-status{
+            &:after{
+                background:$base-color-economia-viva;
+            }
+
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-economia-viva;
+        }
+
+        label{
+            font-size:14px;
+            margin-bottom:10px;
+
+            span{
+                display:inline-block;
+            }
+        }
+
+        input[type="checkbox"]{
+            width:15px;
+            height:15px;
+            vertical-align:top;
+            cursor:pointer;
+            margin-top:8px;
+
+        }
+
+        input[type=checkbox]:checked + label{
+            color:#f50;
+        }
+
+        .colunm1{
+            width:270px;
+        }
+
+        .colunm2{
+            width:280px;
+        }
+
+        .colunm3{
+            width:280px;
+        }
+    }
+}
+
+.page-formacao{
+    header{
+        background: $base-color-formacao;
+
+        .circle-status{
+            &:after{
+                background:$base-color-formacao;
+            }
+
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-formacao;
         }
 
         label{

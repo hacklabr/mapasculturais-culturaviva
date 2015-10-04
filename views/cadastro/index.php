@@ -24,18 +24,17 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         </article>
     </section>
     <section class="boxs-cadastro">
+        <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
-                    <span class="icon icon_profile"></span>
-                    <h4> 1. Informações do Responsável</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
+              <span class="icon icon-user"></span>
+              <h4> 1. Informações do Responsável</h4>
+              <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
-                <div class="texto">
-                     <p>Precisamos saber quem é você e pegar seus contatos!</p>
-                </div>
+              <div class="texto">
+                <p>Precisamos saber quem é você e pegar seus contatos!</p>
+              </div>
 <!--                <div class="circle-status c100 p56 small">
                     <span>56%</span>
                     <div class="slice">
@@ -45,13 +44,14 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
         <article class="box-entidade-dados border-left">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
-                    <span class="icon"></span>
-                    <h4> 2. Entidade ou Coletivo Cultural</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
+                <span class="icon icon-home"></span>
+                <h4> 2. Entidade ou Coletivo Cultural</h4>
+                <span class="btn_mais"> + </span>
+
             </header>
             <div class="infos">
                 <div class="texto">
@@ -66,13 +66,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
         <article class="box-entidade-financiados">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
-                    <span class="icon"></span>
-                    <h4> 3. Projetos Financiados</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
+              <span class="icon icon-dollar"></span>
+              <h4> 3. Projetos Financiados</h4>
+              <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
                <div class="texto">
@@ -87,13 +87,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
         <article class="box-ponto-mapa border-left">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
-                    <span class="icon icon_profile"></span>
+                    <span class="icon icon-location"></span>
                     <h4> 4. Seu Ponto no Mapa</h4>
                     <span class="btn_mais"> + </span>
-                </a>
             </header>
             <div class="infos">
                 <div class="texto">
@@ -108,13 +108,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
         <article class="box-portfolio">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
-                    <span class="icon"></span>
-                    <h4> 5. Portifólio e Anexos</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
+              <span class="icon icon-picture"></span>
+              <h4> 5. Portifólio e Anexos</h4>
+              <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
                 <div class="texto">
@@ -129,13 +129,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>">
         <article class="box-atuacao-articulaco border-left">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>">
-                    <span class="icon"></span>
+                    <span class="icon icon-chat"></span>
                     <h4> 6. Atuação e Articulação</h4>
                     <span class="btn_mais"> + </span>
-                </a>
             </header>
             <div class="infos">
                <div class="texto">
@@ -150,13 +150,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'economiaViva'); ?>">
         <article class="box-economia-viva">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'economiaViva'); ?>">
-                    <span class="icon"></span>
+                    <span class="icon icon-vcard"></span>
                     <h4> 7. Economia Viva</h4>
                     <span class="btn_mais"> + </span>
-                </a>
             </header>
             <div class="infos">
                <div class="texto">
@@ -171,13 +171,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'formacao'); ?>">
         <article class="box-formacao border-left">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'formacao'); ?>">
-                    <span class="icon"></span>
+                    <span class="icon icon-book-open"></span>
                     <h4> 8. Formação</h4>
                     <span class="btn_mais"> + </span>
-                </a>
             </header>
             <div class="infos">
                <div class="texto">
@@ -192,19 +192,20 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
         <div class="clear"></div>
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h4><i class="icon-publish"></i>Validar</h4>
+            <h4><i class="icon-publish"> </i> Validar </h4>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
         </article>
         <article class="content-status">
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p13">
+                    <span>13%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -216,28 +217,28 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p65">
+                    <span>65%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-location"></span>
+                <span class="icon icon-home"></span>
                 <p>Entidade ou Coletivo Cultural<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
                <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p13">
+                    <span>13%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-vcard"></span>
+                <span class="icon icon-dollar"></span>
                 <p>Projetos Financiados<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
@@ -250,20 +251,20 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-picture"></span>
+                <span class="icon icon-location"></span>
                 <p>Seu Ponto no Mapa<br />(100% informações opcionais)</p>
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p50">
+                    <span>50%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-picture"></span>
                 <p>Portifólio e Anexos<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
@@ -281,28 +282,28 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p55">
+                    <span>55%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-vcard"></span>
                 <p>Economia Viva<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p90">
+                    <span>90%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-book-open"></span>
                 <p>Formação<br />(50% informações opcionais)</p>
             </div>
             <div class="clear"></div>

@@ -1,15 +1,15 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Fale mais sobre seu ponto';
-    $this->cadastroText = 'Queremos entender melhor quais são as atividades realizadas pelo seu Ponto e quem é o público que as frequenta';
-    $this->cadastroIcon = 'icon-vcard';
-    $this->cadastroPageClass = 'ponto-mais page-base-form';
-    $this->cadastroLinkContinuar = '';
+    $this->cadastroTitle = 'Formação';
+    $this->cadastroText = 'Vamos compartilhar conhecimentos e experiências para fazer multiplicar os saberes da nossa cultura.';
+    $this->cadastroIcon = 'icon-book-open';
+    $this->cadastroPageClass = 'formacao page-base-form';
+    $this->cadastroLinkContinuar = 'responsavel';
 
 ?>
 
-<form ng-controller="PointCtrl">
+<form ng-controller="PontoFormacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Conhecimento em Rede</h4>

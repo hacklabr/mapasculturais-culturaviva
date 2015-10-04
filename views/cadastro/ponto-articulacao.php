@@ -5,11 +5,11 @@
     $this->cadastroText = 'Queremos entender melhor quais são as atividades realizadas pelo seu Ponto e quem é o público que as frequenta';
     $this->cadastroIcon = 'icon-vcard';
     $this->cadastroPageClass = 'ponto-mais page-base-form';
-    $this->cadastroLinkContinuar = 'responsavel';
+    $this->cadastroLinkContinuar = 'economiaViva';
 
 ?>
 
-<form ng-controller="PointCtrl">
+<form ng-controller="PontoArticulacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
@@ -44,96 +44,7 @@
             <div class="row">
                 <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento:*</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Produção Cultural
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Artes Cênicas
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Artes Visuais
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Artesanato
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Audiovisual
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Capacitação
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Capoeira
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Contador de Histórias
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Cultura Afro
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Cultura Alimentar
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Cultura Digital
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Culturas Indígenas
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Culturas Populares
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Comunicação
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Direitos Humanos
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Esporte
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Fotografia
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Gastronomia
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Gênero
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Hip Hop
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Juventude
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Literatura
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Meio Ambiente
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Moda
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Música
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Software Livre
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Tradição Oral
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Turismo
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Internacional
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Outros. Quais?
-            </label>
+             <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
         <div class="row">
             <h4>Articulação</h4>
