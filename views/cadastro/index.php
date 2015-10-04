@@ -24,18 +24,17 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         </article>
     </section>
     <section class="boxs-cadastro">
+        <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
-                <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
-                    <span class="icon-user icon"></span>
-                    <h4> 1. Informações do Responsável</h4>
-                    <span class="btn_mais"> + </span>
-                </a>
+              <span class="icon-user .icon"></span>
+              <h4> 1. Informações do Responsável</h4>
+              <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
-                <div class="texto">
-                     <p>Precisamos saber quem é você e pegar seus contatos!</p>
-                </div>
+              <div class="texto">
+                <p>Precisamos saber quem é você e pegar seus contatos!</p>
+              </div>
 <!--                <div class="circle-status c100 p56 small">
                     <span>56%</span>
                     <div class="slice">
@@ -45,6 +44,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>-->
             </div>
         </article>
+        </a>
         <article class="box-entidade-dados border-left">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'entidadeDados'); ?>">
