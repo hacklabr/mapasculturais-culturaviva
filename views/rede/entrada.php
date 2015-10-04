@@ -20,19 +20,20 @@
                 <a href="#" class="btn btn_active btn_continuar">Continuar</a>
             </div>
             <div class="colunm-full js-com-cnpj esconde">
-                <div class="cnpj-form">
-                    <form> 
-                        <label>CNPJ*</label>
-                        <input type="text" value="" />
-                        <input type="submit" class="btn" value="OK" />
-                    </form>
-                </div>
-                <div class="clear"></div>
-                <div class="resposta-cnpj">
-                    <p>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</p>
-                     <a href="#" class="btn btn_active btn_continuar">Continuar</a>
-                     <a href="#" class="ja-sou js-modal">Já sou um Ponto ou Pontão de Cultura. Por que isto aconteceu? <span>?</spa></a>
-                </div>
+                <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra')?>">
+                    <input type="hidden" name="comCNPJ" value="true"/>
+                    <div class="cnpj-form">
+                            <label>CNPJ*</label>
+                            <input type="text" name="CNPJ" value="" />
+                            <input type="submit" class="btn" value="OK" />
+                    </div>
+                    <div class="clear"></div>
+                    <div class="resposta-cnpj">
+                        <p>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</p>
+                        <button type="submit" class="btn btn_active btn_continuar">Continuar</button>
+                         <a href="#" class="ja-sou js-modal">Já sou um Ponto ou Pontão de Cultura. Por que isto aconteceu? <span>?</spa></a>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -52,7 +53,7 @@
                     <span class="icon-mail-read ic5"></span>
                     <span class="icon-pencil ic6"></span>
                     <span class="icon-publish ic7"></span>
-                </div>  
+                </div>
             </div>
             <div class="colunm1">
                 <div class="slide js-user sl1">

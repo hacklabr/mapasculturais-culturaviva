@@ -138,14 +138,14 @@ class Cadastro extends \MapasCulturais\Controller{
             'edital_projeto_vigencia_inicio',
             'edital_projeto_vigencia_fim',
             'outrosFinanciamentos',
-            
+
         ];
-        
+
         if(!$agent->semCNPJ){
             $required_properties[] = 'cnpj';
             $required_properties[] = 'nomeCompleto';
         }
-        
+
         if($agent->edital_prestacaoContas_envio === 'enviada'){
             $required_properties[] = 'edital_prestacaoContas_status';
         }
@@ -179,7 +179,7 @@ class Cadastro extends \MapasCulturais\Controller{
         $app = App::i();
 
         if(!$app->user->redeCulturaViva){
-            $app->redirect($app->createUrl('rede', 'index'), 307);
+            $app->redirect($app->createUrl('rede', 'entrada'), 307);
         }
     }
 
@@ -222,6 +222,72 @@ class Cadastro extends \MapasCulturais\Controller{
         $required_properties = $this->getPontoRequiredProperties();
 
         return $this->_getErrors($agent, $required_properties);
+    }
+
+    protected function _populateAgents($responsavel, $entidade, $ponto){
+/*
+    [Id] => 1
+    [Pk_Codigo] =>
+    [Id_Longitude] => -67,809832
+    [Id_Latitude] => -9,973551
+    [Id_Tipogeo] => 2
+    [Sg_UF] => AC
+    [Fk_Cod_IBGE] => 1200203
+    [Nm_Municipio] => Cruzeiro do Sul
+    [Nm_Entidade] => Governo do Estado do Acre
+    [Nm_Ponto] => Pontão de Cultura Náuas
+    [En_Endereco_Original] => Avenida Brasil, 297 – Centro
+    [En_Tipo_Logradouro] => AV
+    [En_Nome_Logradouro] => BRASIL
+    [En_Num] => 297
+    [En_Km] =>
+    [En_Complemento] =>
+    [En_Bairro] => CENTRO
+    [End_CEP] => 69900100
+    [Ds_Edital] => abr/05
+    [Ds_Instrumento] => Pontão
+    [Ds_Tipo_ponto] => Direto
+    [Id_Tipo_Esfera] => Federal
+    [Cod_CNPJ] => 63.606.479/0001-24
+    [Cod_pronac] => 66496
+    [Cod_salic] => 685
+    [Cod_scdc] => 55
+    [Nr_DDD1] =>
+    [Nr_Telefone1] =>
+    [Nr_DDD2] =>
+    [Nr_Telefone2] =>
+    [Nr_DDD3] =>
+    [Nr_Telefone3] =>
+    [Lk_Site] =>
+    [Nm_Responsavel] =>
+    [Ee_email_reponsavel] =>
+    [Ee_email1] => gabinete.governador@ac.gov.br
+    [Ee_email2] =>
+    [Ee_email3] =>
+*/
+        if(isset($this->data['comCNPJ']) && $this->data['comCNPJ'] && isset($this->data['CNPJ']) && $this->data['CNPJ']){
+            $d = json_decode(file_get_contents('http://dev.culturaviva.gov.br/wp-admin/admin-ajax.php?action=get_cultura&cnpj=' . $this->data['CNPJ']));
+            if(is_object($d)){
+                echo '<pre>';
+                die(print_r($d));
+
+                // responsável
+                $responsavel->nomeCompleto = $d->Nm_Responsavel;
+
+                // entidade
+                $entidade->cnpj = $this->data['CNPJ'];
+
+                // ponto
+                $ponto->location = ['latitude' => $d->Id_Latitude, 'longitude' => $d->Id_Longitude];
+                $ponto->En_Nome_Logradouro  = $d->En_Nome_Logradouro;
+                $ponto->En_Num              = $d->En_Num;
+                $ponto->En_Complemento      = $d->En_Complemento;
+                $ponto->En_Bairro           = $d->En_Bairro;
+                $ponto->cep                 = $d->End_CEP;
+                $ponto->endereco            = $d->En_Endereco_Original;
+                $ponto->En_Nome_Logradouro = $d->En_Nome_Logradouro;
+            }
+        }
     }
 
 
@@ -272,6 +338,49 @@ class Cadastro extends \MapasCulturais\Controller{
         $app = App::i();
 
         if(!$app->user->redeCulturaViva){
+            /*
+             * CAMPOS DOS CNPJs
+             * Id
+             * Pk_Codigo
+             * Id_Longitude
+             * Id_Latitude
+             * Id_Tipogeo
+             * Sg_UF
+             * Fk_Cod_IBGE
+             * Nm_Municipio
+             * Nm_Entidade
+             * Nm_Ponto
+             * En_Endereco_Original
+             * En_Tipo_Logradouro
+             * En_Nome_Logradouro
+             * En_Num
+             * En_Km
+             * En_Complemento
+             * En_Bairro
+             * End_CEP
+             * Ds_Edital
+             * Ds_Instrumento
+             * Ds_Tipo_ponto
+             * Id_Tipo_Esfera
+             * Cod_CNPJ
+             * Cod_pronac
+             * Cod_salic
+             * Cod_scdc
+             * Nr_DDD1
+             * Nr_Telefone1
+             * Nr_DDD2
+             * Nr_Telefone2
+             * Nr_DDD3
+             * Nr_Telefone3
+             * Lk_Site
+             * Nm_Responsavel
+             * Ee_email_reponsavel
+             * Ee_email1
+             * Ee_email2
+             * Ee_email3
+             */
+
+
             $user = $app->user;
 
             $project = $app->repo('Project')->find($app->config['redeCulturaViva.projectId']); //By(['owner' => 1], ['id' => 'asc'], 1);
@@ -294,6 +403,8 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->name = '';
             $ponto->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
             $ponto->save(true);
+
+            $this->_populateAgents($app->user->profile, $entidade, $ponto);
 
             // criando a inscrição
 
@@ -358,7 +469,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $responsavel->publish(true);
             $entidade->publish(true);
             $ponto->publish(true);
-            
+
             if($ponto->sede_realizaAtividades){
                 $espaco = new \MapasCulturais\Entities\Space;
                 $espaco->type = 125; // ponto de cultura
@@ -376,9 +487,9 @@ class Cadastro extends \MapasCulturais\Controller{
                 $espaco->En_Complemento = $ponto->En_Complemento;
                 $espaco->endereco = "{$espaco->En_Nome_Logradouro} {$espaco->En_Num}, {$espaco->En_Bairro}, {$espaco->geoMunicipio}, {$espaco->geoEstado}";
                 $espaco->terms = $ponto->terms;
-                
+
                 $espaco->save(true);
-                
+
             }
 
             $inscricao->send();
