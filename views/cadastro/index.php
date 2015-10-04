@@ -203,8 +203,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article class="content-status">
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p13">
+                    <span>13%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -216,21 +216,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>
-               <?php  // */ ?>
-                <span class="icon icon-location"></span>
-                <p>Entidade ou Coletivo Cultural<br />(50% informações opcionais)</p>
-            </div>
-            <div class="status">
-               <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p65">
+                    <span>65%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -238,6 +225,19 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 </div>
                <?php  // */ ?>
                 <span class="icon icon-vcard"></span>
+                <p>Entidade ou Coletivo Cultural<br />(50% informações opcionais)</p>
+            </div>
+            <div class="status">
+               <?php // /* ?>
+                <div class="circle-status c100 p13">
+                    <span>13%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+               <?php  // */ ?>
+                <span class="icon icon-dollar"></span>
                 <p>Projetos Financiados<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
@@ -250,20 +250,20 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-picture"></span>
+                <span class="icon icon-location"></span>
                 <p>Seu Ponto no Mapa<br />(100% informações opcionais)</p>
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p50">
+                    <span>50%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-picture"></span>
                 <p>Portifólio e Anexos<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
@@ -281,21 +281,21 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p55">
+                    <span>55%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-dollar"></span>
+                <span class="icon icon-vcard"></span>
                 <p>Economia Viva<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
                 <?php // /* ?>
-                <div class="circle-status c100 p45">
-                    <span>45%</span>
+                <div class="circle-status c100 p90">
+                    <span>90%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
