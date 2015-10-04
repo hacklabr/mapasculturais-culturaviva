@@ -1256,9 +1256,35 @@ section{
 
     }
 
+    .telegram{
+        i{
+           color:#d54732;
+        }
+
+    }
+    .whatsapp{
+        i{
+           color:#d54732;
+        }
+
+    }
+    .diaspora{
+        i{
+           color:#d54732;
+        }
+
+    }
+    .instagram{
+        i{
+           color:#d54732;
+        }
+
+    }
+
     .flick{
         margin-left:37px;
     }
+
     .form-opcional{
         .upadete_foto{
             display:none;
@@ -2049,3 +2075,18 @@ section{
         }
     }
  }
+icon-telegram{
+  background: url('../img/icon-telegram');
+}
+icon-diaspora{
+  background: url('../img/icon-diaspora');
+}
+icon-whatsapp{
+  background: url('../img/icon-whatasapp');
+}
+icon-instagram{
+  background: url('../img/icon-instagram');
+}
+icon-culturadigital{
+  background: url('../img/icon-culturadigital');
+}
