@@ -199,7 +199,7 @@ class Cadastro extends \MapasCulturais\Controller{
         return $errors;
     }
 
-    protected function _getErrorsResponsavel(){
+    function getErrorsResponsavel(){
         $agent = $this->getResponsavel();
         $this->_checkPermissionsToViewErrors($agent);
         $required_properties = $this->getResponsavelRequiredProperties();
@@ -208,7 +208,7 @@ class Cadastro extends \MapasCulturais\Controller{
         return $this->_getErrors($agent, $required_properties);
     }
 
-    protected function _getErrorsEntidade(){
+    function getErrorsEntidade(){
         $agent = $this->getEntidade();
         $this->_checkPermissionsToViewErrors($agent);
         $required_properties = $this->getEntidadeRequiredProperties();
@@ -216,7 +216,7 @@ class Cadastro extends \MapasCulturais\Controller{
         return $this->_getErrors($agent, $required_properties);
     }
 
-    protected function _getErrorsPonto(){
+    function getErrorsPonto(){
         $agent = $this->getPonto();
         $this->_checkPermissionsToViewErrors($agent);
         $required_properties = $this->getPontoRequiredProperties();
@@ -279,6 +279,10 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->render('ponto-formacao');
     }
 
+    function GET_pogressio(){
+        echo 'Grande Adoniram Barbosa!!!';die;
+    }
+
     function ALL_registra(){
         $this->requireAuthentication();
         $app = App::i();
@@ -338,15 +342,15 @@ class Cadastro extends \MapasCulturais\Controller{
     }
 
     function GET_errosResponsavel(){
-        $this->json($this->_getErrorsResponsavel());
+        $this->json($this->getErrorsResponsavel());
     }
 
     function GET_errosEntidade(){
-        $this->json($this->_getErrorsEntidade());
+        $this->json($this->getErrorsEntidade());
     }
 
     function GET_errosPonto(){
-        $this->json($this->_getErrorsPonto());
+        $this->json($this->getErrorsPonto());
     }
 
     function ALL_enviar(){
@@ -358,9 +362,9 @@ class Cadastro extends \MapasCulturais\Controller{
             $this->errorJson('O usuário ainda não fez o cadastro na rede', 400);
         }
 
-        $erros_responsavel = $this->_getErrorsResponsavel();
-        $erros_entidade = $this->_getErrorsEntidade();
-        $erros_ponto = $this->_getErrorsPonto();
+        $erros_responsavel = $this->getErrorsResponsavel();
+        $erros_entidade = $this->getErrorsEntidade();
+        $erros_ponto = $this->getErrorsPonto();
 
         if(!$erros_responsavel && !$erros_entidade && !$erros_ponto){
             $responsavel = $this->getResponsavel();
