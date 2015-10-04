@@ -206,6 +206,12 @@ class Theme extends BaseV1\Theme{
 //                  'required' => true,
                     'private' => true
                 ],
+                'telefone1' => [
+                    'label' => 'Telefone',
+//                  'required' => true,
+                    'private' => true,
+                    'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
+                ],
                 'telefone1_operadora' => [
                     'label' => 'Operadora do Telefone 1',
 //                  'required' => true,
@@ -388,6 +394,12 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Descrição dos outros financiamentos (apoios, patrocínios, prêmios, bolsas, convênios, etc)',
                     'required' => false,
                     'private' => true
+                ],
+                'telefone2' => [
+                    'label' => 'Telefone',
+//                  'required' => true,
+                    'private' => true,
+                    'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
                 ],
                 'telefone2_operadora' => [
                     'label' => 'Operadora',
