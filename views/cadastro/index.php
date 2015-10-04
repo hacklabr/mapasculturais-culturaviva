@@ -111,14 +111,14 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article class="box-portfolio">
             <header>
                 <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
-                    <span class="icon icon-show-search-on-list"></span>
+                    <span class="icon"></span>
                     <h4> 5. Portifólio e Anexos</h4>
                     <span class="btn_mais"> + </span>
                 </a>
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Manda aí tudo o que você tem pra mostrar! </p>
+                     <p>Manda aí tudo o que você tem pra mostrar! Deixe suas referências de trabalhos.</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
