@@ -499,7 +499,16 @@
             var $r = $(_r);
             $r.find('a').css( "font-weight", 'normal');
             $r.find('.menu').removeClass('menu');
-            $('#main-header').html($r);
+            $('#main-header').prepend($r);
+            $('#header-search-row').css('z-index',1000);
+            var ind = 0;
+            var interval_header = setInterval(function(){
+                ind++;
+                if(ind >= 100){
+                    clearInterval(interval_header);
+                }
+                adjustHeader();
+            },100);
             //$('#main-header').html(_r);
         });
 
