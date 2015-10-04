@@ -67,8 +67,9 @@
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
-            </div>
 -->
+            </div>
+
             <label class="colunm-50">
 
                 <p>Caso não possua de recomendações, você também pode anexar arquivos no formato PDF, com no máximo 2MB.</p>
