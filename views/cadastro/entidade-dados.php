@@ -1,9 +1,9 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Dados da Entidade ou Coletivo Cultural';
+    $this->cadastroTitle = '2. Dados da Entidade ou Coletivo Cultural';
     $this->cadastroText = 'Inclua os dados da Entidade ou Coletivo Cultural responsável pelo Ponto de Cultura';
-    $this->cadastroIcon = 'icon-vcard';
+    $this->cadastroIcon = 'icon-home';
     $this->cadastroPageClass = 'dados-entidade page-base-form';
     $this->cadastroLinkContinuar = 'entidadeFinanciamento';
 ?>
