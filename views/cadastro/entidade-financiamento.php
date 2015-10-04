@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Projetos Financiados';
+    $this->cadastroTitle = '3. Projetos Financiados';
     $this->cadastroText = 'Como o Minc pode contatar seu Ponto? Nos Ajude a garantir que você receberá informações importantes. :)';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'contato-entidade page-base-form';
