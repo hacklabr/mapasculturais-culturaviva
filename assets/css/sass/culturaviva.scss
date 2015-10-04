@@ -748,7 +748,7 @@ section{
 
         article.box-entidade-financiados{
             header{
-                background: $base-color-entidade-contato;
+                background: $base-color-projetos-financiados;
 
                 h4{
                     width: 30%;
@@ -815,12 +815,12 @@ section{
                         border-color: #417034;
                     }
                 }
-            } 
+            }
         }
 
         article.box-atuacao-articulaco{
             header{
-                background: $base-color-fale-mais-ponto;
+                background: $base-color-atuacao-articulacao;
 
                 h4{
                     width: 35%;
@@ -846,7 +846,7 @@ section{
             border-bottom: 1px solid #ccc;
             height: 244px;
             header{
-                background: $base-color-entidade-contato;
+                background: $base-color-economia-viva;
 
                 h4{
                     width: 30%;
@@ -872,7 +872,7 @@ section{
             border-bottom: 1px solid #ccc;
             height: 244px;
             header{
-                background: $base-color-fale-mais-ponto;
+                background: $base-color-formacao;
 
                 h4{
                     width: 35%;
@@ -916,7 +916,7 @@ section{
             text-align: center;
 
             h5{
-                
+
                 font-size: 20px;
                 color: #fff;
                 margin-left: 5%;
@@ -1657,11 +1657,11 @@ section{
 
 .page-contato-entidade{
     header{
-        background: $base-color-entidade-contato;
+        background: $base-color-projetos-financiados;
 
         .circle-status{
             &:after{
-                background:$base-color-entidade-contato;
+                background:$base-color-projetos-financiados;
             }
 
             span{
@@ -1681,18 +1681,18 @@ section{
 
     .form{
         h4{
-            background: $base-color-entidade-contato;
+            background: $base-color-projetos-financiados;
         }
     }
 }
 
 .page-ponto-mais{
     header{
-        background: $base-color-fale-mais-ponto;
+        background: $base-color-atuacao-articulacao;
 
         .circle-status{
             &:after{
-                background:$base-color-fale-mais-ponto;
+                background:$base-color-atuacao-articulacao;
             }
 
             span{
@@ -1712,7 +1712,7 @@ section{
 
     .form{
         h4{
-            background: $base-color-fale-mais-ponto;
+            background: $base-color-atuacao-articulacao;
         }
 
         label{
