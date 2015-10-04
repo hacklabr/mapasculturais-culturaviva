@@ -646,6 +646,7 @@ section{
             }
 
             header{
+				height: 61px;
                 a{
                     text-decoration:none;
                 }
@@ -676,7 +677,7 @@ section{
                     -moz-border-radius: 20px;
                     border-radius: 20px;
                     position: relative;
-                    top: -13px;
+                    top: 48px;
                     color: #fff;
                     font-size: 22px;
                     font-weight: 100;
