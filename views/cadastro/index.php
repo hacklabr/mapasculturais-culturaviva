@@ -19,7 +19,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article>
             <h2>Seja bem vindo(a) <br>à Rede Cultura Viva</h2>
             <p>Esta é a página do seu Ponto de Cultura. Apenas você tem acesso a ela.</p>
-            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quanto sua página estiver completa clique em "validar dados".</p>
+            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Validar".</p>
             <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
     </section>
