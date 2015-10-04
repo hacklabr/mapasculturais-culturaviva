@@ -76,7 +76,7 @@
                 'Populações de regiões fronteiriças',
                 'Populações em áreas de vulnerabilidade social'
             ],
-            
+
             area_atuacao: [
                 'Produção',
                 'Cultural',
@@ -100,9 +100,9 @@
                 'Hip Hop',
                 'Juventude',
                 'Literatura',
-                'Meio Ambiente', 
+                'Meio Ambiente',
                 'Moda',
-                'Música', 
+                'Música',
                 'Software Livre',
                 'Tradição Oral',
                 'Turismo',
@@ -293,8 +293,8 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
 
@@ -397,13 +397,13 @@
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
     ]);
-    
+
     app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
         function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout)
         {
