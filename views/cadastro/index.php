@@ -289,7 +289,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-dollar"></span>
                 <p>Economia Viva<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
@@ -302,7 +302,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     </div>
                 </div>
                <?php  // */ ?>
-                <span class="icon icon-phone"></span>
+                <span class="icon icon-book-open"></span>
                 <p>Formação<br />(50% informações opcionais)</p>
             </div>
             <div class="clear"></div>

@@ -1751,6 +1751,136 @@ section{
     }
 }
 
+.page-economia-viva{
+    header{
+        background: $base-color-economia-viva;
+
+        .circle-status{
+            &:after{
+                background:$base-color-economia-viva;
+            }
+
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-economia-viva;
+        }
+
+        label{
+            font-size:14px;
+            margin-bottom:10px;
+
+            span{
+                display:inline-block;
+            }
+        }
+
+        input[type="checkbox"]{
+            width:15px;
+            height:15px;
+            vertical-align:top;
+            cursor:pointer;
+            margin-top:8px;
+
+        }
+
+        input[type=checkbox]:checked + label{
+            color:#f50;
+        }
+
+        .colunm1{
+            width:270px;
+        }
+
+        .colunm2{
+            width:280px;
+        }
+
+        .colunm3{
+            width:280px;
+        }
+    }
+}
+
+.page-formacao{
+    header{
+        background: $base-color-formacao;
+
+        .circle-status{
+            &:after{
+                background:$base-color-formacao;
+            }
+
+            span{
+                color:#fff;
+            }
+
+            &:hover{
+                span{
+                    color: #9379AF;
+                }
+            }
+            .fill, .bar{
+                border-color: #9379AF;
+            }
+        }
+    }
+
+    .form{
+        h4{
+            background: $base-color-formacao;
+        }
+
+        label{
+            font-size:14px;
+            margin-bottom:10px;
+
+            span{
+                display:inline-block;
+            }
+        }
+
+        input[type="checkbox"]{
+            width:15px;
+            height:15px;
+            vertical-align:top;
+            cursor:pointer;
+            margin-top:8px;
+
+        }
+
+        input[type=checkbox]:checked + label{
+            color:#f50;
+        }
+
+        .colunm1{
+            width:270px;
+        }
+
+        .colunm2{
+            width:280px;
+        }
+
+        .colunm3{
+            width:280px;
+        }
+    }
+}
+
 /*
 * FIM Estrutura Form Especifico, Backgrounds, Colors
 */
