@@ -554,21 +554,15 @@ class Theme extends BaseV1\Theme{
                 ],
                 'flickr' => [
                     'label' => 'Flickr',
-                    'validations' => array(
-                        "v::url('flickr.com')" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
                 'diaspora' => [
                     'label' => 'Diáspora',
-                    'validations' => array(
-                        "v::url()" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
                 'youtube' => [
                     'label' => 'Youtube',
-                    'validations' => array(
-                        "v::url()" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
 
                 // Ponto Articulação
