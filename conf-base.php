@@ -1,8 +1,7 @@
 <?php
-
 $config['routes']['default_controller_id'] = 'rede';
 $config['routes']['shortcuts']['busca'] = ['site','search'];
-$config['auth.config']['onCreateRedirectUrl'] = $config['base.url'] . 'cadastro/registra/';
+$config['auth.config']['onCreateRedirectUrl'] = $config['base.url'] . 'rede/entrada/';
 
 return [
     'app.siteName' => 'Rede Cultura Viva',
