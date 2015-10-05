@@ -661,7 +661,7 @@ section{
                     font-size: 1.3em;
                     margin: 20px 5% 10px;
 					position: relative;
-					left: -15px;
+					
 					display: inline-block;
 					top: 13px;
                 }
@@ -670,10 +670,11 @@ section{
                     width: 40px;
                     font-size: 36px;
                     color: #FFFFFF;
-                    margin-top: 10px;
-                    margin-left: 25px;
+                    top: 30px;
+                    left: 15px;
 					position: relative;
-					top: 11px;
+					vertical-align:top;
+                
                 }
 
                 .btn_mais{
@@ -961,6 +962,12 @@ section{
                 height: auto;
                 margin-left: 44%;
                 margin-top: 30px;
+            }
+            
+            .btn-validar:enabled {
+            	background: rgb(214, 213, 213);
+            	color: rgb(99, 99, 99);
+            	border: 1px solid rgb(167, 167, 167);
             }
 
             //Box Status
@@ -1998,25 +2005,53 @@ section{
             }
         }
 
+       
         section.boxs-cadastro {
             article{
                 width:100%;
                 h4{
-                    width:40%;
+                    width:70%;
+                    height: 50px;
                 }
 
                 header{
                     .btn_mais{
-                        left:90%;
+                        right: -2%;
+                        top: -8%;
                     }
                 }
+
+                span.icon{
+                    vertical-align: top;
+                    top: 34px; 
+                }
+
+                .infos{
+                    width:100%;
+                }
+
             }
+        }
+        section.box-status {
+            article.validar-ponto{
+                label.aceito-termo{
+                    display: block;
+                    width: 100%;
+                    p{
+                        width:80%;
+                    }
+                }
+
+                p.mensagem-validar{
+                    width: 80%;
+                }
+            }  
         }
     }
  }
 
 
-@media (max-width: 770px) {
+@media (min-width:550px) and (max-width: 770px) {
     .page-base-form{
         .form{
             input, select{
@@ -2054,7 +2089,7 @@ section{
                     }
 
                     .btn_mais{
-                        left:80%
+                        left:0%
                     }
                 }
             }

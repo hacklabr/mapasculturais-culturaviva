@@ -4,8 +4,6 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
-    private $_ids;
-
     /**
      * Controller Cadastro
      *
@@ -51,6 +49,9 @@ class Theme extends BaseV1\Theme{
 
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
+            $inscricao = $this->_cadastro->getInscricao();
+            
+            $this->jsObject['redeCulturaViva']->statusInscricao = $inscricao->status;
         }
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
@@ -554,21 +555,15 @@ class Theme extends BaseV1\Theme{
                 ],
                 'flickr' => [
                     'label' => 'Flickr',
-                    'validations' => array(
-                        "v::url('flickr.com')" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
                 'diaspora' => [
                     'label' => 'Diáspora',
-                    'validations' => array(
-                        "v::url()" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
                 'youtube' => [
                     'label' => 'Youtube',
-                    'validations' => array(
-                        "v::url()" => "A url informada é inválida."
-                    )
+                    'required' => false
                 ],
 
                 // Ponto Articulação
@@ -792,6 +787,13 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
                 'metodologia1_tipo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                
+                // Termos de uso
+                'termos_de_uso' => [
                     'label' => '',
                     'required' => false,
                     'private' => true
