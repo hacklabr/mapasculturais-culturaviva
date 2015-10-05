@@ -5,7 +5,7 @@
     $this->cadastroText = 'Vamos compartilhar conhecimentos e experiências para fazer multiplicar os saberes da nossa cultura';
     $this->cadastroIcon = 'icon-book-open';
     $this->cadastroPageClass = 'formacao page-base-form';
-    $this->cadastroLinkContinuar = 'responsavel';
+    $this->cadastroLinkContinuar = '';
 
 ?>
 

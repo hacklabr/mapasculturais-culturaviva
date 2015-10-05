@@ -206,7 +206,7 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Id do espaço linkado ao ponto de cultura',
                     'private' => true
                 ],
-                
+
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -690,7 +690,7 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
-                'pontoInvestimentosColetivosOutros' => [
+                'pontoInvestColetivosOutros' => [
                     'label' => '',
                     'required' => false,
                     'private' => true
