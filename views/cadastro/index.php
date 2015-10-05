@@ -204,7 +204,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 <!-- textarea></textarea -->
               </p>
             </label>
-            <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
+            <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
             <div class="clear"></div>
         </article>
         <article class="content-status">
