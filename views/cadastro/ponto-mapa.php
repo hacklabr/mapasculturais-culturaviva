@@ -168,10 +168,10 @@
         <leaflet markers="markers"></leaflet>
     </div>
 
-
+<?php /*
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
-<?php /*
+
         <label>
             <span class="destaque-opcional">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
         </label>
