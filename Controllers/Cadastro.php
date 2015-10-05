@@ -387,15 +387,16 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->type = 2;
             $entidade->parent = $user->profile;
             $entidade->name = '';
-            $entidade->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+            $entidade->status = \MapasCulturais\Entities\Agent::STATUS_ENABLED;
             
 
             // criando o agente coletivo vazio
             $ponto = new \MapasCulturais\Entities\Agent;
+            $ponto->publicLocation = 1;
             $ponto->type = 2;
             $ponto->parent = $user->profile;
             $ponto->name = '';
-            $ponto->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+            $ponto->status = \MapasCulturais\Entities\Agent::STATUS_ENABLED;
 
             if(isset($this->data['comCNPJ']) && $this->data['comCNPJ'] && isset($this->data['CNPJ']) && $this->data['CNPJ']){
                 $entidade->cnpj = $this->data['CNPJ'];

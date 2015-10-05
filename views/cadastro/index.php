@@ -200,7 +200,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 <!--            <h4><i class="icon-publish"> </i> Enviar </h4>-->
             <label class="colunm-full" style="color:#FFF">
               <p>
-                <input type="checkbox" name="termos" ng-model="termos_de_uso" >   Aceito os <a href="/privacidade-e-termos-de-uso/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
+                <input type="checkbox" name="termos" ng-model="termos_de_uso" > Aceito os <a href="/termos-de-uso-e-privacidade/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
                 <!-- textarea></textarea -->
               </p>
             </label>

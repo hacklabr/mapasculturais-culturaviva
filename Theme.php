@@ -699,6 +699,107 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+
+                // Formação
+                'formador1_nome' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_email' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_telefone' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_operadora' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_areaAtuacao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_bio' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_facebook' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_twitter' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'formador1_google' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'espacoAprendizagem1_atuacao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'espacoAprendizagem1_tipo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'espacoAprendizagem1_desc' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_nome' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_desc' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_necessidades' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_capacidade' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_cargaHoraria' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_certificacao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'metodologia1_tipo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
+
+
+
             ]
         ];
 
