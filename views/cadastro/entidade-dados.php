@@ -184,6 +184,9 @@
             </div>
             <div class="clear"></div>
             <div class="row">
+                <label ng-if="agent.Ds_Edital" class="colunm-50">
+                    <span>{{agent.DS_Edital}}</span>
+                </label>
                 <label class="colunm-50">
                     <span class="destaque">Número do Edital de Seleção*</span>
                     <input type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
