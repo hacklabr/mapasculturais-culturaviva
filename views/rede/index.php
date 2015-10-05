@@ -52,11 +52,15 @@
         <a href="#" class="twitter">
             <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
         </a>
-        <a href="#" class="youtube">
+        <a href="#" class="instagram">
             <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
         </a>
-        <a href="#" class="instagram">
+        <a href="#" class="youtube">
             <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
+        </a>
+
+        <a href="#" class="diaspora">
+            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-05.png') ?>" />
         </a>
 
     </article>
