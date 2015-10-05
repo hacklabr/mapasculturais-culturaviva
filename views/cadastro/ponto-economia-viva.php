@@ -2,7 +2,7 @@
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
     $this->cadastroTitle = '7. Economia Viva';
-    $this->cadastroText = 'Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura.';
+    $this->cadastroText = 'Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'economia-viva page-base-form';
     $this->cadastroLinkContinuar = 'formacao';
@@ -14,16 +14,16 @@
     <div class="form">
         <div class="row">
             <h4>Rede Colaborativa</h4>
-            <p>O Ponto/Pontão de Cultura só se realiza plenamente quando se articula em rede. Agir em rede é interagir em um universo de troca e colaboração mútua. Espaços, serviços, equipamentos, atividades, conexão, aquilo que o Ponto/Pontão tem, somado ao que o outro pode oferecer, multiplicam as possibilidades da rede e gera uma outra economia viva,  colaborativa e transformadora. </p>
-            <span class="destaque title">O que o Ponto/Pontão de Cultura pode oferecer para a rede?*</span>
+            <p>O Ponto/Pontão de Cultura só se realiza plenamente quando se articula em rede. Agir em rede é interagir em um universo de troca e colaboração mútua. Espaços, serviços, equipamentos, atividades, conexão, aquilo que o Ponto/Pontão tem, somado ao que o outro pode oferecer, multiplicam as possibilidades da rede e gera uma outra economia viva,  colaborativa e transformadora </p>
+            <span class="destaque">O que o Ponto/Pontão de Cultura pode oferecer para a rede?</span>
 
             <div class="colunm-full">
-                <span class="destaque">Infra-Estrutura*</span>
+                <span class="destaque">Infra-Estrutura</span>
             </div>
             <taxonomy-checkboxes taxonomy="ponto_infra_estrutura" entity="agent" terms="termos.ponto_infra_estrutura"></taxonomy-checkboxes>
 
             <div class="colunm-full">
-                <span class="destaque">Equipamentos*</span>
+                <span class="destaque">Equipamentos</span>
             </div>
             <taxonomy-checkboxes taxonomy="ponto_equipamentos" entity="agent" terms="termos.ponto_equipamentos"></taxonomy-checkboxes>
 
@@ -55,13 +55,14 @@
         <div class="row">
             <h4>Economia Viva</h4>
             <div class="colunm-full">
-                <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*</span>
+                <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)</span>
             </div>
             <label class="colunm-full">
                 <input type="text" size="10" maxlength="3" class="inputqtd"
                        ng-model="agent.pontoNumPessoasNucleo" ng-blur="save_field('pontoNumPessoasNucleo')"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
+
                 <input type="text" size="10" maxlength="3" class="inputqtd"
                        ng-model="agent.pontoNumPessoasColaboradores" ng-blur="save_field('pontoNumPessoasColaboradores')">  Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
             </label>
@@ -94,7 +95,8 @@
             <taxonomy-checkboxes taxonomy="ponto_sustentabilidade" entity="agent" terms="termos.ponto_sustentabilidade"></taxonomy-checkboxes>
 
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária ? Como?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária? Como?<i class='hltip' title='Entende-se por economia solidária, uma forma diferente de produzir, vender, comprar e trocar o que é preciso para viver. Sem explorar os outros, sem querer levar vantagem, sem destruir o ambiente. Cooperando, fortalecendo o grupo, cada um pensando no bem de todos e no próprio bem. Compreende-se por economia solidária o conjunto de atividades econômicas de produção, distribuição, consumo, poupança e crédito, organizadas sob a forma de autogestão.'>?</i></span>
+
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -124,7 +126,7 @@
 
 
             <div class="colunm-full">
-                <spanc class="destaque">O Ponto/Pontão de Cultura pratica Economia da cultura*?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia da Cultura? <i class='hltip' title='Entende-se por economia criativa, um conceito em construção, mas é sabido que sua prática volta-se à economia do intangível, do simbólico. Essa concepção da economia prevê os ciclos de criação, produção, difusão, circulação/distribuição e consumo/fruição de bens e serviços caracterizados pela prevalência de sua dimensão simbólica originada por setores cujas atividades econômicas têm como processo principal o ato criativo, gerador de valor simbólico, elemento central da formação do preço, e que resulta em produção de riqueza cultural.'>?</i></span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -153,7 +155,7 @@
             </label>
 
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? *</span>
+                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? <i class='hltip' title='Moeda complementar (social): A moeda social é uma forma de moeda paralela criadas e administradas por seus próprios usuários (logo na esfera privada, da economia). Ela não tem qualquer vínculo obrigatório com a moeda nacional (oficial) e sua circulação é baseada na confiança mútua entre os usuários, participantes de um grupo circunscrito por adesão voluntária.'>?</i></span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -271,9 +273,6 @@
                        ng-change="save_field('pontoContrataServicos')"
                        ng-model="agent.pontoContrataServicos"> Não
             </label>
-
-
-
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?</span>
             </div>

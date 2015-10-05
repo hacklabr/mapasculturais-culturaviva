@@ -487,7 +487,7 @@
 
         ////////// Carrega Header e Footer via Ajax //////////
 
-        var _url = 'http://dev.culturaviva.gov.br/wp-admin/admin-ajax.php';
+        var _url = 'http://culturaviva.gov.br/wp-admin/admin-ajax.php';
 
         $.ajax({
             method: 'GET',

@@ -13,12 +13,6 @@
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-<!--
-        <div class="row" ng-controller="ImageUploadCtrl">
-
-
-        </div>
--->
         <div class="row">
           <label class="colunm-full">
             <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
@@ -150,10 +144,8 @@
                 <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>
         </div>
-        <div class="clear"></div>
     </div>
-
-
+    <div class="clear"></div>
     <div class="form form-mapa">
         <?php /*
         <div class="mapa js-map-container">
@@ -214,6 +206,6 @@
             <div class="clear"></div>
         </div>
 */?>
-        <div class="clear"></div>
-    </div>
+  <!--</div>
+  <div class="clear"></div>-->
 </form>
