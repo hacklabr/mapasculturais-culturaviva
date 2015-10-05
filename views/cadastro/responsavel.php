@@ -63,7 +63,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i>?</i></span>
+                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i class='hltip' title='Você não precisa necessariamente ser o responsável legal para entrar na Rede Cultura Viva, descreva o que você faz no Ponto de Cultura. Ex: colaborador; parceiro; funcionário; coordenador de comunicação; etc'>?</i></span>
                 <select ng-blur="save_field('relacaoPonto')" ng-model="agent.relacaoPonto">
                     <option value="responsavel">Sou o responsável pelo Ponto/Pontão de Cultura</option>
                     <option value="funcionario">Trabalho no Ponto/Pontão de Cultura</option>
@@ -90,7 +90,7 @@
             </div>
 
             <label class="nome_chamado">
-                <span class="destaque">Qual nome você gostaria de ser chamado <i>?</i></span>
+                <span class="destaque">Qual nome você gostaria de ser chamado <i class='hltip' title='Utilize este espaço para nos informar se você possui um nome social, nome artístico ou nome pelo qual é conhecido em sua comunidade'>?</i></span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name"/>
             </label>
             <div class="onde_voce_mora">
@@ -135,7 +135,7 @@
             <div class="clear"></div>
         </div>
         <div class="row">
-            <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
+            <span class="destaque redessociais">Seu perfil nas redes sociais: <i class='hltip' title='Queremos saber seu perfil nas redes sociais para podermos conectá-l@ com nossas atualizações e novidades.'>?</i></span>
             <label class="colunm-redes facebook">
                 <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
