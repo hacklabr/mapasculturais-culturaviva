@@ -42,7 +42,11 @@ class Theme extends BaseV1\Theme{
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
-
+        $this->assetManager->publishAsset('img/icon-diaspora.png', 'img/icon-diaspora.png');
+        $this->assetManager->publishAsset('img/icon-telegram.png', 'img/icon-telegram.png');
+        $this->assetManager->publishAsset('img/icon-instagram.png', 'img/icon-instagram.png');
+        $this->assetManager->publishAsset('img/icon-whatsapp.png', 'img/icon-whatsapp.png');
+        $this->assetManager->publishAsset('img/icon-culturadigital.png', 'img/icon-culturadigital.png');
         $app = App::i();
 
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
@@ -165,6 +169,8 @@ class Theme extends BaseV1\Theme{
 
 //        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta1', ['.*'], 'a carta deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta2', ['.*'], 'a carta deve ser um arquivo pdf.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
@@ -559,6 +565,30 @@ class Theme extends BaseV1\Theme{
                     )
                 ],
 
+                // Ponto Articulação
+                'participacaoMovPolitico' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'participacaoForumCultura' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'parceriaPoderPublico' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
+                // Economia Viva
+                'pontoOutrosRecursosRede' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
             ]
         ];
 
@@ -570,10 +600,23 @@ class Theme extends BaseV1\Theme{
         }
 
         $taxonomies = [
+            // Atuação e Articulação
             'contemplado_edital' => 'Editais do Ministério da Cultura em que foi contemplado',
             'acao_estruturante' => 'Ações Estruturantes',
             'publico_participante' => 'Públicos que participam das ações',
-            'local_realizacao' => 'Locais onde são realizadas as ações culturais'
+            'local_realizacao' => 'Locais onde são realizadas as ações culturais',
+            'area_atuacao' => 'Área de experiência e temas',
+            'instancia_representacao_minc' => 'Instância de representação junto ao Ministério da Cultura',
+            // Economia Viva
+            'ponto_infra_estrutura' => '',
+            'ponto_equipamentos' => '',
+            'ponto_recursos_humanos' => '',
+            'ponto_hospedagem' => '',
+            'ponto_deslocamento' => '',
+            'ponto_comunicacao' => '',
+            'ponto_sustentabilidade' => '',
+            // Formação
+            'ponto_areas_conhecimento' => ''
         ];
 
         $id = 10;

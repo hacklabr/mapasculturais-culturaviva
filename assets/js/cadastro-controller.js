@@ -76,7 +76,7 @@
                 'Populações de regiões fronteiriças',
                 'Populações em áreas de vulnerabilidade social'
             ],
-            
+
             area_atuacao: [
                 'Produção',
                 'Cultural',
@@ -100,14 +100,115 @@
                 'Hip Hop',
                 'Juventude',
                 'Literatura',
-                'Meio Ambiente', 
+                'Meio Ambiente',
                 'Moda',
-                'Música', 
+                'Música',
                 'Software Livre',
                 'Tradição Oral',
                 'Turismo',
-                'Internacional',
-                'Outros'
+                'Internacional'
+            ],
+            
+            instancia_representacao_minc: [
+                'Colegiados',
+                'Fóruns',
+                'Comissões',
+                'Conferência Nacional de Cultura',
+                'Grupo de Trabalho',
+                'Conselhos'
+            ],
+            
+            // Economia Viva
+            'ponto_infra_estrutura': [
+                'Acesso à internet',
+                'Sala de aula Auditório',
+                'Teatro',
+                'Estúdio',
+                'Palco',
+                'Galpão',
+                'Hackerspace',
+                'Casa',
+                'Apartamento',
+                'Cozinha',
+                'Garagem',
+                'Jardim',
+                'Bar',
+                'Laboratório',
+                'Gráfica',
+                'Loja'
+            ],
+            'ponto_equipamentos':[
+                'Câmera fotográfica',
+                'Câmera filmadora',
+                'Microfone',
+                'Fone de Ouvido',
+                'Boom',
+                'Spot de luz',
+                'Refletor',
+                'Mesa de Som',
+                'Caixa de Som',
+                'Instrumento Musical',
+                'Computador',
+                'Mesa de Edição',
+                'Impressora',
+                'Scanner'
+            ],
+            'ponto_recursos_humanos':[
+                'Ator / Atriz',
+                'Dançarino / Dançarina',
+                'Músico / Musicista',
+                'Pesquisador',
+                'Oficineiro',
+                'Produtor',
+                'Elaborador de Projeto',
+                'Cultural',
+                'Captador de Recursos',
+                'Realizador audiovisual (Videomaker)',
+                'Designer',
+                'Fotógrafo',
+                'Hacker',
+                'Iluminador',
+                'Sonorizador',
+                'Maquiador',
+                'Cenógrafo',
+                'Eletricista',
+                'Bombeiro',
+                'Hidráulico',
+                'Consultor',
+                'Palestrante',
+                'Rede',
+                'Médica',
+                'Solidária'
+            ],
+            'ponto_hospedagem':[
+                'Convênio com Rede Hoteleira',
+                'Hospedagem',
+                'Solidária',
+                'Camping' 
+            ],
+            'ponto_deslocamento':[
+                'Passagem Aérea',
+                'Carona, Veículo',
+                'Passagem Terrestre'
+            ],
+            'ponto_comunicacao':[
+                'Assessoria de Imprensa',
+                'Produção de Conteúdo e Mobilização nas Redes Sociais',
+                'Produção de Conteúdo e Informação',
+                'Jornalismo',
+                'Audiovisual',
+                'Fotografia',
+                'Desenvolvimento Web',
+                'Mídia',
+                'Comunitária',
+                'Design'
+            ],
+            'ponto_sustentabilidade':[
+                
+            ],
+            // Formação
+            'ponto_areas_conhecimento':[
+                
             ]
         };
 
@@ -296,8 +397,8 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
 
@@ -395,18 +496,18 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms',
+                '@select': 'id,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
     ]);
-    
+
     app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
         function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout)
         {
@@ -414,11 +515,13 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@select': 'id,terms,pontoOutrosRecursosRede',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
+
+            $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
@@ -431,11 +534,13 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@select': 'id,terms',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
+
+            $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
