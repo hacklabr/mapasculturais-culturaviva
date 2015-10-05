@@ -225,8 +225,10 @@ class Cadastro extends \MapasCulturais\Controller{
     }
 
     protected function _populateAgents($responsavel, $entidade, $ponto){
+        $app = App::i();
 
-        $d = json_decode(file_get_contents('http://dev.culturaviva.gov.br/wp-admin/admin-ajax.php?action=get_cultura&cnpj=' . $this->data['CNPJ']));
+        $api_url = $app->config['rcv.apiCNPJ'] . '?action=get_cultura&cnpj=' . $this->data['CNPJ'];
+        $d = json_decode(file_get_contents($api_url));
         if(is_object($d)){
             // responsável
             $responsavel->nomeCompleto  = $d->Nm_Responsavel;
