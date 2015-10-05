@@ -59,15 +59,11 @@
                        ng-model="agent.participacaoMovPolitico">   Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="politicocultural" >  Sim
-=======
                 <input type="radio"
                        name="politicocultural"
                        ng-value="1"
                        ng-change="save_field('participacaoMovPolitico')"
                        ng-model="agent.participacaoMovPolitico">  Sim
->>>>>>> origin/master
                 <!-- textarea></textarea -->
             </label>
 
@@ -83,21 +79,16 @@
                        ng-model="agent.participacaoForumCultura">  Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="forumcultural" > Sim
-=======
                 <input type="radio"
                        name="forumcultural"
                        ng-value="1"
                        ng-change="save_field('participacaoForumCultura')"
                        ng-model="agent.participacaoForumCultura"> Sim
->>>>>>> origin/master
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? </span>
             </div>
-<<<<<<< HEAD
             <label class="colunm1">
                 <input type="checkbox" name="" >  Colegiados
                 <!-- textarea></textarea -->
@@ -126,9 +117,7 @@
                 <input type="checkbox" name="" >  Outros
                 <!-- textarea></textarea -->
             </label>
-=======
             <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="agent" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
->>>>>>> origin/master
             <div class="colunm-full">
                 <span class="destaque">Possui parceria com o Poder Público? </span>
             </div>
@@ -140,15 +129,11 @@
                        ng-model="agent.parceriaPoderPublico"> Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="poderpublico" >  Sim
-=======
                 <input type="radio"
                        name="poderpublico"
                        ng-value="1"
                        ng-change="save_field('parceriaPoderPublico')"
                        ng-model="agent.parceriaPoderPublico">  Sim
->>>>>>> origin/master
                 <!-- textarea></textarea -->
             </label>
 
