@@ -165,7 +165,8 @@ class Theme extends BaseV1\Theme{
 
 //        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
-        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('cartas', ['.*'], 'a carta deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta1', ['.*'], 'a carta deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta2', ['.*'], 'a carta deve ser um arquivo pdf.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
