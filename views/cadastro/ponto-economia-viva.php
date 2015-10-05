@@ -285,12 +285,13 @@
                        ng-model="agent.pontoInvestimentosColetivos"> Sim
                  <div ng-show="agent.pontoInvestimentosColetivos==='sim'">
                     <span>Quanto e para quem?</span>
-                    <textarea ng-model="agent.pontoInvestimentosColetivosOutros"
-                              ng-blur="save_field('pontoInvestimentosColetivosOutros')"></textarea>
+                    <textarea ng-model="agent.pontoInvestColetivosOutros"
+                              ng-blur="save_field('pontoInvestColetivosOutros')"></textarea>
                 </div>
             </label>
             <label class="colunm2">
                 <input type="radio"
+                       name="projetosapoiou"
                        value="nao"
                        ng-change="save_field('pontoInvestimentosColetivos')"
                        ng-model="agent.pontoInvestimentosColetivos"> Não
