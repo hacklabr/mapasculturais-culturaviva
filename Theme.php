@@ -202,6 +202,11 @@ class Theme extends BaseV1\Theme{
             ],
 
             'MapasCulturais\Entities\Agent' => [
+                'rcv_sede_spaceId' => [
+                    'label' => 'Id do espaço linkado ao ponto de cultura',
+                    'private' => true
+                ],
+                
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -589,7 +594,111 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+                'pontoNumPessoasNucleo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoNumPessoasColaboradores' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoNumPessoasIndiretas' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoNumPessoasParceiros' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoNumPessoasApoiadores' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoNumRedes' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoRedesDescricao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoMovimentos' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoEconomiaSolidaria' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoEconomiaSolidariaDescricao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoEconomiaCultura' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoEconomiaCulturaDescricao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoMoedaSocial' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoMoedaSocialDescricao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoTrocasServicos' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoTrocasServicosOutros' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
 
+                'pontoContrataServicos' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoContrataServicosOutros' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoInvestimentosColetivos' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'pontoInvestimentosColetivosOutros' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],'pontoCustoAnual' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
             ]
         ];
 
