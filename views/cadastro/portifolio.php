@@ -39,22 +39,40 @@
                 </p>
             </label>
         </div>
+
+        <div class="row">
+            <h4>Cartas de Reconhecimento</h4>
+            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
+            <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
+        </div>
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Carta de recomendações <i>?</i></span>
             <div class="colunm-20">
-              <div class="img_updade file-item" ng-repeat="f in agent.files.cartas">
-                  <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
-                  <img src="{{f.files.cartas.url}}" width="160" height="138">
-              </div>
-              <div class="img_updade file-item">
-                  <div type="file" ngf-select="uploadFile($file, 'cartas')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="Clique para incluir uma foto">
-                      <img src="<?php $this->asset('img/incluir_pdf.png') ?>" width="160" height="138">
-                  </div>
-                  <div class="progress row" ng-show="f.progress >= 0">
-                      <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+              <div class="file-item">
+                  <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.carta1)" title="Excluir Carta de Recomendação">x</a>
+                  <div type="file" ngf-select="uploadFile($file, 'carta1')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.carta1 ? 'Clique para alterar a carta de recomendação' : 'Clique para incluir uma carta de recomendação'}}">
+                      <img ng-if="!agent.files.carta1" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                      <img ng-if="agent.files.carta1" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                   </div>
               </div>
-          </div>
+              <a ng-if="agent.files.carta1" href="{{agent.files.carta1.url}}" target="_blank">{{agent.files.carta1.name}}</a>
+              <div class="progress row" ng-show="f.progress >= 0">
+                  <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+              </div>
+            </div>
+            <div class="colunm-20">
+              <div class="file-item">
+                  <a ng-if="agent.files.carta2" href="#" class="exclui" ng-click="deleteFile(agent.files.carta2)" title="Excluir Portfólio">x</a>
+                  <div type="file" ngf-select="uploadFile($file, 'carta2')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.carta2 ? 'Clique para alterar a carta de recomendação' : 'Clique para incluir uma carta de recomendação'}}">
+                      <img ng-if="!agent.files.carta2" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                      <img ng-if="agent.files.carta2" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                  </div>
+              </div>
+              <a ng-if="agent.files.carta2" href="{{agent.files.portifolio.url}}" target="_blank">{{agent.files.carta2.name}}</a>
+              <div class="progress row" ng-show="f.progress >= 0">
+                  <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+              </div>
+            </div>
 <!--
                 <div class="file-item">
                     <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
@@ -159,13 +177,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h4>Cartas de Reconhecimento</h4>
 
-            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas. Não serão aceitas assinaturas digitais.</p>
-
-            <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
-        </div>
         <div class="clear"></div>
     </div>
 </form>

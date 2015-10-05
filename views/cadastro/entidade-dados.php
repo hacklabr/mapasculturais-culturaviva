@@ -19,7 +19,7 @@
                 <select name="tipoOrganizacao"
                         ng-change="save_field('tipoOrganizacao')"
                         ng-model="agent.tipoOrganizacao">
-                    <option value="coletivo">Coletivo Cultural</option>
+                    <option value="coletivo">Coletivo Cultural (CPF)</option>
                     <option value="entidade">Entidade (CNPJ)</option>
                 </select>
             </label>
@@ -105,7 +105,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span>Telefone institucional(com DDD)*</span>
+                <span>Telefone institucional*</span>
                 <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
@@ -117,7 +117,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span>Outro Telefone(com DDD)*</span>
+                <span>Outro Telefone*</span>
                 <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
             </label>
 

@@ -2,7 +2,7 @@
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
     $this->cadastroTitle = '4. Seu Ponto no Mapa';
-    $this->cadastroText = 'Vamos colocar seu ponto no mapa! Isso vai ser importante para entendermos as regiões carentes e férteis em pontos de cultura, e para você pode ser encontrado por outros agentes e pontos!';
+    $this->cadastroText = 'Vamos colocar seu Ponto no mapa! Com estes dados podemos cartografar a rede de Pontos de Cultura por todo Brasil';
     $this->cadastroIcon = 'icon-location';
     $this->cadastroPageClass = 'ponto-mapa page-base-form';
     $this->cadastroLinkContinuar = 'portifolio';
@@ -13,7 +13,29 @@
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
+<!--
+        <div class="row" ng-controller="ImageUploadCtrl">
+
+
+        </div>
+-->
         <div class="row">
+          <label class="colunm-full">
+            <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
+
+            <div class="img_updade" ng-controller="ImageUploadCtrl">
+                <div class="file-item">
+                    <a ng-if="agent.files.avatar" class="exclui" ng-click="deleteFile(agent.files.avatar)" title="Excluir arquivo">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.avatar ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
+                      <img ng-if="!agent.files.avatar" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                      <img ng-if="agent.files.avatar" src="{{agent.files.avatar.files.avatarBig.url}}" width="160" height="138">
+                    </div>
+                </div>
+                <div class="progress row" ng-show="f.progress >= 0">
+                  <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+                </div>
+            </div>
+          </label>
             <label class="colunm-full">
                 <span>Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
@@ -30,13 +52,10 @@
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
         </div>
-
-        <div class="clear"></div>
-
         <div class="row">
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
-                <span>CEP do Ponto de Cultura*</span>
+                <span>CEP do Ponto de Cultura* (70308-200)</span>
                 <input type="text"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
                        ng-model="agent.cep"
@@ -152,6 +171,7 @@
 
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
+<?php /*
         <label>
             <span class="destaque-opcional">Selecione o local em que são realizadas as ações culturais do Ponto/Pontão de Cultura (marque quantas opções quiser)</span>
         </label>
@@ -193,25 +213,7 @@
 
             <div class="clear"></div>
         </div>
-
-        <div class="row" ng-controller="ImageUploadCtrl">
-            <div class="img_updade">
-                <div class="file-item">
-                    <a ng-if="agent.files.avatar" class="exclui" ng-click="deleteFile(agent.files.avatar)" title="Excluir arquivo">x</a>
-                    <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.avatar ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
-                        <img ng-if="!agent.files.avatar" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                        <img ng-if="agent.files.avatar" src="{{agent.files.avatar.files.avatarBig.url}}" width="160" height="138">
-                    </div>
-                </div>
-                <div class="progress row" ng-show="f.progress >= 0">
-                    <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
-                </div>
-            </div>
-
-            <label>
-                <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
-            </label>
-        </div>
+*/?>
         <div class="clear"></div>
     </div>
 </form>
