@@ -15,8 +15,8 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
           <label class="colunm-full">
-            <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
-
+           
+    
             <div class="img_updade" ng-controller="ImageUploadCtrl">
                 <div class="file-item">
                     <a ng-if="agent.files.logoponto" class="exclui" ng-click="deleteFile(agent.files.logoponto)" title="Excluir arquivo">x</a>
@@ -29,6 +29,7 @@
                   <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
+             <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
           </label>
             <label class="colunm-full">
                 <span class="destaque">Nome do Ponto/Pontão de Cultura*</span>
