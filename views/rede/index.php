@@ -4,9 +4,9 @@
                 <h3>Declare seu Ponto de Cultura!</h3>
                 <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva:</p>
             </div>
-            <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra') ?>">
-                <button type="submit" class="btn btn__active">Entrar para a Rede >>></button>
-            </form>
+
+            <a href="<?php echo $app->createUrl('rede', 'entrada'); ?>" class="btn btn__active">Entrar para a Rede >>></a>
+
             <span class="bg-transparent"></span>
     </article>
 
@@ -46,18 +46,27 @@
         </div>
     </article>
     <article class="row redes">
-        <a href="#" class="facebook">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-01.png') ?>" />
-        </a>
-        <a href="#" class="twitter">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
-        </a>
-        <a href="#" class="youtube">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
-        </a>
-        <a href="#" class="instagram">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
-        </a>
+
+      <a href="#" class="facebook">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-01.png') ?>" />
+      </a>
+      <a href="#" class="twitter">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
+      </a>
+      <a href="#" class="youtube">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
+      </a>
+      <a href="#" class="instagram">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
+      </a>
+
+      <a href="#" class="diaspora">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-05.png') ?>" />
+      </a>
+
+      <a href="#" class="cultura-digital">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-06.png') ?>" />
+      </a>
 
     </article>
 </section>

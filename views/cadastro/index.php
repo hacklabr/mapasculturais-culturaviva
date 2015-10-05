@@ -19,7 +19,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article>
             <h2>Seja bem vindo(a) <br>à Rede Cultura Viva</h2>
             <p>Esta é a página do seu Ponto de Cultura. Apenas você tem acesso a ela.</p>
-            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quanto sua página estiver completa clique em "validar dados".</p>
+            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Enviar".</p>
             <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
     </section>
@@ -27,13 +27,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
-              <span class="icon icon-user"></span>
-              <h4> 1. Informações do Responsável</h4>
+
+              <h4><span class="icon icon-user"></span> 1. Informações do Responsável</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
               <div class="texto">
-                <p>Precisamos saber quem é você e pegar seus contatos!</p>
+                <p>Precisamos saber quem é você e pegar seus contatos</p>
               </div>
 <!--                <div class="circle-status c100 p56 small">
                     <span>56%</span>
@@ -55,7 +55,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Vamos falar um pouco sobre a sua organização, não importa se ela tem um CNPJ ou não!</p>
+                     <p>Conte mais sobre sua organização</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -76,7 +76,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Vamos ver o que você já fez de bom nessa caminhada. </p>
+                     <p>Já recebeu recursos do Ministério da Cultura? </p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -97,7 +97,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Vamos ver a sua localização no mapa, assim fica mais fácil de te encontrar!</p>
+                     <p>Mostre onde você atua</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -118,7 +118,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                 <div class="texto">
-                     <p>Manda aí tudo o que você tem pra mostrar! Deixe suas referências de trabalhos.</p>
+                     <p>Anexe os documentos obrigatórios para a autodeclaração</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -139,7 +139,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto.</p>
+                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -160,7 +160,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>Vamos trocar serviços e recursos, vamos crescer juntos. </p>
+                     <p>Compartilhe recursos e serviços</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -181,7 +181,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </header>
             <div class="infos">
                <div class="texto">
-                     <p>O que temos de mais rico é o nosso conhecimento, vamos trocar?</p>
+                     <p>Conecte conhecimentos e metodologias</p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -197,7 +197,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h4><i class="icon-publish"> </i> Validar </h4>
+            <h4><i class="icon-publish"> </i> <button class="btn-validar" ng-click="enviar()"> Enviar </button> </h4>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
         </article>
@@ -313,9 +313,9 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
             */ ?>
-
-            <button class="btn-validar" ng-click="enviar()">Validar</button>
-
+            <!-- TODO validar-ponto
+            <button class="btn-validar" ng-click="enviar()"> Validar </button>
+          -->
 
         </article>
     </section>

@@ -14,14 +14,15 @@
 
     }
 
-    .messages.saved span {
+    .messages.sucesso span {
         background: #afa;
     }
-    .messages.error span {
+    .messages.erro span {
         background: #faa;
     }
-    .messages.saving span {
+    .messages.enviando span {
         background: #ffa;
     }
 </style>
-<div ng-show="messages.status !== null" class="messages" ng-class="{saved: messages.status === 'saved', error: messages.status === 'error', saving: messages.status === 'saving'}"><span>{{messages.text}}</span></div>
+
+<div ng-show="messages.status !== null" class="messages" ng-class="{sucesso: messages.status === 'sucesso', erro: messages.status === 'erro', enviando: messages.status === 'enviando'}"><span>{{messages.text}}</span></div>

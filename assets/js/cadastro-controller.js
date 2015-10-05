@@ -76,7 +76,7 @@
                 'Populações de regiões fronteiriças',
                 'Populações em áreas de vulnerabilidade social'
             ],
-            
+
             area_atuacao: [
                 'Produção',
                 'Cultural',
@@ -100,21 +100,130 @@
                 'Hip Hop',
                 'Juventude',
                 'Literatura',
-                'Meio Ambiente', 
+                'Meio Ambiente',
                 'Moda',
-                'Música', 
+                'Música',
                 'Software Livre',
                 'Tradição Oral',
                 'Turismo',
-                'Internacional',
-                'Outros'
+                'Internacional'
+            ],
+            
+            instancia_representacao_minc: [
+                'Colegiados',
+                'Fóruns',
+                'Comissões',
+                'Conferência Nacional de Cultura',
+                'Grupo de Trabalho',
+                'Conselhos'
+            ],
+            
+            // Economia Viva
+            'ponto_infra_estrutura': [
+                'Acesso à internet',
+                'Sala de aula Auditório',
+                'Teatro',
+                'Estúdio',
+                'Palco',
+                'Galpão',
+                'Hackerspace',
+                'Casa',
+                'Apartamento',
+                'Cozinha',
+                'Garagem',
+                'Jardim',
+                'Bar',
+                'Laboratório',
+                'Gráfica',
+                'Loja'
+            ],
+            'ponto_equipamentos':[
+                'Câmera fotográfica',
+                'Câmera filmadora',
+                'Microfone',
+                'Fone de Ouvido',
+                'Boom',
+                'Spot de luz',
+                'Refletor',
+                'Mesa de Som',
+                'Caixa de Som',
+                'Instrumento Musical',
+                'Computador',
+                'Mesa de Edição',
+                'Impressora',
+                'Scanner'
+            ],
+            'ponto_recursos_humanos':[
+                'Ator / Atriz',
+                'Dançarino / Dançarina',
+                'Músico / Musicista',
+                'Pesquisador',
+                'Oficineiro',
+                'Produtor',
+                'Elaborador de Projeto',
+                'Cultural',
+                'Captador de Recursos',
+                'Realizador audiovisual (Videomaker)',
+                'Designer',
+                'Fotógrafo',
+                'Hacker',
+                'Iluminador',
+                'Sonorizador',
+                'Maquiador',
+                'Cenógrafo',
+                'Eletricista',
+                'Bombeiro',
+                'Hidráulico',
+                'Consultor',
+                'Palestrante',
+                'Rede',
+                'Médica',
+                'Solidária'
+            ],
+            'ponto_hospedagem':[
+                'Convênio com Rede Hoteleira',
+                'Hospedagem',
+                'Solidária',
+                'Camping' 
+            ],
+            'ponto_deslocamento':[
+                'Passagem Aérea',
+                'Carona, Veículo',
+                'Passagem Terrestre'
+            ],
+            'ponto_comunicacao':[
+                'Assessoria de Imprensa',
+                'Produção de Conteúdo e Mobilização nas Redes Sociais',
+                'Produção de Conteúdo e Informação',
+                'Jornalismo',
+                'Audiovisual',
+                'Fotografia',
+                'Desenvolvimento Web',
+                'Mídia',
+                'Comunitária',
+                'Design'
+            ],
+            'ponto_sustentabilidade':[
+                
+            ],
+            // Formação
+            'ponto_areas_conhecimento':[
+                
             ]
         };
 
     function extendController($scope, $timeout, Entity, agent_id){
         $scope.messages = {
             status: null,
-            text: ''
+            text: '',
+            show: function(status, text){
+                this.status = status;
+                this.text = text;
+            },
+            hide: function(){
+                this.status = null;
+                this.text = '';
+            }
         };
 
         $scope.$watch('messages.status', function(new_status, old_status){
@@ -123,39 +232,34 @@
                 return;
             }
 
-            var timeout = 1500;
+            var timeout = 2500;
 
-            if(new_status === 'error'){
+            if(new_status === 'erro'){
                 timeout = 5000;
-            }else if(new_status === 'saved'){
-                $scope.messages.text = 'alterações salvas';
-
-            }else if(new_status === 'saving'){
-                $scope.messages.text = 'salvando alterações';
-
             }
 
             $timeout(function(){
-                $scope.messages.status = null;
+                $scope.messages.hide();
             }, timeout);
         });
-
-        $scope.save_field = function save_field(field) {
-            var agent_update = {};
-            agent_update[field] = $scope.agent[field];
-            $scope.messages.status = 'saving';
-            Entity.patch({'id': agent_id}, agent_update, function(agent){
-                $scope.messages.status = 'saved';
-            }, function(error){
-                try{
-                    $scope.messages.text = error.data.data[field].toString();
-                    $scope.messages.status = 'error';
-                }catch(e){
-                    $scope.messages.text = '';
-                    $scope.messages.status = '';
-                }
-            });
-        };
+        
+        if(Entity && agent_id){
+            $scope.save_field = function save_field(field) {
+                var agent_update = {};
+                agent_update[field] = $scope.agent[field];
+                $scope.messages.show('enviando', 'salvando alterações');
+                
+                Entity.patch({'id': agent_id}, agent_update, function(agent){
+                    $scope.messages.show('sucesso', 'alterações salvas');
+                }, function(error){
+                    try{
+                        $scope.messages.show('erro', error.data.data[field].toString());
+                    }catch(e){
+                        $scope.messages.hide();
+                    }
+                });
+            };
+        }
     }
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
@@ -293,8 +397,8 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
 
@@ -392,18 +496,18 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms',
+                '@select': 'id,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
-            
+
             $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
     ]);
-    
+
     app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
         function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout)
         {
@@ -411,11 +515,13 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@select': 'id,terms,pontoOutrosRecursosRede',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
+
+            $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
@@ -428,11 +534,13 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube',
+                '@select': 'id,terms',
                 '@permissions': 'view'
             };
 
             $scope.agent = Entity.get(params);
+
+            $scope.termos = termos;
 
             extendController($scope, $timeout, Entity, agent_id);
         }
@@ -472,7 +580,8 @@
                     'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
                     'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                     'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
-                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao',
+                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao,' +
+                    'rcv_Ds_Edital',
 
                 '@permissions': 'view'
             };
@@ -483,5 +592,57 @@
 
         }
     ]);
+    
+    app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
+        $scope.data = {
+            naoEncontrouCNPJ: false,
+            encontrouCNPJ: false,
+            cnpj: null,
+            comCNPJ: false
+        };
+        extendController($scope, $timeout);
+        $scope.consultaCNPJ = function(){
+            $scope.messages.show('enviando', "Procurando CNPJ em nossa base");
+            $http.get(MapasCulturais.apiCNPJ + '?action=get_cultura&cnpj=' + $scope.data.cnpj).
+                    success(function success(data){
+                        if(data.Id){
+                            $scope.messages.show('sucesso', "CNPJ encontrado");
+                            
+                            $scope.data.naoEncontrouCNPJ = false;
+                            $scope.data.encontrouCNPJ = $scope.data.cnpj;
+                            
+                            $scope.registrar();
+                        }else{
+                            $scope.messages.show('erro', "CNPJ não encontrado");
+                            
+                            $scope.data.naoEncontrouCNPJ = true;
+                            $scope.data.encontrouCNPJ = false;
+                        }
+                    });
+        };
+        
+        $scope.registrar = function(){
+            var data = {};
+            if($scope.data.comCNPJ){
+                data.comCNPJ = 1;
+                if($scope.data.encontrouCNPJ){
+                    data.CNPJ = $scope.data.encontrouCNPJ;
+                }else{
+                    data.CNPJ = $scope.data.cnpj;
+                }
+            }
+            
+            $scope.messages.show('enviando', "Registrando na rede");
+            
+            $http.post(MapasCulturais.createUrl('cadastro','registra'), data).
+                    success(function(){
+                        $scope.messages.show('sucesso', "Registrado com sucesso");
+                        document.location = MapasCulturais.createUrl('cadastro','index');
+                    }).
+                    error(function(){
+                        $scope.messages.show('erro', "Um erro inesperado aconteceu");
+                    });
+        };
+    }]);
 
 })(angular);
