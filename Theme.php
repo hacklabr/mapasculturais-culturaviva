@@ -518,6 +518,30 @@ class Theme extends BaseV1\Theme{
                     )
                 ],
 
+                // Ponto Articulação
+                'participacaoMovPolitico' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'participacaoForumCultura' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                'parceriaPoderPublico' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
+                // Economia Viva
+                'pontoOutrosRecursosRede' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
             ]
         ];
 
@@ -529,10 +553,23 @@ class Theme extends BaseV1\Theme{
         }
 
         $taxonomies = [
+            // Atuação e Articulação
             'contemplado_edital' => 'Editais do Ministério da Cultura em que foi contemplado',
             'acao_estruturante' => 'Ações Estruturantes',
             'publico_participante' => 'Públicos que participam das ações',
-            'local_realizacao' => 'Locais onde são realizadas as ações culturais'
+            'local_realizacao' => 'Locais onde são realizadas as ações culturais',
+            'area_atuacao' => 'Área de experiência e temas',
+            'instancia_representacao_minc' => 'Instância de representação junto ao Ministério da Cultura',
+            // Economia Viva
+            'ponto_infra_estrutura' => '',
+            'ponto_equipamentos' => '',
+            'ponto_recursos_humanos' => '',
+            'ponto_hospedagem' => '',
+            'ponto_deslocamento' => '',
+            'ponto_comunicacao' => '',
+            'ponto_sustentabilidade' => '',
+            // Formação
+            'ponto_areas_conhecimento' => ''
         ];
 
         $id = 10;
