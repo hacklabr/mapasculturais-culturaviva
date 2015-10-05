@@ -2,7 +2,7 @@
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
     $this->cadastroTitle = '7. Economia Viva';
-    $this->cadastroText = 'Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura.';
+    $this->cadastroText = 'Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'economia-viva page-base-form';
     $this->cadastroLinkContinuar = 'formacao';
@@ -14,16 +14,16 @@
     <div class="form">
         <div class="row">
             <h4>Rede Colaborativa</h4>
-            <p>O Ponto/Pontão de Cultura só se realiza plenamente quando se articula em rede. Agir em rede é interagir em um universo de troca e colaboração mútua. Espaços, serviços, equipamentos, atividades, conexão, aquilo que o Ponto/Pontão tem, somado ao que o outro pode oferecer, multiplicam as possibilidades da rede e gera uma outra economia viva,  colaborativa e transformadora. </p>
-            <span class="destaque title">O que o Ponto/Pontão de Cultura pode oferecer para a rede?*</span>
+            <p>O Ponto/Pontão de Cultura só se realiza plenamente quando se articula em rede. Agir em rede é interagir em um universo de troca e colaboração mútua. Espaços, serviços, equipamentos, atividades, conexão, aquilo que o Ponto/Pontão tem, somado ao que o outro pode oferecer, multiplicam as possibilidades da rede e gera uma outra economia viva,  colaborativa e transformadora </p>
+            <span class="destaque">O que o Ponto/Pontão de Cultura pode oferecer para a rede?</span>
 
             <div class="colunm-full">
-                <span class="destaque">Infra-Estrutura*</span>
+                <span class="destaque">Infra-Estrutura</span>
             </div>
             <taxonomy-checkboxes taxonomy="ponto_infra_estrutura" entity="agent" terms="termos.ponto_infra_estrutura"></taxonomy-checkboxes>
 
             <div class="colunm-full">
-                <span class="destaque">Equipamentos*</span>
+                <span class="destaque">Equipamentos</span>
             </div>
             <taxonomy-checkboxes taxonomy="ponto_equipamentos" entity="agent" terms="termos.ponto_equipamentos"></taxonomy-checkboxes>
 
@@ -55,7 +55,7 @@
         <div class="row">
             <h4>Economia Viva</h4>
             <div class="colunm-full">
-                <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*</span>
+                <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)</span>
             </div>
             <label class="colunm-full">
                 <input type="text" size="10" maxlength="3" class="inputqtd"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
@@ -64,7 +64,7 @@
                 <input type="text" size="10" maxlength="3" class="inputqtd">  Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)*
+                <input type="text" size="10" maxlength="3" class="inputqtd">  Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)
             </label>
             <label class="colunm-full">
                 <input type="text" size="10" maxlength="3" class="inputqtd">  Parceiro (participa pontualmente de ações do Ponto/Pontão de Cultura fornecendo serviços, recursos ou estrutura)
@@ -125,7 +125,7 @@
                 <textarea></textarea>
             </label>
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária* ? Como?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária? Como?</span>
             </div>
             <label class="colunm1">
                 <input type="radio" name="pontoeconomia" > Sim. Como?
@@ -138,7 +138,7 @@
                 <input type="radio" name="pontoeconomia" >  Não, mas gostaria
             </label>
             <div class="colunm-full">
-                <spanc class="destaque">O Ponto/Pontão de Cultura pratica Economia da cultura*?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia da cultura?</span>
             </div>
             <label class="colunm1">
                 <input type="radio" name="pontoeconomiacultura" > Sim. Como?
@@ -151,7 +151,7 @@
                 <input type="radio" name="pontoeconomiacultura" > Não, mas gostaria
             </label>
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? *</span>
+                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? </span>
             </div>
             <label class="colunm1">
                 <input type="radio" name="pontoeconomiasocial" > Sim, física. Qual?
@@ -207,7 +207,7 @@
                 <input type="radio" name="servicoprodutos" > Não
             </label>
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?*</span>
+                <span class="destaque">O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
                 <input type="radio" name="projetosapoiou" > Sim. Quanto e para quem?
@@ -217,7 +217,7 @@
                 <input type="radio" name="projetosapoiou" > Não
             </label>
             <label class="colunm-full">
-                <span>Quanto custa por ano o Ponto/Pontão de Cultura? (valore todas as atividades realizadas, pagamento de pessoal envolvido, aluguel e manutenção de sede e equipamentos, entre outros - custeados ou não com recursos do Ministério da Cultura).</span>
+                <span class="destaque">Quanto custa por ano o Ponto/Pontão de Cultura? (valore todas as atividades realizadas, pagamento de pessoal envolvido, aluguel e manutenção de sede e equipamentos, entre outros - custeados ou não com recursos do Ministério da Cultura).</span>
                 <textarea></textarea>
             </label>
         </div>
