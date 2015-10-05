@@ -25,10 +25,10 @@
 
             <div class="img_updade" ng-controller="ImageUploadCtrl">
                 <div class="file-item">
-                    <a ng-if="agent.files.avatar" class="exclui" ng-click="deleteFile(agent.files.avatar)" title="Excluir arquivo">x</a>
-                    <div type="file" ngf-select="uploadFile($file, 'avatar')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.avatar ? 'Clique para alterar a foto' : 'Clique para incluir uma foto'}}">
-                      <img ng-if="!agent.files.avatar" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                      <img ng-if="agent.files.avatar" src="{{agent.files.avatar.files.avatarBig.url}}" width="160" height="138">
+                    <a ng-if="agent.files.logoponto" class="exclui" ng-click="deleteFile(agent.files.logoponto)" title="Excluir arquivo">x</a>
+                    <div type="file" ngf-select="uploadFile($file, 'logoponto')" accept="config.image.validation" ngf-max-size="config.image.maxUploadSize" title="{{agent.files.logoponto ? 'Clique para alterar a logo' : 'Clique para incluir uma logo'}}">
+                      <img ng-if="!agent.files.logoponto" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                      <img ng-if="agent.files.logoponto" src="{{agent.files.logoponto.url}}" width="160" height="138">
                     </div>
                 </div>
                 <div class="progress row" ng-show="f.progress >= 0">
@@ -37,7 +37,7 @@
             </div>
           </label>
             <label class="colunm-full">
-                <span>Nome do Ponto/Pontão de Cultura*</span>
+                <span class="destaque">Nome do Ponto/Pontão de Cultura*</span>
                 <input type="text" ng-blur="save_field('name')" ng-model="agent.name" />
                 <span class="error" ng-repeat="error in errors.name">{{ error }}</span>
             </label>
@@ -55,7 +55,7 @@
         <div class="row">
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
-                <span>CEP do Ponto de Cultura* (70308-200)</span>
+                <span class="destaque">CEP do Ponto de Cultura* (70308-200)</span>
                 <input type="text"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
                        ng-model="agent.cep"
@@ -64,7 +64,7 @@
             </label>
 
             <label class="colunm1">
-                <span>O pontão tem sede própria*</span>
+                <span class="destaque">O pontão tem sede própria*</span>
                 <select ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
                     <option></option>
                     <option value="1" ng-value="1">Sim</option>
@@ -122,7 +122,7 @@
             </label>
 
             <label class="colunm3">
-                <span>Bairro*</span>
+                <span>Bairro</span>
                 <input type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>

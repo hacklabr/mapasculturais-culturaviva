@@ -46,7 +46,7 @@
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
         <div class="row" ng-controller="ImageUploadCtrl">
-            <span class="destaque espacoleft">Carta de recomendações <i>?</i></span>
+            <span class="destaque espacoleft">Carta de Reconhecimento * <i>?</i></span>
             <div class="colunm-20">
               <div class="file-item">
                   <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.carta1)" title="Excluir Carta de Recomendação">x</a>

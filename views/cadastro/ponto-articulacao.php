@@ -42,12 +42,11 @@
                 <span class="destaque title">Áreas de atuação</span>
             </div>
             <div class="row">
-                <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento:</span>
+                <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento:*</span>
             </div>
              <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
         <div class="row">
-            <h4>Articulação</h4>
             <div class="colunm-full">
                 <span class="destaque">Participa de algum movimento político-cultural? </span>
             </div>

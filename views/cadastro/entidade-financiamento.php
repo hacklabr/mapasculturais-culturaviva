@@ -79,7 +79,7 @@
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
-                    <span class="destaque">Tipo de Reconhecimento*</span>
+                    <span class="destaque">Tipo de Reconhecimento <i>?</i></span>
                     <label class="label-radio"><input type="radio"
                                                      name="fomento_tipoReconhecimento"
                                                      value="minc"
@@ -110,24 +110,25 @@
             </div>
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque">Número do Edital de Seleção*</span>
+                    <span class="destaque">Número do Edital de Seleção</span>
                     <input type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
                 </label>
                 <label class="colunm-50">
-                    <span class="destaque">Ano do Edital de Seleção*</span>
+                    <span class="destaque">Ano do Edital de Seleção</span>
                     <input type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
                 </label>
-                
+
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque">Título do Projeto*</span>
+                    <span class="destaque">Título do Projeto</span>
                     <input type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="agent.edital_projeto_nome" >
                 </label>
 
                 <label class="colunm-50">
-                    <span class="destaque">Local de Realização*</span>
+
+                    <span class="destaque">Local de Realização <i>?</i></span>
                     <input type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="agent.locationrealization">
                         <option value="AC">Acre</option>
@@ -139,14 +140,14 @@
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque">Proponente* </span>
+                    <span class="destaque">Proponente </span>
                     <input type="text" ng-blur="save_field('edital_proponente')" ng-model="agent.edital_proponente" >
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
-                    <span class="destaque">Resumo do projeto (objeto)* <i class='hltip' title='Objeto é o produto final do Ponto de Cultura. Ex. Valorizar a cultura afrobrasileira e desenvolver atividades de formação na comunidade de Santo André.'>?</i></span>
+                    <span class="destaque">Resumo do projeto (objeto) <i>?</i></span>
                     <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
@@ -189,7 +190,7 @@
             <div class="clear"></div>-->
             <div class="row">
                 <div class="colunm-50">
-                    <span class="destaque">Etapa do Projeto* <i>?</i></span>
+                    <span class="destaque">Etapa do Projeto <i>?</i></span>
                     <label class="label-radio"><input type="radio"
                                                      name="etapaprojeto"
                                                      value="emexecucao"
@@ -206,7 +207,7 @@
             <div ng-show="agent.edital_projeto_etapa==='executado'">
                 <div class="row">
                     <div class="colunm-50">
-                        <span class="destaque">Prestação de Contas* <i>?</i></span>
+                        <span class="destaque">Prestação de Contas <i>?</i></span>
                         <label class="label-radio"><input type="radio"
                                                          name="edital_prestacaoContas_envio"
                                                          value="enviada"
@@ -248,7 +249,7 @@
             <div class="row">
 
                 <label class="colunm-full vigencia">
-                    <span class="destaque">Vigência*:    </span>
+                    <span class="destaque">Vigência:    </span>
                     <span class="vigencia-box vigiencia-de" style="width:120px; display:inline-block;">
                         de <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
                     </span>
