@@ -1,5 +1,8 @@
-
-<section id="page-entrada">
+<?php 
+$this->bodyProperties['ng-app'] = "culturaviva";
+?>
+<section id="page-entrada" ng-controller="EntradaCtrl">
+    <?php $this->part('messages'); ?>
     <article>
         <div class="row title">
             <h3>
@@ -7,8 +10,8 @@
                 Você já possui um CNPJ?
             </h3>
             <p>Responda e verificaremos se já temos informações sobre seu Ponto ou Pontão de Cultura na base de dados do MinC. </p>
-            <a href="#" class="btn-cnpj btn-sem-cnpj js-btn-sem-cnpj btn_active">Sem CNPJ</a>
-            <a href="#" class="btn-cnpj btn-com-cnpj js-btn-com-cnpj btn_active">com CNPJ</a>
+            <a href="#" class="btn-cnpj btn-sem-cnpj js-btn-sem-cnpj btn_active" ng-click="data.comCNPJ = false">Sem CNPJ</a>
+            <a href="#" class="btn-cnpj btn-com-cnpj js-btn-com-cnpj btn_active" ng-click="data.comCNPJ = true">com CNPJ</a>
         </div>
         <div class="row">
             <div class="colunm-full js-sem-cnpj esconde">
@@ -17,22 +20,23 @@
                     <br />
                     Continue com a validação em nome do seu Coletivo Cultural.
                 </p>
-                <a href="#" class="btn btn_active btn_continuar">Continuar</a>
+                <a href="#" class="btn btn_active btn_continuar" ng-click="registrar()">Continuar</a>
             </div>
             <div class="colunm-full js-com-cnpj esconde">
-                <div class="cnpj-form">
-                    <form> 
-                        <label>CNPJ*</label>
-                        <input type="text" value="" />
-                        <input type="submit" class="btn" value="OK" />
-                    </form>
-                </div>
-                <div class="clear"></div>
-                <div class="resposta-cnpj">
-                    <p>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</p>
-                     <a href="#" class="btn btn_active btn_continuar">Continuar</a>
-                     <a href="#" class="ja-sou js-modal">Já sou um Ponto ou Pontão de Cultura. Por que isto aconteceu? <span>?</spa></a>
-                </div>
+                    <input type="hidden" name="comCNPJ" value="true"/>
+                    <div class="cnpj-form">
+                        <form>
+                            <label>CNPJ*</label>
+                            <input type="text" name="CNPJ" ui-mask="99.999.999/9999-99" ng-model="data.cnpj" ng-change="data.naoEncontrouCNPJ = false" />
+                            <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="consultaCNPJ()"/>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                    <div ng-show="data.naoEncontrouCNPJ" class="resposta-cnpj">
+                        <p>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</p>
+                        <a href="#" class="btn btn_active btn_continuar" ng-click="registrar()">Continuar</a>
+                        <a href="#" class="ja-sou js-modal">Já sou um Ponto ou Pontão de Cultura. Por que isto aconteceu? <span>?</spa></a>
+                    </div>
             </div>
         </div>
 
@@ -52,7 +56,7 @@
                     <span class="icon-mail-read ic5"></span>
                     <span class="icon-pencil ic6"></span>
                     <span class="icon-publish ic7"></span>
-                </div>  
+                </div>
             </div>
             <div class="colunm1">
                 <div class="slide js-user sl1">

@@ -179,7 +179,7 @@ class Cadastro extends \MapasCulturais\Controller{
         $app = App::i();
 
         if(!$app->user->redeCulturaViva){
-            $app->redirect($app->createUrl('rede', 'index'), 307);
+            $app->redirect($app->createUrl('rede', 'entrada'), 307);
         }
     }
 
@@ -222,6 +222,93 @@ class Cadastro extends \MapasCulturais\Controller{
         $required_properties = $this->getPontoRequiredProperties();
 
         return $this->_getErrors($agent, $required_properties);
+    }
+
+    protected function _populateAgents($responsavel, $entidade, $ponto){
+        $app = App::i();
+
+        $api_url = $app->config['rcv.apiCNPJ'] . '?action=get_cultura&cnpj=' . $this->data['CNPJ'];
+        $d = json_decode(file_get_contents($api_url));
+        if(is_object($d)){
+            // responsável
+            $responsavel->nomeCompleto  = $d->Nm_Responsavel;
+            $responsavel->emailPrivado  = $d->Ee_email_reponsavel;
+
+            // entidade
+            $entidade->name             = $d->Nm_Entidade;
+            $entidade->nomeCompleto     = $d->Nm_Entidade;
+
+            $entidade->rcv_Cod_pronac   = $d->Cod_pronac;
+            $entidade->rcv_Cod_salic    = $d->Cod_salic;
+            $entidade->rcv_Cod_scdc     = $d->Cod_scdc;
+
+
+            $entidade->foiFomentado = '1';
+            $entidade->tipoPontoCulturaDesejado = $d->Ds_Instrumento === 'Pontão' ? 'pontao' : strtolower($d->Ds_Instrumento);
+
+            if($d->Ds_Tipo_ponto === 'Direto'){
+                $entidade->tipoReconhecimento = 'minc';
+            }else if($d->Ds_Tipo_ponto === 'Rede'){
+                $entidade->tipoReconhecimento = strtolower($d->Id_Tipo_Esfera);
+            }else if($d->Id_Tipo_Esfera === 'Estadual' || $d->Id_Tipo_Esfera === 'Municipal'){
+                $entidade->tipoReconhecimento = strtolower($d->Id_Tipo_Esfera);
+            } else {
+                $entidade->tipoReconhecimento = 'outros';
+            }
+
+            $_location = ['latitude' => (float)$d->Id_Latitude, 'longitude' => (float)$d->Id_Longitude];
+
+
+            $entidade->rcv_Ds_Edital       = $d->Ds_Edital;
+            $entidade->rcv_Ds_Tipo_ponto   = $d->Ds_Tipo_ponto;
+            $entidade->rcv_Id_Tipo_Esfera  = $d->Id_Tipo_Esfera;
+
+
+            $entidade->telefonePublico     = $d->Nr_DDD1 . ' ' . $d->Nr_Telefone1;
+            $entidade->telefone1           = $d->Nr_DDD2 . ' ' . $d->Nr_Telefone2;
+            $entidade->telefone2           = $d->Nr_DDD3 . ' ' . $d->Nr_Telefone3;
+
+            $entidade->site                = $d->Lk_Site;
+
+            $entidade->location            = $_location;
+            $entidade->En_Nome_Logradouro  = $d->En_Nome_Logradouro;
+            $entidade->En_Num              = $d->En_Km ? $d->En_Km : $d->En_Num;
+            $entidade->En_Complemento      = $d->En_Complemento;
+            $entidade->En_Bairro           = $d->En_Bairro;
+            $entidade->cep                 = $d->End_CEP;
+            $entidade->endereco            = $d->En_Endereco_Original;
+            $entidade->geoEstado           = $d->Sg_UF;
+            $entidade->geoMunicipio        = $d->Nm_Municipio;
+
+            $entidade->emailPrivado        = $d->Ee_email1;
+            $entidade->emailPrivado2       = $d->Ee_email2;
+            $entidade->emailPrivado3       = $d->Ee_email3;
+
+
+            // ponto
+            $ponto->name                = $d->Nm_Ponto;
+
+            $ponto->telefonePublico     = $d->Nr_DDD1 . ' ' . $d->Nr_Telefone1;
+            $ponto->telefone1           = $d->Nr_DDD2 . ' ' . $d->Nr_Telefone2;
+            $ponto->telefone2           = $d->Nr_DDD3 . ' ' . $d->Nr_Telefone3;
+
+            $ponto->site                = $d->Lk_Site;
+
+            $ponto->location            = $_location;
+            $ponto->En_Nome_Logradouro  = $d->En_Nome_Logradouro;
+            $ponto->En_Num              = $d->En_Km ? $d->En_Km : $d->En_Num;
+            $ponto->En_Complemento      = $d->En_Complemento;
+            $ponto->En_Bairro           = $d->En_Bairro;
+            $ponto->cep                 = $d->End_CEP;
+            $ponto->endereco            = $d->En_Endereco_Original;
+            $ponto->geoEstado           = $d->Sg_UF;
+            $ponto->geoMunicipio        = $d->Nm_Municipio;
+
+            $ponto->emailPrivado        = $d->Ee_email1;
+            $ponto->emailPrivado2       = $d->Ee_email2;
+            $ponto->emailPrivado3       = $d->Ee_email3;
+        }
+        
     }
 
 
@@ -301,7 +388,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->parent = $user->profile;
             $entidade->name = '';
             $entidade->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
-            $entidade->save(true);
+            
 
             // criando o agente coletivo vazio
             $ponto = new \MapasCulturais\Entities\Agent;
@@ -309,7 +396,16 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->parent = $user->profile;
             $ponto->name = '';
             $ponto->status = \MapasCulturais\Entities\Agent::STATUS_DRAFT;
+
+            if(isset($this->data['comCNPJ']) && $this->data['comCNPJ'] && isset($this->data['CNPJ']) && $this->data['CNPJ']){
+                $entidade->cnpj = $this->data['CNPJ'];
+                $entidade->tipoOrganizacao = 'entidade';
+                $this->_populateAgents($app->user->profile, $entidade, $ponto);
+            }   
+            
             $ponto->save(true);
+            $entidade->save(true);
+            $app->user->profile->save(true);
 
             // criando a inscrição
 
@@ -337,8 +433,12 @@ class Cadastro extends \MapasCulturais\Controller{
 
             $app->enableAccessControl();
         }
-        $app->user->refresh();
-        $app->redirect($app->createUrl('cadastro','index'),307);
+        
+        if($app->request->isAjax()){
+            $this->json(true);
+        }else{
+            $app->redirect($app->createUrl('cadastro','index'),307);
+        }
     }
 
     function GET_errosResponsavel(){

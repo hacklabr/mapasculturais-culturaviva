@@ -68,6 +68,10 @@ class Theme extends BaseV1\Theme{
 
             $this->jsObject['assets']['pinAgent'] = $this->asset('img/pin-agente.png', false);
         });
+        
+        $app->hook('view.render(rede/entrada):before', function() use($app){
+            $this->jsObject['apiCNPJ'] = $app->config['rcv.apiCNPJ'];
+        });
 
         $app->hook('entity(agent).file(gallery).insert:after', function() {
             $this->transform('avatarBig');
@@ -197,6 +201,43 @@ class Theme extends BaseV1\Theme{
             ],
 
             'MapasCulturais\Entities\Agent' => [
+                // campos para salvar infos da base de pontos existente
+                'rcv_Ds_Edital' => [
+                    'label' => 'Ds_Edital',
+                    'private' => true
+                ],
+                'rcv_Ds_Tipo_Ponto' => [
+                    'label' => 'Ds_Edital',
+                    'private' => true
+                ],
+                'rcv_Id_Tipo_Esfera' => [
+                    'label' => 'Id_Tipo_Esfera',
+                    'private' => true
+                ],
+                'rcv_Cod_pronac' => [
+                    'label' => 'Cod_pronac',
+                    'private' => true
+                ],
+                'rcv_Cod_salic' => [
+                    'label' => 'Cod_salic',
+                    'private' => true
+                ],
+                'rcv_Cod_scdc' => [
+                    'label' => 'Cod_scdc',
+                    'private' => true
+                ],
+                
+                'emailPrivado2' => [
+                    'label' => 'Email privado 2',
+                    'private' => true
+                ],
+                
+                'emailPrivado3' => [
+                    'label' => 'Email privado 3',
+                    'private' => true
+                ],
+                
+                
                 'rg' => [
                     'label' => 'RG',
 //                  'required' => true,
@@ -234,7 +275,7 @@ class Theme extends BaseV1\Theme{
                         'parceiro' => 'Sou parceiro do Ponto/Pontão e estou ajudando a cadastrar'
                     )
                 ],
-
+                
                 // Metados do Agente tipo Entidade
                 'semCNPJ' => [
                     'label' => 'CNPJ',

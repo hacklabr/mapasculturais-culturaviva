@@ -7,6 +7,8 @@ $config['auth.config']['onCreateRedirectUrl'] = $config['base.url'] . 'cadastro/
 return [
     'app.siteName' => 'Rede Cultura Viva',
     'app.siteDescription' => '',
+    
+    'rcv.apiCNPJ' => 'http://dev.culturaviva.gov.br/wp-admin/admin-ajax.php',
 
     'app.geoDivisionsHierarchy' => [
         'estado' => 'Estado',       // metadata: geoEstado
