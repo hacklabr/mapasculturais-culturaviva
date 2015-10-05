@@ -19,7 +19,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article>
             <h2>Seja bem vindo(a) <br>à Rede Cultura Viva</h2>
             <p>Esta é a página do seu Ponto de Cultura. Apenas você tem acesso a ela.</p>
-            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Validar".</p>
+            <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Enviar".</p>
             <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
     </section>
@@ -197,7 +197,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h4><i class="icon-publish"> </i> Validar </h4>
+            <h4><i class="icon-publish"> </i> <button class="btn-validar" ng-click="enviar()"> Enviar </button> </h4>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
         </article>
