@@ -71,7 +71,9 @@ body {
 #event-list-header {
     margin-bottom: 0;
 }
-
+#lista {
+    margin-top: 10px !important;
+}
 #lista-dos-eventos {
     background-color: $gray-lighter;
     padding-top: 5px !important;
