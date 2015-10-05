@@ -1093,6 +1093,22 @@ section{
             display:inline-block;
             margin-right: 10px;
         }
+       
+        .img_updade{
+            display:inline-block;
+            margin-bottom: 30px;
+        }
+
+        span.destaque-img{
+            display:inline-block;
+            color: #078979;
+            font-weight: bold;
+            font-size: 14px;
+            width: 40%;
+            text-align: center;
+            margin-left: 15px;
+            vertical-align: top;
+        }
 
         h4{
             background: #f7c908;
@@ -1501,14 +1517,7 @@ section{
         width:60%;
     }
 
-    span.destaque-img{
-        color: #078979;
-        font-weight: bold;
-        font-size: 14px;
-        width: 40%;
-        text-align: center;
-        margin-left: 30%;
-    }
+    
 
     .form{
         h4{
@@ -1985,13 +1994,81 @@ section{
     }
 }
 
-@media (max-width: 589px) {
+@media (min-width:320px) and (max-width: 589px) {
     .page-base-form{
+        header{
+            h3{
+                margin-left:5%;
+            }
+            .icon{
+                font-size: 2em;
+                margin: 20px 0 0 5%;
+            }
+        }
+
+        .form{
+            .img_updade{
+                margin-bottom:10px;
+                display:block;
+                text-align:center;
+            }
+
+            span.destaque-img{
+                display: block;
+                width: 90%;
+                vertical-align: top;
+                margin-bottom: 40px;
+            }
+
+            .colunm-redes{
+                width:100%;
+            }
+        }
+
+        p{
+            padding: 50px 5%;
+        }
         .form-opcional{
+            .nome_chamado{
+                width:90%; 
+                margin-left: 5%;   
+            }
+    
+            .onde_voce_mora{
+                width:90%;
+                margin-left: 5%; 
+            }
+            
+            .cidade{
+                margin-left:5%;
+            }  
+            
+            .estado{
+                margin-left:5%;
+            }
+                
             .colunm-redes{
                 width:80%;
-                margin-left:10%;
+                margin-left:5%;
             }
+
+            span.redessociais{
+                margin-left:5%;
+            }
+
+            .img_updade{
+                margin-left:5%;
+            }
+        }
+        .btn_voltar{
+            float:left;
+            margin-left: 5%;
+            margin-right:0px;
+        }
+
+        .btn_continuar{
+            margin-right: 20%;
+
         }
     }
     #page-cadastro{
@@ -2048,6 +2125,24 @@ section{
             }  
         }
     }
+
+    .row{
+        .colunm1{
+            width:100%;
+        }
+
+        .colunm-20{
+            width:100%;
+        }
+
+        .colunm-50{
+            width:100%;
+        }
+
+        .colunm3{
+            
+        }
+    }
  }
 
 
@@ -2057,6 +2152,7 @@ section{
             input, select{
                 width:80%;
             }
+
         }
         .form-opcional{
             input, select{
