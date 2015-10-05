@@ -68,7 +68,7 @@ class Theme extends BaseV1\Theme{
 
             $this->jsObject['assets']['pinAgent'] = $this->asset('img/pin-agente.png', false);
         });
-        
+
         $app->hook('view.render(rede/entrada):before', function() use($app){
             $this->jsObject['apiCNPJ'] = $app->config['rcv.apiCNPJ'];
         });
@@ -171,6 +171,7 @@ class Theme extends BaseV1\Theme{
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta1', ['.*'], 'a carta deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta2', ['.*'], 'a carta deve ser um arquivo pdf.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('logoponto', ['.*'], 'O logotipo deve ser uma imagem.', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
@@ -226,18 +227,18 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Cod_scdc',
                     'private' => true
                 ],
-                
+
                 'emailPrivado2' => [
                     'label' => 'Email privado 2',
                     'private' => true
                 ],
-                
+
                 'emailPrivado3' => [
                     'label' => 'Email privado 3',
                     'private' => true
                 ],
-                
-                
+
+
                 'rg' => [
                     'label' => 'RG',
 //                  'required' => true,
@@ -275,7 +276,7 @@ class Theme extends BaseV1\Theme{
                         'parceiro' => 'Sou parceiro do Ponto/Pontão e estou ajudando a cadastrar'
                     )
                 ],
-                
+
                 // Metados do Agente tipo Entidade
                 'semCNPJ' => [
                     'label' => 'CNPJ',
