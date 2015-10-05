@@ -8,6 +8,7 @@ return [
     'app.siteName' => 'Rede Cultura Viva',
     'app.siteDescription' => '',
     'rcv.apiCNPJ' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
+    'rcv.apiHeader' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
 
     'redeCulturaViva.projectId' => 1,
     'registration.ownerDefinition' => [
