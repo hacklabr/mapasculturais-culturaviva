@@ -95,40 +95,12 @@
                 */ ?>
             </div>
         </div>
-        <div class="row">
-            <label class="colunm-full">
-                <span>Email institucional*</span>
-                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
-            </label>
-        </div>
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm05">
-                <span>Telefone institucional*</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
-            </label>
-
-            <label class="colunm02">
-                <span>Operadora*</span>
-                <input type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
-            </label>
-        </div>
-        <div class="clear"></div>
-        <div class="row">
-            <label class="colunm05">
-                <span>Outro Telefone</span>
-                <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
-            </label>
-
-            <label class="colunm02">
-                <span>Operadora</span>
-                <input type="text" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
-            </label>
-        </div>
-        <div class="clear"></div>
+        
+        <h4>Contatos da Entidade</h4>
+        
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
+                <span class="destaque">Nome do Responsável pela Entidade* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
                 <input type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
@@ -154,9 +126,42 @@
             </label>
         </div>
         <div class="clear"></div>
+        
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Email institucional da Entidade *</span>
+                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm05">
+                <span>Telefone institucional da Entidade *</span>
+                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
+            </label>
+
+            <label class="colunm02">
+                <span>Operadora*</span>
+                <input type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
+            </label>
+        </div>
+        <div class="clear"></div>
+        <div class="row">
+            <label class="colunm05">
+                <span>Outro Telefone</span>
+                <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
+            </label>
+
+            <label class="colunm02">
+                <span>Operadora</span>
+                <input type="text" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
+            </label>
+        </div>
+        <div class="clear"></div>
+        
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço* <i class='hltip' title='Refere-se ao endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
+                <span class="destaque">Endereço da Entidade* <i class='hltip' title='Refere-se ao endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>
