@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Formação';
+    $this->cadastroTitle = '8. Formação';
     $this->cadastroText = 'Vamos compartilhar conhecimentos e experiências para fazer multiplicar os saberes da nossa cultura.';
     $this->cadastroIcon = 'icon-book-open';
     $this->cadastroPageClass = 'formacao page-base-form';
@@ -24,7 +24,7 @@
             <p>Espaços culturais, sedes, eventos de formação e plataformas que possam ser consideradas espaços de aprendizagem.</p>
             <span class="destaque subtitle">3) Metodologias:</span>
             <p>Experiências de formação e aprendizagem, vivências, oficinas, cursos, palestras, dinâmicas de troca de conhecimento, entre outras metodologias.</p>
-            <!-- span class="destaque subtitle">Categoria da inscrição:</span>
+            <span class="destaque subtitle">Categoria da inscrição:</span>
             <span class="destaque title"> Formadores</span>
             <span class="destaque subtitle">Formador 1</span>
             <label class="colunm-full">
@@ -64,7 +64,7 @@
                 <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
-            <span class="destaque subtitle">Formador 2</span>
+<!--            <span class="destaque subtitle">Formador 2</span>
             <label class="colunm-full">
                 <span>Nome</span>
                 <input type="text">
@@ -101,7 +101,7 @@
             <label class="colunm-redes googleplus">
                 <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
-            </label>
+            </label>-->
 
             <span class="destaque title">Espaços de Aprendizagem</span>
             <div class="colunm-full">
@@ -176,7 +176,8 @@
             <label class="colunm1">
                 <input type="checkbox" name="" > Pós-graduação
             </label>
-            <span class="destaque title">Metodologia 2</span>
+
+<!--            <span class="destaque title">Metodologia 2</span>
             <label class="colunm-full">
                 <span>Nome da metodologia:  </span>
                 <input type="text">
@@ -236,8 +237,8 @@
             </label>
             <label class="colunm1">
                 <input type="checkbox" name="" > Pós-graduação
-            </label>
-        </div -->
+            </label>-->
+        </div>
         <div class="row">
             <div class="colunm-full" >
                 <span class="destaque title">Áreas de atuação</span>

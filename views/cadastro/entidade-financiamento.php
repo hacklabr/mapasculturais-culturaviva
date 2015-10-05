@@ -1,9 +1,9 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Contato da Entidade';
-    $this->cadastroText = 'Como o Minc pode contatar seu Ponto? Nos Ajude a garantir que você receberá informações importantes. :)';
-    $this->cadastroIcon = 'icon-phone';
+    $this->cadastroTitle = '3. Projetos Financiados';
+    $this->cadastroText = 'O MinC possui diversas formas de financiamento. Você já recebeu algum prêmio ou participou de algum edital?';
+    $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'contato-entidade page-base-form';
     $this->cadastroLinkContinuar = 'pontoMapa';
 ?>
@@ -240,13 +240,14 @@
             </div>
             <div class="clear"></div>
             <div class="row">
+
                 <label class="colunm-full vigencia">
                     <span class="destaque">Vigência*:    </span>
-                    <span class="vigencia-box vigiencia-de ">
-                        de <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
+                    <span class="vigencia-box vigiencia-de" style="width:120px; display:inline-block;">
+                        de <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
                     </span>
-                    <span class="vigencia-box vigiencia-ate">
-                        até  <input ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
+                    <span class="vigencia-box vigiencia-ate" style="width:120px; display:inline-block; margin-left:15px">
+                        até  <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
                     </span>
 
                 </label>
@@ -269,16 +270,15 @@
                                ng-model="agent.outrosFinanciamentos"> Não</label>
                 </div>
             </div>
-            <div class="clear"></div>
-            <?php /*
-            <div class="row" ng-show="agent.recebeOutrosFinanciamentos">
+            <div class="row" ng-show="agent.outrosFinanciamentos">
                 <label class="colunm-50">
                     <span class="destaque">Quais ?</span>
                     <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="agent.outrosFinanciamentos_descricao" >
                 </label>
             </div>
             <div class="clear"></div>
-            */ ?>
+
+            <div class="clear"></div>
         </div>
         <div class="clear"></div>
     </div>
