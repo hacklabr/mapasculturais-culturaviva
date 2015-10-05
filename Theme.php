@@ -201,6 +201,11 @@ class Theme extends BaseV1\Theme{
             ],
 
             'MapasCulturais\Entities\Agent' => [
+                'rcv_sede_spaceId' => [
+                    'label' => 'Id do espaço linkado ao ponto de cultura',
+                    'private' => true
+                ],
+                
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',

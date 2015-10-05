@@ -476,7 +476,11 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->publish(true);
 
             if($ponto->sede_realizaAtividades){
-                $espaco = new \MapasCulturais\Entities\Space;
+                if($ponto->rcv_sede_spaceId){
+                    $espaco = App::i()->repo('Space')->find($ponto->rcv_sede_spaceId);
+                }else{
+                    $espaco = new \MapasCulturais\Entities\Space;
+                }
                 $espaco->type = 125; // ponto de cultura
                 $espaco->owner = $ponto;
                 $espaco->name = $ponto->name;
@@ -494,6 +498,10 @@ class Cadastro extends \MapasCulturais\Controller{
                 $espaco->terms = $ponto->terms;
 
                 $espaco->save(true);
+                if(!$ponto->rcv_sede_spaceId){
+                    $ponto->rcv_sede_spaceId = $espaco->id;
+                    $ponto->save(true);
+                }
 
             }
 
