@@ -42,7 +42,7 @@
                 <span class="destaque title">Áreas de atuação</span>
             </div>
             <div class="row">
-                <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento:*</span>
+                <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento: *</span>
             </div>
              <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
@@ -83,6 +83,7 @@
                        ng-value="1"
                        ng-change="save_field('participacaoForumCultura')"
                        ng-model="agent.participacaoForumCultura"> Sim
+
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
