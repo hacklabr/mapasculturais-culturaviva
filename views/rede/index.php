@@ -68,13 +68,5 @@
           <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-06.png') ?>" />
       </a>
 
-      <a href="#" class="telegram">
-          <img src="<?php $this->asset('img/CulturaVivaPlataforma_ Icones_redesociais-07.png') ?>" />
-      </a>
-
-      <a href="#" class="whatsapp">
-          <img src="<?php $this->asset('img/CulturaVivaPlataforma_ Icones_redesociais-08.png') ?>" />
-      </a>
-
     </article>
 </section>
