@@ -2,6 +2,7 @@
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
 <div id="page-cadastro" ng-controller="DashboardCtrl">
+    <?php $this->part('messages'); ?>
     <section class="texto">
 <!--        <div class="messenger">
             <a href="#" class="close">X</a>
@@ -200,8 +201,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 <!--            <h4><i class="icon-publish"> </i> Enviar </h4>-->
             <label class="colunm-full" style="color:#FFF">
               <p>
-                <input type="checkbox" name="termos" ng-model="termos_de_uso" > Aceito os <a href="/termos-de-uso-e-privacidade/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
-                <!-- textarea></textarea -->
+                <input type="checkbox"
+                       name="termos"
+                       ng-model="agent.termos_de_uso"
+                       ng-true-value="1"
+                       ng-false-value="0"
+                       ng-change="save_field('termos_de_uso')"> Aceito os <a href="/termos-de-uso-e-privacidade/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
               </p>
             </label>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
@@ -322,10 +327,17 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
         */ ?>
-            <button class="btn-validar" ng-class="" ng-disabled="!termos_de_uso" ng-click="enviar()"> Enviar </button>
-
-
-
+            
+            <button class="btn-validar" ng-class="" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
+            <div class="page-base-form">
+                <p ng-show="data.statusInscricao > 0" >
+                    Recebemos seus dados com sucesso! 
+                    Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura! 
+                    Continue navegando e, caso altere algum campo, clique em atualizar. 
+                    Muito obrigada por fazer parte da Rede Cultura Viva!
+                </p>
+            </div>
+            
       </article>
 
     </section>

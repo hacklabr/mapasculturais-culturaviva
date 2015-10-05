@@ -270,13 +270,33 @@
         }
     }
 
-    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http',
-        function($scope, Entity, MapasCulturais, $http){
+    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
+        function($scope, Entity, MapasCulturais, $http, $timeout){
+            
+            var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
+                           'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
+                           'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' + 
+                           'termos_de_uso',
+
+//                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                '@permissions': 'view'
+            };
+
+            $scope.agent = Entity.get(params);
+
+            extendController($scope, $timeout, Entity, agent_id);
+            
+            $scope.data = MapasCulturais.redeCulturaViva;
             $scope.enviar = function(){
                 $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
-                        then(function successCallback(response) {
-                            console.log('SUCESSO: ', response);
-                        }, function errorCallback(response) {
+                        success(function successCallback(response) {
+                            $scope.data.statusInscricao = 1;
+                        }).
+                        error(function errorCallback(response) {
                             console.log('ERRO: ', response);
                         });
             };
