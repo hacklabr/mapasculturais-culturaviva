@@ -64,6 +64,10 @@ class Theme extends BaseV1\Theme{
 
             $this->jsObject['assets']['pinAgent'] = $this->asset('img/pin-agente.png', false);
         });
+        
+        $app->hook('view.render(rede/entrada):before', function() use($app){
+            $this->jsObject['apiCNPJ'] = $app->config['rcv.apiCNPJ'];
+        });
 
         $app->hook('entity(agent).file(gallery).insert:after', function() {
             $this->transform('avatarBig');

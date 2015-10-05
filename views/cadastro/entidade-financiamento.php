@@ -103,6 +103,11 @@
                 </div>
             </div>
             <div class="clear"></div>
+            <div ng-if="agent.rcv_Ds_Edital" class="row">
+                <label class="colunm-50">
+                    <span class="destaque"> Edital encontrado na importação pelo CNPJ <i>?</i></span> {{agent.rcv_Ds_Edital}}
+                </label>
+            </div>
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Número do Edital de Seleção*</span>
@@ -112,6 +117,7 @@
                     <span class="destaque">Ano do Edital de Seleção*</span>
                     <input type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
                 </label>
+                
             </div>
             <div class="clear"></div>
             <div class="row">
