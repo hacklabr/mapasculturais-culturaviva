@@ -151,7 +151,7 @@
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
             <label class="colunm-redes telegram">
-                <span><i class="icon icon-telegram"></i> Seu usuário no Telegram (@SeuNome)</span>
+                <span><i class="icon icon-telegram"></i> Seu usuário no Telegram</span>
                 <input type="text" ng-blur="save_field('telegram')" ng-model="agent.telegram" placeholder="@SeuNome"/>
             </label>
             <label class="colunm-redes whatsapp">
