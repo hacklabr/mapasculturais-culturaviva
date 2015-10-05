@@ -47,10 +47,6 @@
              <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
         <div class="row">
-<<<<<<< HEAD
-        
-=======
->>>>>>> master
             <div class="colunm-full">
                 <span class="destaque">Participa de algum movimento político-cultural? </span>
             </div>
@@ -62,15 +58,11 @@
                        ng-model="agent.participacaoMovPolitico">   Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="politicocultural" >  Sim
-=======
                 <input type="radio"
                        name="politicocultural"
                        ng-value="1"
                        ng-change="save_field('participacaoMovPolitico')"
                        ng-model="agent.participacaoMovPolitico">  Sim
->>>>>>> master
                 <!-- textarea></textarea -->
             </label>
 
@@ -86,15 +78,12 @@
                        ng-model="agent.participacaoForumCultura">  Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="forumcultural" > Sim
-=======
                 <input type="radio"
                        name="forumcultural"
                        ng-value="1"
                        ng-change="save_field('participacaoForumCultura')"
                        ng-model="agent.participacaoForumCultura"> Sim
->>>>>>> master
+
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
@@ -140,15 +129,11 @@
                        ng-model="agent.parceriaPoderPublico"> Não
             </label>
             <label class="colunm2">
-<<<<<<< HEAD
-                <input type="radio" name="poderpublico" >  Sim
-=======
                 <input type="radio"
                        name="poderpublico"
                        ng-value="1"
                        ng-change="save_field('parceriaPoderPublico')"
                        ng-model="agent.parceriaPoderPublico">  Sim
->>>>>>> master
                 <!-- textarea></textarea -->
             </label>
 
