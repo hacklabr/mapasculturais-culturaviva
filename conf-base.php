@@ -8,10 +8,8 @@ return [
     'app.siteName' => 'Rede Cultura Viva',
     'app.siteDescription' => '',
     'rcv.apiCNPJ' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
-    'app.geoDivisionsHierarchy' => [
-        'estado' => 'Estado', // metadata: geoEstado
-        'municipio' => 'Município', // metadata: geoMunicipio
-    ],
+    'rcv.apiHeader' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
+
     'redeCulturaViva.projectId' => 1,
     'registration.ownerDefinition' => [
         'required' => true,
