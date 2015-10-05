@@ -66,3 +66,13 @@ body {
         }
     }
 }
+
+// _entities-list-header.scss
+#event-list-header {
+    margin-bottom: 0;
+}
+
+#lista-dos-eventos {
+    background-color: $gray-lighter;
+    padding-top: 5px !important;
+}
