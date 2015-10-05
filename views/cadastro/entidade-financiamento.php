@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="colunm-50">
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC* <i Marque caso você tenha recebido algum recurso direto do MinC>?</i></span>
                 <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC* <i>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
@@ -79,7 +79,7 @@
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
-                    <span class="destaque">Tipo de Reconhecimento* <i>?</i></span>
+                    <span class="destaque">Tipo de Reconhecimento*</span>
                     <label class="label-radio"><input type="radio"
                                                      name="fomento_tipoReconhecimento"
                                                      value="minc"
@@ -127,7 +127,7 @@
                 </label>
 
                 <label class="colunm-50">
-                    <span class="destaque">Local de Realização* <i>?</i></span>
+                    <span class="destaque">Local de Realização*</span>
                     <input type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="agent.locationrealization">
                         <option value="AC">Acre</option>
@@ -146,7 +146,7 @@
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
-                    <span class="destaque">Resumo do projeto (objeto)* <i>?</i></span>
+                    <span class="destaque">Resumo do projeto (objeto)* <i class='hltip' title='Objeto é o produto final do Ponto de Cultura. Ex. Valorizar a cultura afrobrasileira e desenvolver atividades de formação na comunidade de Santo André.'>?</i></span>
                     <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
