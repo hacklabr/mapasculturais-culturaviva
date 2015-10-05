@@ -46,6 +46,10 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/icon-whatsapp.png', 'img/icon-whatsapp.png');
         $this->assetManager->publishAsset('img/icon-culturadigital.png', 'img/icon-culturadigital.png');
         $app = App::i();
+        
+        $app->hook('GET(site.index):before', function() use ($app){
+            $app->redirect($app->createUrl('cadastro','index'));
+        });
 
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
