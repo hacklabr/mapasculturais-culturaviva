@@ -15,25 +15,25 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+                <span class="destaque">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado? * <i>?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
             <taxonomy-checkboxes taxonomy="contemplado_edital" entity="agent" terms="termos.contemplado_edital"></taxonomy-checkboxes>
         </div>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque">Quais são as ações estruturantes do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+                <span class="destaque">Quais são as ações estruturantes do Ponto/Pontão de Cultura? * <i>?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
             <taxonomy-checkboxes taxonomy="acao_estruturante" entity="agent" terms="termos.acao_estruturante"></taxonomy-checkboxes>
         </div>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque">Quais são as áreas do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+                <span class="destaque">Quais são as áreas do Ponto/Pontão de Cultura? * <i>?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
             <taxonomy-checkboxes taxonomy="area" entity="agent" terms="termos.area" restricted-terms="true"></taxonomy-checkboxes>
         </div>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque">Quais os públicos que participam das ações do Ponto/Pontão de Cultura? <i>?</i><br>(Pode escolher mais de uma opção)</span>
+                <span class="destaque">Quais os públicos que participam das ações do Ponto/Pontão de Cultura? * <i>?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
             <taxonomy-checkboxes taxonomy="publico_participante" entity="agent" terms="termos.publico_participante"></taxonomy-checkboxes>
         </div>
@@ -47,36 +47,65 @@
              <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
         <div class="row">
+<<<<<<< HEAD
         
+=======
+>>>>>>> master
             <div class="colunm-full">
-                <span class="destaque">Participa de algum movimento político-cultural? *</span>
+                <span class="destaque">Participa de algum movimento político-cultural? </span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="politicocultural" >   Não
+                <input type="radio"
+                       name="politicocultural"
+                       ng-value="0"
+                       ng-change="save_field('participacaoMovPolitico')"
+                       ng-model="agent.participacaoMovPolitico">   Não
             </label>
             <label class="colunm2">
+<<<<<<< HEAD
                 <input type="radio" name="politicocultural" >  Sim
+=======
+                <input type="radio"
+                       name="politicocultural"
+                       ng-value="1"
+                       ng-change="save_field('participacaoMovPolitico')"
+                       ng-model="agent.participacaoMovPolitico">  Sim
+>>>>>>> master
                 <!-- textarea></textarea -->
             </label>
+
+
             <div class="colunm-full">
-                <span class="destaque">Participa de algum Fórum de Cultura? *</span>
+                <span class="destaque">Participa de algum Fórum de Cultura? </span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="forumcultural" >  Não
+                <input type="radio"
+                       name="forumcultural"
+                       ng-value="0"
+                       ng-change="save_field('participacaoForumCultura')"
+                       ng-model="agent.participacaoForumCultura">  Não
             </label>
             <label class="colunm2">
+<<<<<<< HEAD
                 <input type="radio" name="forumcultural" > Sim
+=======
+                <input type="radio"
+                       name="forumcultural"
+                       ng-value="1"
+                       ng-change="save_field('participacaoForumCultura')"
+                       ng-model="agent.participacaoForumCultura"> Sim
+>>>>>>> master
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
-                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? *</span>
+                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? </span>
             </div>
             <label class="colunm1">
                 <input type="checkbox" name="" >  Colegiados
                 <!-- textarea></textarea -->
             </label>
             <label class="colunm2">
-                <input type="checkbox" name="" >  Fóruns*
+                <input type="checkbox" name="" >  Fóruns
                 <!-- textarea></textarea -->
             </label>
             <label class="colunm3">
@@ -99,14 +128,27 @@
                 <input type="checkbox" name="" >  Outros
                 <!-- textarea></textarea -->
             </label>
+            <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="agent" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
             <div class="colunm-full">
-                <span class="destaque">Possui parceria com o Poder Público? *</span>
+                <span class="destaque">Possui parceria com o Poder Público? </span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="poderpublico" > Não
+                <input type="radio"
+                       name="poderpublico"
+                       ng-value="0"
+                       ng-change="save_field('parceriaPoderPublico')"
+                       ng-model="agent.parceriaPoderPublico"> Não
             </label>
             <label class="colunm2">
+<<<<<<< HEAD
                 <input type="radio" name="poderpublico" >  Sim
+=======
+                <input type="radio"
+                       name="poderpublico"
+                       ng-value="1"
+                       ng-change="save_field('parceriaPoderPublico')"
+                       ng-model="agent.parceriaPoderPublico">  Sim
+>>>>>>> master
                 <!-- textarea></textarea -->
             </label>
 

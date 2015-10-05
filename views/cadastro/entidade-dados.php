@@ -15,7 +15,7 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
             <label class="colunm-50">
-                <span class="destaque">Tipo de organização* <i>?</i></span>
+                <span class="destaque">Tipo de organização*</span>
                 <select name="tipoOrganizacao"
                         ng-change="save_field('tipoOrganizacao')"
                         ng-model="agent.tipoOrganizacao">
@@ -24,12 +24,12 @@
                 </select>
             </label>
             <label class="colunm-50" ng-show="agent.tipoOrganizacao">
-                <span class="destaque">Quero ser* <i>?</i></span>
+                <span class="destaque">Quero ser*</span>
                 <select name="tipoPontoCulturaDesejado"
                         ng-change="save_field('tipoPontoCulturaDesejado')"
                         ng-model="agent.tipoPontoCulturaDesejado">
-                    <option value="ponto">Ponto</option>
-                    <option value="pontao">Pontão</option>
+                    <option value="ponto">Ponto de Cultura</option>
+                    <option value="pontao">Pontão de Cultura</option>
                 </select>
             </label>
         </div>
@@ -62,12 +62,12 @@
                 <div class="clear"></div>
                 <div class="row">
                     <label class="colunm-50">
-                        <span class="destaque">Nome do Representante Legal* <i>?</i></span>
+                        <span class="destaque">Nome do Representante Legal* <i class='hltip' title='Pessoa que está habilitada juridicamente a representar a Entidade'>?</i></span>
                         <input type="text" ng-blur="save_field('representanteLegal')" ng-model="agent.representanteLegal" >
                     </label>
 
                     <label class="colunm-50">
-                        <span class="destaque">Nome Fantasia* <i>?</i></span>
+                        <span class="destaque">Nome Fantasia* <i class='hltip' title='Nome da Entidade, tal como se reconhece e é reconhecida junto à comunidade'>?</i></span>
                         </span>
                         <div ng-messages="agent.name.$error" style="color:maroon" role="alert">
                             <div ng-message="required">You did not enter a field</div>
@@ -95,8 +95,7 @@
                 */ ?>
             </div>
         </div>
-        <div class="clear"></div>
-                <div class="row">
+        <div class="row">
             <label class="colunm-full">
                 <span>Email institucional*</span>
                 <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
@@ -117,19 +116,19 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span>Outro Telefone*</span>
+                <span>Outro Telefone</span>
                 <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
             </label>
 
             <label class="colunm02">
-                <span>Operadora*</span>
+                <span>Operadora</span>
                 <input type="text" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável* <i>?</i></span>
+                <span class="destaque">Nome do Responsável* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
                 <input type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
@@ -149,11 +148,15 @@
                 <span>Telefone do Responsável*</span>
                 <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone"/>
             </label>
+            <label class="colunm02">
+                <span>Operadora*</span>
+                <input type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
+            </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço* <i>?</i></span>
+                <span class="destaque">Endereço* <i class='hltip' title='Refere-se ao endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>

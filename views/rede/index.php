@@ -4,9 +4,9 @@
                 <h3>Declare seu Ponto de Cultura!</h3>
                 <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva:</p>
             </div>
-            <form method="POST" action="<?php echo $app->createUrl('cadastro', 'registra') ?>">
-                <button type="submit" class="btn btn__active">Entrar para a Rede >>></button>
-            </form>
+
+            <a href="<?php echo $app->createUrl('rede', 'entrada'); ?>" class="btn btn__active">Entrar para a Rede >>></a>
+
             <span class="bg-transparent"></span>
     </article>
 

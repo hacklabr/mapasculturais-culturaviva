@@ -16,249 +16,40 @@
             <h4>Rede Colaborativa</h4>
             <p>O Ponto/Pontão de Cultura só se realiza plenamente quando se articula em rede. Agir em rede é interagir em um universo de troca e colaboração mútua. Espaços, serviços, equipamentos, atividades, conexão, aquilo que o Ponto/Pontão tem, somado ao que o outro pode oferecer, multiplicam as possibilidades da rede e gera uma outra economia viva,  colaborativa e transformadora. </p>
             <span class="destaque title">O que o Ponto/Pontão de Cultura pode oferecer para a rede?*</span>
+
             <div class="colunm-full">
                 <span class="destaque">Infra-Estrutura*</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" >  Acesso à internet
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Sala de aula
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Auditório
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Teatro
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Estúdio
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Palco
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Galpão
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Hackerspace
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Casa
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Apartamento
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Cozinha
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Garagem
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Jardim
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Bar
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Laboratório
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Gráfica
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Loja
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Outros Espaços.
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_infra_estrutura" entity="agent" terms="termos.ponto_infra_estrutura"></taxonomy-checkboxes>
+
             <div class="colunm-full">
                 <span class="destaque">Equipamentos*</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Câmera fotográfica
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Câmera filmadora
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Microfone
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Fone de Ouvido
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Boom
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Spot de luz
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Refletor
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Mesa de Som
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Caixa de Som
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Instrumento Musical
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Computador
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Mesa de Edição
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Impressora
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Scanner
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Outros
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_equipamentos" entity="agent" terms="termos.ponto_equipamentos"></taxonomy-checkboxes>
+
             <div class="colunm-full">
              <span class="destaque">Recursos Humanos</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Ator / Atriz
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Dançarino / Dançarina
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Músico / Musicista
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Pesquisador
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Oficineiro
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Produtor
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Elaborador de Projeto Cultural
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Captador de Recursos
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Realizador audiovisual (Videomaker)
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Designer
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Fotógrafo
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Hacker
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Hacker
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Iluminador
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Sonorizador
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Maquiador
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Cenógrafo
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Eletricista
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Bombeiro Hidráulico
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Consultor
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Palestrante
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Rede Médica Solidária
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Outros
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_recursos_humanos" entity="agent" terms="termos.ponto_recursos_humanos"></taxonomy-checkboxes>
+
             <div class="colunm-full">
                 <span class="destaque">Hospedagem</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Convênio com Rede Hoteleira
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Hospedagem Solidária
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Camping
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Outros
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_hospedagem" entity="agent" terms="termos.ponto_hospedagem"></taxonomy-checkboxes>
+
             <div class="colunm-full">
                 <span class="destaque">Deslocamento/Transportes</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Passagem Aérea
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Carona, Veículo
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Passagem Terrestre
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Outros
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_deslocamento" entity="agent" terms="termos.ponto_deslocamento"></taxonomy-checkboxes>
+
             <div class="colunm-full">
                 <span class="destaque">Serviços de Comunicação</span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Assessoria de Imprensa
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Produção de Conteúdo e Mobilização nas Redes Sociais
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Produção de Conteúdo e Informação
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Jornalismo
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Audiovisual
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Fotografia
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Desenvolvimento Web
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" > Mídia Comunitária
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" > Design
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" > Outros. Quais?
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_comunicacao" entity="agent" terms="termos.ponto_comunicacao"></taxonomy-checkboxes>
+
             <label class="colunm-full">
                 <span class="destaque">Outros recursos (descreva outros itens que o Ponto/Pontão de Cultura tem disponível e não estavam especificados acima):</span>
-                <textarea></textarea >
+                <textarea ng-model="agent.pontoOutrosRecursosRede" ng-blur="save_field('pontoOutrosRecursosRede')"></textarea>
             </label>
         </div>
         <div class="row">
