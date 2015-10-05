@@ -46,22 +46,35 @@
         </div>
     </article>
     <article class="row redes">
-        <a href="#" class="facebook">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-01.png') ?>" />
-        </a>
-        <a href="#" class="twitter">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
-        </a>
-        <a href="#" class="instagram">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
-        </a>
-        <a href="#" class="youtube">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
-        </a>
 
-        <a href="#" class="diaspora">
-            <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-05.png') ?>" />
-        </a>
+      <a href="#" class="facebook">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-01.png') ?>" />
+      </a>
+      <a href="#" class="twitter">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-02.png') ?>" />
+      </a>
+      <a href="#" class="youtube">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-03.png') ?>" />
+      </a>
+      <a href="#" class="instagram">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-04.png') ?>" />
+      </a>
+
+      <a href="#" class="diaspora">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-05.png') ?>" />
+      </a>
+
+      <a href="#" class="cultura-digital">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_Icones_redesociais-06.png') ?>" />
+      </a>
+
+      <a href="#" class="telegram">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_ Icones_redesociais-07.png') ?>" />
+      </a>
+
+      <a href="#" class="whatsapp">
+          <img src="<?php $this->asset('img/CulturaVivaPlataforma_ Icones_redesociais-08.png') ?>" />
+      </a>
 
     </article>
 </section>
