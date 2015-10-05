@@ -58,167 +58,248 @@
                 <span class="destaque">Quantas pessoas fazem parte do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)</span>
             </div>
             <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoNumPessoasNucleo" ng-blur="save_field('pontoNumPessoasNucleo')"> Núcleo principal (pessoa dedicada exclusivamente/prioritariamente às ações desenvolvidas pelo Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
+
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoNumPessoasColaboradores" ng-blur="save_field('pontoNumPessoasColaboradores')">  Colaborador (pessoa que participa de ações específicas, de maneira pontual, mas mantêm um vínculo com o Ponto/Pontão de Cultura)
+            </label>
+            <div class="colunm-full">
+                <span class="destaque">Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)</span>
+            </div>
+
+            <label class="colunm-full">
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoNumPessoasParceiros" ng-blur="save_field('pontoNumPessoasParceiros')">  Parceiro (participa pontualmente de ações do Ponto/Pontão de Cultura fornecendo serviços, recursos ou estrutura)
             </label>
             <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (indique o número de pessoas em cada categoria)
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoNumPessoasApoiadores" ng-blur="save_field('pontoNumPessoasApoiadores')">  Apoiador (financia ou fomenta de alguma forma as atividades do Ponto/Pontão de Cultura)
             </label>
             <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Parceiro (participa pontualmente de ações do Ponto/Pontão de Cultura fornecendo serviços, recursos ou estrutura)
-            </label>
-            <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Apoiador (financia ou fomenta de alguma forma as atividades do Ponto/Pontão de Cultura)
-            </label>
-            <label class="colunm-full">
-                <input type="text" size="10" maxlength="3" class="inputqtd">  Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br />
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoNumRedes" ng-blur="save_field('pontoNumRedes')">  Redes (outras redes que se relacionam com o Ponto/Pontão de Cultura)<br />
                 <span class="destaque">Descreva: </span>
-                <textarea></textarea>
+                <textarea ng-model="agent.pontoRedesDescricao" ng-blur="save_field('pontoRedesDescricao')"></textarea>
             </label>
             <label class="colunm-full">
-                <input type="checkbox"> Movimentos (movimentos sociais, culturais, ambientais e outros que se relacionem com o Ponto/Pontão de Cultura)
+                <input type="text" size="10" maxlength="3" class="inputqtd"
+                       ng-model="agent.pontoMovimentos" ng-blur="save_field('pontoMovimentos')"> Movimentos (movimentos sociais, culturais, ambientais e outros que se relacionem com o Ponto/Pontão de Cultura)
             </label>
+
             <div class="colunm-full">
                 <span class="destaque">Quais são as formas de sustentabilidade do Ponto/Pontão de Cultura?</span>
             </div>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Prestação de serviços. Quais?
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Venda de produtos. Quais?
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Patrocínio. Quais?
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Apoio/doação/colaboração
-                <!-- input type="text" value="" -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Troca direta e indireta
-                 <!-- input type="text" value="" -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Empréstimo
-                 <!-- input type="text" value="" -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Emprego/salário
-                 <!-- input type="text" value="" -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Convênio com Órgão público
-                <input type="text" value="">
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Moeda complementar (social)
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm-full">
-                <input type="checkbox" name="" > Outros.<br >
-                <span class="destaque">Descreva: </span>
-                <textarea></textarea>
-            </label>
+            <taxonomy-checkboxes taxonomy="ponto_sustentabilidade" entity="agent" terms="termos.ponto_sustentabilidade"></taxonomy-checkboxes>
+
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária? Como?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia Solidária? Como?<i class='hltip' title='Entende-se por economia solidária, uma forma diferente de produzir, vender, comprar e trocar o que é preciso para viver. Sem explorar os outros, sem querer levar vantagem, sem destruir o ambiente. Cooperando, fortalecendo o grupo, cada um pensando no bem de todos e no próprio bem. Compreende-se por economia solidária o conjunto de atividades econômicas de produção, distribuição, consumo, poupança e crédito, organizadas sob a forma de autogestão.'>?</i></span>
+
             </div>
             <label class="colunm1">
-                <input type="radio" name="pontoeconomia" > Sim. Como?
-                <textarea></textarea>
+                <input type="radio"
+                       name="pontoeconomia"
+                       value="sim"
+                       ng-change="save_field('pontoEconomiaSolidaria')"
+                       ng-model="agent.pontoEconomiaSolidaria"> Sim
+                <div ng-show="agent.pontoEconomiaSolidaria==='sim'">
+                    <span> Como? </span>
+                    <textarea ng-model="agent.pontoEconomiaSolidariaDescricao" ng-blur="save_field('pontoEconomiaSolidariaDescricao')"></textarea>
+                </div>
             </label>
             <label class="colunm2">
-                <input type="radio" name="pontoeconomia" > Não
+                <input type="radio"
+                       name="pontoeconomia"
+                       value="nao"
+                       ng-change="save_field('pontoEconomiaSolidaria')"
+                       ng-model="agent.pontoEconomiaSolidaria"> Não
             </label>
             <label class="colunm3">
-                <input type="radio" name="pontoeconomia" >  Não, mas gostaria
+                <input type="radio"
+                       name="pontoeconomia"
+                       value="gostaria"
+                       ng-change="save_field('pontoEconomiaSolidaria')"
+                       ng-model="agent.pontoEconomiaSolidaria">  Não, mas gostaria
             </label>
+
+
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia da cultura?</span>
+                <span class="destaque">O Ponto/Pontão de Cultura pratica Economia da Cultura? <i class='hltip' title='Entende-se por economia criativa, um conceito em construção, mas é sabido que sua prática volta-se à economia do intangível, do simbólico. Essa concepção da economia prevê os ciclos de criação, produção, difusão, circulação/distribuição e consumo/fruição de bens e serviços caracterizados pela prevalência de sua dimensão simbólica originada por setores cujas atividades econômicas têm como processo principal o ato criativo, gerador de valor simbólico, elemento central da formação do preço, e que resulta em produção de riqueza cultural.'>?</i></span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="pontoeconomiacultura" > Sim. Como?
-                <textarea></textarea>
+                <input type="radio"
+                       name="pontoeconomiacultura"
+                       value="sim"
+                       ng-change="save_field('pontoEconomiaCultura')"
+                       ng-model="agent.pontoEconomiaCultura"> Sim
+                <div ng-show="agent.pontoEconomiaCultura==='sim'">
+                    <span> Como? </span>
+                    <textarea ng-model="agent.pontoEconomiaCulturaDescricao" ng-blur="save_field('pontoEconomiaCulturaDescricao')"></textarea>
+                </div>
             </label>
             <label class="colunm2">
-                <input type="radio" name="pontoeconomiacultura" > Não
+                <input type="radio"
+                       name="pontoeconomiacultura"
+                       value="nao"
+                       ng-change="save_field('pontoEconomiaCultura')"
+                       ng-model="agent.pontoEconomiaCultura"> Não
             </label>
             <label class="colunm3">
-                <input type="radio" name="pontoeconomiacultura" > Não, mas gostaria
+                <input type="radio"
+                       name="pontoeconomiacultura"
+                       value="gostaria"
+                       ng-change="save_field('pontoEconomiaCultura')"
+                       ng-model="agent.pontoEconomiaCultura"> Não, mas gostaria
             </label>
+
             <div class="colunm-full">
-                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? </span>
+                <span class="destaque">O Ponto/Pontão de Cultura tem moeda complementar (social)? <i class='hltip' title='Moeda complementar (social): A moeda social é uma forma de moeda paralela criadas e administradas por seus próprios usuários (logo na esfera privada, da economia). Ela não tem qualquer vínculo obrigatório com a moeda nacional (oficial) e sua circulação é baseada na confiança mútua entre os usuários, participantes de um grupo circunscrito por adesão voluntária.'>?</i></span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="pontoeconomiasocial" > Sim, física. Qual?
-                <textarea></textarea>
+                <input type="radio"
+                       name="pontoeconomiasocial"
+                       value="sim_fisica"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"> Sim, física
             </label>
             <label class="colunm2">
-                <input type="radio" name="pontoeconomiasocial" > Sim, digital. Qual?
-                <textarea></textarea>
+                <input type="radio"
+                       name="pontoeconomiasocial"
+                       value="sim_digital"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"
+                       > Sim, digital
             </label>
             <label class="colunm3">
-                <input type="radio" name="pontoeconomiasocial" > Não, mas está planejando seu lançamento
+                <input type="radio"
+                       name="pontoeconomiasocial"
+                       value="nao_planejado"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"
+                       > Não, mas está planejando seu lançamento
             </label>
             <label class="colunm1">
-               <input type="radio" name="pontoeconomiasocial" > Não, mas pretende ter
+               <input type="radio"
+                      name="pontoeconomiasocial"
+                       value="nao_pretende"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"
+                      > Não, mas pretende ter
             </label>
             <label class="colunm2">
-                <input type="radio" name="pontoeconomiasocial" > Não, porque não sabe o que é nem como funciona
+                <input type="radio"
+                       name="pontoeconomiasocial"
+                       value="nao_entende"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"
+                       > Não, porque não sabe o que é nem como funciona
             </label>
             <label class="colunm3">
-                <input type="radio" name="pontoeconomiasocial" > Não, e não pretende ter
+                <input type="radio"
+                       name="pontoeconomiasocial"
+                       value="nao_pretende_ter"
+                       ng-change="save_field('pontoMoedaSocial')"
+                       ng-model="agent.pontoMoedaSocial"
+                       > Não, e não pretende ter
             </label>
-            <div class="colunm-full">
-                <span class="destaque">Em caso afirmativo, conte em um parágrafo a definição e o funcionamento da sua moeda, seja física ou digital.</span>
+            <div class="colunm-full" ng-show="agent.pontoMoedaSocial==='sim_fisica' || agent.pontoMoedaSocial==='sim_digital'">
+                <span class="destaque">Conte em um parágrafo a definição e o funcionamento da sua moeda, seja física ou digital.</span>
+                <textarea ng-model="agent.pontoMoedaSocialDescricao" ng-blur="save_field('pontoMoedaSocialDescricao')"></textarea>
             </div>
+
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura está disponível para as trocas de serviços ou produtos?</span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="culturaprodutos" > Sim, parcialmente
+                <input type="radio"
+                       name="culturaprodutos"
+                       value="sim_parcial"
+                       ng-change="save_field('pontoTrocasServicos')"
+                       ng-model="agent.pontoTrocasServicos"> Sim, parcialmente
             </label>
             <label class="colunm2">
-                <input type="radio" name="culturaprodutos" > Sim, integralmente
+                <input type="radio"
+                       name="culturaprodutos"
+                       value="sim_integral"
+                       ng-change="save_field('pontoTrocasServicos')"
+                       ng-model="agent.pontoTrocasServicos"> Sim, integralmente
             </label>
             <label class="colunm3">
-                <input type="radio" name="culturaprodutos" > Não
+                <input type="radio"
+                       name="culturaprodutos"
+                       value="nao"
+                       ng-change="save_field('pontoTrocasServicos')"
+                       ng-model="agent.pontoTrocasServicos"> Não
             </label>
             <label class="colunm1">
-                <input type="radio" name="culturaprodutos" > Depende de quem estará envolvido na troca
+                <input type="radio"
+                       name="culturaprodutos"
+                       value="depende"
+                       ng-change="save_field('pontoTrocasServicos')"
+                       ng-model="agent.pontoTrocasServicos"> Depende de quem estará envolvido na troca
             </label>
             <label class="colunm2">
-                <input type="radio" name="culturaprodutos" > Outros
-                <textarea></textarea>
+                <input type="radio"
+                       name="culturaprodutos"
+                       value="outros"
+                       ng-change="save_field('pontoTrocasServicos')"
+                       ng-model="agent.pontoTrocasServicos"> Outros
+                <textarea ng-show="agent.pontoTrocasServicos==='outros'"
+                          ng-model="agent.pontoTrocasServicosOutros"
+                          ng-blur="save_field('pontoTrocasServicosOutros')"></textarea>
             </label>
+
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
-                <input type="checkbox" name="" >  Sim. Que tipo de serviços e/ou produtos?
-                <input type="radio" name="servicoprodutos" >  Sim. Que tipo de serviços e/ou produtos?
-                <textarea></textarea>
+                <input type="radio"
+                       name="servicoprodutos"
+                       value="sim"
+                       ng-change="save_field('pontoContrataServicos')"
+                       ng-model="agent.pontoContrataServicos">  Sim
+                <div ng-show="agent.pontoContrataServicos==='sim'">
+                    <span>Que tipo de serviços e/ou produtos?</span>
+                    <textarea ng-model="agent.pontoContrataServicosOutros"
+                              ng-blur="save_field('pontoContrataServicosOutros')"></textarea>
+                </div>
             </label>
             <label class="colunm2">
-                <input type="radio" name="servicoprodutos" > Não
+                <input type="radio"
+                       name="servicoprodutos"
+                       value="nao"
+                       ng-change="save_field('pontoContrataServicos')"
+                       ng-model="agent.pontoContrataServicos"> Não
             </label>
             <div class="colunm-full">
                 <span class="destaque">O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?</span>
             </div>
             <label class="colunm1">
-                <input type="radio" name="projetosapoiou" > Sim. Quanto e para quem?
-                <textarea></textarea>
+                <input type="radio"
+                       name="projetosapoiou"
+                       value="sim"
+                       ng-change="save_field('pontoInvestimentosColetivos')"
+                       ng-model="agent.pontoInvestimentosColetivos"> Sim
+                 <div ng-show="agent.pontoInvestimentosColetivos==='sim'">
+                    <span>Quanto e para quem?</span>
+                    <textarea ng-model="agent.pontoInvestimentosColetivosOutros"
+                              ng-blur="save_field('pontoInvestimentosColetivosOutros')"></textarea>
+                </div>
             </label>
             <label class="colunm2">
-                <input type="radio" name="projetosapoiou" > Não
+                <input type="radio"
+                       value="nao"
+                       ng-change="save_field('pontoInvestimentosColetivos')"
+                       ng-model="agent.pontoInvestimentosColetivos"> Não
             </label>
+
+
             <label class="colunm-full">
                 <span class="destaque">Quanto custa por ano o Ponto/Pontão de Cultura? (valore todas as atividades realizadas, pagamento de pessoal envolvido, aluguel e manutenção de sede e equipamentos, entre outros - custeados ou não com recursos do Ministério da Cultura).</span>
-                <textarea></textarea>
+                <textarea ng-model="agent.pontoCustoAnual"
+                          ng-blur="save_field('pontoCustoAnual')"></textarea>
             </label>
         </div>
     </div>

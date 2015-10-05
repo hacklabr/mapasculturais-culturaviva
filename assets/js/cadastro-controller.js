@@ -204,7 +204,15 @@
                 'Design'
             ],
             'ponto_sustentabilidade':[
-                
+                'Prestação de serviços',
+                'Venda de produtos',
+                'Patrocínio',
+                'Apoio/doação/colaboração',
+                'Troca direta e indireta',
+                'Empréstimo',
+                'Emprego/salário',
+                'Convênio com Órgão público',
+                'Moeda complementar (social)' 
             ],
             // Formação
             'ponto_areas_conhecimento':[
@@ -515,7 +523,12 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,pontoOutrosRecursosRede',
+                '@select': 'id,terms,pontoOutrosRecursosRede,pontoNumPessoasNucleo,pontoNumPessoasColaboradores,' +
+                           'pontoNumPessoasIndiretas,pontoNumPessoasParceiros,pontoNumPessoasApoiadores,pontoNumRedes,' +
+                           'pontoRedesDescricao,pontoMovimentos,pontoEconomiaSolidaria,pontoEconomiaSolidariaDescricao,' +
+                           'pontoEconomiaCultura,pontoEconomiaCulturaDescricao,pontoMoedaSocial,pontoMoedaSocialDescricao,' +
+                           'pontoTrocasServicos,pontoTrocasServicosOutros,pontoContrataServicos,pontoContrataServicosOutros,' +
+                           'pontoInvestimentosColetivos,pontoInvestimentosColetivosOutros,pontoCustoAnual',
                 '@permissions': 'view'
             };
 
