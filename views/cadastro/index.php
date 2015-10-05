@@ -328,8 +328,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         */ ?>
             
-            <button class="btn-validar" ng-class="" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
+            <p class='alert danger' style="margin:0 10%" ng-show="data.validationErrors">
+                Por favor, verifique se todos os campos obrigatórios foram preenchidos e tente novamente.
+            </p>
+            <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
             <div class="page-base-form">
+                
                 <p ng-show="data.statusInscricao > 0" >
                     Recebemos seus dados com sucesso! 
                     Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura! 

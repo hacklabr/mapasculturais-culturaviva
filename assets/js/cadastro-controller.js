@@ -292,12 +292,17 @@
             
             $scope.data = MapasCulturais.redeCulturaViva;
             $scope.enviar = function(){
+                console.log($scope.data);
                 $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
+                            $scope.data.validationErrors = null;
                         }).
                         error(function errorCallback(response) {
-                            console.log('ERRO: ', response);
+                            if(response.error){
+                                $scope.data.validationErrors = response.data;
+                            }
+                                
                         });
             };
         }
