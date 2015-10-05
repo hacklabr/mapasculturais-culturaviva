@@ -27,8 +27,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
-
-              <h4><span class="icon icon-user"></span> 1. Informações do Responsável</h4>
+              <span class="icon icon-user"></span>
+              <h4> 1. Informações do Responsável</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
@@ -197,7 +197,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h4><i class="icon-publish"> </i> <button class="btn-validar" ng-click="enviar()"> Enviar </button> </h4>
+            <h4><i class="icon-publish"> </i> Enviar </h4>
+            <label class="colunm-full">
+              <p>
+                <input type="checkbox" name="" >   Aceito os <a href="#"> Termos de Uso e Privacidade</a> e o <a href="#">Termo de Adesão à Política Nacional de Cultura Viva </a>
+                <!-- textarea></textarea -->
+              </p>
+            </label>
             <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias:</p>
             <div class="clear"></div>
         </article>
