@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Economia Viva';
+    $this->cadastroTitle = '7. Economia Viva';
     $this->cadastroText = 'Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura.';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'economia-viva page-base-form';

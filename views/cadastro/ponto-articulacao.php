@@ -1,9 +1,9 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = 'Atuação e Articulação';
+    $this->cadastroTitle = '6. Atuação e Articulação';
     $this->cadastroText = 'Queremos entender melhor quais são as atividades realizadas pelo seu Ponto e quem é o público que as frequenta';
-    $this->cadastroIcon = 'icon-vcard';
+    $this->cadastroIcon = 'icon-chat';
     $this->cadastroPageClass = 'ponto-mais page-base-form';
     $this->cadastroLinkContinuar = 'economiaViva';
 
