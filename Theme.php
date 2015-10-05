@@ -191,6 +191,43 @@ class Theme extends BaseV1\Theme{
             ],
 
             'MapasCulturais\Entities\Agent' => [
+                // campos para salvar infos da base de pontos existente
+                'rcv_Ds_Edital' => [
+                    'label' => 'Ds_Edital',
+                    'private' => true
+                ],
+                'rcv_Ds_Tipo_Ponto' => [
+                    'label' => 'Ds_Edital',
+                    'private' => true
+                ],
+                'rcv_Id_Tipo_Esfera' => [
+                    'label' => 'Id_Tipo_Esfera',
+                    'private' => true
+                ],
+                'rcv_Cod_pronac' => [
+                    'label' => 'Cod_pronac',
+                    'private' => true
+                ],
+                'rcv_Cod_salic' => [
+                    'label' => 'Cod_salic',
+                    'private' => true
+                ],
+                'rcv_Cod_scdc' => [
+                    'label' => 'Cod_scdc',
+                    'private' => true
+                ],
+                
+                'emailPrivado2' => [
+                    'label' => 'Email privado 2',
+                    'private' => true
+                ],
+                
+                'emailPrivado3' => [
+                    'label' => 'Email privado 3',
+                    'private' => true
+                ],
+                
+                
                 'rg' => [
                     'label' => 'RG',
 //                  'required' => true,
@@ -228,7 +265,7 @@ class Theme extends BaseV1\Theme{
                         'parceiro' => 'Sou parceiro do Ponto/Pontão e estou ajudando a cadastrar'
                     )
                 ],
-
+                
                 // Metados do Agente tipo Entidade
                 'semCNPJ' => [
                     'label' => 'CNPJ',
