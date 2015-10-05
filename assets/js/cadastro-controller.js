@@ -528,7 +528,7 @@
                            'pontoRedesDescricao,pontoMovimentos,pontoEconomiaSolidaria,pontoEconomiaSolidariaDescricao,' +
                            'pontoEconomiaCultura,pontoEconomiaCulturaDescricao,pontoMoedaSocial,pontoMoedaSocialDescricao,' +
                            'pontoTrocasServicos,pontoTrocasServicosOutros,pontoContrataServicos,pontoContrataServicosOutros,' +
-                           'pontoInvestimentosColetivos,pontoInvestimentosColetivosOutros,pontoCustoAnual',
+                           'pontoInvestimentosColetivos,pontoInvestColetivosOutros,pontoCustoAnual',
                 '@permissions': 'view'
             };
 

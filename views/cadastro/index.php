@@ -197,10 +197,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
     <section class="box-status">
         <article class="validar-ponto">
-            <h4><i class="icon-publish"> </i> Enviar </h4>
+<!--            <h4><i class="icon-publish"> </i> Enviar </h4>-->
             <label class="colunm-full" style="color:#FFF">
               <p>
-                <input type="checkbox" name="" >   Aceito os <a href="/privacidade-e-termos-de-uso/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
+                <input type="checkbox" name="termos" ng-model="termos_de_uso" >   Aceito os <a href="/privacidade-e-termos-de-uso/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
                 <!-- textarea></textarea -->
               </p>
             </label>
@@ -321,12 +321,11 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 <a href="#" class="close">X</a>
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
-
-            <!-- TODO validar-ponto
-            <button class="btn-validar" ng-click="enviar()"> Validar </button>
-          -->
-
         */ ?>
+            <button class="btn-validar" ng-class="" ng-disabled="!termos_de_uso" ng-click="enviar()"> Enviar </button>
+
+
+
       </article>
 
     </section>
