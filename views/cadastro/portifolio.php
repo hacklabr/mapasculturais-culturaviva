@@ -13,7 +13,7 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row" ng-controller="ImageUploadCtrl">
-            <span class="destaque espacoleft">Atividades já realizadas* <i>?</i></span>
+            <span class="destaque espacoleft">Atividades já realizadas* <i class='hltip' title='Nos ajude a entender o histórico de seu Ponto de Cultura e as atividades desenvolvidas.'>?</i></span>
             <div class="colunm-20">
                 <div class="file-item">
                     <a ng-if="agent.files.portifolio" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
@@ -32,7 +32,7 @@
 
                 <p>Caso não possua portfólio online, você também pode anexar arquivos no formato PDF, com no máximo 20MB.</p>
 
-                <p><span class="destaque"><i>?</i></span>
+                <p><span class="destaque"><i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i></span>
                     Precisa de ajuda para montar seu portfólio?
                     <br>
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
@@ -46,7 +46,7 @@
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
         <div class="row" ng-controller="ImageUploadCtrl">
-            <span class="destaque espacoleft">Carta de Reconhecimento * <i>?</i></span>
+            <span class="destaque espacoleft">Carta de Reconhecimento * <i class='hltip' title='As cartas de apoio nos ajudam a entender como o Ponto de Cultura se conecta com a comunidade ao seu redor e certifica a participação da comunidade no processo.'>?</i></span>
             <div class="colunm-20">
               <div class="file-item">
                   <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.carta1)" title="Excluir Carta de Recomendação">x</a>
@@ -112,7 +112,7 @@
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
         <div class="row">
-            <span class="destaque destaque-conecte">Conecte seu ponto com as redes sociais: <i>?</i></span>
+            <span class="destaque destaque-conecte">Conecte seu ponto com as redes sociais: <i class='hltip' title='Ajude-nos a te encontrar e saber as novidades.'>?</i></span>
         </div>
         <div class="row">
             <label class="colunm-redes site-oficial">
@@ -162,7 +162,7 @@
         </div>
         <div class="clear"></div>
         <div class="row" ng-controller="ImageUploadCtrl">
-            <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i>?</i></span>
+            <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i class='hltip' title='Essas imagens devem mostrar as atividades que seu Ponto de Cultura desenvolve'>?</i></span>
             <p class="espacoleft">Inclua no máximo 4 arquivos, no formato JPG ou PNG com até 1MB</p>
             <div class="img_updade file-item" ng-repeat="f in agent.files.gallery">
                 <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>

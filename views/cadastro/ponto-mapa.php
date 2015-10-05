@@ -47,7 +47,7 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i>?</i></span>
+                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu ponto e atrarir o interesse do público.'>?</i></span>
                 <textarea max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
@@ -55,7 +55,7 @@
         <div class="row">
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
-                <span class="destaque">CEP do Ponto de Cultura* (70308-200)</span>
+                <span class="destaque">CEP do Ponto de Cultura* (70308-200)<i class='hltip' title='Caso não saiba seu CEP acesse o site dos correios'>?</i></span>
                 <input type="text"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
                        ng-model="agent.cep"
@@ -87,7 +87,7 @@
 
         <div class="row">
             <span class="colunm1">
-                <span class="destaque">Endereço* <i>?</i></span>
+                <span class="destaque">Endereço* <i class='hltip' title='Caso não tenham uma sede, coloque o endereço de referêrncia do Ponto de Cultura'>?</i></span>
             </span>
         </div>
 
