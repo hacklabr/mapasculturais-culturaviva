@@ -5,6 +5,7 @@
         left:5px;
         right:5px;
         text-align: center;
+        z-index:999999999;
     }
 
     .messages span{
