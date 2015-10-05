@@ -18,13 +18,13 @@
         </div>
         <div class="row box-faq">
             <div class="colunm box oquee">
-                <a href="<?php echo $app->createUrl('rede', 'faq'); ?>#ponto_e_pontao" >
+                <a href="http://culturaviva.gov.br/saiba-mais/" >
                     <img src="<?php $this->asset('img/o-que-e-ponto-cultura.png') ?>" />
                     <h4>O que é ponto de cultura?</h4>
                 </a>
             </div>
             <div class="colunm box porqueser">
-                <a href="<?php echo $app->createUrl('rede', 'faq'); ?>#por_que_ser_ponto_ou_pontao" >
+                <a href="http://culturaviva.gov.br/saiba-mais/" >
                     <img src="<?php $this->asset('img/porque-ser-um.png') ?>" />
                     <h4>Por que ser um<br />ponto de cultura?</h4>
                 </a>
@@ -32,13 +32,13 @@
         </div>
         <div class="row box-faq">
             <div class="colunm box oqueganho">
-                <a href="<?php echo $app->createUrl('rede', 'faq'); ?>#o_que_ganho" >
+                <a href="http://culturaviva.gov.br/saiba-mais/" >
                     <img src="<?php $this->asset('img/o-que-ganho.png') ?>" />
                     <h4>O que ganho<br/>com isso?</h4>
                 </a>
             </div>
             <div class="colunm box criterios">
-                <a href="<?php echo $app->createUrl('rede', 'faq'); ?>#criterios" >
+                <a href="http://culturaviva.gov.br/saiba-mais/" >
                     <img src="<?php $this->asset('img/o-que-e-cultura-viva.png') ?>" />
                     <h4>Critérios de<br/>certificação</h4>
                 </a>
