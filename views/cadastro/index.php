@@ -27,8 +27,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
-              <span class="icon icon-user"></span>
-              <h4> 1. Informações do Responsável</h4>
+
+              <h4><span class="icon icon-user"></span> 1. Informações do Responsável</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
