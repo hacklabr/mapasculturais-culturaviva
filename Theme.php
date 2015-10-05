@@ -488,26 +488,51 @@ class Theme extends BaseV1\Theme{
                 'En_Bairro' => [
                     'label' => 'Bairro',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Num' => [
                     'label' => 'Número',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Nome_Logradouro' => [
                     'label' => 'Logradouro',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Complemento' => [
                     'label' => 'Complemento',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    },
+                ],
+                
+                
+                // @TODO: comentar quando importar os shapefiles
+                
+
+                'geoEstado' => [
+                    'label' => 'Estado',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
 
-
-
+                'geoMunicipio' => [
+                    'label' => 'Município',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
+                ],
 
 
                 // Seu Ponto no Mapa
@@ -535,7 +560,9 @@ class Theme extends BaseV1\Theme{
                 'cep' => [
                     'label' => 'CEP',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
 //                    'validations' => array(
 //                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
 //                    )
