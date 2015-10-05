@@ -198,13 +198,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <section class="box-status">
         <article class="validar-ponto">
 <!--            <h4><i class="icon-publish"> </i> Enviar </h4>-->
-            <label class="colunm-full" style="color:#FFF">
+            <label class="colunm-full aceito-termo" style="color:#FFF">
               <p>
                 <input type="checkbox" name="termos" ng-model="termos_de_uso" > Aceito os <a href="/termos-de-uso-e-privacidade/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
                 <!-- textarea></textarea -->
               </p>
             </label>
-            <p>Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
+            <p class="mensagem-validar">Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
             <div class="clear"></div>
         </article>
         <article class="content-status">
