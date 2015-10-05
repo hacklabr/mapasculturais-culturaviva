@@ -116,12 +116,12 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span>Outro Telefone*</span>
+                <span>Outro Telefone</span>
                 <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
             </label>
 
             <label class="colunm02">
-                <span>Operadora*</span>
+                <span>Operadora</span>
                 <input type="text" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
             </label>
         </div>
@@ -147,6 +147,10 @@
             <label class="colunm2">
                 <span>Telefone do Responsável*</span>
                 <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone"/>
+            </label>
+            <label class="colunm02">
+                <span>Operadora*</span>
+                <input type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
             </label>
         </div>
         <div class="clear"></div>
