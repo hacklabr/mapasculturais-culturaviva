@@ -75,6 +75,10 @@ body {
     margin-top: 10px !important;
 }
 #lista-dos-eventos {
-    background-color: $gray-lighter;
     padding-top: 5px !important;
+}
+
+#lista-dos-eventos,
+.controller-event #main-section {
+    background-color: $gray-lighter;
 }
