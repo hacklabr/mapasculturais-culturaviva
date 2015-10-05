@@ -38,17 +38,16 @@
             <taxonomy-checkboxes taxonomy="publico_participante" entity="agent" terms="termos.publico_participante"></taxonomy-checkboxes>
         </div>
         <div class="row">
-            <div class="colunm-full" >
-                <span class="destaque title">Áreas de atuação</span>
-            </div>
+
             <div class="row">
                 <span class="destaque">Especifique a área de experiência e temas que você pode compartilhar conhecimento: *</span>
             </div>
              <taxonomy-checkboxes taxonomy="area_atuacao" entity="agent" terms="termos.area_atuacao"></taxonomy-checkboxes>
         </div>
         <div class="row">
+          <h4> Articulação </h4>
             <div class="colunm-full">
-                <span class="destaque">Participa de algum movimento político-cultural? </span>
+                <span class="destaque">Participa de algum movimento político-cultural? * </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -68,7 +67,7 @@
 
 
             <div class="colunm-full">
-                <span class="destaque">Participa de algum Fórum de Cultura? </span>
+                <span class="destaque">Participa de algum Fórum de Cultura? * </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -87,7 +86,7 @@
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full">
-                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? </span>
+                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? * </span>
             </div>
             <label class="colunm1">
                 <input type="checkbox" name="" >  Colegiados
@@ -119,7 +118,7 @@
             </label>
             <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="agent" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
             <div class="colunm-full">
-                <span class="destaque">Possui parceria com o Poder Público? </span>
+                <span class="destaque">Possui parceria com o Poder Público? * </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
