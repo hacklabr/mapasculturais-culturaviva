@@ -63,7 +63,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i class='hltip' title='Você não precisa necessariamente ser o responsável legal para entrar na Rede Cultura Viva, descreva o que você faz no Ponto de Cultura. Ex: colaborador; parceiro; funcionário; coordenador de comunicação; etc'>?</i></span>
+                <span class="destaque">Qual sua relação com o Ponto/Pontão de Cultura?* <i class='hltip' title='Você não precisa necessariamente ser o responsável legal para entrar na Rede Cultura Viva, descreva o que você faz no Ponto de Cultura. Ex. colaborador; parceiro; funcionário; coordenador de comunicação; etc'>?</i></span>
                 <select ng-blur="save_field('relacaoPonto')" ng-model="agent.relacaoPonto">
                     <option value="responsavel">Sou o responsável pelo Ponto/Pontão de Cultura</option>
                     <option value="funcionario">Trabalho no Ponto/Pontão de Cultura</option>
