@@ -42,7 +42,11 @@ class Theme extends BaseV1\Theme{
         $this->_enqueueStyles();
         $this->_enqueueScripts();
         $this->_publishAssets();
-
+        $this->assetManager->publishAsset('img/diaspora.png', 'img/icon-diaspora.png');
+        $this->assetManager->publishAsset('img/diaspora.png', 'img/icon-telegram.png');
+        $this->assetManager->publishAsset('img/diaspora.png', 'img/icon-instagram.png');
+        $this->assetManager->publishAsset('img/diaspora.png', 'img/icon-whatsapp.png');
+        $this->assetManager->publishAsset('img/diaspora.png', 'img/icon-culturadigital.png');
         $app = App::i();
 
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
