@@ -198,9 +198,9 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <section class="box-status">
         <article class="validar-ponto">
             <h4><i class="icon-publish"> </i> Enviar </h4>
-            <label class="colunm-full">
+            <label class="colunm-full" style="color:#FFF">
               <p>
-                <input type="checkbox" name="" >   Aceito os <a href="#"> Termos de Uso e Privacidade</a> e o <a href="#">Termo de Adesão à Política Nacional de Cultura Viva </a>
+                <input type="checkbox" name="" >   Aceito os <a href="/privacidade-e-termos-de-uso/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
                 <!-- textarea></textarea -->
               </p>
             </label>
@@ -208,8 +208,11 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <div class="clear"></div>
         </article>
         <article class="content-status">
+
+        <?php /*
+        <article class="content-status">
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p13">
                     <span>13%</span>
                     <div class="slice">
@@ -217,12 +220,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-user"></span>
                 <p>Informações do Responsável<br />(45% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p65">
                     <span>65%</span>
                     <div class="slice">
@@ -230,12 +233,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-home"></span>
                 <p>Entidade ou Coletivo Cultural<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-               <?php // /* ?>
+
                 <div class="circle-status c100 p13">
                     <span>13%</span>
                     <div class="slice">
@@ -243,12 +246,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-dollar"></span>
                 <p>Projetos Financiados<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-               <?php // /* ?>
+
                 <div class="circle-status c100 p100">
                     <span>100%</span>
                     <div class="slice">
@@ -256,12 +259,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-location"></span>
                 <p>Seu Ponto no Mapa<br />(100% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p50">
                     <span>50%</span>
                     <div class="slice">
@@ -269,12 +272,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-picture"></span>
                 <p>Portifólio e Anexos<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p100">
                     <span>100%</span>
                     <div class="slice">
@@ -282,12 +285,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-chat"></span>
                 <p>Atuação e Articulação<br />(100% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p55">
                     <span>55%</span>
                     <div class="slice">
@@ -295,12 +298,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-vcard"></span>
                 <p>Economia Viva<br />(50% informações opcionais)</p>
             </div>
             <div class="status">
-                <?php // /* ?>
+
                 <div class="circle-status c100 p90">
                     <span>90%</span>
                     <div class="slice">
@@ -308,21 +311,23 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <div class="fill"></div>
                     </div>
                 </div>
-               <?php  // */ ?>
+
                 <span class="icon icon-book-open"></span>
                 <p>Formação<br />(50% informações opcionais)</p>
-            </div>
+
             <div class="clear"></div>
-            <?php /*
+
             <div class="infos-messenge">
                 <a href="#" class="close">X</a>
                 Algumas informações já foram preenchidas de acordo com o cadastro que o MinC possui de seu Ponto. Configra com atenção essas informações antes de validá-las!
             </div>
-            */ ?>
+
             <!-- TODO validar-ponto
             <button class="btn-validar" ng-click="enviar()"> Validar </button>
           -->
 
-        </article>
+        */ ?>
+      </article>
+
     </section>
 </div>
