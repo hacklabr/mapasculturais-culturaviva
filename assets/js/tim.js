@@ -532,20 +532,13 @@
                     $menu.on('click', function (e) {
                         e.preventDefault();
                         var ready = 0;
-                        $.get(_url_logout_lc, function () {
-                            ready++;
-                            if (ready >= 2) {
-                                document.location = '/';
-                            }
-                        });
-
-                        $.get(_url_logout_mapas, function () {
-                            ready++;
-                            if (ready >= 2) {
-                                document.location = '/';
-                            }
-                        });
-
+                        
+                        $('body').append('<iframe style="position:fixed; top:-10000px;" src="' + _url_logout_lc + '"></iframe>');
+                        $('body').append('<iframe style="position:fixed; top:-10000px;" src="' + _url_logout_mapas + '"></iframe>');
+                        
+                        setTimeout(function(){
+                            document.location = '/';
+                        },2000);
                         return false;
                     });
                 }
