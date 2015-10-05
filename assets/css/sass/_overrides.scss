@@ -68,13 +68,20 @@ body {
 }
 
 // _entities-list-header.scss
-#event-list-header {
+#event-list-header,
+#agent-list-header {
     margin-bottom: 0;
 }
 #lista {
     margin-top: 10px !important;
 }
-#lista-dos-eventos {
-    background-color: $gray-lighter;
+#lista-dos-eventos,
+#lista-dos-agentes {
     padding-top: 5px !important;
+}
+
+#lista-dos-eventos,
+#lista-dos-agentes,
+.controller-event #main-section {
+    background-color: $gray-lighter;
 }

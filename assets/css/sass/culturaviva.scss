@@ -703,7 +703,7 @@ section{
                 .texto{
                     margin-left: 5%;
                     margin-top: 20px;
-                    width: 85%;
+                    width: 79%;
                     display: inline-block;
 
                     p{
@@ -1333,7 +1333,7 @@ section{
         }
 
         .img_updade{
-           margin-left:37px;
+           margin-left:10px;
            float: left;
         }
 
@@ -1357,7 +1357,7 @@ section{
         }
 
         span.redessociais{
-            margin-left:37px;
+            margin-left:10px;
             margin-top:37px;
         }
 
@@ -1367,7 +1367,7 @@ section{
         }
 
         .site-oficial{
-            margin-left:37px;
+            margin-left:10px;
             i{
                 color:#417034;
             }
@@ -1375,7 +1375,7 @@ section{
         }
 
         .facebook{
-            margin-left:37px;
+            
             i{
               color:#576c94;
             }
@@ -1397,7 +1397,7 @@ section{
         }
 
         .flick{
-            margin-left:37px;
+            margin-left:10px;
         }
     }
 
@@ -1676,7 +1676,7 @@ section{
     }
 
     .destaque-conecte{
-        margin-left:4%;
+        margin-left:2%;
     }
 
     .row{
@@ -1995,6 +1995,38 @@ section{
 }
 
 @media (min-width:320px) and (max-width: 589px) {
+    #page-rede{
+        article.slide-home{
+            .bg-transparent{
+                width:90%;
+            }
+            .text-banner{
+                width: 90%;
+            }
+        }    
+        
+        article.points_culture{
+            .row{
+                p{
+                    padding:0px 5%;
+                }
+            }
+
+            .box-faq{
+                padding: 20px 0px 20px;
+                .box{
+                   width:90%;
+                   font-size: 16px;
+                   + .box{
+                     margin-top: 20px;   
+                   }
+                   
+                }
+                
+            }
+        }   
+    }
+
     .page-base-form{
         header{
             h3{
@@ -2041,6 +2073,7 @@ section{
             
             .cidade{
                 margin-left:5%;
+                width:90%;
             }  
             
             .estado{
@@ -2067,7 +2100,7 @@ section{
         }
 
         .btn_continuar{
-            margin-right: 20%;
+            margin-right: 10%;
 
         }
     }
@@ -2145,12 +2178,27 @@ section{
     }
  }
 
+@media (min-width:761px) and (max-width: 801px) {
+  section.boxs-cadastro{
+        article{
+            header{
+                h4{
+                   width: 60%;  
+                }
+            }
+        } 
+    } 
+}
 
-@media (min-width:550px) and (max-width: 770px) {
+@media (min-width:550px) and (max-width: 760px) {
     .page-base-form{
         .form{
             input, select{
                 width:80%;
+            }
+
+            label.check{
+                display:block;
             }
 
         }
@@ -2159,10 +2207,16 @@ section{
                 width:80%;
             }
             .nome_chamado{
-                width:80%;
+                width:60%;
+                margin-left: 4%;
+            }
+
+            .onde_voce_mora{
+                width:60%;
             }
             .cidade{
-                width:80%;
+                width: 40%;
+                margin-left: 4%;
             }
         }
     }
@@ -2185,7 +2239,8 @@ section{
                     }
 
                     .btn_mais{
-                        left:0%
+                        left: 5%;
+                        top: -6px;
                     }
                 }
             }
@@ -2193,7 +2248,7 @@ section{
             article.box-ponto-mapa{
                 header{
                     h4{
-                        width:40%;
+                        width:60%;
                     }
                 }
             }
@@ -2207,10 +2262,48 @@ section{
             }
         }
     }
+     .page-ponto-mais{
+        .form{
+            .colunm1{
+                width:40%;
+            }
+
+            .colunm2{
+                width:40%;
+            }
+            .colunm3{
+                width:40%;
+            }
+            .colunm-50{
+                width:60%;
+            }
+        }
+    }
+
+    .page-economia-viva{
+        .form{
+            .colunm1{
+                width:40%;
+            }
+
+            .colunm2{
+                width:40%;
+            }
+            .colunm3{
+                width:40%;
+            }
+            .colunm-50{
+                width:60%;
+            }
+        }
+    }
 
     .row{
         .colunm1{
             width:80%;
+        }
+        .colunm-50{
+            width:60%;
         }
     }
  }
