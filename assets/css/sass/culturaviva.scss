@@ -1995,6 +1995,38 @@ section{
 }
 
 @media (min-width:320px) and (max-width: 589px) {
+    #page-rede{
+        article.slide-home{
+            .bg-transparent{
+                width:90%;
+            }
+            .text-banner{
+                width: 90%;
+            }
+        }    
+        
+        article.points_culture{
+            .row{
+                p{
+                    padding:0px 5%;
+                }
+            }
+
+            .box-faq{
+                padding: 20px 0px 20px;
+                .box{
+                   width:90%;
+                   font-size: 16px;
+                   + .box{
+                     margin-top: 20px;   
+                   }
+                   
+                }
+                
+            }
+        }   
+    }
+
     .page-base-form{
         header{
             h3{
