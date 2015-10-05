@@ -229,7 +229,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
         $api_url = $app->config['rcv.apiCNPJ'] . '?action=get_cultura&cnpj=' . $this->data['CNPJ'];
         $d = json_decode(file_get_contents($api_url));
-        if(is_object($d)){
+        if(is_object($d) && isset($d->Nm_Responsavel)){
             // responsável
             $responsavel->nomeCompleto  = $d->Nm_Responsavel;
             $responsavel->emailPrivado  = $d->Ee_email_reponsavel;
