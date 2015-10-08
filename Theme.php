@@ -36,7 +36,7 @@ class Theme extends BaseV1\Theme{
     protected function _init(){
         parent::_init();
         $app = App::i();
-        
+
         $this->_cadastro = Controllers\Cadastro::i();
 
         $this->_enqueueStyles();
@@ -47,7 +47,7 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/icon-instagram.png', 'img/icon-instagram.png');
         $this->assetManager->publishAsset('img/icon-whatsapp.png', 'img/icon-whatsapp.png');
         $this->assetManager->publishAsset('img/icon-culturadigital.png', 'img/icon-culturadigital.png');
-        
+
         $app->hook('GET(site.index):before', function() use ($app){
             $app->redirect($app->createUrl('cadastro','index'));
         });
@@ -55,7 +55,7 @@ class Theme extends BaseV1\Theme{
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
             $inscricao = $this->_cadastro->getInscricao();
-            
+
             $this->jsObject['redeCulturaViva']->statusInscricao = $inscricao->status;
         }
 
@@ -486,6 +486,11 @@ class Theme extends BaseV1\Theme{
 //                  'required' => true,
                     'private' => true
                 ],
+                'responsavel_operadora' => [
+                    'label' => 'Operadora do telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
 
                 'En_Bairro' => [
                     'label' => 'Bairro',
@@ -515,10 +520,10 @@ class Theme extends BaseV1\Theme{
                         return !$this->publicLocation;
                     },
                 ],
-                
-                
+
+
                 // @TODO: comentar quando importar os shapefiles
-                
+
 
                 'geoEstado' => [
                     'label' => 'Estado',
@@ -824,7 +829,7 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
-                
+
                 // Termos de uso
                 'termos_de_uso' => [
                     'label' => '',

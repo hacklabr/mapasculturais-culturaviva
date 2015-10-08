@@ -105,12 +105,12 @@ class Cadastro extends \MapasCulturais\Controller{
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
-            'En_Num',
             'En_Nome_Logradouro',
+            'En_Num',
             'location', // ponto no mapa
 
             //portifólio
-            'atividadesEmRealizacao'
+//            'atividadesEmRealizacao'
         ];
     }
 
@@ -125,7 +125,6 @@ class Cadastro extends \MapasCulturais\Controller{
             'tipoOrganizacao',
             'name',
             'tipoOrganizacao',
-            'nomeCompleto',
             'responsavel_nome',
             'responsavel_cargo',
             'responsavel_email',

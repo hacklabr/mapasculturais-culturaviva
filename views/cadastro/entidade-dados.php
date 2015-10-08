@@ -56,6 +56,12 @@
                                ng-model="agent.cnpj"
                                ui-mask="99.999.999/9999-99">
                     </label>
+                    <label class="colunm-50">
+                        <span class="destaque">Nome da Razão Social da Entidade*</span>
+                        <input type="text"
+                               ng-blur="save_field('nomeCompleto')"
+                               ng-model="agent.nomeCompleto">
+                    </label>
                 </div>
 
                 <div class="clear"></div>
@@ -94,8 +100,6 @@
                 */ ?>
             </div>
         </div>
-
-        <h4>Contatos da Entidade</h4>
 
         <div class="row">
             <label class="colunm1">
