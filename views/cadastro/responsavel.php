@@ -100,7 +100,7 @@
                 <span>Cidade</span>
                 <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
-            <label class="colunm3">
+            <label class="colunm3 estado">
                 <span>Estado</span>
                 <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>

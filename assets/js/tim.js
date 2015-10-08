@@ -487,7 +487,7 @@
 
         ////////// Carrega Header e Footer via Ajax //////////
 
-        var _url = 'http://culturaviva.gov.br/wp-admin/admin-ajax.php';
+        var _url = MapasCulturais.apiHeader;
 
         $.ajax({
             method: 'GET',
@@ -509,6 +509,40 @@
                 }
                 adjustHeader();
             },100);
+            (function ($) {
+                var _url_api = 'http://culturaviva.gov.br/wp-admin/admin-ajax.php';
+                var _url_logout_mapas = '/sair/';
+                var _url_logout_lc = 'http://id.cultura.gov.br/logout';
+
+                var COOKIES = (document.cookie || '').split(/;\s*/).reduce(function (re, c) {
+                    var tmp = c.match(/([^=]+)=(.*)/);
+                    if (tmp)
+                        re[tmp[1]] = unescape(tmp[2]);
+                    return re;
+                }, {});
+
+
+                if (COOKIES['mapasculturais.uid'] && COOKIES['mapasculturais.uid'] > 0) {
+                    var $menu = $('#primary-menu .menu-item:last');
+                    var $a = $menu.find('a');
+
+                    $menu.attr('onclick', '');
+                    $a.html('Sair');
+                    $a.attr('href', '#');
+                    $menu.on('click', function (e) {
+                        e.preventDefault();
+                        var ready = 0;
+                        
+                        $('body').append('<iframe style="position:fixed; top:-10000px;" src="' + _url_logout_lc + '"></iframe>');
+                        $('body').append('<iframe style="position:fixed; top:-10000px;" src="' + _url_logout_mapas + '"></iframe>');
+                        
+                        setTimeout(function(){
+                            document.location = '/';
+                        },2000);
+                        return false;
+                    });
+                }
+            })(jQuery);
             //$('#main-header').html(_r);
         });
 

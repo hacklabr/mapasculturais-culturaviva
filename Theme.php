@@ -4,8 +4,6 @@ use MapasCulturais\Themes\BaseV1;
 use MapasCulturais\App;
 
 class Theme extends BaseV1\Theme{
-    private $_ids;
-
     /**
      * Controller Cadastro
      *
@@ -37,6 +35,8 @@ class Theme extends BaseV1\Theme{
 
     protected function _init(){
         parent::_init();
+        $app = App::i();
+
         $this->_cadastro = Controllers\Cadastro::i();
 
         $this->_enqueueStyles();
@@ -47,10 +47,16 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/icon-instagram.png', 'img/icon-instagram.png');
         $this->assetManager->publishAsset('img/icon-whatsapp.png', 'img/icon-whatsapp.png');
         $this->assetManager->publishAsset('img/icon-culturadigital.png', 'img/icon-culturadigital.png');
-        $app = App::i();
+
+        $app->hook('GET(site.index):before', function() use ($app){
+            $app->redirect($app->createUrl('cadastro','index'));
+        });
 
         if($redeCulturaViva = $this->_cadastro->getUsermeta()) {
             $this->jsObject['redeCulturaViva'] = $redeCulturaViva;
+            $inscricao = $this->_cadastro->getInscricao();
+
+            $this->jsObject['redeCulturaViva']->statusInscricao = $inscricao->status;
         }
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
@@ -69,8 +75,9 @@ class Theme extends BaseV1\Theme{
             $this->jsObject['assets']['pinAgent'] = $this->asset('img/pin-agente.png', false);
         });
 
-        $app->hook('view.render(rede/entrada):before', function() use($app){
-            $this->jsObject['apiCNPJ'] = $app->config['rcv.apiCNPJ'];
+        $app->hook('view.render(<<*>>):before', function() use($app){
+            $this->jsObject['apiCNPJ']  = $app->config['rcv.apiCNPJ'];
+            $this->jsObject['apiHeader'] = $app->config['rcv.apiHeader'];
         });
 
         $app->hook('entity(agent).file(gallery).insert:after', function() {
@@ -483,26 +490,51 @@ class Theme extends BaseV1\Theme{
                 'En_Bairro' => [
                     'label' => 'Bairro',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Num' => [
                     'label' => 'Número',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Nome_Logradouro' => [
                     'label' => 'Logradouro',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
                 ],
                 'En_Complemento' => [
                     'label' => 'Complemento',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    },
                 ],
 
 
+                // @TODO: comentar quando importar os shapefiles
 
+
+                'geoEstado' => [
+                    'label' => 'Estado',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
+                ],
+
+                'geoMunicipio' => [
+                    'label' => 'Município',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
+                ],
 
 
                 // Seu Ponto no Mapa
@@ -530,7 +562,9 @@ class Theme extends BaseV1\Theme{
                 'cep' => [
                     'label' => 'CEP',
 //                  'required' => true,
-                    'private' => true
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
 //                    'validations' => array(
 //                        'v::regex("#^\d\d\d\d\d-\d\d\d$#")' => 'Use cep no formato 99999-999'
 //                    )
@@ -781,6 +815,12 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
                 'metodologia1_certificacao' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+                // Termos de uso
+                'termos_de_uso' => [
                     'label' => '',
                     'required' => false,
                     'private' => true
