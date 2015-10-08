@@ -785,15 +785,6 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
-                'metodologia1_tipo' => [
-                    'label' => '',
-                    'required' => false,
-                    'private' => true
-                ],
-
-
-
-
             ]
         ];
 
@@ -821,7 +812,7 @@ class Theme extends BaseV1\Theme{
             'ponto_comunicacao' => '',
             'ponto_sustentabilidade' => '',
             // Formação
-            'ponto_areas_conhecimento' => ''
+            'metodologias_areas' => ''
         ];
 
         $id = 10;
