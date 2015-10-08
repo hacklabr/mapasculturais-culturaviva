@@ -18,13 +18,13 @@
         </div>
         <div class="row box-faq">
             <div class="colunm box oquee">
-                <a href="http://culturaviva.gov.br/saiba-mais/" >
+                <a href="http://culturaviva.gov.br/saiba-mais/#o-que-e-ponto" >
                     <img src="<?php $this->asset('img/o-que-e-ponto-cultura.png') ?>" />
                     <h4>O que é ponto de cultura?</h4>
                 </a>
             </div>
             <div class="colunm box porqueser">
-                <a href="http://culturaviva.gov.br/saiba-mais/" >
+                <a href="http://culturaviva.gov.br/saiba-mais/#por-que" >
                     <img src="<?php $this->asset('img/porque-ser-um.png') ?>" />
                     <h4>Por que ser um<br />ponto de cultura?</h4>
                 </a>
@@ -32,13 +32,13 @@
         </div>
         <div class="row box-faq">
             <div class="colunm box oqueganho">
-                <a href="http://culturaviva.gov.br/saiba-mais/" >
+                <a href="http://culturaviva.gov.br/saiba-mais/#o-que-eu-ganho" >
                     <img src="<?php $this->asset('img/o-que-ganho.png') ?>" />
                     <h4>O que ganho<br/>com isso?</h4>
                 </a>
             </div>
             <div class="colunm box criterios">
-                <a href="http://culturaviva.gov.br/saiba-mais/" >
+                <a href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" >
                     <img src="<?php $this->asset('img/o-que-e-cultura-viva.png') ?>" />
                     <h4>Critérios de<br/>certificação</h4>
                 </a>
