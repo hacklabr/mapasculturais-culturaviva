@@ -54,11 +54,10 @@
                         <input type="text"
                                ng-blur="save_field('cnpj')"
                                ng-model="agent.cnpj"
-                               ng-disabled="agent.semCNPJ == '1'"
                                ui-mask="99.999.999/9999-99">
                     </label>
                 </div>
-                <!--<div ng-show="agent.semCNPJ">-->
+
                 <div class="clear"></div>
                 <div class="row">
                     <label class="colunm-50">
@@ -95,9 +94,9 @@
                 */ ?>
             </div>
         </div>
-        
+
         <h4>Contatos da Entidade</h4>
-        
+
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Nome do Responsável pela Entidade* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
@@ -118,7 +117,7 @@
 
             <label class="colunm2">
                 <span>Telefone do Responsável*</span>
-                <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone"/>
+                <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999-9999"/>
             </label>
             <label class="colunm02">
                 <span>Operadora*</span>
@@ -126,7 +125,7 @@
             </label>
         </div>
         <div class="clear"></div>
-        
+
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Email institucional da Entidade *</span>
@@ -158,7 +157,7 @@
             </label>
         </div>
         <div class="clear"></div>
-        
+
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Endereço da Entidade* <i class='hltip' title='Refere-se ao endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
@@ -219,7 +218,7 @@
                 <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
             </label>
             <label class="colunm3">
-                <span>Complemento*</span>
+                <span>Complemento</span>
                 <input type="text" ng-blur="save_field('En_Complemento')" ng-model="agent.En_Complemento"/>
             </label>
         </div>
