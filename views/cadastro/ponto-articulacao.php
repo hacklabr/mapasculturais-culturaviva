@@ -88,34 +88,6 @@
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? * </span>
             </div>
-            <label class="colunm1">
-                <input type="checkbox" name="" >  Colegiados
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" >  Fóruns
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" >  Comissões
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" >  Conferência Nacional de Cultura
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm2">
-                <input type="checkbox" name="" >  Grupo de Trabalho
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm3">
-                <input type="checkbox" name="" >  Conselhos
-                <!-- textarea></textarea -->
-            </label>
-            <label class="colunm1">
-                <input type="checkbox" name="" >  Outros
-                <!-- textarea></textarea -->
-            </label>
             <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="agent" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
             <div class="colunm-full">
                 <span class="destaque">Possui parceria com o Poder Público? * </span>
