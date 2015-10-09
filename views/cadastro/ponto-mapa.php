@@ -15,8 +15,8 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
           <label class="colunm-full">
-           
-    
+
+
             <div class="img_updade" ng-controller="ImageUploadCtrl">
                 <div class="file-item">
                     <a ng-if="agent.files.logoponto" class="exclui" ng-click="deleteFile(agent.files.logoponto)" title="Excluir arquivo">x</a>
@@ -66,7 +66,11 @@
                     <option value="0" ng-value="0">Não</option>
                 </select>
                 <label class="check">
-                    <input type="checkbox" ng-change="save_field('sede_realizaAtividades', true)" ng-model="agent.sede_realizaAtividades" ng-checked="agent.sede_realizaAtividades"/>
+                    <input type="checkbox"
+                           ng-change="save_field('sede_realizaAtividades', true)"
+                           ng-model="agent.sede_realizaAtividades"
+                           ng-true-value="1"
+                           ng-false-value="0"/>
                     realiza atividades culturais na sede
                 </label>
                 <?php /*

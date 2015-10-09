@@ -10,6 +10,9 @@ return [
     'rcv.apiCNPJ' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
     'rcv.apiHeader' => 'http://culturaviva.gov.br/wp-admin/admin-ajax.php',
 
+    // desabilitando as divisões geográficas porque não foram importados os shapefiles
+    'app.geoDivisionsHierarchy' => [],
+
     'redeCulturaViva.projectId' => 1,
     'registration.ownerDefinition' => [
         'required' => true,

@@ -486,6 +486,11 @@ class Theme extends BaseV1\Theme{
 //                  'required' => true,
                     'private' => true
                 ],
+                'responsavel_operadora' => [
+                    'label' => 'Operadora do telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
 
                 'En_Bairro' => [
                     'label' => 'Bairro',
@@ -819,6 +824,12 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+                'metodologia1_tipo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
                 // Termos de uso
                 'termos_de_uso' => [
                     'label' => '',

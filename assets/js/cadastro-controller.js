@@ -108,7 +108,7 @@
                 'Turismo',
                 'Internacional'
             ],
-            
+
             instancia_representacao_minc: [
                 'Colegiados',
                 'Fóruns',
@@ -117,7 +117,7 @@
                 'Grupo de Trabalho',
                 'Conselhos'
             ],
-            
+
             // Economia Viva
             'ponto_infra_estrutura': [
                 'Acesso à internet',
@@ -184,7 +184,7 @@
                 'Convênio com Rede Hoteleira',
                 'Hospedagem',
                 'Solidária',
-                'Camping' 
+                'Camping'
             ],
             'ponto_deslocamento':[
                 'Passagem Aérea',
@@ -212,10 +212,10 @@
                 'Empréstimo',
                 'Emprego/salário',
                 'Convênio com Órgão público',
-                'Moeda complementar (social)' 
+                'Moeda complementar (social)'
             ],
-            
-            'metodologias_areas': [ 
+
+            'metodologias_areas': [
                'Não formal',
                'Conhecimento popular',
                'Conhecimento empírico',
@@ -229,6 +229,7 @@
         };
 
     function extendController($scope, $timeout, Entity, agent_id){
+
         $scope.messages = {
             status: null,
             text: '',
@@ -258,13 +259,28 @@
                 $scope.messages.hide();
             }, timeout);
         });
-        
+
         if(Entity && agent_id){
+            $scope.originalAgent = {};
+            $scope.agent.$promise.then(function(agent){
+                if(typeof agent.location === 'object'){
+                    agent.location = [agent.location.longitude, agent.location.latitude];
+                }
+                $scope.originalAgent = JSON.parse(angular.toJson(agent));
+            });
+
             $scope.save_field = function save_field(field) {
+                if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
+                    return;
+                }
+                console.log($scope.agent[field], $scope.originalAgent[field]);
+
+                $scope.originalAgent[field] = angular.copy($scope.agent[field]);
+
                 var agent_update = {};
                 agent_update[field] = $scope.agent[field];
                 $scope.messages.show('enviando', 'salvando alterações');
-                
+
                 Entity.patch({'id': agent_id}, agent_update, function(agent){
                     $scope.messages.show('sucesso', 'alterações salvas');
                 }, function(error){
@@ -280,14 +296,14 @@
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
         function($scope, Entity, MapasCulturais, $http, $timeout){
-            
+
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 
             var params = {
                 'id': agent_id,
                 '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
-                           'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' + 
+                           'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' +
                            'termos_de_uso',
 
 //                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
@@ -297,7 +313,7 @@
             $scope.agent = Entity.get(params);
 
             extendController($scope, $timeout, Entity, agent_id);
-            
+
             $scope.data = MapasCulturais.redeCulturaViva;
             $scope.enviar = function(){
                 console.log($scope.data);
@@ -310,7 +326,7 @@
                             if(response.error){
                                 $scope.data.validationErrors = response.data;
                             }
-                                
+
                         });
             };
         }
@@ -580,9 +596,9 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' + 
-                    'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' + 
-                    'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' + 
+                '@select': 'id,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
+                    'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
+                    'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
                     'metodologia1_cargaHoraria,metodologia1_certificacao',
                 '@permissions': 'view'
             };
@@ -641,7 +657,7 @@
 
         }
     ]);
-    
+
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
         $scope.data = {
             naoEncontrouCNPJ: false,
@@ -656,20 +672,20 @@
                     success(function success(data){
                         if(data.Id){
                             $scope.messages.show('sucesso', "CNPJ encontrado");
-                            
+
                             $scope.data.naoEncontrouCNPJ = false;
                             $scope.data.encontrouCNPJ = $scope.data.cnpj;
-                            
+
                             $scope.registrar();
                         }else{
                             $scope.messages.show('erro', "CNPJ não encontrado");
-                            
+
                             $scope.data.naoEncontrouCNPJ = true;
                             $scope.data.encontrouCNPJ = false;
                         }
                     });
         };
-        
+
         $scope.registrar = function(){
             var data = {};
             if($scope.data.comCNPJ){
@@ -680,9 +696,9 @@
                     data.CNPJ = $scope.data.cnpj;
                 }
             }
-            
+
             $scope.messages.show('enviando', "Registrando na rede");
-            
+
             $http.post(MapasCulturais.createUrl('cadastro','registra'), data).
                     success(function(){
                         $scope.messages.show('sucesso', "Registrado com sucesso");

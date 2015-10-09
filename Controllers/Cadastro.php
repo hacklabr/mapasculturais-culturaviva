@@ -105,12 +105,12 @@ class Cadastro extends \MapasCulturais\Controller{
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
-            'En_Num',
             'En_Nome_Logradouro',
+            'En_Num',
             'location', // ponto no mapa
 
             //portifólio
-            'atividadesEmRealizacao'
+//            'atividadesEmRealizacao'
         ];
     }
 
@@ -120,34 +120,69 @@ class Cadastro extends \MapasCulturais\Controller{
      */
     function getEntidadeRequiredProperties(){
         $agent = $this->getEntidade();
+
         $required_properties = [
+            'tipoOrganizacao',
             'name',
             'tipoOrganizacao',
-            'foiFomentado',
-            'fomento_tipo',
-            'fomento_tipo_outros',
-            'fomento_tipoReconhecimento',
-            'edital_num',
-            'edital_ano',
-            'edital_projeto_nome',
-            'edital_localRealizacao',
-            'edital_projeto_etapa',
-            'edital_proponente',
-            'edital_projeto_resumo',
-            'edital_prestacaoContas_envio',
-            'edital_projeto_vigencia_inicio',
-            'edital_projeto_vigencia_fim',
-            'outrosFinanciamentos',
+            'responsavel_nome',
+            'responsavel_cargo',
+            'responsavel_email',
+            'responsavel_telefone',
+            'responsavel_operadora',
+            'emailPrivado',
+            'telefone1',
+            'telefone1_operadora',
+            'telefone2',
+            'telefone2_operadora',
 
+            'geoEstado',
+            'geoMunicipio',
+            'En_Bairro',
+            'En_Num',
+            'En_Nome_Logradouro',
+
+            'foiFomentado'
         ];
 
-        if(!$agent->semCNPJ){
+        if($agent->tipoOrganizacao === 'entidade'){
             $required_properties[] = 'cnpj';
-            $required_properties[] = 'nomeCompleto';
+            $required_properties[] = 'representanteLegal';
         }
 
-        if($agent->edital_prestacaoContas_envio === 'enviada'){
-            $required_properties[] = 'edital_prestacaoContas_status';
+
+        if($agent->foiFomentado){
+            $required_properties[] = 'tipoFomento';
+            if($agent->tipoFomento === 'outros'){
+                $required_properties[] = 'tipoFomentoOutros';
+            }
+
+            $required_properties[] = 'tipoReconhecimento';
+            $required_properties[] = 'edital_num';
+            $required_properties[] = 'edital_ano';
+            $required_properties[] = 'edital_projeto_nome';
+            $required_properties[] = 'edital_localRealizacao';
+            $required_properties[] = 'edital_proponente';
+            $required_properties[] = 'edital_projeto_resumo';
+            $required_properties[] = 'edital_projeto_etapa';
+
+            if($agent->edital_projeto_etapa === 'executado'){
+                $required_properties[] = 'edital_prestacaoContas_envio';
+
+
+                if($agent->edital_prestacaoContas_envio === 'enviada'){
+                    $required_properties[] = 'edital_prestacaoContas_status';
+                }
+            }
+
+            $required_properties[] = 'edital_projeto_vigencia_inicio';
+            $required_properties[] = 'edital_projeto_vigencia_fim';
+
+            $required_properties[] = 'outrosFinanciamentos';
+
+            if($agent->outrosFinanciamentos){
+                $required_properties[] = 'outrosFinanciamentos_descricao';
+            }
         }
 
         return $required_properties;
@@ -308,7 +343,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->emailPrivado2       = $d->Ee_email2;
             $ponto->emailPrivado3       = $d->Ee_email3;
         }
-        
+
     }
 
 
@@ -388,7 +423,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->parent = $user->profile;
             $entidade->name = '';
             $entidade->status = \MapasCulturais\Entities\Agent::STATUS_ENABLED;
-            
+
 
             // criando o agente coletivo vazio
             $ponto = new \MapasCulturais\Entities\Agent;
@@ -402,8 +437,8 @@ class Cadastro extends \MapasCulturais\Controller{
                 $entidade->cnpj = $this->data['CNPJ'];
                 $entidade->tipoOrganizacao = 'entidade';
                 $this->_populateAgents($app->user->profile, $entidade, $ponto);
-            }   
-            
+            }
+
             $ponto->save(true);
             $entidade->save(true);
             $app->user->profile->save(true);
@@ -434,7 +469,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
             $app->enableAccessControl();
         }
-        
+
         if($app->request->isAjax()){
             $this->json(true);
         }else{
