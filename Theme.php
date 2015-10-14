@@ -214,6 +214,11 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
 
+                'rcv_tipo' => [
+                    'label' => 'Tipo de agente da Rede Cultura Viva',
+                    'private' => false
+                ],
+                
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',

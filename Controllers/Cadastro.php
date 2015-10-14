@@ -411,6 +411,9 @@ class Cadastro extends \MapasCulturais\Controller{
 
         if(!$app->user->redeCulturaViva){
             $user = $app->user;
+            
+            $user->profile->rcv_tipo = 'responsavel';
+            $user->profile->save(true);
 
             $project = $app->repo('Project')->find($app->config['redeCulturaViva.projectId']); //By(['owner' => 1], ['id' => 'asc'], 1);
             //
@@ -423,6 +426,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->parent = $user->profile;
             $entidade->name = '';
             $entidade->status = \MapasCulturais\Entities\Agent::STATUS_ENABLED;
+            $entidade->rcv_tipo = 'entidade';
 
 
             // criando o agente coletivo vazio
@@ -432,6 +436,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->parent = $user->profile;
             $ponto->name = '';
             $ponto->status = \MapasCulturais\Entities\Agent::STATUS_ENABLED;
+            $ponto->rcv_tipo = 'ponto';
 
             if(isset($this->data['comCNPJ']) && $this->data['comCNPJ'] && isset($this->data['CNPJ']) && $this->data['CNPJ']){
                 $entidade->cnpj = $this->data['CNPJ'];
