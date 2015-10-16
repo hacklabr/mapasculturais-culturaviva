@@ -2,7 +2,7 @@
     <article class="slide-home">
             <div class="text-banner">
                 <h3>Declare seu Ponto de Cultura!</h3>
-                <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva:</p>
+                <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva.</p>
             </div>
 
             <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" class="btn btn__active">Entrar para a Rede</a>
