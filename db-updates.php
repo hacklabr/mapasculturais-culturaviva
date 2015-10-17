@@ -17,7 +17,7 @@ return [
         $project->type = 9;
         $project->save(true);
     },
-    'create agent metadata rcv_tipo' => function() use($conn) {
+    'recreate agent metadata rcv_tipo' => function() use($conn) {
         $conn->executeQuery("DELETE FROM agent_meta WHERE key = 'rcv_tipo'");
         $rs = $conn->fetchAll("SELECT * FROM user_meta WHERE key = 'redeCulturaViva'");
         
