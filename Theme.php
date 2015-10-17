@@ -63,7 +63,12 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
         $this->assetManager->publishAsset('img/banner-home1.jpg', 'img/banner-home1.jpg');
 
-
+        $app->hook('view.render(site/search):before', function(){
+            $this->jsObject['searchFilters'] = [
+                'agent' => ['rcv_tipo' => 'EQ(ponto)']
+            ];
+        });
+        
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
