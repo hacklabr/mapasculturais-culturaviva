@@ -663,10 +663,12 @@
             naoEncontrouCNPJ: false,
             encontrouCNPJ: false,
             cnpj: null,
-            comCNPJ: false
+            comCNPJ: false,
+            buscandoCNPJ: false
         };
         extendController($scope, $timeout);
         $scope.consultaCNPJ = function(){
+            $scope.data.buscandoCNPJ = true;
             $scope.messages.show('enviando', "Procurando CNPJ em nossa base");
             $http.get(MapasCulturais.apiCNPJ + '?action=get_cultura&cnpj=' + $scope.data.cnpj).
                     success(function success(data){
@@ -682,7 +684,15 @@
 
                             $scope.data.naoEncontrouCNPJ = true;
                             $scope.data.encontrouCNPJ = false;
+                            $scope.data.buscandoCNPJ = false;
                         }
+                    }).
+                    error(function(data) {
+                        $scope.messages.show('erro', "Um erro inesperado aconteceu");
+
+                        $scope.data.naoEncontrouCNPJ = true;
+                        $scope.data.encontrouCNPJ = false;
+                        $scope.data.buscandoCNPJ = false;
                     });
         };
 
@@ -706,6 +716,7 @@
                     }).
                     error(function(){
                         $scope.messages.show('erro', "Um erro inesperado aconteceu");
+                        $scope.data.buscandoCNPJ = false;
                     });
         };
     }]);

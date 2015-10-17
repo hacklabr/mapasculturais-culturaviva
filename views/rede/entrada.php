@@ -1,4 +1,4 @@
-<?php 
+<?php
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
 <section id="page-entrada" ng-controller="EntradaCtrl">
@@ -28,7 +28,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                         <form>
                             <label>CNPJ*</label>
                             <input type="text" name="CNPJ" ui-mask="99.999.999/9999-99" ng-model="data.cnpj" ng-change="data.naoEncontrouCNPJ = false" />
-                            <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="consultaCNPJ()"/>
+                            <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="consultaCNPJ()" ng-disabled="data.buscandoCNPJ">
                         </form>
                     </div>
                     <div class="clear"></div>
