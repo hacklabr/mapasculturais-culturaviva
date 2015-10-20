@@ -1,5 +1,4 @@
 
-
 @font-face {
   font-family: "DroidSans";
   font-weight: normal;
@@ -366,7 +365,7 @@ section{
                     text-transform: uppercase;
                     color:#3a7c18;
                     position: relative;
-                    left: -325%;
+                    left: -30%;
 		    top: -15%;
 		    font-size: 18px;
             }
@@ -2343,4 +2342,8 @@ section{
   width: 12px;
   height: 12px;
   margin-bottom: 5px;
+}
+
+#editable-entity {
+    max-width: 960px;
 }
