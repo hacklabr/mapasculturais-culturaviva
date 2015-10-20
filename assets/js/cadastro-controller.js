@@ -710,4 +710,28 @@
         };
     }]);
 
+     app.controller('QuaiSimNao', ['$scope', 'Entity', 'MapasCulturais', '$timeout', 
+	function QuaiSimNao($scope, Entity, MapasCulturais, $timeout, $http)
+        {
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+
+            var params = {
+                'id': agent_id,
+                '@select': 'id,parceriaPoderPublico',
+                '@permissions': 'view'
+            };
+
+            $scope.myVar = true;
+            $scope.toggle = function() {
+            	$scope.myVar = !$scope.myVar;
+	    };
+
+            $scope.agent = Entity.get(params);
+
+            $scope.termos = termos;
+
+            extendController($scope, $timeout, Entity, agent_id);
+        }
+    ]);
+
 })(angular);
