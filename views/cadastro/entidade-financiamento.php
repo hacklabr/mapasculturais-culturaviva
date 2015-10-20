@@ -20,14 +20,14 @@
                 <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC* <i>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
-                           name="formentominc"
+                           name="foiFomentado"
                            ng-value="1"
                            ng-change="save_field('foiFomentado')"
                            ng-model="agent.foiFomentado"> Sim
                 </label>
                 <label class="label-radio">
                     <input type="radio"
-                           name="formentominc"
+                           name="foiFomentado"
                            ng-value="0"
                            ng-change="save_field('foiFomentado')"
                            ng-model="agent.foiFomentado"> Não
