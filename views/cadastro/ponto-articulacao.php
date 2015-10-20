@@ -49,42 +49,42 @@
             <div class="colunm-full">
                 <span class="destaque">Participa de algum movimento político-cultural? * </span>
             </div>
-            <div class="row" ng-controller="QuaiSimNao">
-		<label class="colunm1">
-			<input class="ng-valid ng-dirty" type="radio" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="0" name="poderpublico" ng-click="toggle()">
-Não
-		</label>
-		<label class="colunm2">
-			<input class="ng-valid ng-dirty" type="radio" ng-click="toggle()" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="1" name="poderpublico">
-Sim
-		</label>
-    		<div class="row" ng-show="myVar">
-			<label class="colunm-full ng-scope ng-hide" ng-show="myVar" ng-if="agent.parceriaPoderPublico">
-				<span>Quais?*</span>
-				<input class="colunm3" type="text" ng-keyup="update($event)" ng-model="cfg.outros">
-			</label>
-    		</div>
-	     </div>
+            <label class="colunm1">
+                <input type="radio"
+                       name="politicocultural"
+                       ng-value="0"
+                       ng-change="save_field('participacaoMovPolitico')"
+                       ng-model="agent.participacaoMovPolitico">   Não
+            </label>
+            <label class="colunm2">
+                <input type="radio"
+                       name="politicocultural"
+                       ng-value="1"
+                       ng-change="save_field('participacaoMovPolitico')"
+                       ng-model="agent.participacaoMovPolitico">  Sim
+                <!-- textarea></textarea -->
+            </label>
+
 
             <div class="colunm-full">
                 <span class="destaque">Participa de algum Fórum de Cultura? * </span>
             </div>
-            <div class="row" ng-controller="QuaiSimNao">
-		<label class="colunm1">
-			<input class="ng-valid ng-dirty" type="radio" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="0" name="poderpublico" ng-click="toggle()">
-Não
-		</label>
-		<label class="colunm2">
-			<input class="ng-valid ng-dirty" type="radio" ng-click="toggle()" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="1" name="poderpublico">
-Sim
-		</label>
-    		<div class="row" ng-show="myVar">
-			<label class="colunm-full ng-scope ng-hide" ng-show="myVar" ng-if="agent.parceriaPoderPublico">
-				<span>Quais?*</span>
-				<input class="colunm3" type="text" ng-keyup="update($event)" ng-model="cfg.outros">
-			</label>
-    		</div>
-	     </div>
+            <label class="colunm1">
+                <input type="radio"
+                       name="forumcultural"
+                       ng-value="0"
+                       ng-change="save_field('participacaoForumCultura')"
+                       ng-model="agent.participacaoForumCultura">  Não
+            </label>
+            <label class="colunm2">
+                <input type="radio"
+                       name="forumcultural"
+                       ng-value="1"
+                       ng-change="save_field('participacaoForumCultura')"
+                       ng-model="agent.participacaoForumCultura"> Sim
+
+                <!-- textarea></textarea -->
+            </label>
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? * </span>
             </div>
@@ -92,23 +92,21 @@ Sim
             <div class="colunm-full">
                 <span class="destaque">Possui parceria com o Poder Público? * </span>
             </div>
-            <div class="row" ng-controller="QuaiSimNao">
-		<label class="colunm1">
-			<input class="ng-valid ng-dirty" type="radio" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="0" name="poderpublico" ng-click="toggle()">
-Não
-		</label>
-		<label class="colunm2">
-			<input class="ng-valid ng-dirty" type="radio" ng-click="toggle()" ng-model="agent.parceriaPoderPublico" ng-change="save_field('parceriaPoderPublico')" value="1" name="poderpublico">
-Sim
-		</label>
-    		<div class="row" ng-show="myVar">
-			<label class="colunm-full ng-scope ng-hide" ng-show="myVar" ng-if="agent.parceriaPoderPublico">
-				<span>Quais?*</span>
-				<input class="colunm3" type="text" ng-keyup="update($event)" ng-model="cfg.outros">
-			</label>
-    		</div>
-	     </div>
-	    </div>
+            <label class="colunm1">
+                <input type="radio"
+                       name="poderpublico"
+                       ng-value="0"
+                       ng-change="save_field('parceriaPoderPublico')"
+                       ng-model="agent.parceriaPoderPublico"> Não
+            </label>
+            <label class="colunm2">
+                <input type="radio"
+                       name="poderpublico"
+                       ng-value="1"
+                       ng-change="save_field('parceriaPoderPublico')"
+                       ng-model="agent.parceriaPoderPublico">  Sim
+                <!-- textarea></textarea -->
+            </label>
 
         </div>
     </div>
