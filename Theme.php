@@ -467,13 +467,13 @@ class Theme extends BaseV1\Theme{
                 ],
                 'telefone2' => [
                     'label' => 'Telefone',
-                    'required' => false,
+//                  'required' => true,
                     'private' => true,
                     'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
                 ],
                 'telefone2_operadora' => [
                     'label' => 'Operadora',
-                    'required' => false,
+//                  'required' => true,
                     'private' => true
                 ],
                 'responsavel_nome' => [
