@@ -97,7 +97,8 @@ class Cadastro extends \MapasCulturais\Controller{
      * @return array
      */
     function getPontoRequiredProperties(){
-        return [
+	$agent = $this->getPonto()
+        $required_properties = [
             'name',
             'shortDescription',
             'cep',
@@ -110,8 +111,17 @@ class Cadastro extends \MapasCulturais\Controller{
             'location', // ponto no mapa
 
             //portifólio
-            'atividadesEmRealizacao'
+            //'atividadesEmRealizacao'
+	    //'atividadesEmRealizacaoLink'
+
         ];
+
+	 if(!$agent->link_Portfolio && !$agent->atividadesEmRealizacao){
+		$required_properties[] = 'atividadesEmRealizacaoLink';
+		$required_properties[] = 'atividadesEmRealizacao';
+	 }
+
+	return $required_properties;
     }
 
     /**

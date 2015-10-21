@@ -586,6 +586,9 @@ class Theme extends BaseV1\Theme{
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
                 ],
+		'atividadesEmRealizacaoLink' => [
+                    'label' => 'Link para suas atividades culturais em realização'
+                ],
                 'flickr' => [
                     'label' => 'Flickr',
                     'required' => false
