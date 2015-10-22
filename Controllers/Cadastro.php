@@ -120,7 +120,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
         ];
 
-	 if(!$agent->link_Portfolio && !$agent->atividadesEmRealizacao){
+	 if(!$agent->atividadesEmRealizacaoLink && !$agent->atividadesEmRealizacao){
 		$required_properties[] = 'atividadesEmRealizacaoLink';
 		$required_properties[] = 'atividadesEmRealizacao';
 	 }

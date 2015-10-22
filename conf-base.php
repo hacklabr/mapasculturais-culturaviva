@@ -49,6 +49,7 @@ return [
         'En_Nome_Logradouro',
         'En_Num',
         'atividadesEmRealizacao',
+	'atividadesEmRealizacaoLink',
         'cep',
         'cnpj',
         'cpf',
