@@ -454,7 +454,7 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital',
+                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital, atividadesEmRealizacaoLink',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
