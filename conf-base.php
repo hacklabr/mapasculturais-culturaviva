@@ -53,6 +53,7 @@ return [
         'cnpj',
         'cpf',
         'createTimestamp',
+	'culturadigital',
         'dataDeNascimento',
         'diaspora',
         'documento',
@@ -92,6 +93,7 @@ return [
         'geoMunicipio',
         'googleplus',
         'idade',
+	'instagram',
         'isVerified',
         'localRealizacao_cidade',
         'localRealizacao_estado',
@@ -161,6 +163,7 @@ return [
         'telefone2',
         'telefone2_operadora',
         'telefonePublico',
+	'telegram',
         'tem_sede',
         'tipoCertificacao',
         'tipoFomento',
@@ -170,6 +173,7 @@ return [
         'tipoReconhecimento',
         'twitter',
         'type',
-        'youtube'
+        'youtube',
+	'whatsapp'
     ),
 ];

@@ -616,6 +616,22 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Youtube',
                     'required' => false
                 ],
+		'telegram' => [
+		    'label' => 'Telegram',
+		    'required' => false
+		],
+		'whatsapp' => [
+                    'label' => 'WhatsApp',
+                    'required' => false
+                ],
+		'culturadigital' => [
+                    'label' => 'CulturaDigital',
+                    'required' => false
+                ],
+		'instagram' => [
+                    'label' => 'Instagram',
+                    'required' => false
+                ],
 
                 // Ponto Articulação
                 'participacaoMovPolitico' => [
