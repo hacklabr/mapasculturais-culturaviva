@@ -63,7 +63,12 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
         $this->assetManager->publishAsset('img/banner-home1.jpg', 'img/banner-home1.jpg');
 
-
+        $app->hook('view.render(site/search):before', function(){
+            $this->jsObject['searchFilters'] = [
+                'agent' => ['rcv_tipo' => 'EQ(ponto)']
+            ];
+        });
+        
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
@@ -214,6 +219,11 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
 
+                'rcv_tipo' => [
+                    'label' => 'Tipo de agente da Rede Cultura Viva',
+                    'private' => false
+                ],
+                
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -483,6 +493,11 @@ class Theme extends BaseV1\Theme{
                 ],
                 'responsavel_telefone' => [
                     'label' => 'Telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'responsavel_operadora' => [
+                    'label' => 'Operadora do telefone do responsável',
 //                  'required' => true,
                     'private' => true
                 ],
@@ -822,6 +837,12 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+                'metodologia1_tipo' => [
+                    'label' => '',
+                    'required' => false,
+                    'private' => true
+                ],
+
                 // Termos de uso
                 'termos_de_uso' => [
                     'label' => '',
