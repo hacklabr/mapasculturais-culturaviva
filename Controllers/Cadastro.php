@@ -97,7 +97,7 @@ class Cadastro extends \MapasCulturais\Controller{
      * @return array
      */
     function getPontoRequiredProperties(){
-	$agent = $this->getPonto()
+	$agent = $this->getPonto();
         $required_properties = [
             'name',
             'shortDescription',
@@ -108,7 +108,7 @@ class Cadastro extends \MapasCulturais\Controller{
             'En_Bairro',
             'En_Nome_Logradouro',
             'En_Num',
-            'location', // ponto no mapa
+            'location' // ponto no mapa
 
             //portifólio
 
@@ -136,7 +136,6 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getEntidade();
 
         $required_properties = [
-            'tipoOrganizacao',
             'name',
             'tipoOrganizacao',
             'responsavel_nome',
@@ -214,7 +213,6 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'telefone1_operadora',
-            'relacaoPonto'
         ];
     }
 
