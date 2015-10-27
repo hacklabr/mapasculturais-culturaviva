@@ -68,7 +68,7 @@ class Theme extends BaseV1\Theme{
                 'agent' => ['rcv_tipo' => 'EQ(ponto)']
             ];
         });
-        
+
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
@@ -223,7 +223,7 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tipo de agente da Rede Cultura Viva',
                     'private' => false
                 ],
-                
+
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -616,34 +616,34 @@ class Theme extends BaseV1\Theme{
 
                 // Ponto Articulação
                 'participacaoMovPolitico' => [
-                    'label' => '',
+                    'label' => 'Participa de algum movimento político-cultural?',
                     'required' => false,
                     'private' => true
                 ],
                 'participacaoForumCultura' => [
-                    'label' => '',
+                    'label' => 'Participa de algum Fórum de Cultura?',
                     'required' => false,
                     'private' => true
                 ],
                 'parceriaPoderPublico' => [
-                    'label' => '',
+                    'label' => 'Possui parceria com o Poder Público?',
                     'required' => false,
                     'private' => true
                 ],
 
                 // Economia Viva
                 'pontoOutrosRecursosRede' => [
-                    'label' => '',
+                    'label' => 'Outros recursos do Ponto/Pontão',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoNumPessoasNucleo' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas fazem parte do Ponto/Pontão de Cultura (Núcleo)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoNumPessoasColaboradores' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas fazem parte do Ponto/Pontão de Cultura (Colaboradores)',
                     'required' => false,
                     'private' => true
                 ],
@@ -653,189 +653,191 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
                 'pontoNumPessoasParceiros' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (Parceiros)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoNumPessoasApoiadores' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (Apoiadores)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoNumRedes' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (Rede)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoRedesDescricao' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (Rede) (Descrição)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoMovimentos' => [
-                    'label' => '',
+                    'label' => 'Quantas pessoas participam indiretamente do Ponto/Pontão de Cultura? (Movimentos)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoEconomiaSolidaria' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura pratica Economia Solidária?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoEconomiaSolidariaDescricao' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura pratica Economia Solidária? (Descrição)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoEconomiaCultura' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura pratica Economia da Cultura?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoEconomiaCulturaDescricao' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura pratica Economia da Cultura? (Descrição)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoMoedaSocial' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura tem moeda complementar (social)?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoMoedaSocialDescricao' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura tem moeda complementar (social)? (Descrição)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoTrocasServicos' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura está disponível para as trocas de serviços ou produtos?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoTrocasServicosOutros' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura está disponível para as trocas de serviços ou produtos? (Outros)',
                     'required' => false,
                     'private' => true
                 ],
 
                 'pontoContrataServicos' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoContrataServicosOutros' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura contrata serviços e/ou produtos de outros Pontos/Pontões de Cultura? (Descrição)',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoInvestimentosColetivos' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura?',
                     'required' => false,
                     'private' => true
                 ],
                 'pontoInvestColetivosOutros' => [
-                    'label' => '',
+                    'label' => 'O Ponto/Pontão de Cultura já apoiou, investiu ou emprestou algum recurso para projetos de outros coletivos, grupos, movimentos, redes, Pontos ou Pontões de Cultura? (Descrição)',
                     'required' => false,
                     'private' => true
-                ],'pontoCustoAnual' => [
-                    'label' => '',
+                ]
+                ,'pontoCustoAnual' => [
+                    'label' => 'Quanto custa por ano o Ponto/Pontão de Cultura?',
                     'required' => false,
                     'private' => true
                 ],
 
                 // Formação
                 'formador1_nome' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Nome Completo',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_email' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Email',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_telefone' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Telefone',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_operadora' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Telefone Operadora',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_areaAtuacao' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Áreas de atuação ',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_bio' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Descrição/Mini-bio: ',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_facebook' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Facebook',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_twitter' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Twitter',
                     'required' => false,
                     'private' => true
                 ],
                 'formador1_google' => [
-                    'label' => '',
+                    'label' => 'Formação - Formadores - Google+',
                     'required' => false,
                     'private' => true
                 ],
                 'espacoAprendizagem1_atuacao' => [
-                    'label' => '',
+                    'label' => 'Formação - Espaços de Aprendizagem - Áreas de atuação',
                     'required' => false,
                     'private' => true
                 ],
                 'espacoAprendizagem1_tipo' => [
-                    'label' => '',
+                    'label' => 'Formação - Espaços de Aprendizagem - Que tipo de espaço/plataforma quer registrar?',
                     'required' => false,
                     'private' => true
                 ],
                 'espacoAprendizagem1_desc' => [
-                    'label' => '',
+                    'label' => 'Formação - Espaços de Aprendizagem - Descrição do espaço',
                     'required' => false,
                     'private' => true
                 ],
+
                 'metodologia1_nome' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Nome',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_desc' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Descrição',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_necessidades' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Necessidades Técnicas',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_capacidade' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Capacidade de público',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_cargaHoraria' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Carga Horária',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_certificacao' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - Possui certificação',
                     'required' => false,
                     'private' => true
                 ],
                 'metodologia1_tipo' => [
-                    'label' => '',
+                    'label' => 'Formação - Metodologias - ',
                     'required' => false,
                     'private' => true
                 ],
