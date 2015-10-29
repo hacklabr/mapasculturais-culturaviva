@@ -146,8 +146,6 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'telefone1_operadora',
-            'telefone2',
-            'telefone2_operadora',
 
             'geoEstado',
             'geoMunicipio',
@@ -423,7 +421,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
         if(!$app->user->redeCulturaViva){
             $user = $app->user;
-            
+
             $user->profile->rcv_tipo = 'responsavel';
             $user->profile->save(true);
 
