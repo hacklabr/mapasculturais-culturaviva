@@ -474,7 +474,7 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,geoEstado,geoMunicipio,'+
+                '@select': 'id,terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,pais,geoEstado,geoMunicipio,'+
                     'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
                     'localRealizacao_cidade,localRealizacao_espaco,location',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
@@ -553,7 +553,7 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico',
+                '@select': 'id,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico, simMovimentoPoliticoCultural, simForumCultural, simPoderPublico',
                 '@permissions': 'view'
             };
 
@@ -622,7 +622,7 @@
                     'tipoPontoCulturaDesejado,tipoOrganizacao,' +
                     'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
                     'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
-                    'geoEstado,geoMunicipio,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
+                    'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
 
                 '@permissions': 'view'
             };

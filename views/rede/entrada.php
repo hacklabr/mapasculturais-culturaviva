@@ -1,4 +1,4 @@
-<?php 
+<?php
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
 <section id="page-entrada" ng-controller="EntradaCtrl">
@@ -7,7 +7,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <div class="row title">
             <h3>
                 <strong>Declare seu ponto de Cultura</strong>
-                Você já possui um CNPJ?
+                <br />Você já possui um CNPJ?
             </h3>
             <p>Responda e verificaremos se já temos informações sobre seu Ponto ou Pontão de Cultura na base de dados do MinC. </p>
             <a href="#" class="btn-cnpj btn-sem-cnpj js-btn-sem-cnpj btn_active" ng-click="data.comCNPJ = false">Sem CNPJ</a>

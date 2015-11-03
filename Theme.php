@@ -68,7 +68,7 @@ class Theme extends BaseV1\Theme{
                 'agent' => ['rcv_tipo' => 'EQ(ponto)']
             ];
         });
-        
+
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
@@ -223,7 +223,7 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tipo de agente da Rede Cultura Viva',
                     'private' => false
                 ],
-                
+
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -543,6 +543,14 @@ class Theme extends BaseV1\Theme{
                     }
                 ],
 
+                'pais' => [
+                    'label' => 'Pais',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
+                ],
+
                 'geoMunicipio' => [
                     'label' => 'Município',
 //                  'required' => true,
@@ -647,6 +655,21 @@ class Theme extends BaseV1\Theme{
                 'parceriaPoderPublico' => [
                     'label' => '',
                     'required' => false,
+                    'private' => true
+                ],
+                'simPoderPublico' => [
+                    'label' => 'Quais para radio participa poder publico',
+      //              'required' => false,
+                    'private' => true
+                ],
+                'simMovimentoPoliticoCultural' => [
+                    'label' => 'Quais para radio participa movimento politico cultural',
+      //              'required' => false,
+                    'private' => true
+                ],
+                'simForumCultural' => [
+                    'label' => 'Quais para radio participa forum cultural',
+      //              'required' => false,
                     'private' => true
                 ],
 
