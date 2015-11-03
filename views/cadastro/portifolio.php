@@ -22,7 +22,7 @@
                         <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                     </div>
                 </div>
-                <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">{{agent.files.portifolio.name}}</a>
+                <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
@@ -34,7 +34,7 @@
 		<div class="row" ng-controller="PortifolioCtrl">
 			<label class="colunm1">
                 		<span class="destaque">
-				Portfólio Online* 
+				Portfólio Online*
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
 	        		<input type="text" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
