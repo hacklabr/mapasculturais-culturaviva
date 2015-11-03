@@ -106,6 +106,7 @@ class Cadastro extends \MapasCulturais\Controller{
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
+            'pais',
             'En_Nome_Logradouro',
             'En_Num',
             'location' // ponto no mapa
@@ -147,6 +148,7 @@ class Cadastro extends \MapasCulturais\Controller{
             'telefone1',
             'telefone1_operadora',
 
+            'pais',
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
@@ -324,6 +326,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->endereco            = $d->En_Endereco_Original;
             $entidade->geoEstado           = $d->Sg_UF;
             $entidade->geoMunicipio        = $d->Nm_Municipio;
+            $entidade->pais                = $d->pais;
 
             $entidade->emailPrivado        = $d->Ee_email1;
             $entidade->emailPrivado2       = $d->Ee_email2;
@@ -348,6 +351,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->endereco            = $d->En_Endereco_Original;
             $ponto->geoEstado           = $d->Sg_UF;
             $ponto->geoMunicipio        = $d->Nm_Municipio;
+            $ponto->pais                = $d->pais;
 
             $ponto->emailPrivado        = $d->Ee_email1;
             $ponto->emailPrivado2       = $d->Ee_email2;
