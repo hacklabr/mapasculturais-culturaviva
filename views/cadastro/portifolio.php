@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '5. Portifólio e Anexos';
+    $this->cadastroTitle = '5. Portfólio e Anexos';
     $this->cadastroText = 'Inclua suas fotos, links e redes sociais! Isto nos ajuda a entender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
@@ -22,7 +22,7 @@
                         <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                     </div>
                 </div>
-                <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">{{agent.files.portifolio.name}}</a>
+                <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
                 <div class="progress row" ng-show="f.progress >= 0">
                     <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
@@ -31,7 +31,14 @@
             <label class="colunm-50">
 
                 <p>Caso não possua portfólio online, você também pode anexar arquivos no formato PDF, com no máximo 20MB.</p>
-
+		<div class="row" ng-controller="PortifolioCtrl">
+			<label class="colunm1">
+                		<span class="destaque">
+				Portfólio Online*
+				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
+	        		<input type="text" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
+			</label>
+		</div>
                 <p><span class="destaque"><i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i></span>
                     Precisa de ajuda para montar seu portfólio?
                     <br>

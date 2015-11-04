@@ -97,7 +97,8 @@ class Cadastro extends \MapasCulturais\Controller{
      * @return array
      */
     function getPontoRequiredProperties(){
-        return [
+	$agent = $this->getPonto();
+        $required_properties = [
             'name',
             'shortDescription',
             'cep',
@@ -105,13 +106,27 @@ class Cadastro extends \MapasCulturais\Controller{
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
+            'pais',
             'En_Nome_Logradouro',
             'En_Num',
-            'location', // ponto no mapa
+            'location' // ponto no mapa
 
             //portifólio
+
+            //'atividadesEmRealizacao'
+	    //'atividadesEmRealizacaoLink'
+
+
 //            'atividadesEmRealizacao'
+
         ];
+
+	 if(!$agent->atividadesEmRealizacaoLink && !$agent->atividadesEmRealizacao){
+		$required_properties[] = 'atividadesEmRealizacaoLink';
+		$required_properties[] = 'atividadesEmRealizacao';
+	 }
+
+	return $required_properties;
     }
 
     /**
@@ -122,7 +137,6 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getEntidade();
 
         $required_properties = [
-            'tipoOrganizacao',
             'name',
             'tipoOrganizacao',
             'responsavel_nome',
@@ -133,9 +147,8 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'telefone1_operadora',
-            'telefone2',
-            'telefone2_operadora',
 
+            'pais',
             'geoEstado',
             'geoMunicipio',
             'En_Bairro',
@@ -200,7 +213,6 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'telefone1_operadora',
-            'relacaoPonto'
         ];
     }
 
@@ -314,6 +326,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->endereco            = $d->En_Endereco_Original;
             $entidade->geoEstado           = $d->Sg_UF;
             $entidade->geoMunicipio        = $d->Nm_Municipio;
+            $entidade->pais                = $d->pais;
 
             $entidade->emailPrivado        = $d->Ee_email1;
             $entidade->emailPrivado2       = $d->Ee_email2;
@@ -338,6 +351,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $ponto->endereco            = $d->En_Endereco_Original;
             $ponto->geoEstado           = $d->Sg_UF;
             $ponto->geoMunicipio        = $d->Nm_Municipio;
+            $ponto->pais                = $d->pais;
 
             $ponto->emailPrivado        = $d->Ee_email1;
             $ponto->emailPrivado2       = $d->Ee_email2;
@@ -411,7 +425,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
         if(!$app->user->redeCulturaViva){
             $user = $app->user;
-            
+
             $user->profile->rcv_tipo = 'responsavel';
             $user->profile->save(true);
 

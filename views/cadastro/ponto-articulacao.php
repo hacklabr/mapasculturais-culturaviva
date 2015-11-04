@@ -64,7 +64,10 @@
                        ng-model="agent.participacaoMovPolitico">  Sim
                 <!-- textarea></textarea -->
             </label>
-
+            <div class="colunm-full" ng-show="agent.participacaoMovPolitico">
+                <span>Quais?*
+                <input class="colunm1"type="text" ng-blur="save_field('simMovimentoPoliticoCultural')" ng-model="agent.simMovimentoPoliticoCultural" /></span>
+            </div>
 
             <div class="colunm-full">
                 <span class="destaque">Participa de algum Fórum de Cultura? * </span>
@@ -85,6 +88,10 @@
 
                 <!-- textarea></textarea -->
             </label>
+            <div class="colunm-full" ng-show="agent.participacaoForumCultura">
+                <span>Quais?*
+                <input class="colunm1"type="text" ng-blur="save_field('simForumCultural')" ng-model="agent.simForumCultural" /></span>
+            </div>
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? * </span>
             </div>
@@ -107,7 +114,10 @@
                        ng-model="agent.parceriaPoderPublico">  Sim
                 <!-- textarea></textarea -->
             </label>
-
+            <div class="colunm-full" ng-show="agent.parceriaPoderPublico">
+                <span>Quais?*
+                <input class="colunm1"type="text" ng-blur="save_field('simPoderPublico')" ng-model="agent.simPoderPublico" /></span>
+            </div>
         </div>
     </div>
 </form>
