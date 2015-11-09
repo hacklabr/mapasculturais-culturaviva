@@ -111,11 +111,11 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Número do Edital de Seleção</span>
-                    <input type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
+                    <input name="edital_num" type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
                 </label>
                 <label class="colunm-50">
                     <span class="destaque">Ano do Edital de Seleção</span>
-                    <input type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
+                    <input name="edital_ano" type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
                 </label>
 
             </div>
@@ -123,13 +123,13 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Título do Projeto</span>
-                    <input type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="agent.edital_projeto_nome" >
+                    <input name="edital_projeto_nome" type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="agent.edital_projeto_nome" >
                 </label>
 
                 <label class="colunm-50">
 
                     <span class="destaque">Local de Realização <i>?</i></span>
-                    <input type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
+                    <input name="edital_localRealizacao" type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="agent.locationrealization">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -141,14 +141,14 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Proponente </span>
-                    <input type="text" ng-blur="save_field('edital_proponente')" ng-model="agent.edital_proponente" >
+                    <input name="edital_proponente" type="text" ng-blur="save_field('edital_proponente')" ng-model="agent.edital_proponente" >
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
                     <span class="destaque">Resumo do projeto (objeto) <i>?</i></span>
-                    <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
+                    <textarea name="edital_projeto_resumo" ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
             <div class="clear"></div>
@@ -251,10 +251,10 @@
                 <label class="colunm-full vigencia">
                     <span class="destaque">Vigência:    </span>
                     <span class="vigencia-box vigiencia-de" style="width:120px; display:inline-block;">
-                        de <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
+                        de <input name="edital_projeto_vigencia_inicio" class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
                     </span>
                     <span class="vigencia-box vigiencia-ate" style="width:120px; display:inline-block; margin-left:15px">
-                        até  <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
+                        até  <input name="edital_projeto_vigencia_fim" class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
                     </span>
 
                 </label>
@@ -280,7 +280,7 @@
             <div class="row" ng-show="agent.outrosFinanciamentos">
                 <label class="colunm-50">
                     <span class="destaque">Quais ?</span>
-                    <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="agent.outrosFinanciamentos_descricao" >
+                    <input name="outrosFinanciamentos_descricao" type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="agent.outrosFinanciamentos_descricao" >
                 </label>
             </div>
             <div class="clear"></div>

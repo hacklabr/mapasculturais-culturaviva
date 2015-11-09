@@ -36,7 +36,7 @@
                 		<span class="destaque">
 				Portfólio Online*
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
-	        		<input type="text" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
+	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
 		</div>
                 <p><span class="destaque"><i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i></span>

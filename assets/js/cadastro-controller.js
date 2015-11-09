@@ -379,6 +379,21 @@
                 });
             };
 
+            $scope.showInvalid = function(){
+              $scope.data = MapasCulturais.redeCulturaViva;
+              $http.post(MapasCulturais.createUrl('cadastro','enviar')).
+              error(function errorCallback(response) {
+                  if(response.error){
+                      $scope.data.validationErrors = response.data;
+                  }
+                  $scope.data.validationErrors.responsavel.forEach(function(i){
+                      if(form.data.nome_campo === ''){
+                        form.data.$setValidity("form.data.$error."+i, false);
+                      }
+                  });
+              });
+            }
+
             $scope.uploadFile = function(file, group) {
                 $scope.f = file;
                 if (file && !file.$error) {
@@ -424,15 +439,17 @@
 
 
     // Controller do 'Informações do responsável'
-    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
-        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout)
+    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', '$location',
+        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout, $location)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 //            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
-
+            if($location.search().invalid === 1){
+              $scope.showInvalid();
+            }
             var params = {
                 'id': agent_id,
-                '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
+                '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                            'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
 
