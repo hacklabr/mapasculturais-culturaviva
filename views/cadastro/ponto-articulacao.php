@@ -47,7 +47,7 @@
         <div class="row">
           <h4> Articulação </h4>
             <div class="colunm-full">
-                <span class="destaque">Participa de algum movimento político-cultural? * </span>
+                <span class="destaque">Participa de algum movimento político-cultural? </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -66,11 +66,11 @@
             </label>
             <div class="colunm-full" ng-show="agent.participacaoMovPolitico">
                 <span>Quais?*
-                <input class="colunm1"type="text" ng-blur="save_field('simMovimentoPoliticoCultural')" ng-model="agent.simMovimentoPoliticoCultural" /></span>
+                <input name="simMovimentoPoliticoCultural" class="colunm1"type="text" ng-blur="save_field('simMovimentoPoliticoCultural')" ng-model="agent.simMovimentoPoliticoCultural" /></span>
             </div>
 
             <div class="colunm-full">
-                <span class="destaque">Participa de algum Fórum de Cultura? * </span>
+                <span class="destaque">Participa de algum Fórum de Cultura? </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -90,14 +90,14 @@
             </label>
             <div class="colunm-full" ng-show="agent.participacaoForumCultura">
                 <span>Quais?*
-                <input class="colunm1"type="text" ng-blur="save_field('simForumCultural')" ng-model="agent.simForumCultural" /></span>
+                <input name="simForumCultural" class="colunm1"type="text" ng-blur="save_field('simForumCultural')" ng-model="agent.simForumCultural" /></span>
             </div>
             <div class="colunm-full">
-                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? * </span>
+                <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? </span>
             </div>
             <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="agent" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
             <div class="colunm-full">
-                <span class="destaque">Possui parceria com o Poder Público? * </span>
+                <span class="destaque">Possui parceria com o Poder Público? </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -116,7 +116,7 @@
             </label>
             <div class="colunm-full" ng-show="agent.parceriaPoderPublico">
                 <span>Quais?*
-                <input class="colunm1"type="text" ng-blur="save_field('simPoderPublico')" ng-model="agent.simPoderPublico" /></span>
+                <input name="simPoderPublico" class="colunm1" type="text" ng-blur="save_field('simPoderPublico')" ng-model="agent.simPoderPublico" /></span>
             </div>
         </div>
     </div>

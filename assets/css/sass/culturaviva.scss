@@ -312,7 +312,7 @@ section{
 
     article {
         &.slide-home {
-            background: url('../img/banner-home1.jpg');
+            background: url('../img/banner-home2.jpg');
             height: 450px;
             padding-top: 30px;
             max-height: 480px;
@@ -662,7 +662,7 @@ section{
                     font-size: 1.3em;
                     margin: 20px 5% 10px;
 					position: relative;
-					
+
 					display: inline-block;
 					top: 13px;
                 }
@@ -675,7 +675,7 @@ section{
                     left: 15px;
 					position: relative;
 					vertical-align:top;
-                
+
                 }
 
                 .btn_mais{
@@ -964,7 +964,7 @@ section{
                 margin-left: 44%;
                 margin-top: 30px;
             }
-            
+
             .btn-validar:enabled {
             	background: rgb(214, 213, 213);
             	color: rgb(99, 99, 99);
@@ -1094,7 +1094,7 @@ section{
             display:inline-block;
             margin-right: 10px;
         }
-       
+
         .img_updade{
             display:inline-block;
             margin-bottom: 30px;
@@ -1376,7 +1376,7 @@ section{
         }
 
         .facebook{
-            
+
             i{
               color:#576c94;
             }
@@ -1518,7 +1518,7 @@ section{
         width:60%;
     }
 
-    
+
 
     .form{
         h4{
@@ -1965,6 +1965,13 @@ section{
         vertical-align:top;
     }
 
+    .colunm-30{
+        width: 400px;
+        margin-left: 4%;
+        display:inline-block;
+        vertical-align:top;
+    }
+
     .colunm05{
         width: 200px;
         margin-left: 2%;
@@ -2004,8 +2011,8 @@ section{
             .text-banner{
                 width: 90%;
             }
-        }    
-        
+        }
+
         article.points_culture{
             .row{
                 p{
@@ -2019,13 +2026,13 @@ section{
                    width:90%;
                    font-size: 16px;
                    + .box{
-                     margin-top: 20px;   
+                     margin-top: 20px;
                    }
-                   
+
                 }
-                
+
             }
-        }   
+        }
     }
 
     .page-base-form{
@@ -2063,24 +2070,24 @@ section{
         }
         .form-opcional{
             .nome_chamado{
-                width:90%; 
-                margin-left: 5%;   
+                width:90%;
+                margin-left: 5%;
             }
-    
+
             .onde_voce_mora{
                 width:90%;
-                margin-left: 5%; 
+                margin-left: 5%;
             }
-            
+
             .cidade{
                 margin-left:5%;
                 width:90%;
-            }  
-            
+            }
+
             .estado{
                 margin-left:5%;
             }
-                
+
             .colunm-redes{
                 width:80%;
                 margin-left:5%;
@@ -2116,7 +2123,7 @@ section{
             }
         }
 
-       
+
         section.boxs-cadastro {
             article{
                 width:100%;
@@ -2134,7 +2141,7 @@ section{
 
                 span.icon{
                     vertical-align: top;
-                    top: 34px; 
+                    top: 34px;
                 }
 
                 .infos{
@@ -2156,7 +2163,7 @@ section{
                 p.mensagem-validar{
                     width: 80%;
                 }
-            }  
+            }
         }
     }
 
@@ -2174,7 +2181,7 @@ section{
         }
 
         .colunm3{
-            
+
         }
     }
  }
@@ -2184,11 +2191,11 @@ section{
         article{
             header{
                 h4{
-                   width: 60%;  
+                   width: 60%;
                 }
             }
-        } 
-    } 
+        }
+    }
 }
 
 @media (min-width:550px) and (max-width: 760px) {
