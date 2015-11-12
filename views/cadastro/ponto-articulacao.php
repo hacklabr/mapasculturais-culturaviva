@@ -9,7 +9,7 @@
 
 ?>
 
-<form ng-controller="PontoArticulacaoCtrl">
+<form name="form_pontoArticulacao" ng-controller="PontoArticulacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>

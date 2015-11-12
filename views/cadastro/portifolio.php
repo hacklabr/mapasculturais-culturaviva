@@ -8,7 +8,7 @@
     $this->cadastroLinkContinuar = 'articulacao';
 ?>
 
-<form ng-controller="PortifolioCtrl">
+<form name="form_portifolio" ng-controller="PortifolioCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
