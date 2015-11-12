@@ -333,17 +333,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         */ ?>
 
     <div class='alert danger' style="margin:0 10%" ng-show="data.validationErrors">
-                Os seguintes campos obrigatórios não foram preenchidos
+                Alguns campos obrigatórios não foram preenchidos
 		    <!-- Dados do responsavel -->
     		<strong><br/><a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável"</strong> </a>
-    		<!-- Dados do ponto -->
+		<strong><br/><a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural"</strong> </a>
     		<strong><br/><a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa"</strong> </a>
-
     		<strong><br/><a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</strong> </a>
-    		<!-- Dados da entidade -->
-    		<strong><br/><a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural"</strong> </a>
-
-    		<strong><br/><a href="/cadastro/entidadeFinanciamento/?invalid=1">Em "Projetos Financiados"</strong> </a>
   </div>
 
   <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
