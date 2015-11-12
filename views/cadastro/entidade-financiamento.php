@@ -9,7 +9,7 @@
 ?>
 
 
-<form ng-controller="EntityContactCtrl">
+<form name="form_entityContact" ng-controller="EntityContactCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>

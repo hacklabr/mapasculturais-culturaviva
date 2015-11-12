@@ -12,7 +12,8 @@
         'ui.mask'
     ]);
 
-    app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
+    app.config(['$httpProvider', '$resourceProvider', '$locationProvider',
+    function ($httpProvider, $resourceProvider, $locationProvider) {
             $httpProvider.defaults.headers.delete = {};
             $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
             $httpProvider.defaults.headers.patch['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -26,6 +27,7 @@
                 return result;
             };
             $resourceProvider.defaults.stripTrailingSlashes = false;
+            $locationProvider.html5Mode(true);
         }]);
 
 })(angular);
