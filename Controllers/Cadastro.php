@@ -121,10 +121,10 @@ class Cadastro extends \MapasCulturais\Controller{
 
         ];
 
-	 if(!$agent->atividadesEmRealizacaoLink && !$agent->atividadesEmRealizacao){
-		$required_properties[] = 'atividadesEmRealizacaoLink';
-		$required_properties[] = 'atividadesEmRealizacao';
-	 }
+	 //if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
+	 //	$required_properties[] = 'atividadesEmRealizacaoLink';
+	 //	$required_properties[] = 'portifolio';
+	 //}
 
 	return $required_properties;
     }
@@ -155,7 +155,7 @@ class Cadastro extends \MapasCulturais\Controller{
             'En_Num',
             'En_Nome_Logradouro',
 
-            'foiFomentado'
+            //'foiFomentado'
         ];
 
         if($agent->tipoOrganizacao === 'entidade'){
@@ -164,7 +164,7 @@ class Cadastro extends \MapasCulturais\Controller{
         }
 
 
-        if($agent->foiFomentado){
+        /*if($agent->foiFomentado){
             $required_properties[] = 'tipoFomento';
             if($agent->tipoFomento === 'outros'){
                 $required_properties[] = 'tipoFomentoOutros';
@@ -196,7 +196,7 @@ class Cadastro extends \MapasCulturais\Controller{
             if($agent->outrosFinanciamentos){
                 $required_properties[] = 'outrosFinanciamentos_descricao';
             }
-        }
+        }*/
 
         return $required_properties;
     }
