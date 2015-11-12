@@ -5,7 +5,7 @@
     $this->cadastroText = 'Inclua os dados da Entidade ou Coletivo Cultural responsável pelo Ponto de Cultura';
     $this->cadastroIcon = 'icon-home';
     $this->cadastroPageClass = 'dados-entidade page-base-form';
-    $this->cadastroLinkContinuar = 'entidadeFinanciamento';
+    $this->cadastroLinkContinuar = 'pontoMapa';
 ?>
 
 

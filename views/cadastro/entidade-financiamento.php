@@ -1,11 +1,11 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '3. Projetos Financiados';
+    $this->cadastroTitle = '5. Projetos Financiados';
     $this->cadastroText = 'O MinC possui diversas formas de financiamento. Você já recebeu algum prêmio ou participou de algum edital?';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'contato-entidade page-base-form';
-    $this->cadastroLinkContinuar = 'pontoMapa';
+    $this->cadastroLinkContinuar = 'articulacao';
 ?>
 
 
@@ -16,8 +16,8 @@
 
         <div class="row">
             <div class="colunm-50">
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC* <i Marque caso você tenha recebido algum recurso direto do MinC>?</i></span>
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC <i Marque caso você tenha recebido algum recurso direto do MinC>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC <i>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
                            name="foiFomentado"
