@@ -2,6 +2,53 @@
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
 
+    var agentsPontoDados = ["name",
+                        "nomeCompleto",
+                        "cnpj",
+                        "representanteLegal",
+                        "tipoPontoCulturaDesejado",
+                        "tipoOrganizacao",
+                        "emailPrivado",
+                        "telefone1",
+                        "telefone1_operadora",
+                        "telefone2",
+                        "telefone2_operadora",
+                        "responsavel_nome",
+                        "responsavel_email",
+                        "responsavel_cargo",
+                        "responsavel_telefone",
+                        "geoEstado",
+                        "geoMunicipio",
+                        "pais",
+                        "En_Bairro",
+                        "En_Num",
+                        "En_Nome_Logradouro",
+                        "En_Complemento"
+                      ];
+
+
+    var agentPontoFinanciamento = [
+                        "tipoCertificacao",
+                        "foiFomentado",
+                        "tipoFomento",
+                        "tipoFomentoOutros",
+                        "tipoReconhecimento",
+                        "edital_num",
+                        "edital_ano",
+                        "edital_projeto_nome",
+                        "edital_localRealizacao",
+                        "edital_projeto_etapa",
+                        "edital_proponente",
+                        "edital_projeto_resumo",
+                        "edital_prestacaoContas_envio",
+                        "edital_prestacaoContas_status",
+                        "edital_projeto_vigencia_inicio",
+                        "edital_projeto_vigencia_fim",
+                        "outrosFinanciamentos",
+                        "outrosFinanciamentos_descricao",
+                        "rcv_Ds_Edital"
+                      ];
+
     var termos = {
             area: MapasCulturais.areasDeAtuacao,
 
@@ -354,7 +401,6 @@
 
             $scope.data = MapasCulturais.redeCulturaViva;
             $scope.enviar = function(){
-                console.log($scope.data);
                 $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
@@ -362,9 +408,39 @@
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
-                                $scope.data.validationErrors = response.data;
+                              $scope.data.validationErrors = response.data;
                             }
-
+                            var erroResponsavel = $scope.data.validationErrors.responsavel;
+                            var erroPonto = $scope.data.validationErrors.ponto;
+                            var erroEntidade= $scope.data.validationErrors.entidade;
+                            if(erroResponsavel.length > 0){
+                              $scope.data.mostrarErroResponsavel = "responsavel";
+                            }
+                            if(erroPonto.length > 0){
+                              if((erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1) || (erroPonto.indexOf("atividadesEmRealizacao") !== -1)){
+                                $scope.data.mostrarErroPonto = "ponto_portifolio";
+                              }else{
+                                $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                              }
+                            }
+                            if(erroEntidade.length > 0){
+                              var i;
+                              var j;
+                              for(i = 0; i < erroEntidade.length; i++){
+                                for(j = 0; j < agentsPontoDados.length; j++){
+                                    if(erroEntidade[i] === agentsPontoDados[j]){
+                                      $scope.data.mostrarErroEntidadeDado = "entidade_showdado";
+                                    }
+                                }
+                              }
+                              for(i = 0; i < erroEntidade.length; i++){
+                                for(j = 0; j < agentPontoFinanciamento.length; j++){
+                                  if(erroEntidade[i] === agentPontoFinanciamento[j]){
+                                    $scope.data.mostrarErroEntidade = "entidade_showfinanciamento";
+                                  }
+                                }
+                              }
+                            }
                         });
             };
         }
