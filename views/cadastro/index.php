@@ -335,10 +335,18 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <div class='alert danger' style="margin:0 10%" ng-show="data.validationErrors">
                 Alguns campos obrigatórios não foram preenchidos
 		    <!-- Dados do responsavel -->
-    		<strong><br/><a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável"</strong> </a>
-		<strong><br/><a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural"</strong> </a>
-    		<strong><br/><a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa"</strong> </a>
-    		<strong><br/><a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</strong> </a>
+    		<strong ng-show="data.mostrarErroResponsavel == 'responsavel'"><br/>
+			       <a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável" </a>
+		    </strong>
+		    <strong ng-show="data.mostrarErroEntidadeDado == 'entidade_showdado'"><br/>
+			       <a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
+		    </strong>
+    		<strong ng-show="data.mostrarErroPontoMapa == 'ponto_mapa'"><br/>
+			       <a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa" </a>
+		    </strong>
+    		<strong ng-show="data.mostrarErroPonto == 'ponto_portifolio'"><br/>
+			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
+		    </strong>
   </div>
 
   <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>

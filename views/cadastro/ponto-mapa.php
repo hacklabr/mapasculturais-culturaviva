@@ -215,7 +215,7 @@
             </label>
 
             <label class="colunm3">
-                <span>Bairro</span>
+                <span>Bairro*</span>
                 <input type="text" name="En_Bairro" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
