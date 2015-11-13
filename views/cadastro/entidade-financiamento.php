@@ -262,7 +262,7 @@
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
-                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc) <i>?</i></span>
                     <label class="label-radio">
                         <input type="radio"
                                name="financiamentos"

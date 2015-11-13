@@ -94,7 +94,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <article class="box-portfolio border-left">
             <header>
               <span class="icon icon-picture"></span>
-              <h4> 4. Portifólio e Anexos</h4>
+              <h4> 4. Portfólio e Anexos</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
