@@ -1,11 +1,11 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '5. Portfólio e Anexos';
+    $this->cadastroTitle = '4. Portfólio e Anexos';
     $this->cadastroText = 'Inclua suas fotos, links e redes sociais! Isto nos ajuda a entender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
-    $this->cadastroLinkContinuar = 'articulacao';
+    $this->cadastroLinkContinuar = 'entidadeFinanciamento';
 ?>
 
 <form name="form_portifolio" ng-controller="PortifolioCtrl">

@@ -1,7 +1,7 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '4. Seu Ponto no Mapa';
+    $this->cadastroTitle = '3. Seu Ponto no Mapa';
     $this->cadastroText = 'Vamos colocar seu Ponto no mapa! Com estes dados podemos cartografar a rede de Pontos de Cultura por todo Brasil';
     $this->cadastroIcon = 'icon-location';
     $this->cadastroPageClass = 'ponto-mapa page-base-form';
