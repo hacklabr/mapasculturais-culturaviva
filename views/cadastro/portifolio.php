@@ -12,7 +12,7 @@
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
-        <div class="row" ng-controller="ImageUploadCtrl">
+        <div class="row" ng-controller="ImageUploadCtrl" ng-init="init('ponto')">
             <span class="destaque espacoleft">Atividades já realizadas* <i class='hltip' title='Nos ajude a entender o histórico de seu Ponto de Cultura e as atividades desenvolvidas.'>?</i></span>
             <div class="colunm-20">
                 <div class="file-item">
@@ -52,7 +52,7 @@
             <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
-        <div class="row" ng-controller="ImageUploadCtrl">
+        <div class="row" ng-controller="ImageUploadCtrl" ng-init="init('ponto')">
             <span class="destaque espacoleft">Carta de Reconhecimento * <i class='hltip' title='As cartas de apoio nos ajudam a entender como o Ponto de Cultura se conecta com a comunidade ao seu redor e certifica a participação da comunidade no processo.'>?</i></span>
             <div class="colunm-20">
               <div class="file-item">
@@ -168,7 +168,7 @@
 
         </div>
         <div class="clear"></div>
-        <div class="row" ng-controller="ImageUploadCtrl">
+        <div class="row" ng-controller="ImageUploadCtrl" ng-init="init('ponto')">
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i class='hltip' title='Essas imagens devem mostrar as atividades que seu Ponto de Cultura desenvolve'>?</i></span>
             <p class="espacoleft">Inclua no máximo 4 arquivos, no formato JPG ou PNG com até 1MB</p>
             <div class="img_updade file-item" ng-repeat="f in agent.files.gallery">

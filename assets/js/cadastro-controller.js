@@ -337,19 +337,30 @@
      app.controller('ImageUploadCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', '$http',
         function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout, $http) {
 
-            // FIXME passar como parametro para generalizar
-            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id;
+            $scope.init = function(rcv_tipo){
+                
+                if(rcv_tipo === 'responsavel'){
+                    agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
+                }else if(rcv_tipo === 'entidade'){
+                    agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
+                } else{
+                    agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+                }
+                
+                var params = {
+                    'id': agent_id,
+                    '@select': 'id,files',
+                    '@permissions': 'view'
+                };
 
-            var params = {
-                'id': agent_id,
-                '@select': 'id,files',
-                '@permissions': 'view'
+                $scope.agent = Entity.get(params);
+                $scope.agent.$promise.then(function(){
+                    $scope.agent.files.gallery = $scope.agent.files.gallery || [];
+                });
+                
             };
-
-            $scope.agent = Entity.get(params);
-            $scope.agent.$promise.then(function(){
-                $scope.agent.files.gallery = $scope.agent.files.gallery || [];
-            });
+            
 
             $scope.config = {
                 images: {
