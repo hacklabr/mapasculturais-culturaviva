@@ -5,11 +5,11 @@
     $this->cadastroText = 'Inclua os dados da Entidade ou Coletivo Cultural responsável pelo Ponto de Cultura';
     $this->cadastroIcon = 'icon-home';
     $this->cadastroPageClass = 'dados-entidade page-base-form';
-    $this->cadastroLinkContinuar = 'entidadeFinanciamento';
+    $this->cadastroLinkContinuar = 'pontoMapa';
 ?>
 
 
-<form ng-controller="EntityCtrl">
+<form name="form_entity" ng-controller="EntityCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
@@ -40,7 +40,7 @@
                 <label class="colunm-50">
                     <span class="destaque">Nome do Coletivo Cultura* <i>?</i>
                     </span>
-                    <input type="text" ng-blur="save_field('name')" ng-model="agent.name">
+                    <input name="name" type="text" ng-blur="save_field('name')" ng-model="agent.name">
                 </label>
             </div>
             <div class="clear"></div>
@@ -51,14 +51,16 @@
                 <div class="row">
                     <label class="colunm-50">
                         <span class="destaque">CNPJ da Entidade*</span>
-                        <input type="text"
+                        <input name="cnpj"
+                               type="text"
                                ng-blur="save_field('cnpj')"
                                ng-model="agent.cnpj"
                                ui-mask="99.999.999/9999-99">
                     </label>
                     <label class="colunm-50">
                         <span class="destaque">Nome da Razão Social da Entidade*</span>
-                        <input type="text"
+                        <input name="nomeCompleto"
+                               type="text"
                                ng-blur="save_field('nomeCompleto')"
                                ng-model="agent.nomeCompleto">
                     </label>
@@ -68,7 +70,7 @@
                 <div class="row">
                     <label class="colunm-50">
                         <span class="destaque">Nome do Representante Legal* <i class='hltip' title='Pessoa que está habilitada juridicamente a representar a Entidade'>?</i></span>
-                        <input type="text" ng-blur="save_field('representanteLegal')" ng-model="agent.representanteLegal" >
+                        <input name="representanteLegal" type="text" ng-blur="save_field('representanteLegal')" ng-model="agent.representanteLegal" >
                     </label>
 
                     <label class="colunm-50">
@@ -104,28 +106,28 @@
         <div class="row">
             <label class="colunm1">
                 <span class="destaque">Nome do Responsável pela Entidade* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
-                <input type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
+                <input name="responsavel_nome" type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
             <label class="colunm2">
                 <span>Cargo do Responsável*</span>
-                <input type="text" ng-blur="save_field('responsavel_cargo')" ng-model="agent.responsavel_cargo"/>
+                <input name="responsavel_cargo" type="text" ng-blur="save_field('responsavel_cargo')" ng-model="agent.responsavel_cargo"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
                 <span>Email do Responsável* </span>
-                <input type="email" ng-blur="save_field('responsavel_email')" ng-model="agent.responsavel_email" />
+                <input name="responsavel_email" type="email" ng-blur="save_field('responsavel_email')" ng-model="agent.responsavel_email" />
             </label>
 
             <label class="colunm2">
                 <span>Telefone do Responsável*</span>
-                <input type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999-9999"/>
+                <input name="responsavel_telefone" type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999-9999"/>
             </label>
             <label class="colunm02">
                 <span>Operadora*</span>
-                <input type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
+                <input name="responsavel_operadora" type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
             </label>
         </div>
         <div class="clear"></div>
@@ -133,19 +135,19 @@
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Email institucional da Entidade *</span>
-                <input type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
+                <input name="emailPrivado" type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
                 <span>Telefone institucional da Entidade *</span>
-                <input type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
+                <input name="telefone1" type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
             <label class="colunm02">
                 <span>Operadora*</span>
-                <input type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
+                <input name="telefone1_operadora" type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
         </div>
         <div class="clear"></div>
@@ -263,7 +265,7 @@
           </label>
             <label class="colunm05" ng-show="agent.pais==='Brasil'">
                 <span>Estado*</span>
-                <select ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
+                <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
                     <option value="BA">Bahia</option>             <option value="CE">Ceará</option>
@@ -283,23 +285,23 @@
             </label>
             <label class="colunm2">
                 <span>Cidade*</span>
-                <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
+                <input name="geoMunicipio" type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
             <label class="colunm3">
                 <span>Bairro*</span>
-                <input type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
+                <input name="En_Bairro" type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
                 <span>Número* </span>
-                <input type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
+                <input name="En_Num" type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
             </label>
 
             <label class="colunm2">
                 <span>Rua*</span>
-                <input type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
+                <input name="En_Nome_Logradouro" type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
             </label>
             <label class="colunm3">
                 <span>Complemento</span>

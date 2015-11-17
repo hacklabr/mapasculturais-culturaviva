@@ -25,6 +25,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         </article>
     </section>
     <section class="boxs-cadastro">
+	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Autodeclaração</h4></center></header></article>
         <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
@@ -68,32 +69,11 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         </article>
         </a>
-        <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
-        <article class="box-entidade-financiados">
-            <header>
-              <span class="icon icon-dollar"></span>
-              <h4> 3. Projetos Financiados</h4>
-              <span class="btn_mais"> + </span>
-            </header>
-            <div class="infos">
-               <div class="texto">
-                     <p>Já recebeu recursos do Ministério da Cultura? </p>
-                </div>
-<!--                <div class="circle-status c100 p56">
-                    <span>56%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>-->
-            </div>
-        </article>
-        </a>
         <a href="<?php echo $app->createUrl('cadastro', 'pontoMapa'); ?>">
-        <article class="box-ponto-mapa border-left">
+        <article class="box-ponto-mapa">
             <header>
                     <span class="icon icon-location"></span>
-                    <h4> 4. Seu Ponto no Mapa</h4>
+                    <h4> 3. Seu Ponto no Mapa</h4>
                     <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
@@ -111,15 +91,38 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         </article>
         </a>
         <a href="<?php echo $app->createUrl('cadastro', 'portifolio'); ?>">
-        <article class="box-portfolio">
+        <article class="box-portfolio border-left">
             <header>
               <span class="icon icon-picture"></span>
-              <h4> 5. Portifólio e Anexos</h4>
+              <h4> 4. Portfólio e Anexos</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
                 <div class="texto">
                      <p>Anexe os documentos obrigatórios para a autodeclaração</p>
+                </div>
+<!--                <div class="circle-status c100 p56">
+                    <span>56%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>-->
+            </div>
+        </article>
+        </a>
+	<div ng-show="data.statusInscricao > 0">
+	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Informações Complementares</h4></center></header></article>
+        <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
+        <article class="box-entidade-financiados">
+            <header>
+              <span class="icon icon-dollar"></span>
+              <h4> 5. Projetos Financiados</h4>
+              <span class="btn_mais"> + </span>
+            </header>
+            <div class="infos">
+               <div class="texto">
+                     <p>Já recebeu recursos do Ministério da Cultura? </p>
                 </div>
 <!--                <div class="circle-status c100 p56">
                     <span>56%</span>
@@ -194,6 +197,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         </article>
         </a>
+	</div>
         <div class="clear"></div>
     </section>
     <section class="box-status">
@@ -328,185 +332,33 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         */ ?>
 
-            <div class='alert danger' style="margin:0 10%" ng-show="data.validationErrors">
-                Os seguintes campos obrigatórios não foram preenchidos
-		<!-- Dados do responsavel -->
-		<strong><br/>Em "Informações do Responsável"</strong>
-		<li ng-show="data.validationErrors.responsavel.indexOf('nomeCompleto') != -1">
-		    Nome Completo
-		</li>
-		<li ng-show="data.validationErrors.responsavel.indexOf('relacaoPonto') != -1">
-		    Relação com o ponto
-		</li>
-		<li ng-show="data.validationErrors.responsavel.indexOf('cpf') != -1">
-                    CPF
-                </li>
-		<li ng-show="data.validationErrors.responsavel.indexOf('emailPrivado') != -1">
-                    Email
-                </li>
-		<li ng-show="data.validationErrors.responsavel.indexOf('telefone1') != -1">
-                    Telefone
-                </li>
-		<li ng-show="data.validationErrors.responsavel.indexOf('telefone1_operadora') != -1">
-                    Operadora
-                </li>
+    <div class='alert danger' style="margin:0 10%" ng-show="data.validationErrors">
+                Alguns campos obrigatórios não foram preenchidos
+		    <!-- Dados do responsavel -->
+    		<strong ng-show="data.mostrarErroResponsavel == 'responsavel'"><br/>
+			       <a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável" </a>
+		    </strong>
+		    <strong ng-show="data.mostrarErroEntidadeDado == 'entidade_showdado'"><br/>
+			       <a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
+		    </strong>
+    		<strong ng-show="data.mostrarErroPontoMapa == 'ponto_mapa'"><br/>
+			       <a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa" </a>
+		    </strong>
+    		<strong ng-show="data.mostrarErroPonto == 'ponto_portifolio'"><br/>
+			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
+		    </strong>
+  </div>
 
-		<!-- Dados do ponto -->
-		<strong><br/>Em "Seu Ponto no Mapa"</strong>
-		<li ng-show="data.validationErrors.ponto.indexOf('name') != -1">
-		    Nome
-		</li>
-		<li ng-show="data.validationErrors.ponto.indexOf('shortDescription') != -1">
-		    Breve descrição
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('cep') != -1">
-		    CEP
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('tem_sede') != -1">
-		    O Ponto possui sede?
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('geoEstado') != -1">
-		    Estado
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('geoMunicipio') != -1">
-		    Município
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('En_Bairro') != -1">
-		    Bairro
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('En_Nome_Logradouro') != -1">
-		    Logradouro
-                </li>
-		<li ng-show="data.validationErrors.ponto.indexOf('En_Num') != -1">
-		    Número
-                </li>
-		<strong><br/>Em "Portfólio e Anexos"</strong>
-		<li ng-show="data.validationErrors.ponto.indexOf('atividadesEmRealizacaoLink') != -1">
-		    Atividades em Realização
-		</li>
+  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
+  <div class="page-base-form">
 
-		<!-- Dados da entidade -->
-		<strong><br/>Em "Dados da Entidade ou Coletivo Cultural"</strong>
-		<li ng-show="data.validationErrors.entidade.indexOf('name') != -1">
-		    Nome da entidade
-		</li>
-		<li ng-show="data.validationErrors.entidade.indexOf('tipoOrganizacao') != -1">
-		    Tipo de Organização
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('cnpj') != -1">
-		    CNPJ da Entidade
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('representanteLegal') != -1">
-		    Representante Legal
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('responsavel_nome') != -1">
-		    Nome do Responsável
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('responsavel_cargo') != -1">
-		    Cargo do Responsável
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('responsavel_email') != -1">
-		    Email do Responsável
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('responsavel_telefone') != -1">
-		    Telefone do Responsável
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('responsavel_operadora') != -1">
-		    Operadora
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('emailPrivado') != -1">
-		    Email institucional da Entidade
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('telefone1') != -1">
-		    Telefone institucional
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('telefone1_operadora') != -1">
-		    Operadora
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('telefone2') != -1">
-		    Outro telefone
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('telefone2_operadora') != -1">
-		    Operadora
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('geoEstado') != -1">
-		    Estado
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('geoMunicipio') != -1">
-		    Município
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('En_Bairro') != -1">
-		    Bairro
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('En_Num') != -1">
-		    Número
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('En_Nome_Logradouro') != -1">
-		    Logradouro
-                </li>
-		<strong><br/>Em "Projetos Financiados"</strong>
-		<li ng-show="data.validationErrors.entidade.indexOf('foiFomentado') != -1">
-		    Recebeu fomento?
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('tipoFomento') != -1">
-		    Tipo do fomento
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('tipoFomentoOutros') != -1">
-		    Qual tipo de fomento?
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('tipoReconhecimento') != -1">
-		    Tipo de Reconhecimento
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_num') != -1">
-		    Número do Edital
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_ano') != -1">
-		    Ano do Edital
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_projeto_nome') != -1">
-		    Título do Projeto
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_localRealizacao') != -1">
-		    Local de realização
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_proponente') != -1">
-		    Proponente
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_projeto_resumo') != -1">
-		    Resumo do Projeto
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_projeto_etapa') != -1">
-		    Etapa do Projeto
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_prestacaoContas_envio') != -1">
-		    Prestação de Contas
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_prestacaoContas_status') != -1">
-		    Status da prestação de contas
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_projeto_vigencia_inicio') != -1">
-		    Início de vigência do projeto
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('edital_projeto_vigencia_fim') != -1">
-		    Fim da vigência do projeto
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('outrosFinanciamentos') != -1">
-		    Outros Financiamentos
-                </li>
-		<li ng-show="data.validationErrors.entidade.indexOf('outrosFinanciamentos_descricao') != -1">
-		    Descrição dos outros tipos de financiamento
-                </li>
-            </div>
-            <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
-            <div class="page-base-form">
-
-                <p ng-show="data.statusInscricao > 0" >
-                    Recebemos seus dados com sucesso! 
-                    Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura! 
-                    Continue navegando e, caso altere algum campo, clique em atualizar. 
-                    Muito obrigada por fazer parte da Rede Cultura Viva!
-                </p>
-            </div>
+      <p ng-show="data.statusInscricao > 0" >
+                Recebemos seus dados com sucesso!
+                Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura!
+                Continue navegando e, caso altere algum campo, clique em atualizar.
+                Muito obrigada por fazer parte da Rede Cultura Viva!
+      </p>
+  </div>
      </article>
 
     </section>

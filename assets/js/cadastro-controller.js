@@ -2,6 +2,53 @@
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
 
+    var agentsPontoDados = ["name",
+                        "nomeCompleto",
+                        "cnpj",
+                        "representanteLegal",
+                        "tipoPontoCulturaDesejado",
+                        "tipoOrganizacao",
+                        "emailPrivado",
+                        "telefone1",
+                        "telefone1_operadora",
+                        "telefone2",
+                        "telefone2_operadora",
+                        "responsavel_nome",
+                        "responsavel_email",
+                        "responsavel_cargo",
+                        "responsavel_telefone",
+                        "geoEstado",
+                        "geoMunicipio",
+                        "pais",
+                        "En_Bairro",
+                        "En_Num",
+                        "En_Nome_Logradouro",
+                        "En_Complemento"
+                      ];
+
+
+    var agentPontoFinanciamento = [
+                        "tipoCertificacao",
+                        "foiFomentado",
+                        "tipoFomento",
+                        "tipoFomentoOutros",
+                        "tipoReconhecimento",
+                        "edital_num",
+                        "edital_ano",
+                        "edital_projeto_nome",
+                        "edital_localRealizacao",
+                        "edital_projeto_etapa",
+                        "edital_proponente",
+                        "edital_projeto_resumo",
+                        "edital_prestacaoContas_envio",
+                        "edital_prestacaoContas_status",
+                        "edital_projeto_vigencia_inicio",
+                        "edital_projeto_vigencia_fim",
+                        "outrosFinanciamentos",
+                        "outrosFinanciamentos_descricao",
+                        "rcv_Ds_Edital"
+                      ];
+
     var termos = {
             area: MapasCulturais.areasDeAtuacao,
 
@@ -228,7 +275,7 @@
             ]
         };
 
-    function extendController($scope, $timeout, Entity, agent_id){
+    function extendController($scope, $timeout, Entity, agent_id, $http){
 
         $scope.messages = {
             status: null,
@@ -292,6 +339,44 @@
                 });
             };
         }
+
+        $scope.showInvalid = function(agentTipo, nomeForm){
+          $scope.data = MapasCulturais.redeCulturaViva;
+          $http.post(MapasCulturais.createUrl('cadastro','enviar')).
+          error(function errorCallback(response) {
+              if(response.error){
+                  $scope.data.validationErrors = response.data;
+              }
+              switch (agentTipo) {
+                case 'responsavel':
+                  var form = $scope[nomeForm];
+                  var erros_responsavel = $scope.data.validationErrors.responsavel;
+                  erros_responsavel.forEach(function(elemento,index,array){
+                    if(form[elemento]){
+                      angular.element("[name='"+elemento+"']").addClass('input_erro');
+                    }
+                  });
+                  break;
+                case 'entidade':
+                  var form = $scope[nomeForm];
+                  var erros_entidade = $scope.data.validationErrors.entidade;
+                  erros_entidade.forEach(function(elemento,index,array){
+                    if(form[elemento]){
+                      angular.element("[name='"+elemento+"']").addClass('input_erro');
+                    }
+                  });
+                case 'ponto':
+                  var form = $scope[nomeForm];
+                  var erros_ponto = $scope.data.validationErrors.ponto;
+                  erros_ponto.forEach(function(elemento,index,array){
+                    if(form[elemento]){
+                      angular.element("[name='"+elemento+"']").addClass('input_erro');
+                    }
+                  });
+                break;
+              }
+          });
+        }
     }
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
@@ -316,7 +401,6 @@
 
             $scope.data = MapasCulturais.redeCulturaViva;
             $scope.enviar = function(){
-                console.log($scope.data);
                 $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
@@ -324,9 +408,32 @@
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
-                                $scope.data.validationErrors = response.data;
+                              $scope.data.validationErrors = response.data;
                             }
-
+                            var erroResponsavel = $scope.data.validationErrors.responsavel;
+                            var erroPonto = $scope.data.validationErrors.ponto;
+                            var erroEntidade= $scope.data.validationErrors.entidade;
+                            if(erroResponsavel.length > 0){
+                              $scope.data.mostrarErroResponsavel = "responsavel";
+                            }
+                            if(erroPonto.length > 0){
+                              if((erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1) || (erroPonto.indexOf("atividadesEmRealizacao") !== -1)){
+                                $scope.data.mostrarErroPonto = "ponto_portifolio";
+                              }else{
+                                $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                              }
+                            }
+                            if(erroEntidade.length > 0){
+                              var i;
+                              var j;
+                              for(i = 0; i < erroEntidade.length; i++){
+                                for(j = 0; j < agentsPontoDados.length; j++){
+                                    if(erroEntidade[i] === agentsPontoDados[j]){
+                                      $scope.data.mostrarErroEntidadeDado = "entidade_showdado";
+                                    }
+                                }
+                              }
+                            }
                         });
             };
         }
@@ -435,15 +542,15 @@
 
 
     // Controller do 'Informações do responsável'
-    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout',
-        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout)
+    app.controller('ResponsibleCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', '$location', '$http',
+        function ResponsibleCtrl($scope, Entity, MapasCulturais, Upload, $timeout, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 //            BaseAgentCtrl.call(this, $scope, Agent, MapasCulturais, agent_id, Upload, $timeout);
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
+                '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                            'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
 
@@ -451,41 +558,49 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
 
-            extendController($scope, $timeout, Entity, agent_id);
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_responsavel');
+              }
+            });
 
        }
     ]);
 
-    app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
-        function PortifolioCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
+    app.controller('PortifolioCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http',
+        function PortifolioCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink',
+                '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
 
-            extendController($scope, $timeout, Entity, agent_id);
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_portifolio');
+              }
+            });
         }
     ]);
 
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder',
-        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder)
+    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http',
+        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,pais,geoEstado,geoMunicipio,'+
+                '@select': 'id,rcv_tipo,terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,pais,geoEstado,geoMunicipio,'+
                     'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
                     'localRealizacao_cidade,localRealizacao_espaco,location',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
@@ -499,13 +614,14 @@
                     lng: agent.location.longitude,
                     message: agent.endereco
                 };
+                extendController($scope, $timeout, Entity, agent_id, $http);
+
+                if($location.search().invalid === '1'){
+                  $scope.showInvalid($scope.agent.rcv_tipo, 'form_ponto');
+                }
             });
 
-            extendController($scope, $timeout, Entity, agent_id);
-
             $scope.termos = termos;
-
-
 
             $scope.$watch('markers.main', function(point){
                 if(point && point.lat && point.lng) {
@@ -557,33 +673,38 @@
         }
     ]);
 
-    app.controller('PontoArticulacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
-        function PontoArticulacaoCtrl($scope, Entity, MapasCulturais, $timeout)
+    app.controller('PontoArticulacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function PontoArticulacaoCtrl($scope, Entity, MapasCulturais, $timeout, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico, simMovimentoPoliticoCultural, simForumCultural, simPoderPublico',
+                '@select': 'id,rcv_tipo,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico, simMovimentoPoliticoCultural, simForumCultural, simPoderPublico',
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
-
             $scope.termos = termos;
 
-            extendController($scope, $timeout, Entity, agent_id);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
+
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_pontoArticulacao');
+              }
+            });
+
         }
     ]);
 
-    app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
-        function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout)
+    app.controller('PontoEconomiaVivaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function PontoEconomiaVivaCtrl($scope, Entity, MapasCulturais, $timeout, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,pontoOutrosRecursosRede,pontoNumPessoasNucleo,pontoNumPessoasColaboradores,' +
+                '@select': 'id,rcv_tipo,terms,pontoOutrosRecursosRede,pontoNumPessoasNucleo,pontoNumPessoasColaboradores,' +
                            'pontoNumPessoasIndiretas,pontoNumPessoasParceiros,pontoNumPessoasApoiadores,pontoNumRedes,' +
                            'pontoRedesDescricao,pontoMovimentos,pontoEconomiaSolidaria,pontoEconomiaSolidariaDescricao,' +
                            'pontoEconomiaCultura,pontoEconomiaCulturaDescricao,pontoMoedaSocial,pontoMoedaSocialDescricao,' +
@@ -592,44 +713,54 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
-
             $scope.termos = termos;
 
-            extendController($scope, $timeout, Entity, agent_id);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
+
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_pontoEconomia');
+              }
+            });
+
         }
     ]);
 
-    app.controller('PontoFormacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
-        function PontoFormacaoCtrl($scope, Entity, MapasCulturais, $timeout)
+    app.controller('PontoFormacaoCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function PontoFormacaoCtrl($scope, Entity, MapasCulturais, $timeout, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
+                '@select': 'id,rcv_tipo,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                     'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                     'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
                     'metodologia1_cargaHoraria,metodologia1_certificacao',
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
-
             $scope.termos = termos;
 
-            extendController($scope, $timeout, Entity, agent_id);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
+
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_pontoFormacao');
+              }
+            });
+
         }
     ]);
 
-    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais',
-        function($scope, $timeout, Entity, MapasCulturais){
+    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais', '$location', '$http',
+        function($scope, $timeout, Entity, MapasCulturais, $location, $http){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
                 'id': agent_id,
 
-                '@select': 'id,name,nomeCompleto,cnpj,representanteLegal,' +
+                '@select': 'id,rcv_tipo,name,nomeCompleto,cnpj,representanteLegal,' +
                     'tipoPontoCulturaDesejado,tipoOrganizacao,' +
                     'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
                     'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
@@ -638,21 +769,26 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
 
-            extendController($scope, $timeout, Entity, agent_id);
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_entity');
+              }
+            });
+
 
         }
     ]);
 
-    app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout',
-        function($scope, Entity, MapasCulturais, $timeout){
+    app.controller('EntityContactCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
                 'id': agent_id,
 
-                '@select': 'id,tipoCertificacao,foiFomentado,tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
+                '@select': 'id,rcv_tipo,tipoCertificacao,foiFomentado,tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
                     'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,' +
                     'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                     'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
@@ -662,9 +798,13 @@
                 '@permissions': 'view'
             };
 
-            $scope.agent = Entity.get(params);
+            $scope.agent = Entity.get(params, function(){
+              extendController($scope, $timeout, Entity, agent_id, $http);
 
-            extendController($scope, $timeout, Entity, agent_id);
+              if($location.search().invalid === '1'){
+                $scope.showInvalid($scope.agent.rcv_tipo, 'form_entityContact');
+              }
+            });
 
         }
     ]);

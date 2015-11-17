@@ -9,7 +9,7 @@
 
 ?>
 
-<form ng-controller="PontoFormacaoCtrl">
+<form name="form_pontoFormacao" ng-controller="PontoFormacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Conhecimento em Rede</h4>

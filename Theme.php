@@ -61,7 +61,7 @@ class Theme extends BaseV1\Theme{
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
-        $this->assetManager->publishAsset('img/banner-home1.jpg', 'img/banner-home1.jpg');
+        $this->assetManager->publishAsset('img/banner-home2.jpg', 'img/banner-home2.jpg');
 
         $app->hook('view.render(site/search):before', function(){
             $this->jsObject['searchFilters'] = [

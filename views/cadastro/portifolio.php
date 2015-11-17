@@ -1,14 +1,14 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '5. Portfólio e Anexos';
+    $this->cadastroTitle = '4. Portfólio e Anexos';
     $this->cadastroText = 'Inclua suas fotos, links e redes sociais! Isto nos ajuda a entender que tipo de atividades culturais você realiza como Ponto de Cultura!';
     $this->cadastroIcon = 'icon-picture';
     $this->cadastroPageClass = 'portfolio page-base-form';
-    $this->cadastroLinkContinuar = 'articulacao';
+    $this->cadastroLinkContinuar = 'entidadeFinanciamento';
 ?>
 
-<form ng-controller="PortifolioCtrl">
+<form name="form_portifolio" ng-controller="PortifolioCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Informações Obrigatórias</h4>
@@ -36,7 +36,7 @@
                 		<span class="destaque">
 				Portfólio Online*
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
-	        		<input type="text" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
+	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
 		</div>
                 <p><span class="destaque"><i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i></span>
