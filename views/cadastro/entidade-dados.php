@@ -14,7 +14,7 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row">
-            <label class="colunm-50">
+            <label class="colunm1">
                 <span class="destaque">Tipo de organização*</span>
                 <select name="tipoOrganizacao"
                         ng-change="save_field('tipoOrganizacao')"
@@ -37,7 +37,7 @@
 
         <div ng-show="agent.tipoOrganizacao==='coletivo'">
             <div class="row">
-                <label class="colunm-50">
+                <label class="colunm1">
                     <span class="destaque">Nome do Coletivo Cultura* <i>?</i>
                     </span>
                     <input name="name" type="text" ng-blur="save_field('name')" ng-model="agent.name">
@@ -294,14 +294,13 @@
         </div>
         <div class="clear"></div>
         <div class="row">
-            <label class="colunm05">
+          <label class="colunm05">
+              <span>Rua*</span>
+              <input name="En_Nome_Logradouro" type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
+          </label>
+            <label class="colunm2">
                 <span>Número* </span>
                 <input name="En_Num" type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
-            </label>
-
-            <label class="colunm2">
-                <span>Rua*</span>
-                <input name="En_Nome_Logradouro" type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
             </label>
             <label class="colunm3">
                 <span>Complemento</span>
