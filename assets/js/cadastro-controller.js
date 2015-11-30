@@ -27,26 +27,18 @@
                       ];
 
 
-    var agentPontoFinanciamento = [
-                        "tipoCertificacao",
-                        "foiFomentado",
-                        "tipoFomento",
-                        "tipoFomentoOutros",
-                        "tipoReconhecimento",
-                        "edital_num",
-                        "edital_ano",
-                        "edital_projeto_nome",
-                        "edital_localRealizacao",
-                        "edital_projeto_etapa",
-                        "edital_proponente",
-                        "edital_projeto_resumo",
-                        "edital_prestacaoContas_envio",
-                        "edital_prestacaoContas_status",
-                        "edital_projeto_vigencia_inicio",
-                        "edital_projeto_vigencia_fim",
-                        "outrosFinanciamentos",
-                        "outrosFinanciamentos_descricao",
-                        "rcv_Ds_Edital"
+    var agentPontoMapa = [
+                        "name",
+                        "shortDescription",
+                        "cep",
+                        "tem_sede",
+                        "geoEstado",
+                        "geoMunicipio",
+                        "En_Bairro",
+                        "pais",
+                        "En_Nome_Logradouro",
+                        "En_Num",
+                        "location",
                       ];
 
     var termos = {
@@ -417,10 +409,17 @@
                               $scope.data.mostrarErroResponsavel = "responsavel";
                             }
                             if(erroPonto.length > 0){
-                              if((erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1) || (erroPonto.indexOf("atividadesEmRealizacao") !== -1)){
+                              if(erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1){
                                 $scope.data.mostrarErroPonto = "ponto_portifolio";
-                              }else{
-                                $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                              }
+                              var i;
+                              var j;
+                              for(i = 0; i < erroPonto.length; i++){
+                                for(j = 0; j < agentPontoMapa.length; j++){
+                                    if(erroPonto[i] === agentPontoMapa[j]){
+                                      $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                                    }
+                                }
                               }
                             }
                             if(erroEntidade.length > 0){
@@ -809,6 +808,74 @@
         }
     ]);
 
+
+    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http){
+            var params_obrigatorios_responsavel = {
+                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora',
+                'rcv_tipo': 'EQ(responsavel)'
+            };
+            $http.get("/api/agent/find", {
+              params: params_obrigatorios_responsavel
+              }).success(function(data){
+                var cadastro = data;
+                for(var i = 0; i < data.length; i++){
+                  var params_obrigatorios_ponto = {
+                      '@select': 'parent.id,name,shortDescription,cep,tem_sede,geoEstado,geoMunicipio,En_Bairro,pais,En_Nome_Logradouro,'+
+                      'En_Num,location,atividadesEmRealizacaoLink',
+                      '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
+                      'rcv_tipo':'EQ(ponto)',
+                      'parent': 'EQ('+data[i]['id']+')'
+
+                  };
+                  var params_obrigatorios_entidade = {
+                      '@select':  'parent.id,tipoOrganizacao,responsavel_nome,responsavel_cargo,responsavel_email,responsavel_telefone,'+
+                                  'responsavel_operadora,En_Bairro,En_Num,En_Nome_Logradouro,cnpj,representanteLegal,',
+                      'rcv_tipo':'EQ(entidade)',
+                      'parent': 'EQ('+data[i]['id']+')'
+                  };
+                  /*$http.get("/api/agent/find", {
+                    params: params_obrigatorios_ponto
+                  }).success(function(data){
+                      var dataPonto = data;
+                      angular.extend(cadastro[i-1], dataPonto[i-1]);
+                  });
+
+                  $http.get("/api/agent/find", {
+                    params: params_obrigatorios_entidade
+                    }).success(function(data){
+                      var dataEntidade = data;
+                      angular.extend(cadastro[i-1], dataEntidade[i-1]);
+                  });*/
+                  $scope.getEntidadePonto(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i);
+                }
+                $scope.data = cadastro;
+            });
+            $scope.getEntidadePonto = function(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i){
+              $http.get("/api/agent/find", {
+                params: params_obrigatorios_ponto
+                }).success(function(data){
+                  var dataPonto = data;
+                  angular.extend(cadastro[i], dataPonto[i]);
+                  $http.get("/api/agent/find", {
+                    params: params_obrigatorios_entidade
+                    }).success(function(data){
+                      var dataEntidade = data;
+                      angular.extend(cadastro[i], dataEntidade[i]);
+                      if(i === cadastro.length-1)
+                        $scope.exportXls();
+                      return cadastro;
+                  });
+              });
+            };
+            $scope.exportXls = function(){
+              /*var blob = new Blob([document.getElementById('table').innerHTML], {
+                      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+                  });
+              saveAs(blob, "Tabela.xls");*/
+            };
+    }]);
+
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
         $scope.data = {
             naoEncontrouCNPJ: false,
@@ -846,6 +913,8 @@
                         $scope.data.buscandoCNPJ = false;
                     });
         };
+
+
 
         $scope.registrar = function(){
             var data = {};

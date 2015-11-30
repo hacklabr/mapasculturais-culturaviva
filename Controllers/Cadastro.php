@@ -164,7 +164,7 @@ class Cadastro extends \MapasCulturais\Controller{
         }
 
 
-        if($agent->foiFomentado){
+        /*if($agent->foiFomentado){
             $required_properties[] = 'tipoFomento';
             if($agent->tipoFomento === 'outros'){
                 $required_properties[] = 'tipoFomentoOutros';
@@ -191,7 +191,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $required_properties[] = 'edital_projeto_vigencia_inicio';
             $required_properties[] = 'edital_projeto_vigencia_fim';
 
-        }
+        }*/
 
         return $required_properties;
     }
