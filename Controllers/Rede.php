@@ -21,4 +21,9 @@ class Rede extends \MapasCulturais\Controller{
     function GET_faq(){
         $this->render('faq');
     }
+
+   function GET_consulta(){
+        $this->requireAuthentication();
+        $this->render('consulta');
+    }
 }

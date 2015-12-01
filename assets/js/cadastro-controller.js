@@ -2,6 +2,35 @@
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
 
+    var agentsChave = [     "Responsvel nome",
+                            "Responsvel CPF",
+                            "Responsavel email",
+                            "Responsavel telefone",
+                            "Responsavel operadora",
+                            "Relação ponto",
+                            "Tipo de Organização",
+                            "Tipo de ponto desejado",
+                            "CNPJ da entidade",
+                            "Representante legal",
+                            "Entidade responsvel nome",
+                            "Cargo do responsvel",
+                            "Email do responsavel",
+                            "Entidade responsavel telefone",
+                            "Entidade responsavel operadora",
+                            "Nome do ponto",
+                            "Descrição do ponto",
+                            "Ponto país",
+                            "Ponto estado",
+                            "Ponto cidade",
+                            "Ponto bairro",
+                            "Ponto rua",
+                            "Ponto numero",
+                            "Ponto CEP",
+                            "Ponto sede",
+                            "Localização",
+                            "Link portifolio"
+                             ];
+
     var agentsPontoDados = ["name",
                         "nomeCompleto",
                         "cnpj",
@@ -800,17 +829,18 @@
 
     app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
         function($scope, Entity, MapasCulturais, $timeout, $location, $http){
+            $scope.chaveDado = agentsChave;
             var params_obrigatorios_responsavel = {
                 '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora',
                 'rcv_tipo': 'EQ(responsavel)'
             };
             $http.get("/api/agent/find", {
               params: params_obrigatorios_responsavel
-              }).success(function(data){
+            }).success(function(data){
                 var cadastro = data;
                 for(var i = 0; i < data.length; i++){
                   var params_obrigatorios_ponto = {
-                      '@select': 'parent.id,name,shortDescription,cep,tem_sede,geoEstado,geoMunicipio,En_Bairro,pais,En_Nome_Logradouro,'+
+                      '@select': 'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
                       'En_Num,location,atividadesEmRealizacaoLink',
                       '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                       'rcv_tipo':'EQ(ponto)',
@@ -818,8 +848,8 @@
 
                   };
                   var params_obrigatorios_entidade = {
-                      '@select':  'parent.id,tipoOrganizacao,responsavel_nome,responsavel_cargo,responsavel_email,responsavel_telefone,'+
-                                  'responsavel_operadora,En_Bairro,En_Num,En_Nome_Logradouro,cnpj,representanteLegal,',
+                      '@select':  'parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,responsavel_cargo,responsavel_email,responsavel_telefone,'+
+                                  'responsavel_operadora,representanteLegal,',
                       'rcv_tipo':'EQ(entidade)',
                       'parent': 'EQ('+data[i]['id']+')'
                   };
@@ -839,6 +869,7 @@
                   $scope.getEntidadePonto(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i);
                 }
                 $scope.data = cadastro;
+                $scope.quantidade = data.length;
             });
             $scope.getEntidadePonto = function(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i){
               $http.get("/api/agent/find", {
@@ -852,16 +883,15 @@
                       var dataEntidade = data;
                       angular.extend(cadastro[i], dataEntidade[i]);
                       if(i === cadastro.length-1)
-                        $scope.exportXls();
                       return cadastro;
                   });
               });
             };
             $scope.exportXls = function(){
-              /*var blob = new Blob([document.getElementById('table').innerHTML], {
+              var blob = new Blob([document.getElementById('table').innerHTML], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
                   });
-              saveAs(blob, "Tabela.xls");*/
+              saveAs(blob, "Tabela.xls");
             };
     }]);
 
