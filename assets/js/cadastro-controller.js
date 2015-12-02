@@ -2,6 +2,35 @@
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
 
+    var agentsChave = [     "Responsvel nome",
+                            "Responsvel CPF",
+                            "Responsavel email",
+                            "Responsavel telefone",
+                            "Responsavel operadora",
+                            "Relação ponto",
+                            "Tipo de Organização",
+                            "Tipo de ponto desejado",
+                            "CNPJ da entidade",
+                            "Representante legal",
+                            "Entidade responsvel nome",
+                            "Cargo do responsvel",
+                            "Email do responsavel",
+                            "Entidade responsavel telefone",
+                            "Entidade responsavel operadora",
+                            "Nome do ponto",
+                            "Descrição do ponto",
+                            "Ponto país",
+                            "Ponto estado",
+                            "Ponto cidade",
+                            "Ponto bairro",
+                            "Ponto rua",
+                            "Ponto numero",
+                            "Ponto CEP",
+                            "Ponto sede",
+                            "Localização",
+                            "Link portifolio"
+                             ];
+
     var agentsPontoDados = ["name",
                         "nomeCompleto",
                         "cnpj",
@@ -27,26 +56,18 @@
                       ];
 
 
-    var agentPontoFinanciamento = [
-                        "tipoCertificacao",
-                        "foiFomentado",
-                        "tipoFomento",
-                        "tipoFomentoOutros",
-                        "tipoReconhecimento",
-                        "edital_num",
-                        "edital_ano",
-                        "edital_projeto_nome",
-                        "edital_localRealizacao",
-                        "edital_projeto_etapa",
-                        "edital_proponente",
-                        "edital_projeto_resumo",
-                        "edital_prestacaoContas_envio",
-                        "edital_prestacaoContas_status",
-                        "edital_projeto_vigencia_inicio",
-                        "edital_projeto_vigencia_fim",
-                        "outrosFinanciamentos",
-                        "outrosFinanciamentos_descricao",
-                        "rcv_Ds_Edital"
+    var agentPontoMapa = [
+                        "name",
+                        "shortDescription",
+                        "cep",
+                        "tem_sede",
+                        "geoEstado",
+                        "geoMunicipio",
+                        "En_Bairro",
+                        "pais",
+                        "En_Nome_Logradouro",
+                        "En_Num",
+                        "location",
                       ];
 
     var termos = {
@@ -417,10 +438,17 @@
                               $scope.data.mostrarErroResponsavel = "responsavel";
                             }
                             if(erroPonto.length > 0){
-                              if((erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1) || (erroPonto.indexOf("atividadesEmRealizacao") !== -1)){
+                              if(erroPonto.indexOf("atividadesEmRealizacaoLink") !== -1){
                                 $scope.data.mostrarErroPonto = "ponto_portifolio";
-                              }else{
-                                $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                              }
+                              var i;
+                              var j;
+                              for(i = 0; i < erroPonto.length; i++){
+                                for(j = 0; j < agentPontoMapa.length; j++){
+                                    if(erroPonto[i] === agentPontoMapa[j]){
+                                      $scope.data.mostrarErroPontoMapa = "ponto_mapa";
+                                    }
+                                }
                               }
                             }
                             if(erroEntidade.length > 0){
@@ -800,85 +828,71 @@
 
     app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
         function($scope, Entity, MapasCulturais, $timeout, $location, $http){
-            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
-            var agent_id_ponto = MapasCulturais.redeCulturaViva.agentePonto;
-            var agent_id_individual = MapasCulturais.redeCulturaViva.agenteIndividual;
-
-            var params_entidade = {
-                'id': agent_id_entidade,
-
-                '@select': 'id,rcv_tipo,tipoCertificacao,foiFomentado,tipoFomento,tipoFomentoOutros,tipoReconhecimento,edital_num,' +
-                    'edital_ano,edital_projeto_nome,edital_localRealizacao,edital_projeto_etapa,edital_proponente,' +
-                    'edital_projeto_resumo,edital_prestacaoContas_envio,edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
-                    'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao,rcv_Ds_Edital,' +
-                    'rcv_tipo,name,nomeCompleto,cnpj,representanteLegal,tipoPontoCulturaDesejado,tipoOrganizacao,emailPrivado,' +
-                    'telefone1,telefone1_operadora,telefone2,telefone2_operadora,responsavel_nome,responsavel_email,responsavel_cargo,' +
-                    'responsavel_telefone,geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
-                '@permissions': 'view'
+            $scope.chaveDado = agentsChave;
+            var params_obrigatorios_responsavel = {
+                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora',
+                'rcv_tipo': 'EQ(responsavel)'
             };
-
-            var params_ponto = {
-                'id': agent_id_ponto,
-                '@select': 'id,rcv_tipo,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
-                    'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
-                    'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                    'metodologia1_cargaHoraria,metodologia1_certificacao,pontoOutrosRecursosRede,pontoNumPessoasNucleo,pontoNumPessoasColaboradores,' +
-                    'pontoNumPessoasIndiretas,pontoNumPessoasParceiros,pontoNumPessoasApoiadores,pontoNumRedes,pontoContrataServicosOutros' +
-                    'pontoRedesDescricao,pontoMovimentos,pontoEconomiaSolidaria,pontoEconomiaSolidariaDescricao,pontoCustoAnual' +
-                    'pontoEconomiaCultura,pontoEconomiaCulturaDescricao,pontoMoedaSocial,pontoMoedaSocialDescricao,pontoInvestColetivosOutros' +
-                    'pontoTrocasServicos,pontoTrocasServicosOutros,pontoContrataServicos,pontoInvestimentosColetivos,participacaoMovPolitico,' +
-                    'participacaoForumCultura,parceriaPoderPublico, simMovimentoPoliticoCultural, simForumCultural, simPoderPublico,name,shortDescription,'+
-                    'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,mesmoEndereco,pais,geoEstado,'+
-                    'localRealizacao_cidade,localRealizacao_espaco,location,cep,tem_sede,sede_realizaAtividades,geoMunicipio,files' +
-                    'longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
-                '@permissions': 'view'
-            };
-
-            var params_individual = {
-                'id': agent_id_individual,
-                '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,'+
-                           'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,instagram,mesmoEndereco'+
-                           'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,' +
-                           'singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,shortDescription'+
-                           'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,termos_de_uso'+
-                           'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
-                '@permissions': 'view'
-            };
-
-            var params_obrigatorios = {
-                '@select': 'id,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora,'+
-                            'name,nomeCompleto,cnpj,representanteLegal,tipoPontoCulturaDesejado,tipoOrganizacao,' +
-                            'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
-                            'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
-                            'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,'+
-                            'name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,pais,geoEstado,geoMunicipio,'+
-                            'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
-                            'localRealizacao_cidade,localRealizacao_espaco,location,atividadesEmRealizacaoLink,portifolio',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
-                'rcv_tipo':'!NULL()'
-            };
-
-            $scope.agent_id_ponto = Entity.get(params_ponto);
-
-            $scope.agent_id_entidade = Entity.get(params_entidade);
-
-            $scope.agent_id_individual = Entity.get(params_individual);
-
             $http.get("/api/agent/find", {
-              params: params_obrigatorios
-              }).success(function(data){
+              params: params_obrigatorios_responsavel
+            }).success(function(data){
+                var cadastro = data;
+                for(var i = 0; i < data.length; i++){
+                  var params_obrigatorios_ponto = {
+                      '@select': 'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
+                      'En_Num,location,atividadesEmRealizacaoLink',
+                      '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
+                      'rcv_tipo':'EQ(ponto)',
+                      'parent': 'EQ('+data[i]['id']+')'
 
-              $scope.data = data;
-              $scope.data.forEach(function(elemento,index,array){
-                if($scope.agent_id_ponto[elemento]){
-                  $scope.dataPonto = data;
+                  };
+                  var params_obrigatorios_entidade = {
+                      '@select':  'parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,responsavel_cargo,responsavel_email,responsavel_telefone,'+
+                                  'responsavel_operadora,representanteLegal,',
+                      'rcv_tipo':'EQ(entidade)',
+                      'parent': 'EQ('+data[i]['id']+')'
+                  };
+                  /*$http.get("/api/agent/find", {
+                    params: params_obrigatorios_ponto
+                  }).success(function(data){
+                      var dataPonto = data;
+                      angular.extend(cadastro[i-1], dataPonto[i-1]);
+                  });
+
+                  $http.get("/api/agent/find", {
+                    params: params_obrigatorios_entidade
+                    }).success(function(data){
+                      var dataEntidade = data;
+                      angular.extend(cadastro[i-1], dataEntidade[i-1]);
+                  });*/
+                  $scope.getEntidadePonto(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i);
                 }
+                $scope.data = cadastro;
+                $scope.quantidade = data.length;
             });
-        }
-    ]);
+            $scope.getEntidadePonto = function(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i){
+              $http.get("/api/agent/find", {
+                params: params_obrigatorios_ponto
+                }).success(function(data){
+                  var dataPonto = data;
+                  angular.extend(cadastro[i], dataPonto[i]);
+                  $http.get("/api/agent/find", {
+                    params: params_obrigatorios_entidade
+                    }).success(function(data){
+                      var dataEntidade = data;
+                      angular.extend(cadastro[i], dataEntidade[i]);
+                      if(i === cadastro.length-1)
+                      return cadastro;
+                  });
+              });
+            };
+            $scope.exportXls = function(){
+              var blob = new Blob([document.getElementById('table').innerHTML], {
+                      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+                  });
+              saveAs(blob, "Tabela.xls");
+            };
+    }]);
 
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
         $scope.data = {
@@ -907,6 +921,8 @@
                         }
                     });
         };
+
+
 
         $scope.registrar = function(){
             var data = {};
