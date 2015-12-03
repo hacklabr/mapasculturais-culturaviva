@@ -492,7 +492,7 @@
                     validation: 'image/(p?jpeg|png)'
                 },
                 pdf: {
-                    maxUploadSize: '8MB',
+                    maxUploadSize: '20MB',
                     validation: 'application/pdf'
                 }
             };
@@ -882,6 +882,7 @@
                     }).success(function(data){
                       var dataEntidade = data;
                       angular.extend(cadastro[i], dataEntidade[i]);
+                      console.log(cadastro[i]);
                       if(i === cadastro.length-1)
                       return cadastro;
                   });
