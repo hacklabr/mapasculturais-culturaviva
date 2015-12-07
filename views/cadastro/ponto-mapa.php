@@ -42,7 +42,7 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu ponto e atrarir o interesse do público.'>?</i></span>
+                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu ponto e atrair o interesse do público.'>?</i></span>
                 <textarea name="shortDescription" max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
@@ -60,7 +60,7 @@
             </label>
 
             <label class="colunm1">
-                <span class="destaque">O pontão tem sede própria*</span>
+                <span class="destaque">O pontão tem sede própria?*</span>
                 <select name="tem_sede" ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
                     <option></option>
                     <option value="1" ng-value="1">Sim</option>
@@ -88,7 +88,7 @@
 
         <div class="row">
             <span class="colunm1">
-                <span class="destaque">Endereço* <i class='hltip' title='Caso não tenham uma sede, coloque o endereço de referêrncia do Ponto de Cultura'>?</i></span>
+                <span class="destaque">Endereço* <i class='hltip' title='Caso não tenha uma sede, coloque o endereço de referêrncia do Ponto de Cultura'>?</i></span>
             </span>
         </div>
 

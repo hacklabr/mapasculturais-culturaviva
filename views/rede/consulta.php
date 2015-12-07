@@ -3,23 +3,23 @@
 ?>
 <style>
 table, th , td  {
-  border: 6px solid #999999;
   border-collapse: collapse;
   padding: 5px;
 }
-table tr:nth-child(odd)	{
-  background-color: #CCCCCC;
-}
-table tr:nth-child(even) {
-  background-color: #FFFFFF;
-}
 
-table{
-  border-radius: 20px;
+table tr:nth-child(odd)	td{
+  background-color: #D1D2D4;
+}
+table tr:nth-child(even) td{
+  background-color: #FFFFFF;
 }
 
 td{
   min-width: 100px;
+  max-width: 300px;
+  padding: 10px;
+  border: 6px solid rgba(153, 153, 153, 0.3);
+  background-clip: padding-box;
 }
 
 section{
@@ -27,9 +27,10 @@ section{
   max-width: 100%;
 }
 
+
 #topo{
   position: fixed;
-  margin-top: -140px;
+  margin-top: -133px;
   height: 80px;
   width: 100%;
   font-family: "Open Sans",Helvetica,Arial,sans-serif;
@@ -37,7 +38,7 @@ section{
 
 #topo1{
   height: 70%;
-  background: #1f1fa8;
+  background: #075579;
 
 }
 
@@ -54,21 +55,18 @@ section{
 }
 
 #topo2{
-  height: 30%;
-  background: #c6c6e1;
+  height: 10%;
+  background: #D1D2D4;
+  /*opacity: 0.3;*/
 }
 
 #registros{
   position: absolute;
   margin-top: 10px;
-  margin-left: 5px;
-  font-size: 12px;
+  margin-left: 15px;
+  font-size: 17px;
   font-weight: normal;
 
-}
-
-#divisao{
-  margin-left: 8px;
 }
 
 #Exportar{
@@ -81,12 +79,21 @@ section{
 #container_table{
   height: auto;
   width: 3600px;
-  border: 60px solid #999999;
-  margin: 130px 0 0 80px;
+  border: 60px solid rgba(153, 153, 153, 0.3);
+  border-radius: 10px;
+  margin: 100px 0 0 80px;
 }
 
 #table{
   margin: 0px;
+  color: #414042;
+}
+
+#Cabecalho{
+  font-size: 14px;
+  font-weight: bold;
+  background: #a7a9ac;
+  background-clip: padding-box;
 }
 
 input{
@@ -171,8 +178,8 @@ a{
 <div ng-controller="ConsultaCtrl">
     <div id="topo">
       <div id="topo1">
-        <span id="registros" style="color: #FFFFFF;">Quantidade de Registros: {{quantidade}}<font id="divisao" color="#FFFFFF">|</font></span>
-        <label id="Exportar"><p style="color: #FFFFFF;">Exportar planilha:<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
+        <span id="registros" style="color: #FFFFFF;">Quantidade de registros: {{quantidade}}</span>
+        <label id="Exportar"><p style="color: #FFFFFF;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
       </div>
       <div id="topo2">
     </div>
@@ -181,7 +188,7 @@ a{
     <table id="table">
         <thead>
           <tr>
-            <td ng-repeat="key in chaveDado">{{key}}</td>
+            <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td>
           </tr>
         </thead>
         <tbody>

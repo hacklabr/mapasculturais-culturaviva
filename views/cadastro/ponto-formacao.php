@@ -52,7 +52,7 @@
                 <textarea ng-blur="save_field('formador1_bio')" ng-model="agent.formador1_bio"></textarea>
             </label>
             <div class="colunm-full">
-                <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
+                <span class="destaque redessociais">Seu perfil nas redes sociais: <i class='hltip' title='Caso possua um perfil nas redes sociais abaixo coloque o link do perfil'>?</i></span>
             </div>
             <label class="colunm-redes facebook">
                 <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>

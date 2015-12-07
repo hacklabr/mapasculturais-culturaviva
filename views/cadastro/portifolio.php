@@ -13,7 +13,7 @@
     <div class="form">
         <h4>Informações Obrigatórias</h4>
         <div class="row" ng-controller="ImageUploadCtrl">
-            <span class="destaque espacoleft">Atividades já realizadas* <i class='hltip' title='Nos ajude a entender o histórico de seu Ponto de Cultura e as atividades desenvolvidas.'>?</i></span>
+            <span class="destaque espacoleft">Atividades já realizadas* <i class='hltip' title='Nos ajude a entender o histórico de seu Ponto de Cultura e as atividades desenvolvidas nele.'>?</i></span>
             <div class="colunm-20">
                 <div class="file-item">
                     <a ng-if="agent.files.portifolio" href="#" class="exclui" ng-click="deleteFile(agent.files.portifolio)" title="Excluir Portfólio">x</a>
@@ -162,7 +162,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Conte um pouco sobre a história do ponto de Cultura (800 caracteres) <i>?</i>  </span>
+                <span class="destaque">Conte um pouco sobre a história do ponto de Cultura (800 caracteres) <i class='hltip' title='Nos diga um pouco mais sobre o ponto de cultura, como por exemplo como ele começou e como surgiu a idéia'>?</i>  </span>
                 <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
             </label>
 
