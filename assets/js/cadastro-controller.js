@@ -899,7 +899,7 @@
                 $scope.quantidade = arrayResponsavel.length;
             });
             $scope.exportXls = function(){
-              var blob = new Blob([document.getElementById('table').innerHTML], {
+              var blob = new Blob([document.getElementById('container_table').innerHTML], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
                   });
               saveAs(blob, "Tabela.xls");
