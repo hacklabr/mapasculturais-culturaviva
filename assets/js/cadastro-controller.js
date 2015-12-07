@@ -2,33 +2,33 @@
     'use strict';
     var app = angular.module('culturaviva.controllers', []);
 
-    var agentsChave = [     "Responsvel nome",
-                            "Responsvel CPF",
-                            "Responsavel email",
-                            "Responsavel telefone",
-                            "Responsavel operadora",
-                            "Relação ponto",
-                            "Tipo de Organização",
+    var agentsChave = [     "Nome do responsável",
+                            "CPF do responsável",
+                            "E-mail do responsável",
+                            "Telefone do responsável",
+                            "Operadora do responsável",
+                            "Relação com o ponto",
+                            "Tipo de organização",
                             "Tipo de ponto desejado",
                             "CNPJ da entidade",
                             "Representante legal",
-                            "Entidade responsvel nome",
-                            "Cargo do responsvel",
-                            "Email do responsavel",
-                            "Entidade responsavel telefone",
-                            "Entidade responsavel operadora",
+                            "Nome da entidade responsável",
+                            "Cargo do responsável",
+                            "E-mail do responsável pelo ponto",
+                            "Telefone da entidade responsável",
+                            "Operadora da entidade responsável",
                             "Nome do ponto",
                             "Descrição do ponto",
-                            "Ponto país",
-                            "Ponto estado",
-                            "Ponto cidade",
-                            "Ponto bairro",
-                            "Ponto rua",
-                            "Ponto numero",
-                            "Ponto CEP",
-                            "Ponto sede",
-                            "Localização",
-                            "Link portifolio"
+                            "País onde está o ponto",
+                            "Estado onde está o ponto",
+                            "Cidade onde está o ponto",
+                            "Bairro onde está o ponto",
+                            "Rua onde está o ponto",
+                            "Número do ponto",
+                            "CEP do ponto",
+                            "Sede do ponto",
+                            "Localização do ponto",
+                            "Link do portfólio"
                              ];
 
     var agentsPontoDados = ["name",
@@ -827,73 +827,84 @@
     ]);
 
 
-    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
-        function($scope, Entity, MapasCulturais, $timeout, $location, $http){
+    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
             $scope.chaveDado = agentsChave;
-            var params_obrigatorios_responsavel = {
-                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora',
-                'rcv_tipo': 'EQ(responsavel)'
+            var params_obrigatorios = {
+                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora,rcv_tipo,rcv_tipo,'+
+                            'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
+                            'En_Num,location,atividadesEmRealizacaoLink,parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,'+
+                            'responsavel_cargo,responsavel_email,responsavel_telefone,responsavel_operadora,representanteLegal',
+                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
+                'rcv_tipo': 'OR(EQ(responsavel),EQ(entidade),EQ(ponto))',
             };
             $http.get("/api/agent/find", {
-              params: params_obrigatorios_responsavel
+              params: params_obrigatorios
             }).success(function(data){
-                var cadastro = data;
-                for(var i = 0; i < data.length; i++){
-                  var params_obrigatorios_ponto = {
-                      '@select': 'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
-                      'En_Num,location,atividadesEmRealizacaoLink',
-                      '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
-                      'rcv_tipo':'EQ(ponto)',
-                      'parent': 'EQ('+data[i]['id']+')'
+              var agente = data;
+              var arrayResponsavel = [];
+              var arrayPonto = [];
+              var arrayEntidade = [];
 
-                  };
-                  var params_obrigatorios_entidade = {
-                      '@select':  'parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,responsavel_cargo,responsavel_email,responsavel_telefone,'+
-                                  'responsavel_operadora,representanteLegal,',
-                      'rcv_tipo':'EQ(entidade)',
-                      'parent': 'EQ('+data[i]['id']+')'
-                  };
-                  /*$http.get("/api/agent/find", {
-                    params: params_obrigatorios_ponto
-                  }).success(function(data){
-                      var dataPonto = data;
-                      angular.extend(cadastro[i-1], dataPonto[i-1]);
-                  });
+              for(var i=0; i <  data.length; i++){
+                  if(agente[i].rcv_tipo === "responsavel"){
+                    arrayResponsavel.push(agente[i]);
+                  }
+              }
 
-                  $http.get("/api/agent/find", {
-                    params: params_obrigatorios_entidade
-                    }).success(function(data){
-                      var dataEntidade = data;
-                      angular.extend(cadastro[i-1], dataEntidade[i-1]);
-                  });*/
-                  $scope.getEntidadePonto(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i);
+              for(var i=0; i <  data.length; i++){
+                  if(agente[i].rcv_tipo === "ponto"){
+                    arrayPonto.push(agente[i]);
+                  }
+              }
+
+              for(var i=0; i <  data.length; i++){
+                  if(agente[i].rcv_tipo === "entidade"){
+                    arrayEntidade.push(agente[i]);
+                  }
+              }
+
+              for(var i=0; i <  arrayResponsavel.length; i++){
+                  for(var j=0; j <  arrayPonto.length; j++){
+                    for(var k=0; k <  arrayEntidade.length; k++){
+                      if((arrayResponsavel[i].id === arrayPonto[j].parent.id) & (arrayResponsavel[i].id === arrayEntidade[k].parent.id)){
+                        arrayResponsavel[i].name = arrayPonto[j].name;
+                        arrayResponsavel[i].shortDescription = arrayPonto[j].shortDescription;
+                        arrayResponsavel[i].cep = arrayPonto[j].cep;
+                        arrayResponsavel[i].tem_sede = arrayPonto[j].tem_sede;
+                        arrayResponsavel[i].pais = arrayPonto[j].pais;
+                        arrayResponsavel[i].geoEstado = arrayPonto[j].geoEstado;
+                        arrayResponsavel[i].geoMunicipio = arrayPonto[j].geoMunicipio;
+                        arrayResponsavel[i].En_Bairro = arrayPonto[j].En_Bairro;
+                        arrayResponsavel[i].En_Nome_Logradouro = arrayPonto[j].En_Nome_Logradouro;
+                        arrayResponsavel[i].En_Num = arrayPonto[j].En_Num;
+                        arrayResponsavel[i].location = arrayPonto[j].location;
+                        arrayResponsavel[i].atividadesEmRealizacaoLink = arrayPonto[j].atividadesEmRealizacaoLink;
+                        arrayResponsavel[i].tipoOrganizacao = arrayEntidade[k].tipoOrganizacao;
+                        arrayResponsavel[i].tipoPontoCulturaDesejado = arrayEntidade[k].tipoPontoCulturaDesejado;
+                        arrayResponsavel[i].cnpj = arrayEntidade[k].cnpj;
+                        arrayResponsavel[i].responsavel_nome = arrayEntidade[k].responsavel_nome;
+                        arrayResponsavel[i].responsavel_cargo = arrayEntidade[k].responsavel_cargo;
+                        arrayResponsavel[i].responsavel_email = arrayEntidade[k].responsavel_email;
+                        arrayResponsavel[i].responsavel_telefone = arrayEntidade[k].responsavel_telefone;
+                        arrayResponsavel[i].responsavel_operadora = arrayEntidade[k].responsavel_operadora;
+                        arrayResponsavel[i].representanteLegal = arrayEntidade[k].representanteLegal;
+                      }
+                    }
+                  }
                 }
-                $scope.data = cadastro;
-                $scope.quantidade = data.length;
+
+
+                $scope.data = arrayResponsavel;
+                $scope.quantidade = arrayResponsavel.length;
             });
-            $scope.getEntidadePonto = function(cadastro, params_obrigatorios_ponto, params_obrigatorios_entidade, i){
-              $http.get("/api/agent/find", {
-                params: params_obrigatorios_ponto
-                }).success(function(data){
-                  var dataPonto = data;
-                  angular.extend(cadastro[i], dataPonto[i]);
-                  $http.get("/api/agent/find", {
-                    params: params_obrigatorios_entidade
-                    }).success(function(data){
-                      var dataEntidade = data;
-                      angular.extend(cadastro[i], dataEntidade[i]);
-                      console.log(cadastro[i]);
-                      if(i === cadastro.length-1)
-                      return cadastro;
-                  });
-              });
-            };
             $scope.exportXls = function(){
               var blob = new Blob([document.getElementById('table').innerHTML], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
                   });
               saveAs(blob, "Tabela.xls");
             };
+
     }]);
 
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
