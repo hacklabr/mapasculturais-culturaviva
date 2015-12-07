@@ -38,7 +38,7 @@
         <div ng-show="agent.tipoOrganizacao==='coletivo'">
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque">Nome do Coletivo Cultura* <i>?</i>
+                    <span class="destaque">Nome do Coletivo Cultura* <i class='hltip' title='Nome dado ao grupo que compõe o coletivo cultural'>?</i>
                     </span>
                     <input name="name" type="text" ng-blur="save_field('name')" ng-model="agent.name">
                 </label>
@@ -69,12 +69,12 @@
                 <div class="clear"></div>
                 <div class="row">
                     <label class="colunm-50">
-                        <span class="destaque">Nome do Representante Legal* <i class='hltip' title='Pessoa que está habilitada juridicamente a representar a Entidade'>?</i></span>
+                        <span class="destaque">Nome do Representante Legal* <i class='hltip' title='Pessoa que está habilitada juridicamente a representar a entidade'>?</i></span>
                         <input name="representanteLegal" type="text" ng-blur="save_field('representanteLegal')" ng-model="agent.representanteLegal" >
                     </label>
 
                     <label class="colunm-50">
-                        <span class="destaque">Nome Fantasia* <i class='hltip' title='Nome da Entidade, tal como se reconhece e é reconhecida junto à comunidade'>?</i></span>
+                        <span class="destaque">Nome Fantasia* <i class='hltip' title='Nome da entidade, tal como se reconhece e é reconhecida junto à comunidade'>?</i></span>
                         </span>
                         <div ng-messages="agent.name.$error" style="color:maroon" role="alert">
                             <div ng-message="required">You did not enter a field</div>
@@ -166,7 +166,7 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço da Entidade* <i class='hltip' title='Refere-se ao endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
+                <span class="destaque">Endereço da Entidade* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>
