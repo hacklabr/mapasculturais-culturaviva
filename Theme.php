@@ -129,6 +129,7 @@ class Theme extends BaseV1\Theme{
     protected function _enqueueStyles(){
         $this->enqueueStyle('culturaviva', 'circle', 'css/circle.css');
         $this->enqueueStyle('culturaviva', 'fonts-culturavivaiicon', 'css/fonts-icon-culturaviva.css');
+        $this->enqueueStyle('culturaviva', 'ngProgress', 'css/ngProgress.css');
     }
 
     protected function _enqueueScripts(){
@@ -143,6 +144,7 @@ class Theme extends BaseV1\Theme{
 
         $this->enqueueScript('culturaviva', 'cadastro-culturaviva', 'js/culturaviva.js');
         $this->enqueueScript('culturaviva', 'FileSaver', 'js/FileSaver.min.js');
+        $this->enqueueScript('culturaviva', 'ngProgressJs', 'js/ngprogress.min.js');
 
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
     }

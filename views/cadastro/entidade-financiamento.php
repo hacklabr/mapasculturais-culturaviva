@@ -16,8 +16,8 @@
 
         <div class="row">
             <div class="colunm-50">
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC <i Marque caso você tenha recebido algum recurso direto do MinC>?</i></span>
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC <i>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC <i class='hltip' title='Marque caso você tenha recebido algum recurso direto do MinC'>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC <i class='hltip' title='Marque SIM se o coletivo cultural ja recebeu algum recurso do MiniC'>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
                            name="foiFomentado"
@@ -128,7 +128,7 @@
 
                 <label class="colunm-50">
 
-                    <span class="destaque">Local de Realização <i>?</i></span>
+                    <span class="destaque">Local de Realização <i class='hltip' title='Local onde o projeto foi realizado'>?</i></span>
                     <input name="edital_localRealizacao" type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="agent.locationrealization">
                         <option value="AC">Acre</option>
@@ -147,7 +147,7 @@
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
-                    <span class="destaque">Resumo do projeto (objeto) <i>?</i></span>
+                    <span class="destaque">Resumo do projeto (objeto) <i class='hltip' title='Um breve resumo do que foi realizado no projeto (como foi feito, qual o objetivo,etc..)'>?</i></span>
                     <textarea name="edital_projeto_resumo" ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
@@ -190,7 +190,7 @@
             <div class="clear"></div>-->
             <div class="row">
                 <div class="colunm-50">
-                    <span class="destaque">Etapa do Projeto <i>?</i></span>
+                    <span class="destaque">Etapa do Projeto <i class='hltip' title='Se o projeto mencionado ainda estiver em andamento marque Em Execução'>?</i></span>
                     <label class="label-radio"><input type="radio"
                                                      name="etapaprojeto"
                                                      value="emexecucao"
@@ -207,7 +207,7 @@
             <div ng-show="agent.edital_projeto_etapa==='executado'">
                 <div class="row">
                     <div class="colunm-50">
-                        <span class="destaque">Prestação de Contas <i>?</i></span>
+                        <span class="destaque">Prestação de Contas <i class='hltip' title=''>?</i></span>
                         <label class="label-radio"><input type="radio"
                                                          name="edital_prestacaoContas_envio"
                                                          value="enviada"
@@ -262,7 +262,7 @@
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
-                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc) <i>?</i></span>
+                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc) <i class='hltip' title='Se recebeu mais algum outro financiamento do Minc, seja ele de qualquer tipo marque sim'>?</i></span>
                     <label class="label-radio">
                         <input type="radio"
                                name="financiamentos"
