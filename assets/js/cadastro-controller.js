@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    var app = angular.module('culturaviva.controllers', []);
+    var app = angular.module('culturaviva.controllers', ['ngProgress']);
 
     var agentsChave = [     "Nome do responsável",
                             "CPF do responsável",
@@ -399,6 +399,18 @@
           });
         }
     }
+
+    /*app.controller("emailController", ["$scope", "$http", function($scope, $http) {
+      this.send = function() {
+          $http.post('index.php', {
+              email : 'email',
+              subject : 'Teste Assunto',
+              message : 'Teste'
+            }).success(function(data){
+              console.log(data);
+            });
+          };
+      }]);*/
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
         function($scope, Entity, MapasCulturais, $http, $timeout){
@@ -826,8 +838,11 @@
         }
     ]);
 
-    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
-        function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q', 'ngProgressFactory',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q, ngProgressFactory){
+            $scope.progressbar = ngProgressFactory.createInstance();
+            $scope.progressbar.setColor('#fff');
+            $scope.progressbar.start();
             $scope.chaveDado = agentsChave;
             var params_obrigatorios = {
                 '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora,rcv_tipo,rcv_tipo,'+
@@ -897,6 +912,8 @@
                 $scope.data = arrayResponsavel;
                 $scope.quantidade = arrayResponsavel.length;
             });
+
+            $scope.progressbar.complete();
             $scope.exportXls = function(){
               var blob = new Blob([document.getElementById('container_table').innerHTML], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"

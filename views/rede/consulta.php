@@ -27,17 +27,21 @@ section{
   max-width: 100%;
 }
 
+i{
+  margin-right: 8px;
+  font-size: 25px;
+}
 
 #topo{
   position: fixed;
   margin-top: -133px;
-  height: 80px;
+  height: 100px;
   width: 100%;
   font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
 
 #topo1{
-  height: 70%;
+  height: 40%;
   background: #075579;
 
 }
@@ -55,16 +59,27 @@ section{
 }
 
 #topo2{
-  height: 10%;
-  background: #D1D2D4;
+  height: 50%;
+  background: #D1D2D4;;
   /*opacity: 0.3;*/
+}
+
+#btn_voltar, a{
+  margin-left: 8px;
+  margin-top: 4px;
+  color: #D1D2D4;
+  float: left;
+}
+
+#btn_voltar, a:hover{
+  color: #fff;
 }
 
 #registros{
   position: absolute;
   margin-top: 10px;
   margin-left: 15px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
 
 }
@@ -74,14 +89,21 @@ section{
   margin-top: 12px;
   margin-right: 20px;
   width: 180px;
+  color: #075579;
+  font-weight: normal;
 }
 
 #container_table{
   height: auto;
-  width: 3600px;
+  width: -moz-fit-content;
   border: 60px solid rgba(153, 153, 153, 0.3);
   border-radius: 10px;
   margin: 100px 0 0 80px;
+}
+
+#EstiloIEContainer{
+  display: -ms-grid;
+  -ms-grid-columns: min-content;
 }
 
 #table{
@@ -103,7 +125,7 @@ input{
 .download{
 width: 1.600em;
 height: 0.500em;
-border: 0.250em solid #FFFFFF;
+border: 0.250em solid #A7A9AC;
 border-top: none;
 position: absolute;
 bottom: 0.188em;
@@ -114,7 +136,7 @@ margin-top:1em;
 .download:hover{
 width: 1.500em;
 height: 0.500em;
-border: 0.250em solid	#CCCCCC;
+border: 0.250em solid	#FFFFFF;
 border-top: none;
 position: absolute;
 bottom: 0.188em;
@@ -128,7 +150,7 @@ content: '';
 position: absolute;
 width: 0.438em;
 height: 0.625em;
-background: #FFFFFF;
+background: #A7A9AC;
 top: -0.875em;
 left: 0.563em;
 }
@@ -138,7 +160,7 @@ content: '';
 position: absolute;
 width: 0.438em;
 height: 0.625em;
-background: #CCCCCC;
+background: #FFFFFF;
 top: -0.875em;
 left: 0.463em;
 }
@@ -149,7 +171,7 @@ height: 0em;
 content: '';
 position: absolute;
 border-style: solid;
-border-color: #FFFFFF transparent transparent transparent;
+border-color: #A7A9AC transparent transparent transparent;
 border-width: 0.500em;
 left: 0.250em;
 top: -0.250em;
@@ -162,7 +184,7 @@ height: 0em;
 content: '';
 position: absolute;
 border-style: solid;
-border-color: 	#CCCCCC transparent transparent transparent;
+border-color: 	#FFFFFF transparent transparent transparent;
 border-width: 0.500em;
 left: 0.250em;
 top: -0.250em;
@@ -178,49 +200,57 @@ a{
 <div ng-controller="ConsultaCtrl">
     <div id="topo">
       <div id="topo1">
-        <span id="registros" style="color: #FFFFFF;">Quantidade de registros: {{quantidade}}</span>
-        <label id="Exportar"><p style="color: #FFFFFF;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
+        <div id="btn_voltar">
+          <a target="_self" href="#">
+            <i class="icon icon-home"></i>Voltar ao início
+          </a>
+        </div>
       </div>
       <div id="topo2">
+        <span id="registros" style="color: #075579;">Quantidade de registros: {{quantidade}}</span>
+        <label id="Exportar"><p style="color: #075579;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
     </div>
   </div>
-  <div id="container_table">
-    <table id="table">
-        <thead>
-          <tr>
-            <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td>
-          </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="i in data">
-              <td>{{i.nomeCompleto}}</td>
-              <td>{{i.cpf}}</td>
-              <td>{{i.emailPrivado}}</td>
-              <td>{{i.telefone1}}</td>
-              <td>{{i.telefone1_operadora}}</td>
-              <td>{{i.relacaoPonto}}</td>
-              <td>{{i.tipoOrganizacao}}</td>
-              <td>{{i.tipoPontoCulturaDesejado}}</td>
-              <td>{{i.cnpj}}</td>
-              <td>{{i.representanteLegal}}</td>
-              <td>{{i.responsavel_nome}}</td>
-              <td>{{i.responsavel_cargo}}</td>
-              <td>{{i.responsavel_email}}</td>
-              <td>{{i.responsavel_telefone}}</td>
-              <td>{{i.responsavel_operadora}}</td>
-              <td>{{i.name}}</td>
-              <td>{{i.shortDescription}}</td>
-              <td>{{i.pais}}</td>
-              <td>{{i.geoEstado}}</td>
-              <td>{{i.geoMunicipio}}</td>
-              <td>{{i.En_Bairro}}</td>
-              <td>{{i.En_Nome_Logradouro}}</td>
-              <td>{{i.En_Num}}</td>
-              <td>{{i.cep}}</td>
-              <td>{{i.tem_sede}}</td>
-              <td>{{i.location}}</td>
-              <td>{{i.atividadesEmRealizacaoLink}}</td>
+  <div id="EstiloIEContainer">
+    <div id="container_table">
+      <table id="table">
+          <thead>
+            <tr>
+              <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td>
             </tr>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+              <tr ng-repeat="i in data">
+                <td>{{i.nomeCompleto}}</td>
+                <td>{{i.cpf}}</td>
+                <td>{{i.emailPrivado}}</td>
+                <td>{{i.telefone1}}</td>
+                <td>{{i.telefone1_operadora}}</td>
+                <td>{{i.relacaoPonto}}</td>
+                <td>{{i.tipoOrganizacao}}</td>
+                <td>{{i.tipoPontoCulturaDesejado}}</td>
+                <td>{{i.cnpj}}</td>
+                <td>{{i.representanteLegal}}</td>
+                <td>{{i.responsavel_nome}}</td>
+                <td>{{i.responsavel_cargo}}</td>
+                <td>{{i.responsavel_email}}</td>
+                <td>{{i.responsavel_telefone}}</td>
+                <td>{{i.responsavel_operadora}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.shortDescription}}</td>
+                <td>{{i.pais}}</td>
+                <td>{{i.geoEstado}}</td>
+                <td>{{i.geoMunicipio}}</td>
+                <td>{{i.En_Bairro}}</td>
+                <td>{{i.En_Nome_Logradouro}}</td>
+                <td>{{i.En_Num}}</td>
+                <td>{{i.cep}}</td>
+                <td>{{i.tem_sede}}</td>
+                <td>{{i.location}}</td>
+                <td>{{i.atividadesEmRealizacaoLink}}</td>
+              </tr>
+          </tbody>
+        </table>
     </div>
+  </div>
+  

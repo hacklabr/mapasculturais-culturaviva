@@ -5,7 +5,7 @@
         'culturaviva.controllers',
         'culturaviva.services',
         'culturaviva.directives',
-        'Notifications',
+       //'Notifications',
         'ngFileUpload',
         'ngMessages',
         'ui.date',
