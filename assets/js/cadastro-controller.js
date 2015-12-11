@@ -911,9 +911,10 @@
 
                 $scope.data = arrayResponsavel;
                 $scope.quantidade = arrayResponsavel.length;
+            }).success(function(){
+              $scope.progressbar.complete();
             });
 
-            $scope.progressbar.complete();
             $scope.exportXls = function(){
               var blob = new Blob([document.getElementById('container_table').innerHTML], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
