@@ -857,57 +857,44 @@
             }).success(function(data){
               var agente = data;
               var arrayResponsavel = [];
-              var arrayPonto = [];
-              var arrayEntidade = [];
 
-              for(var i=0; i <  data.length; i++){
-                  if(agente[i].rcv_tipo === "responsavel"){
-                    arrayResponsavel.push(agente[i]);
-                  }
-              }
+              agente.forEach(function(data){
+                if(data.rcv_tipo === "responsavel"){
+                  arrayResponsavel.push(data);
+                }
+              });
 
-              for(var i=0; i <  data.length; i++){
-                  if(agente[i].rcv_tipo === "ponto"){
-                    arrayPonto.push(agente[i]);
-                  }
-              }
-
-              for(var i=0; i <  data.length; i++){
-                  if(agente[i].rcv_tipo === "entidade"){
-                    arrayEntidade.push(agente[i]);
-                  }
-              }
-
-              for(var i=0; i <  arrayResponsavel.length; i++){
-                  for(var j=0; j <  arrayPonto.length; j++){
-                    for(var k=0; k <  arrayEntidade.length; k++){
-                      if((arrayResponsavel[i].id === arrayPonto[j].parent.id) & (arrayResponsavel[i].id === arrayEntidade[k].parent.id)){
-                        arrayResponsavel[i].name = arrayPonto[j].name;
-                        arrayResponsavel[i].shortDescription = arrayPonto[j].shortDescription;
-                        arrayResponsavel[i].cep = arrayPonto[j].cep;
-                        arrayResponsavel[i].tem_sede = arrayPonto[j].tem_sede;
-                        arrayResponsavel[i].pais = arrayPonto[j].pais;
-                        arrayResponsavel[i].geoEstado = arrayPonto[j].geoEstado;
-                        arrayResponsavel[i].geoMunicipio = arrayPonto[j].geoMunicipio;
-                        arrayResponsavel[i].En_Bairro = arrayPonto[j].En_Bairro;
-                        arrayResponsavel[i].En_Nome_Logradouro = arrayPonto[j].En_Nome_Logradouro;
-                        arrayResponsavel[i].En_Num = arrayPonto[j].En_Num;
-                        arrayResponsavel[i].location = arrayPonto[j].location;
-                        arrayResponsavel[i].atividadesEmRealizacaoLink = arrayPonto[j].atividadesEmRealizacaoLink;
-                        arrayResponsavel[i].tipoOrganizacao = arrayEntidade[k].tipoOrganizacao;
-                        arrayResponsavel[i].tipoPontoCulturaDesejado = arrayEntidade[k].tipoPontoCulturaDesejado;
-                        arrayResponsavel[i].cnpj = arrayEntidade[k].cnpj;
-                        arrayResponsavel[i].responsavel_nome = arrayEntidade[k].responsavel_nome;
-                        arrayResponsavel[i].responsavel_cargo = arrayEntidade[k].responsavel_cargo;
-                        arrayResponsavel[i].responsavel_email = arrayEntidade[k].responsavel_email;
-                        arrayResponsavel[i].responsavel_telefone = arrayEntidade[k].responsavel_telefone;
-                        arrayResponsavel[i].responsavel_operadora = arrayEntidade[k].responsavel_operadora;
-                        arrayResponsavel[i].representanteLegal = arrayEntidade[k].representanteLegal;
-                      }
+              arrayResponsavel.forEach(function(respons, i){
+                agente.forEach(function(data){
+                  if(data.parent.id === respons.id){
+                    if(data.rcv_tipo === 'ponto'){
+                      respons.name = data.name;
+                      respons.shortDescription = data.shortDescription;
+                      respons.cep = data.cep;
+                      respons.tem_sede = data.tem_sede;
+                      respons.pais = data.pais;
+                      respons.geoEstado = data.geoEstado;
+                      respons.geoMunicipio = data.geoMunicipio;
+                      respons.En_Bairro = data.En_Bairro;
+                      respons.En_Nome_Logradouro = data.En_Nome_Logradouro;
+                      respons.En_Num = data.En_Num;
+                      respons.location = data.location;
+                      respons.atividadesEmRealizacaoLink = data.atividadesEmRealizacaoLink;
+                    }
+                    if(data.rcv_tipo === 'entidade'){
+                      respons.tipoOrganizacao = data.tipoOrganizacao;
+                      respons.tipoPontoCulturaDesejado = data.tipoPontoCulturaDesejado;
+                      respons.cnpj = data.cnpj;
+                      respons.responsavel_nome = data.responsavel_nome;
+                      respons.responsavel_cargo = data.responsavel_cargo;
+                      respons.responsavel_email = data.responsavel_email;
+                      respons.responsavel_telefone = data.responsavel_telefone;
+                      respons.responsavel_operadora = data.responsavel_operadora;
+                      respons.representanteLegal = data.representanteLegal;
                     }
                   }
-                }
-
+                });
+              });
 
                 $scope.data = arrayResponsavel;
                 $scope.quantidade = arrayResponsavel.length;
