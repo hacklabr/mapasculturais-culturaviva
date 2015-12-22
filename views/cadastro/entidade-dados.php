@@ -38,7 +38,7 @@
         <div ng-show="agent.tipoOrganizacao==='coletivo'">
             <div class="row">
                 <label class="colunm-50">
-                    <span class="destaque">Nome do Coletivo Cultura* <i class='hltip' title='Nome dado ao grupo que compõe o coletivo cultural'>?</i>
+                    <span class="destaque">Nome do Coletivo Cultural* <i class='hltip' title='Nome dado ao grupo que compõe o coletivo cultural'>?</i>
                     </span>
                     <input name="name" type="text" ng-blur="save_field('name')" ng-model="agent.name">
                 </label>
