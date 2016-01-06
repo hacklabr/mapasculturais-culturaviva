@@ -965,6 +965,9 @@
         };
     }]);
 
-
+    app.controller('DetailCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
+        console.log(MapasCulturais);
+        console.log($scope);
+    }]);
 
 })(angular);
