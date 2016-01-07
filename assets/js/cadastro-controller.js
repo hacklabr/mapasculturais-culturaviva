@@ -965,9 +965,43 @@
         };
     }]);
 
-    app.controller('DetailCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
+    app.controller('DetailCtrl',['$scope', 'Entity', '$http', '$timeout', '$location', function($scope, Entity, $http, $timeout, $location){
+        extendController($scope, $timeout);
+        $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
+            .success(function(data){
+                var responsavel = {
+                    'id': data.agenteIndividual,
+                    '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
+                               'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
+                               'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
+
+                    '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                    '@permissions': 'view'
+                };
+                var entidade = {
+                    'id': data.agenteEntidade,
+                    '@permissions': 'view'
+                };
+                var ponto = {
+                    'id': data.agentePonto,
+                    '@permissions': 'view'
+                };
+                $scope.responsavel = Entity.get(responsavel);
+            }).error(function(){
+                $scope.messages.show('erro', "O usuário não foi encontrado");
+            });
+
+        /*$scope.agent = Entity.get(params, function(){
+          extendController($scope, $timeout, Entity, agent_id, $http);
+
+          if($location.search().invalid === '1'){
+            $scope.showInvalid($scope.agent.rcv_tipo, 'form_responsavel');
+          }
+        });
+
+        console.log($location.search());
         console.log(MapasCulturais);
-        console.log($scope);
+        console.log($scope);*/
     }]);
 
 })(angular);
