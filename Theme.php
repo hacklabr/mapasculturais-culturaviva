@@ -155,7 +155,7 @@ class Theme extends BaseV1\Theme{
 
     function head() {
         parent::head();
-        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede'){
+        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede' || $this->controller->id === 'admin'){
             $this->printStyles('culturaviva');
             $this->printScripts('culturaviva');
         }
