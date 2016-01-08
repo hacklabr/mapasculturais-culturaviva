@@ -20,7 +20,8 @@ class Admin extends \MapasCulturais\Controller{
         if($_user){
             $this->json(json_decode($_user->redeCulturaViva));
         }else {
-            $this->json("usuario nao encontrado", 400);
+            $this->json([
+                'erro' => "usuario nao encontrado"], 400);
         }
     }
 }
