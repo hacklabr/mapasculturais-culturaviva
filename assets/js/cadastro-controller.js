@@ -957,7 +957,7 @@
         $scope.termos = termos;
         $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
             .success(function(data){
-		var rcv = JSON.parse(data.redeCulturaViva);
+		        var rcv = JSON.parse(data.redeCulturaViva);
                 var responsavel = {
                     'id': rcv.agenteIndividual,
                     '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
