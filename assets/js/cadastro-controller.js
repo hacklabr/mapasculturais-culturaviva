@@ -341,7 +341,6 @@
                 if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
                     return;
                 }
-                console.log($scope.agent[field], $scope.originalAgent[field]);
 
                 $scope.originalAgent[field] = angular.copy($scope.agent[field]);
 
@@ -399,18 +398,6 @@
           });
         }
     }
-
-    /*app.controller("emailController", ["$scope", "$http", function($scope, $http) {
-      this.send = function() {
-          $http.post('index.php', {
-              email : 'email',
-              subject : 'Teste Assunto',
-              message : 'Teste'
-            }).success(function(data){
-              console.log(data);
-            });
-          };
-      }]);*/
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
         function($scope, Entity, MapasCulturais, $http, $timeout){
@@ -1019,18 +1006,6 @@
             }).error(function(){
                 $scope.messages.show('erro', "O usuário não foi encontrado");
             });
-
-        /*$scope.agent = Entity.get(params, function(){
-          extendController($scope, $timeout, Entity, agent_id, $http);
-
-          if($location.search().invalid === '1'){
-            $scope.showInvalid($scope.agent.rcv_tipo, 'form_responsavel');
-          }
-        });
-
-        console.log($location.search());
-        console.log(MapasCulturais);
-        console.log($scope);*/
     }]);
 
 })(angular);
