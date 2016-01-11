@@ -18,7 +18,7 @@ class Admin extends \MapasCulturais\Controller{
     function GET_user(){
         $_user = App::i()->repo('User')->find($this->getGetData()['id']);
         if($_user){
-            $this->json(json_decode($_user->redeCulturaViva));
+            $this->json($_user);
         }else {
             $this->json(['erro' => "usuario nao encontrado"], 400);
         }

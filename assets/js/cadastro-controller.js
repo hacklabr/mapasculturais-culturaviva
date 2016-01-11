@@ -957,17 +957,17 @@
         $scope.termos = termos;
         $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
             .success(function(data){
+		var rcv = JSON.parse(data.redeCulturaViva);
                 var responsavel = {
-                    'id': data.agenteIndividual,
+                    'id': rcv.agenteIndividual,
                     '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
                                'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                                'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
 
-                    '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
-                    '@permissions': 'view'
+                    '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url'
                 };
                 var entidade = {
-                    'id': data.agenteEntidade,
+                    'id': rcv.agenteEntidade,
                     '@select':  'id,rcv_tipo,name,nomeCompleto,cnpj,representanteLegal,' +
                                 'tipoPontoCulturaDesejado,tipoOrganizacao,' +
                                 'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
@@ -978,11 +978,10 @@
                                 'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                                 'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
                                 'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao,' +
-                                'rcv_Ds_Edital',
-                    '@permissions': 'view'
+                                'rcv_Ds_Edital'
                 };
                 var ponto = {
-                    'id': data.agentePonto,
+                    'id': rcv.agentePonto,
                     '@select':  'id,rcv_tipo,longDescription,atividadesEmRealizacaoLink,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink,' +
                                 'terms,name,shortDescription,cep,tem_sede,sede_realizaAtividades,mesmoEndereco,pais,geoEstado,geoMunicipio,'+
                                 'En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento,localRealizacao_estado,localRealizacao_cidade,'+
@@ -997,8 +996,7 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao',
-                    '@permissions': 'view'
+                                'metodologia1_cargaHoraria,metodologia1_certificacao'
                 };
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
