@@ -1,0 +1,105 @@
+<div ng-controller="DetailCtrl">
+    <div class="form">
+        <h4>Informações Obrigatórias</h4>
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Nome do Ponto/Pontão de Cultura</span>
+                <span><b>{{ponto.name}}</b></span>
+                <span ng-if="!ponto.name"><b>Não informado</b></span>
+            </label>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <label class="colunm-full">
+                <span class="destaque">Breve descrição (400 caracteres) do ponto de cultura</span>
+                <p><b>{{ponto.shortDescription}}</b></p>
+                <span ng-if="!ponto.shortDescription"><b>Não informado</b></span>
+            </label>
+        </div>
+        <div class="row">
+
+            <label class="colunm1">
+                <span class="destaque">CEP do Ponto de Cultura</span>
+                <span><b>{{ponto.cep}}</b></span>
+                <span ng-if="!ponto.cep"><b>Não informado</b></span>
+            </label>
+
+            <label class="colunm1">
+                <span class="destaque">O pontão tem sede própria?</span>
+                <span ng-if="ponto.tem_sede"><b>{{ponto.tem_sede}}</b></span>
+                <span ng-if="ponto.tem_sede === 0"><b>Não</b></span>
+                <span ng-if="!ponto.tem_sede"><b>Não informado</b></span>
+                <label class="check">
+                    <input type="checkbox"
+                           disabled
+                           name="sede_realizaAtividades"
+                           ng-change="save_field('sede_realizaAtividades', true)"
+                           ng-model="agent.sede_realizaAtividades"
+                           ng-true-value="1"
+                           ng-false-value="0"/>
+                    realiza atividades culturais na sede
+                </label>
+            </label>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <span class="colunm1">
+                <span class="destaque">Endereço</span>
+            </span>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <label class="colunm2">
+                <span>Pais</span>
+                <span><b>{{ponto.pais}}</b></span>
+                <span ng-if="!ponto.pais"><b>Não informado</b></span>
+            </label>
+            <label class="colunm2" ng-show="agent.pais==='Brasil'">
+                <span>Estado</span>
+                <span><b>{{ponto.geoEstado}}</b></span>
+                <span ng-if="!ponto.geoEstado"><b>Não informado</b></span>
+            </label>
+
+            <label class="colunm3">
+                <span>Cidade</span>
+                <span><b>{{ponto.geoMunicipio}}</b></span>
+                <span ng-if="!ponto.geoMunicipio"><b>Não informado</b></span>
+            </label>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <label class="colunm1">
+                <span>Bairro</span>
+                <span><b>{{ponto.En_Bairro}}</b></span>
+                <span ng-if="!ponto.En_Bairro"><b>Não informado</b></span>
+            </label>
+
+            <label class="colunm2">
+                <span>Rua</span>
+                <span><b>{{ponto.En_Nome_Logradouro}}</b></span>
+                <span ng-if="!ponto.En_Nome_Logradouro"><b>Não informado</b></span>
+            </label>
+        </div>
+        <div class="row">
+            <label class="colunm1">
+                <span>Número</span>
+                <span><b>{{ponto.En_Num}}</b></span>
+                <span ng-if="!ponto.En_Num"><b>Não informado</b></span>
+            </label>
+
+            <label class="colunm2">
+                <span>Complemento</span>
+                <span><b>{{ponto.En_Complemento}}</b></span>
+                <span ng-if="!ponto.En_Complemento"><b>Não informado</b></span>
+            </label>
+        </div>
+    </div>
+</div>

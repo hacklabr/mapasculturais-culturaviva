@@ -156,7 +156,7 @@ class Theme extends BaseV1\Theme{
 
     function head() {
         parent::head();
-        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede'){
+        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede' || $this->controller->id === 'admin'){
             $this->printStyles('culturaviva');
             $this->printScripts('culturaviva');
         }
@@ -182,6 +182,7 @@ class Theme extends BaseV1\Theme{
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
+        $app->registerController('admin', 'CulturaViva\Controllers\Admin');
 
 //        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));

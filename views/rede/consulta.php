@@ -123,78 +123,74 @@ input{
 }
 
 .download{
-width: 1.600em;
-height: 0.500em;
-border: 0.250em solid #A7A9AC;
-border-top: none;
-position: absolute;
-bottom: 0.188em;
-position: relative;
-margin-top:1em;
+  width: 1.600em;
+  height: 0.500em;
+  border: 0.250em solid #A7A9AC;
+  border-top: none;
+  position: absolute;
+  bottom: 0.188em;
+  position: relative;
+  margin-top:1em;
 }
 
 .download:hover{
-width: 1.500em;
-height: 0.500em;
-border: 0.250em solid	#FFFFFF;
-border-top: none;
-position: absolute;
-bottom: 0.188em;
-position: relative;
-margin-top:1em;
+  width: 1.500em;
+  height: 0.500em;
+  border: 0.250em solid	#FFFFFF;
+  border-top: none;
+  position: absolute;
+  bottom: 0.188em;
+  position: relative;
+  margin-top:1em;
 }
 
 
 .download:before{
-content: '';
-position: absolute;
-width: 0.438em;
-height: 0.625em;
-background: #A7A9AC;
-top: -0.875em;
-left: 0.563em;
+  content: '';
+  position: absolute;
+  width: 0.438em;
+  height: 0.625em;
+  background: #A7A9AC;
+  top: -0.875em;
+  left: 0.563em;
 }
 
 .download:hover:before{
-content: '';
-position: absolute;
-width: 0.438em;
-height: 0.625em;
-background: #FFFFFF;
-top: -0.875em;
-left: 0.463em;
+  content: '';
+  position: absolute;
+  width: 0.438em;
+  height: 0.625em;
+  background: #FFFFFF;
+  top: -0.875em;
+  left: 0.463em;
 }
 
 .download:after{
-width: 0em;
-height: 0em;
-content: '';
-position: absolute;
-border-style: solid;
-border-color: #A7A9AC transparent transparent transparent;
-border-width: 0.500em;
-left: 0.250em;
-top: -0.250em;
-
+  width: 0em;
+  height: 0em;
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: #A7A9AC transparent transparent transparent;
+  border-width: 0.500em;
+  left: 0.250em;
+  top: -0.250em;
 }
 
 .download:hover:after{
-width: 0em;
-height: 0em;
-content: '';
-position: absolute;
-border-style: solid;
-border-color: 	#FFFFFF transparent transparent transparent;
-border-width: 0.500em;
-left: 0.250em;
-top: -0.250em;
-
+  width: 0em;
+  height: 0em;
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: 	#FFFFFF transparent transparent transparent;
+  border-width: 0.500em;
+  left: 0.250em;
+  top: -0.250em;
 }
 a{
   float: right;
-
 }
-
 </style>
 
 <div ng-controller="ConsultaCtrl">
@@ -253,4 +249,3 @@ a{
         </table>
     </div>
   </div>
-  
