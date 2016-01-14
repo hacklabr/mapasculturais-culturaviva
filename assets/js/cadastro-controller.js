@@ -978,7 +978,8 @@
                                 'edital_proponente,edital_projeto_resumo,edital_prestacaoContas_envio,' +
                                 'edital_prestacaoContas_status,edital_projeto_vigencia_inicio,' +
                                 'edital_projeto_vigencia_fim,outrosFinanciamentos,outrosFinanciamentos_descricao,' +
-                                'rcv_Ds_Edital'
+                                'rcv_Ds_Edital',
+                    '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url'
                 };
                 var ponto = {
                     'id': rcv.agentePonto,
@@ -996,7 +997,8 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao'
+                                'metodologia1_cargaHoraria,metodologia1_certificacao',
+                    '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url'
                 };
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
