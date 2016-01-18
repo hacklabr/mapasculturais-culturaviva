@@ -4,9 +4,9 @@
         <div class="row">
             <span class="destaque">Portfólio</span>
                 <div class="colunm1">
-                    <a ng-if="ponto.files.portifolio" href="{{ponto.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
+                    <a ng-if="ponto.files.portifolio.url" href="{{ponto.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
                     <a ng-if="ponto.atividadesEmRealizacaoLink" href="ponto.atividadesEmRealizacaoLink" target="_blank">{{ponto.atividadesEmRealizacaoLink}}</a>
-                    <span ng-if="!ponto.files.portifolio && !ponto.atividadesEmRealizacaoLink"><b>Não informado</b></span>
+                    <span ng-if="!ponto.files.portifolio.url && !ponto.atividadesEmRealizacaoLink"><b>Não informado</b></span>
                 </div>
         </div>
 
@@ -16,11 +16,11 @@
         <div class="row">
             <span class="destaque">Cartas de Reconhecimento</span>
             <div class="colunm1">
-              <a ng-if="ponto.files.carta1" href="{{ponto.files.carta1.url}}" target="_blank">{{ponto.files.carta1.name}}</a>
+              <a ng-if="ponto.files.carta1" href="{{ponto.files.carta1.url}}" target="_blank">Baixar primeira carta</a>
               <span ng-if="!ponto.files.carta1"><b>Não informado</b></span>
             </div>
             <div class="colunm2">
-              <a ng-if="ponto.files.carta2" href="{{ponto.files.carta2.url}}" target="_blank">{{ponto.files.carta2.name}}</a>
+              <a ng-if="ponto.files.carta2" href="{{ponto.files.carta2.url}}" target="_blank">Baixar segunda carta</a>
               <span ng-if="!ponto.files.carta2"><b>Não informado</b></span>
             </div>
         </div>

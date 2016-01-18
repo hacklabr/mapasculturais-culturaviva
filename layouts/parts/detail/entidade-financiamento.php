@@ -1,4 +1,4 @@
-<div ng-controller="EntityContactCtrl">
+<div ng-controller="DetailCtrl">
     <div class="form">
         <h4>Informações Obrigatórias</h4>
 

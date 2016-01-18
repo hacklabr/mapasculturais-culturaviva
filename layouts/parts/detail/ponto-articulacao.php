@@ -58,7 +58,7 @@
             </label>
             <div class="colunm-full" ng-show="ponto.participacaoMovPolitico">
                 <span>Quais?
-                <input name="simMovimentoPoliticoCultural" class="colunm1" type="text" ng-model="ponto.simMovimentoPoliticoCultural" editable="false" /></span>
+                <input name="simMovimentoPoliticoCultural" class="colunm1" type="text" ng-model="ponto.simMovimentoPoliticoCultural" disabled="false" /></span>
             </div>
 
             <div class="colunm-full">
@@ -86,8 +86,9 @@
             </div>
             <div class="colunm-full">
                 <span class="destaque">Participa de instância de representação junto ao Ministério da Cultura? </span>
+                <span ng-repeat="termo in ponto.terms.instancia_representacao_minc"><b>{{termo}}</b></span>
+                <span ng-if="!ponto.terms.instancia_representacao_minc.length"><b>Não informado</b></span>
             </div>
-            <taxonomy-checkboxes taxonomy="instancia_representacao_minc" entity="ponto" terms="termos.instancia_representacao_minc"></taxonomy-checkboxes>
             <div class="colunm-full">
                 <span class="destaque">Possui parceria com o Poder Público? </span>
             </div>

@@ -1,11 +1,8 @@
 <?php
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
-<?php
-$this->part('header');
-?>
 
-<div class="page-responsavel page-base-form">
+<div class="page-responsavel page-base-form" ng-controller="DetailCtrl">
 
     <header>
 
