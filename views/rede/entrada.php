@@ -2,7 +2,7 @@
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
 <style>
-.teste{
+.formulario-CNPJ{
   background: transparent none repeat scroll 0 0;
   border: 0 none;
   margin: 0;
@@ -28,7 +28,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 <strong>Declare seu ponto de Cultura</strong>
                 <br />Você já possui um CNPJ?
             </h3>
-            <div class="teste">
+            <div class="formulario-CNPJ">
                 <form>
                     <label><strong id="label_cnpj"><big>CNPJ*</big></strong></label>
                     <input type="text" name="CNPJ" ui-mask="99.999.999/9999-99" ng-model="data.cnpj" ng-change="data.naoEncontrouCNPJ = false" />
