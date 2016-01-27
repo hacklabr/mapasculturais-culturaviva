@@ -3,32 +3,9 @@
     var app = angular.module('culturaviva.controllers', ['ngProgress']);
 
     var agentsChave = [     "Nome do responsável",
-                            "CPF do responsável",
-                            "E-mail do responsável",
-                            "Telefone do responsável",
-                            "Operadora do responsável",
-                            "Relação com o ponto",
-                            "Tipo de organização",
-                            "Tipo de ponto desejado",
-                            "CNPJ da entidade",
-                            "Representante legal",
-                            "Nome da entidade responsável",
-                            "Cargo do responsável",
-                            "E-mail do responsável pelo ponto",
-                            "Telefone da entidade responsável",
-                            "Operadora da entidade responsável",
-                            "Nome do ponto",
-                            "Descrição do ponto",
-                            "País onde está o ponto",
-                            "Estado onde está o ponto",
-                            "Cidade onde está o ponto",
-                            "Bairro onde está o ponto",
-                            "Rua onde está o ponto",
-                            "Número do ponto",
-                            "CEP do ponto",
-                            "Sede do ponto",
-                            "Localização do ponto",
-                            "Link do portfólio"
+                            "Nome do Ponto",
+                            "Email",
+                            "Link dos dados"
                              ];
 
     var agentsPontoDados = ["name",
@@ -831,16 +808,12 @@
             $scope.progressbar.setColor('#fff');
             $scope.progressbar.start();
             $scope.chaveDado = agentsChave;
-            var params_obrigatorios = {
-                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora,rcv_tipo,rcv_tipo,'+
-                            'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
-                            'En_Num,location,atividadesEmRealizacaoLink,parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,'+
-                            'responsavel_cargo,responsavel_email,responsavel_telefone,responsavel_operadora,representanteLegal',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
-                'rcv_tipo': 'OR(EQ(responsavel),EQ(entidade),EQ(ponto))',
+            var params_consulta = {
+                '@select': 'id,name,rcv_tipo,parent.id,nomeCompleto,emailPrivado',
+                'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto))'
             };
             $http.get("/api/agent/find", {
-              params: params_obrigatorios
+              params: params_consulta
             }).success(function(data){
               var agente = data;
               var arrayResponsavel = [];
@@ -850,40 +823,113 @@
                   arrayResponsavel.push(data);
                 }
               });
-
               arrayResponsavel.forEach(function(respons, i){
                 agente.forEach(function(data){
                   if(data.parent.id === respons.id){
-                    if(data.rcv_tipo === 'ponto'){
                       respons.name = data.name;
-                      respons.shortDescription = data.shortDescription;
-                      respons.cep = data.cep;
-                      respons.tem_sede = data.tem_sede;
-                      respons.pais = data.pais;
-                      respons.geoEstado = data.geoEstado;
-                      respons.geoMunicipio = data.geoMunicipio;
-                      respons.En_Bairro = data.En_Bairro;
-                      respons.En_Nome_Logradouro = data.En_Nome_Logradouro;
-                      respons.En_Num = data.En_Num;
-                      respons.location = data.location;
-                      respons.atividadesEmRealizacaoLink = data.atividadesEmRealizacaoLink;
-                    }
-                    if(data.rcv_tipo === 'entidade'){
-                      respons.tipoOrganizacao = data.tipoOrganizacao;
-                      respons.tipoPontoCulturaDesejado = data.tipoPontoCulturaDesejado;
-                      respons.cnpj = data.cnpj;
-                      respons.responsavel_nome = data.responsavel_nome;
-                      respons.responsavel_cargo = data.responsavel_cargo;
-                      respons.responsavel_email = data.responsavel_email;
-                      respons.responsavel_telefone = data.responsavel_telefone;
-                      respons.responsavel_operadora = data.responsavel_operadora;
-                      respons.representanteLegal = data.representanteLegal;
-                    }
                   }
                 });
               });
 
-                $scope.data = arrayResponsavel;
+              $scope.filtro = function(responsavel,ponto,email){
+                //REtorno do segundo get é  provavel que nao vá acomanhar a execução e busca mutua não implemantado ainda
+                if(responsavel){
+                  var params_filtro_Responsavel = {
+                      '@select': 'id,name,rcv_tipo,nomeCompleto,emailPrivado',
+                      'rcv_tipo': 'EQ(responsavel)',
+                      'nomeCompleto': 'ILIKE(%'+responsavel+'%)'
+                  };
+                  $http.get("/api/agent/find", {
+                    params: params_filtro_Responsavel
+                  }).success(function(data){
+                    var agente_res = data;
+                    data.forEach(function(dados){
+                      var params_filtro = {
+                          '@select': 'id,name,rcv_tipo,parent.id',
+                          'rcv_tipo': 'EQ(ponto)',
+                          'parent': 'EQ('+dados.id+')'
+                      };
+                      $http.get("/api/agent/find", {
+                        params: params_filtro
+                      }).success(function(teste){
+                        agente_res.forEach(function(respons){
+                          teste.forEach(function(data){
+                            if(data.parent.id === respons.id){
+                                respons.name = data.name;
+                            }
+                          });
+                        });
+                      });
+                    });
+                    $scope.data = agente_res;
+                    console.log(agente_res);
+                  });
+                }
+             if(ponto){
+                  var params_filtro_Ponto = {
+                      '@select': 'id,name,rcv_tipo,parent.id,nomeCompleto,emailPrivado',
+                      'rcv_tipo': 'EQ(ponto)',
+                      'name': 'ILIKE(%'+ponto+'%)'
+                  };
+                  $http.get("/api/agent/find", {
+                    params: params_filtro_Ponto
+                  }).success(function(data){
+                    var agente_pon = data;
+                    data.forEach(function(dados){
+                      var params_filtro = {
+                          '@select': 'id,rcv_tipo,nomeCompleto,emailPrivado',
+                          'rcv_tipo': 'EQ(responsavel)',
+                          'id': 'EQ('+dados.parent.id+')'
+                      };
+                      $http.get("/api/agent/find", {
+                        params: params_filtro
+                      }).success(function(teste){
+                        agente_pon.forEach(function(respons){
+                          teste.forEach(function(data){
+                            if(data.id === respons.parent.id){
+                                angular.extend(respons, data);
+                            }
+                          });
+                        });
+                      });
+                    });
+                    $scope.data = agente_pon;
+                    console.log(agente_pon);
+                  });
+                }
+                if(email){
+                  var params_filtro_email = {
+                      '@select': 'id,name,rcv_tipo,nomeCompleto,emailPrivado',
+                      'rcv_tipo': 'EQ(responsavel)',
+                      'emailPrivado':'ILIKE(%'+email+'%)'
+                  };
+                  $http.get("/api/agent/find", {
+                    params: params_filtro_email
+                  }).success(function(data){
+                    var agente_email = data;
+                    data.forEach(function(dados){
+                      var params_filtro = {
+                          '@select': 'id,name,rcv_tipo,parent.id',
+                          'rcv_tipo': 'EQ(ponto)',
+                          'parent': 'EQ('+dados.id+')'
+                      };
+                      $http.get("/api/agent/find", {
+                        params: params_filtro
+                      }).success(function(teste){
+                        agente_email.forEach(function(respons){
+                          teste.forEach(function(data){
+                            if(data.parent.id === respons.id){
+                                respons.name = data.name;
+                            }
+                          });
+                        });
+                      });
+                    });
+                    $scope.data = agente_email;
+                    console.log(agente_email);
+                  });
+                }
+              }
                 $scope.quantidade = arrayResponsavel.length;
             }).success(function(){
               $scope.progressbar.complete();
