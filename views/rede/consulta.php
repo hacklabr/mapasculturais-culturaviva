@@ -15,16 +15,11 @@ table tr:nth-child(even) td{
 }
 
 td{
-  min-width: 100px;
-  max-width: 300px;
+  max-width: auto;
   padding: 10px;
   border: 6px solid rgba(153, 153, 153, 0.3);
   background-clip: padding-box;
-}
-
-section{
-  margin-left: 0px;
-  max-width: 100%;
+  height: auto;
 }
 
 i{
@@ -34,6 +29,7 @@ i{
 
 #topo{
   position: fixed;
+  margin-left: -277px;
   margin-top: -133px;
   height: 100px;
   width: 100%;
@@ -71,7 +67,7 @@ i{
   float: left;
 }
 
-#btn_voltar, a:hover{
+#btn_voltars, a:hover{
   color: #fff;
 }
 
@@ -98,7 +94,7 @@ i{
   width: -moz-fit-content;
   border: 60px solid rgba(153, 153, 153, 0.3);
   border-radius: 10px;
-  margin: 100px 0 0 80px;
+  margin: 100px 0 0 70px;
 }
 
 #EstiloIEContainer{
@@ -116,6 +112,15 @@ i{
   font-weight: bold;
   background: #a7a9ac;
   background-clip: padding-box;
+}
+
+#cartao{
+  width: 650px;
+  height: 150px;
+}
+
+#cartao{
+  color: red;
 }
 
 input{
@@ -207,43 +212,30 @@ a{
         <label id="Exportar"><p style="color: #075579;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
     </div>
   </div>
+  <div>
+    Nome do responsavel:<input type="text" ng-model="inputNameResponsavel"/>
+    Nome do ponto:<input type="text" ng-model="inputNamePonto"/>
+    Email:<input type="text" ng-model="inputEmail"/>
+    <input type="submit" value="enviar" ng-click="filtro(inputNameResponsavel,inputNamePonto,inputEmail)"/>
+  </div>
   <div id="EstiloIEContainer">
     <div id="container_table">
       <table id="table">
           <thead>
             <tr>
-              <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td>
+              <!-- <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td> -->
+              <td id="Cabecalho">Pontos</td>
             </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="i in data">
-                <td>{{i.nomeCompleto}}</td>
-                <td>{{i.cpf}}</td>
-                <td>{{i.emailPrivado}}</td>
-                <td>{{i.telefone1}}</td>
-                <td>{{i.telefone1_operadora}}</td>
-                <td>{{i.relacaoPonto}}</td>
-                <td>{{i.tipoOrganizacao}}</td>
-                <td>{{i.tipoPontoCulturaDesejado}}</td>
-                <td>{{i.cnpj}}</td>
-                <td>{{i.representanteLegal}}</td>
-                <td>{{i.responsavel_nome}}</td>
-                <td>{{i.responsavel_cargo}}</td>
-                <td>{{i.responsavel_email}}</td>
-                <td>{{i.responsavel_telefone}}</td>
-                <td>{{i.responsavel_operadora}}</td>
-                <td>{{i.name}}</td>
-                <td>{{i.shortDescription}}</td>
-                <td>{{i.pais}}</td>
-                <td>{{i.geoEstado}}</td>
-                <td>{{i.geoMunicipio}}</td>
-                <td>{{i.En_Bairro}}</td>
-                <td>{{i.En_Nome_Logradouro}}</td>
-                <td>{{i.En_Num}}</td>
-                <td>{{i.cep}}</td>
-                <td>{{i.tem_sede}}</td>
-                <td>{{i.location}}</td>
-                <td>{{i.atividadesEmRealizacaoLink}}</td>
+              <tr ng-repeat="i in data | filter : input : strict">
+                <td><a href="http://culturaviva.gov.br/admin/cadastro?id={{i.id}}">
+                  <div id="cartao">
+                    <h3 id="name">Nome do Ponto: {{i.name}}</h3>
+                    <h5 id="nomeCOmpleto">Responsavel: {{i.nomeCompleto}}</h5>
+                    <h5 id="emailPrivado">Email: {{i.emailPrivado}}</h5>
+                  </div>
+                </a></td>
               </tr>
           </tbody>
         </table>
