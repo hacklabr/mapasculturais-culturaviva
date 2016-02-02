@@ -29,17 +29,24 @@ i{
 
 #topo{
   position: fixed;
-  margin-left: -277px;
-  margin-top: -133px;
+  margin-left: -280px;
+  margin-top: -40px;
   height: 100px;
   width: 100%;
   font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
 
 #topo1{
-  height: 40%;
+  height: 80%;
   background: #075579;
 
+}
+
+#campo_busca{
+  margin-left: 200px;
+  margin-top: 15px;
+  color: #D1D2D4;
+  font-weight: bold;
 }
 
 #Buscar{
@@ -94,12 +101,13 @@ i{
   width: -moz-fit-content;
   border: 60px solid rgba(153, 153, 153, 0.3);
   border-radius: 10px;
-  margin: 100px 0 0 70px;
+  /*margin: 100px 0 0 70px;*/
 }
 
 #EstiloIEContainer{
   display: -ms-grid;
   -ms-grid-columns: min-content;
+  margin-left: 60px;
 }
 
 #table{
@@ -119,12 +127,14 @@ i{
   height: 150px;
 }
 
-#cartao{
-  color: red;
+input{
+  width: 200px;
+  border-radius: 10px;
 }
 
-input{
-  width: 300px;
+.inputFiltros{
+  margin-top:-45px;
+  margin-left: 100px;
 }
 
 .download{
@@ -205,6 +215,66 @@ a{
           <a target="_self" href="#">
             <i class="icon icon-home"></i>Voltar ao início
           </a>
+        </div></br>
+        <div id="campo_busca">
+	         <select ng-model="selectFiltro">
+		           <option value="">--Filtros--
+            		<option value="nomeCompleto">Nome do Responsável
+            		<option value="name">Nome do Ponto
+            		<option value="emailPrivado">Email
+            		<option value="geoEstado">Estado
+			<option value="todos">Tudos
+	        </select>
+	      <div class="inputFiltros" ng-switch="selectFiltro">
+		        <div class="inputFiltros" ng-switch-when="nomeCompleto">
+			           Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
+			           <input type="submit" value="enviar" ng-click="filtroResponsavel(selectFiltro,inputNameResponsavel)"/>
+		        </div>
+		        <div class="inputFiltros"  ng-switch-when="name">
+			           Nome do Ponto<input type="text" ng-model="inputNamePonto"/>
+			           <input type="submit" value="enviar" ng-click="filtroPonto(selectFiltro,inputNamePonto)"/>
+		        </div>
+		        <div class="inputFiltros" ng-switch-when="emailPrivado">
+			           Email<input type="text" ng-model="inputEmail"/>
+			           <input type="submit" value="enviar" ng-click="filtroResponsavel(selectFiltro,inputEmail)"/>
+		        </div>
+		        <div class="inputFiltros" ng-switch-when="geoEstado">
+			           <select ng-model="geoEstado">
+						<option value="AC">Acre
+                				<option value="AL">Alagoas
+                			 	<option value="AP">Amapá
+                				<option value="AM">Amazonas
+                				<option value="BA">Bahia
+                				<option value="CE">Ceará
+                				<option value="DF">Distrito Federal
+                				<option value="ES">Espírito Santo
+                				<option value="GO">Goiás
+                				<option value="MA">Maranhão
+                				<option value="MT">Mato Grosso
+                				<option value="MS">Mato Grosso do Sul
+                				<option value="MG">Minas Gerais
+                				<option value="PA">Pará
+                				<option value="PB">Paraíba
+                				<option value="PR">Paraná
+                				<option value="PE">Pernambuco
+                				<option value="PI">Piauí
+                				<option value="RJ">Rio de Janeiro
+                				<option value="RN">Rio Grande do Norte
+                				<option value="RS">Rio Grande do Sul
+                				<option value="RO">Rondônia
+                				<option value="RR">Roraima
+                				<option value="SC">Santa Catarina
+                				<option value="SP">São Paulo
+                				<option value="SE">Sergipe
+                				<option value="TO">Tocantins
+                  </select>
+			            <input type="submit" value="enviar" ng-click="filtroPonto(selectFiltro,geoEstado)"/>
+		        </div>
+			<div class="inputFiltros" ng-switch-when="todos">
+				 <input type="submit" value="enviar" ng-click="filtroTopos()"/>
+			</div>
+	    </div>
+
         </div>
       </div>
       <div id="topo2">
@@ -212,23 +282,17 @@ a{
         <label id="Exportar"><p style="color: #075579;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
     </div>
   </div>
-  <div>
-    Nome do responsavel:<input type="text" ng-model="inputNameResponsavel"/>
-    Nome do ponto:<input type="text" ng-model="inputNamePonto"/>
-    Email:<input type="text" ng-model="inputEmail"/>
-    <input type="submit" value="enviar" ng-click="filtro(inputNameResponsavel,inputNamePonto,inputEmail)"/>
-  </div>
-  <div id="EstiloIEContainer">
+  </br></br></br></br></br>
+  <div id="EstiloIEContainer" ng-show="show">
     <div id="container_table">
       <table id="table">
           <thead>
             <tr>
-              <!-- <td id="Cabecalho" ng-repeat="key in chaveDado">{{key}}</td> -->
               <td id="Cabecalho">Pontos</td>
             </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="i in data | filter : input : strict">
+              <tr ng-repeat="i in data">
                 <td><a href="http://culturaviva.gov.br/admin/cadastro?id={{i.id}}">
                   <div id="cartao">
                     <h3 id="name">Nome do Ponto: {{i.name}}</h3>
