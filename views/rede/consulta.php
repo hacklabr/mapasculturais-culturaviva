@@ -57,7 +57,7 @@ i{
 }
 
 #P_buscar{
-  font-size: 35px
+  font-size: 35px;
   font-weight: bold;
 }
 
@@ -244,13 +244,13 @@ a{
 			<option value="todos">Todos
 	        </select>
 	      <div class="inputFiltros" ng-switch="selectFiltro">
-		        <div class="inputFiltros" ng-switch-when="cpf">
+		        <div class="inputFiltros"  ng-switch-when="cpf">
 			           CPF<input type="text" ng-model="inputCPF"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputCPF)"/>
 			</div>
 		        <div class="inputFiltros" ng-switch-when="cnpj">
 			           CNPJ<input type="text" ng-model="inputCNPJ"/>
-			           <input type="submit" value="Mostrar" ng-click="filtroEntidade(selectFiltro,inputCNPJ)"/>
+			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputCNPJ,'entidade')"/>
 			</div>
 		        <div class="inputFiltros" ng-switch-when="nomeCompleto">
 			           Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
@@ -258,7 +258,7 @@ a{
 		        </div>
 		        <div class="inputFiltros"  ng-switch-when="name">
 			           Nome do Ponto<input type="text" ng-model="inputNamePonto"/>
-			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputNamePonto)"/>
+			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputNamePonto,'ponto')"/>
 		        </div>
 		        <div class="inputFiltros" ng-switch-when="emailPrivado">
 			           Email<input type="text" ng-model="inputEmail"/>
@@ -294,7 +294,7 @@ a{
                 				<option value="SE">Sergipe
                 				<option value="TO">Tocantins
                   </select>
-			            <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,geoEstado)"/>
+			            <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,geoEstado,'ponto')"/>
 		        </div>
 			<div class="inputFiltros" ng-switch-when="todos">
 				 <input type="submit" value="Mostrar" ng-click="filtroTopos()"/>

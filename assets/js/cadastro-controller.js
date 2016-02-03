@@ -833,10 +833,10 @@
                 $scope.show = true;
 		}
 
-              $scope.filtroPonto= function(filtro,valor){
+              $scope.filtroPonto= function(filtro,valor,tipoAgent){
                   var paramsFiltroPonto = {
-                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,geoEstado',
-                      'rcv_tipo': 'EQ(ponto)',
+                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,cnpj,geoEstado',
+                      'rcv_tipo': 'EQ('+tipoAgent+')',
                   };
                   paramsFiltroPonto[filtro] = 'ILIKE(%'+valor+'%)';
                   $http.get("/api/agent/find", {
@@ -866,42 +866,7 @@
                   });
                 $scope.show = true;
 		}
-
-
-              $scope.filtroEntidade= function(filtro,valor){
-                  var paramsFiltroEntidade = {
-                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,cnpj,geoEstado',
-                      'rcv_tipo': 'EQ(entidade)',
-                  };
-                  paramsFiltroEntidade[filtro] = 'ILIKE(%'+valor+'%)';
-                  $http.get("/api/agent/find", {
-                    params: paramsFiltroEntidade
-                  }).success(function(data){
-                    var agenteEnt = data;
-                    data.forEach(function(dados){
-                      var paramsFiltro = {
-                          '@select': 'id,rcv_tipo,nomeCompleto,emailPrivado',
-                          'rcv_tipo': 'EQ(responsavel)',
-                          'id': 'EQ('+dados.parent.id+')'
-                      };
-                      $http.get("/api/agent/find", {
-                        params: paramsFiltro
-                      }).success(function(agenteRes){
-                        agenteEnt.forEach(function(respons){
-                          agenteRes.forEach(function(data){
-                            if(data.id === respons.parent.id){
-                                angular.extend(respons, data);
-                            }
-                          });
-                        });
-                      });
-                    });
-                    $scope.data = agenteEnt;
-                    $scope.quantidade = agenteEnt.length;
-                  });
-                $scope.show = true;
-		}
-			
+	
               $scope.filtroTopos= function(){
                   var paramsFiltroTodos = {
                       '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,geoEstado',
