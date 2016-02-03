@@ -800,13 +800,13 @@
         function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
               $scope.filtroResponsavel= function(filtro,valor){
                   var paramsFiltroResponsavel = {
-                      '@select': 'id,name,rcv_tipo,nomeCompleto,emailPrivado,geoEstado',
+                      '@select': 'id,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
                       'rcv_tipo': 'EQ(responsavel)',
                   };
                   paramsFiltroResponsavel[filtro] = 'ILIKE(%'+valor+'%)';
                   $http.get("/api/agent/find", {
                     params: paramsFiltroResponsavel
-                  }).success(function(data){	
+                  }).success(function(data){
                     var agenteRes = data;
                     data.forEach(function(dados){
                       var paramsFiltro = {
@@ -829,7 +829,7 @@
                     });
                     $scope.data = agenteRes;
                     $scope.quantidade = agenteRes.length;
-                  });	
+                  });
                 $scope.show = true;
 		}
 
@@ -841,7 +841,7 @@
                   paramsFiltroPonto[filtro] = 'ILIKE(%'+valor+'%)';
                   $http.get("/api/agent/find", {
                     params: paramsFiltroPonto
-                  }).success(function(data){	
+                  }).success(function(data){
                     var agentePon = data;
                     data.forEach(function(dados){
                       var paramsFiltro = {
@@ -863,10 +863,45 @@
                     });
                     $scope.data = agentePon;
                     $scope.quantidade = agentePon.length;
-                  });	
+                  });
                 $scope.show = true;
 		}
-		
+
+
+              $scope.filtroEntidade= function(filtro,valor){
+                  var paramsFiltroEntidade = {
+                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,cnpj,geoEstado',
+                      'rcv_tipo': 'EQ(entidade)',
+                  };
+                  paramsFiltroEntidade[filtro] = 'ILIKE(%'+valor+'%)';
+                  $http.get("/api/agent/find", {
+                    params: paramsFiltroEntidade
+                  }).success(function(data){
+                    var agenteEnt = data;
+                    data.forEach(function(dados){
+                      var paramsFiltro = {
+                          '@select': 'id,rcv_tipo,nomeCompleto,emailPrivado',
+                          'rcv_tipo': 'EQ(responsavel)',
+                          'id': 'EQ('+dados.parent.id+')'
+                      };
+                      $http.get("/api/agent/find", {
+                        params: paramsFiltro
+                      }).success(function(agenteRes){
+                        agenteEnt.forEach(function(respons){
+                          agenteRes.forEach(function(data){
+                            if(data.id === respons.parent.id){
+                                angular.extend(respons, data);
+                            }
+                          });
+                        });
+                      });
+                    });
+                    $scope.data = agenteEnt;
+                    $scope.quantidade = agenteEnt.length;
+                  });
+                $scope.show = true;
+		}
+			
               $scope.filtroTopos= function(){
                   var paramsFiltroTodos = {
                       '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,geoEstado',
@@ -879,7 +914,7 @@
 		    var agenteRes = [];
                     data.forEach(function(dados){
                           if(dados.rcv_tipo === "responsavel"){
-				agenteRes.push(dados);	
+				agenteRes.push(dados);
 			   }
 		    });
 		    agenteRes.forEach(function(respons){
@@ -888,11 +923,11 @@
 					respons.name = data.name;
 					respons.geoEstado = data.geoEstado;
 				}
-			});	
+			});
 		    });
                     $scope.data = agenteRes;
-                    $scope.quantidade = agenteRes.length;	
-                    });	
+                    $scope.quantidade = agenteRes.length;
+                    });
                 $scope.show = true;
 		}
 
