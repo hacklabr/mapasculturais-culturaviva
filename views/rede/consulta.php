@@ -244,27 +244,27 @@ a{
 			<option value="todos">Todos
 	        </select>
 	      <div class="inputFiltros" ng-switch="selectFiltro">
-		        <div class="inputFiltros"  ng-switch-when="cpf">
+		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputCPF)"  ng-switch-when="cpf">
 			           CPF<input type="text" ng-model="inputCPF"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputCPF)"/>
-			</div>
-		        <div class="inputFiltros" ng-switch-when="cnpj">
+			</form>
+		        <form class="inputFiltros"  ng-submit="filtroPonto(selectFiltro,inputCNPJ,'entidade')" ng-switch-when="cnpj">
 			           CNPJ<input type="text" ng-model="inputCNPJ"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputCNPJ,'entidade')"/>
-			</div>
-		        <div class="inputFiltros" ng-switch-when="nomeCompleto">
+			</form>
+		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputNameResponsavel)" ng-switch-when="nomeCompleto">
 			           Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputNameResponsavel)"/>
-		        </div>
-		        <div class="inputFiltros"  ng-switch-when="name">
+		        </form>
+		        <form class="inputFiltros"  ng-submit="filtroPonto(selectFiltro,inputNamePonto,'ponto')" ng-switch-when="name">
 			           Nome do Ponto<input type="text" ng-model="inputNamePonto"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputNamePonto,'ponto')"/>
-		        </div>
-		        <div class="inputFiltros" ng-switch-when="emailPrivado">
+		        </form>
+		        <form class="inputFiltros"  ng-submit="filtroResponsavel(selectFiltro,inputEmail)" ng-switch-when="emailPrivado">
 			           Email<input type="text" ng-model="inputEmail"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputEmail)"/>
-		        </div>
-		        <div class="inputFiltros" ng-switch-when="geoEstado">
+		        </form>
+		        <div class="inputFiltros"  ng-switch-when="geoEstado">
 			           <select ng-model="geoEstado">
 						<option value="AC">Acre
                 				<option value="AL">Alagoas
