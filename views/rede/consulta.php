@@ -116,16 +116,30 @@ i{
 }
 
 #Cabecalho{
-  font-size: 14px;
+  font-size: 30px;
   font-weight: bold;
-  background: #a7a9ac;
+  background: #075579;
   background-clip: padding-box;
-}
+  color: #d1d2d4;
+}	
 
 #cartao{
   width: 650px;
   height: 150px;
   text-align: left;
+}
+
+#name{
+	color:#075579;
+	font-size:28px;
+}
+
+#nomeCompleto{
+	color:#075579;
+}
+
+#emailPrivado{
+	color:#075579;
 }
 
 input{
@@ -308,8 +322,9 @@ a{
                 <td><a href="http://culturaviva.gov.br/admin/cadastro?id={{i.id}}">
                   <div id="cartao">
                     <h3 id="name">Nome do Ponto: {{i.name}}</h3>
-                    <h5 id="nomeCOmpleto">Responsavel: {{i.nomeCompleto}}</h5>
-                    <h5 id="emailPrivado">Email: {{i.emailPrivado}}</h5>
+		    </br>
+                    <label id="nomeCompleto">Responsavel: {{i.nomeCompleto}}</label>
+                    </br><label id="emailPrivado">Email: {{i.emailPrivado}}</label>
                   </div>
                 </a></td>
               </tr>
