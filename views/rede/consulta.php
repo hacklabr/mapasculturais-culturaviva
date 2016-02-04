@@ -121,7 +121,7 @@ i{
   background: #075579;
   background-clip: padding-box;
   color: #d1d2d4;
-}	
+}
 
 #cartao{
   width: 650px;
@@ -245,20 +245,20 @@ a{
 	        </select>
 	      <div class="inputFiltros" ng-switch="selectFiltro">
 		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputCPF)"  ng-switch-when="cpf">
-			           CPF<input type="text" ng-model="inputCPF"/>
+			           CPF<input type="text" ui-mask="999.999.999-99" ng-model="inputCPF"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputCPF)"/>
 			</form>
-		        <form class="inputFiltros"  ng-submit="filtroPonto(selectFiltro,inputCNPJ,'entidade')" ng-switch-when="cnpj">
-			           CNPJ<input type="text" ng-model="inputCNPJ"/>
-			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputCNPJ,'entidade')"/>
+		        <form class="inputFiltros"  ng-submit="filtroPontoEntidade(selectFiltro,inputCNPJ,'entidade')" ng-switch-when="cnpj">
+			           CNPJ<input type="text" ui-mask="99.999.999/9999-99" ng-model="inputCNPJ"/>
+			           <input type="submit" value="Mostrar" ng-click="filtroPontoEntidade(selectFiltro,inputCNPJ,'entidade')"/>
 			</form>
 		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputNameResponsavel)" ng-switch-when="nomeCompleto">
 			           Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
 			           <input type="submit" value="Mostrar" ng-click="filtroResponsavel(selectFiltro,inputNameResponsavel)"/>
 		        </form>
-		        <form class="inputFiltros"  ng-submit="filtroPonto(selectFiltro,inputNamePonto,'ponto')" ng-switch-when="name">
+		        <form class="inputFiltros"  ng-submit="filtroPontoEntidade(selectFiltro,inputNamePonto,'ponto')" ng-switch-when="name">
 			           Nome do Ponto<input type="text" ng-model="inputNamePonto"/>
-			           <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,inputNamePonto,'ponto')"/>
+			           <input type="submit" value="Mostrar" ng-click="filtroPontoEntidade(selectFiltro,inputNamePonto,'ponto')"/>
 		        </form>
 		        <form class="inputFiltros"  ng-submit="filtroResponsavel(selectFiltro,inputEmail)" ng-switch-when="emailPrivado">
 			           Email<input type="text" ng-model="inputEmail"/>
@@ -294,7 +294,7 @@ a{
                 				<option value="SE">Sergipe
                 				<option value="TO">Tocantins
                   </select>
-			            <input type="submit" value="Mostrar" ng-click="filtroPonto(selectFiltro,geoEstado,'ponto')"/>
+			            <input type="submit" value="Mostrar" ng-click="filtroPontoEntidade(selectFiltro,geoEstado,'ponto')"/>
 		        </div>
 			<div class="inputFiltros" ng-switch-when="todos">
 				 <input type="submit" value="Mostrar" ng-click="filtroTopos()"/>
@@ -314,7 +314,7 @@ a{
       <table id="table">
           <thead>
             <tr>
-              <td id="Cabecalho">Pontos</td>
+              <td id="Cabecalho">Agentes</td>
             </tr>
           </thead>
           <tbody>

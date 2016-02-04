@@ -833,7 +833,7 @@
                 $scope.show = true;
 		}
 
-              $scope.filtroPonto= function(filtro,valor,tipoAgent){
+              $scope.filtroPontoEntidade= function(filtro,valor,tipoAgent){
                   var paramsFiltroPonto = {
                       '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,cnpj,geoEstado',
                       'rcv_tipo': 'EQ('+tipoAgent+')',
