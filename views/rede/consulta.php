@@ -37,7 +37,7 @@ i{
 }
 
 #topo1{
-  height: 80%;
+  height: 60%;
   background: #075579;
 
 }
@@ -62,7 +62,7 @@ i{
 }
 
 #topo2{
-  height: 50%;
+  height: 45%;
   background: #D1D2D4;;
   /*opacity: 0.3;*/
 }
@@ -128,6 +128,11 @@ i{
   height: 150px;
   text-align: left;
 }
+
+#cartaoBusca{
+  width:215px;
+  height: 490px;
+]}
 
 #name{
 	color:#075579;
@@ -232,83 +237,68 @@ a{
             <i class="icon icon-home"></i>Voltar ao início
           </a>
         </div></br>
-        <div id="campo_busca">
-	         <select ng-model="selectFiltro">
-		           <option value="">--Filtros--
-			<option value="cpf">CPF
-			<option value="cnpj">CNPJ
-			<option value="emailPrivado">Email
-			<option value="geoEstado">Estado
-            		<option value="name">Nome do Ponto
-            		<option value="nomeCompleto">Nome do Responsável
-			<option value="todos">Todos
-	        </select>
-	      <div class="inputFiltros" ng-switch="selectFiltro">
-		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputCPF)"  ng-switch-when="cpf">
-			           CPF<input type="text" ui-mask="999.999.999-99" ng-model="inputCPF"/>
-			           <input type="submit" value="Mostrar"/>
-			</form>
-		        <form class="inputFiltros"  ng-submit="filtroPontoEntidade(selectFiltro,inputCNPJ,'entidade')" ng-switch-when="cnpj">
-			           CNPJ<input type="text" ui-mask="99.999.999/9999-99" ng-model="inputCNPJ"/>
-			           <input type="submit" value="Mostrar"/>
-			</form>
-		        <form class="inputFiltros" ng-submit="filtroResponsavel(selectFiltro,inputNameResponsavel)" ng-switch-when="nomeCompleto">
-			           Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
-			           <input type="submit" value="Mostrar"/>
-		        </form>
-		        <form class="inputFiltros"  ng-submit="filtroPontoEntidade(selectFiltro,inputNamePonto,'ponto')" ng-switch-when="name">
-			           Nome do Ponto<input type="text" ng-model="inputNamePonto"/>
-			           <input type="submit" value="Mostrar"/>
-		        </form>
-		        <form class="inputFiltros"  ng-submit="filtroResponsavel(selectFiltro,inputEmail)" ng-switch-when="emailPrivado">
-			           Email<input type="text" ng-model="inputEmail"/>
-			           <input type="submit" value="Mostrar"/>
-		        </form>
-		        <form class="inputFiltros" ng-submit="filtroPontoEntidade(selectFiltro,geoEstado,'ponto')" ng-switch-when="geoEstado">
-			           <select ng-model="geoEstado">
-						<option value="AC">Acre
-                				<option value="AL">Alagoas
-                			 	<option value="AP">Amapá
-                				<option value="AM">Amazonas
-                				<option value="BA">Bahia
-                				<option value="CE">Ceará
-                				<option value="DF">Distrito Federal
-                				<option value="ES">Espírito Santo
-                				<option value="GO">Goiás
-                				<option value="MA">Maranhão
-                				<option value="MT">Mato Grosso
-                				<option value="MS">Mato Grosso do Sul
-                				<option value="MG">Minas Gerais
-                				<option value="PA">Pará
-                				<option value="PB">Paraíba
-                				<option value="PR">Paraná
-                				<option value="PE">Pernambuco
-                				<option value="PI">Piauí
-                				<option value="RJ">Rio de Janeiro
-                				<option value="RN">Rio Grande do Norte
-                				<option value="RS">Rio Grande do Sul
-                				<option value="RO">Rondônia
-                				<option value="RR">Roraima
-                				<option value="SC">Santa Catarina
-                				<option value="SP">São Paulo
-                				<option value="SE">Sergipe
-                				<option value="TO">Tocantins
-                  </select>
-			            <input type="submit" value="Mostrar"/>
-		        </form>
-			<div class="inputFiltros" ng-switch-when="todos">
-				 <input type="submit" value="Mostrar" ng-click="filtroTopos()"/>
-			</div>
-	    </div>
-
-        </div>
       </div>
       <div id="topo2">
         <span id="registros" style="color: #075579;">Quantidade de registros: {{quantidade}}</span>
         <label id="Exportar"><p style="color: #075579;">Exportar planilha<a class="download" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label>
     </div>
   </div>
-  </br></br></br></br></br>
+</br></br></br>
+  <table style="position:fixed; margin-left:-285px;" id="table">
+      <thead>
+        <tr>
+          <td id="Cabecalho">Busca</td>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>
+              <form ng-submit="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado)">
+              <div id="cartaoBusca">
+                CPF<input type="text" ui-mask="999.999.999-99" ng-model="inputCPF"/>
+                CNPJ<input type="text" ui-mask="99.999.999/9999-99" ng-model="inputCNPJ"/></br>
+                Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
+                Nome do Ponto<input type="text" ng-model="inputNamePonto"/></br>
+                Email<input type="text" ng-model="inputEmail"/>
+                Estado
+              </br>
+                <select ng-model="geoEstado">
+                       <option value="AC">Acre
+                       <option value="AL">Alagoas
+                       <option value="AP">Amapá
+                       <option value="AM">Amazonas
+                       <option value="BA">Bahia
+                       <option value="CE">Ceará
+                       <option value="DF">Distrito Federal
+                       <option value="ES">Espírito Santo
+                       <option value="GO">Goiás
+                       <option value="MA">Maranhão
+                       <option value="MT">Mato Grosso
+                       <option value="MS">Mato Grosso do Sul
+                       <option value="MG">Minas Gerais
+                       <option value="PA">Pará
+                       <option value="PB">Paraíba
+                       <option value="PR">Paraná
+                       <option value="PE">Pernambuco
+                       <option value="PI">Piauí
+                       <option value="RJ">Rio de Janeiro
+                       <option value="RN">Rio Grande do Norte
+                       <option value="RS">Rio Grande do Sul
+                       <option value="RO">Rondônia
+                       <option value="RR">Roraima
+                       <option value="SC">Santa Catarina
+                       <option value="SP">São Paulo
+                       <option value="SE">Sergipe
+                       <option value="TO">Tocantins
+                 </select>
+                 <input type="submit" value="Mostrar resultados"/>
+              </div>
+              </form>
+              <input type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>
+            </td>
+          </tr>
+      </tbody>
+    </table>
   <div id="EstiloIEContainer" ng-show="show">
     <div id="container_table">
       <table id="table">
