@@ -253,13 +253,13 @@ a{
       <tbody>
           <tr>
             <td>
-              <form ng-submit="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado)">
+              <form ng-model="formulario">
               <div id="cartaoBusca">
-                CPF<input type="text" ui-mask="999.999.999-99" ng-model="inputCPF"/>
-                CNPJ<input type="text" ui-mask="99.999.999/9999-99" ng-model="inputCNPJ"/></br>
-                Nome do Responsável<input type="text" ng-model="inputNameResponsavel"/>
-                Nome do Ponto<input type="text" ng-model="inputNamePonto"/></br>
-                Email<input type="text" ng-model="inputEmail"/>
+                CPF<input type="text" ui-mask="999.999.999-99" ng-change="" ng-model="inputCPF"/>
+                CNPJ<input type="text" ui-mask="99.999.999/9999-99" ng-change="" ng-model="inputCNPJ"/></br>
+                Nome do Responsável<input type="text" ng-change="" ng-model="inputNameResponsavel"/>
+                Nome do Ponto<input type="text" ng-change="" ng-model="inputNamePonto"/></br>
+                Email<input type="text" ng-change="" ng-model="inputEmail"/>
                 Estado
               </br>
                 <select ng-model="geoEstado">
@@ -291,10 +291,11 @@ a{
                        <option value="SE">Sergipe
                        <option value="TO">Tocantins
                  </select>
-                 <input type="submit" value="Mostrar resultados"/>
+                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado);"/>
               </div>
               </form>
-              <input type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>
+              <input type="submit" value="Limpar Consulta" ng-click="limpaFiltro();revirginar()">
+              <input style="margin-top:0px;" type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>
             </td>
           </tr>
       </tbody>
@@ -309,7 +310,7 @@ a{
           </thead>
           <tbody>
               <tr ng-repeat="i in data">
-                <td><a href="http://culturaviva.gov.br/admin/cadastro?id={{i.id}}">
+                <td><a href="../admin/cadastro?id={{i.id}}" target="_blank">
                   <div id="cartao">
                     <h3 id="name">Nome do Ponto: {{i.name}}</h3>
 		    </br>

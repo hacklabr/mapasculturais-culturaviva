@@ -796,185 +796,84 @@
         }
   ]);
 
-    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
-        function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
-		        var agenteRes = [];
-		        var paramsFiltroResponsavel={
-		            '@select': 'id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
-                'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
-		        };
-		        $http.get("/api/agent/find",{
-		        params: paramsFiltroResponsavel
-		        }).success(function(dados){
-			      var agenteTodos = dados;
-            console.log(agenteTodos);
-			      dados.forEach(function(data){
-              if(data.rcv_tipo === 'responsavel'){
-				            agenteRes.push(data);
-				      }
-			      });
+  app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
+      function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+          var agenteRes = [];
+          var paramsFiltroResponsavel={
+              '@select': 'id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
+          };
+          $http.get("/api/agent/find",{
+              params: paramsFiltroResponsavel
+          }).success(function(dados){
+               var agenteTodos = dados;
+               dados.forEach(function(data){
+                 if(data.rcv_tipo === 'responsavel'){
+                       agenteRes.push(data);
+                 }
+               });
 
+              agenteRes.forEach(function(respons){
+                    agenteTodos.forEach(function(data){
+                           if((respons.id === data.parent.id) && (data.rcv_tipo === "ponto")){
+                                  respons.name = data.name;
+                                  respons.geoEstado = data.geoEstado;
+                            }
+                            if((respons.id === data.parent.id) && (data.rcv_tipo === "entidade")){
+                                  respons.cnpj = data.cnpj;
+                            }
+                     });
+              });
+          });
 
-			      agenteRes.forEach(function(respons){
-		  		      agenteTodos.forEach(function(data){
-		    			       if((respons.id === data.parent.id) && (data.rcv_tipo === "ponto")){
-		      			         respons.name = data.name;
-		      			         respons.geoEstado = data.geoEstado;
-		     			        }
-                 });
-	          });
-            agenteRes.forEach(function(respons){
-                agenteTodos.forEach(function(data){
-                     if((respons.id === data.parent.id) && (data.rcv_tipo === "entidade")){
-                         respons.cnpj = data.cnpj;
-                      }
-                 });
-            });
-		      });
+  var retornoFiltro = [];
+  var flag = false;
+  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado){
 
-		var cpf = "";
-		var cnpj = "";
-    var nomeResponsavel = "";
-    var nomePonto = "";
-    var email = "";
-    var estadoPonto = "";
-    var retornoFiltro = [];
-		$scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado){
-			cpf = inputCPF;
-			cnpj = inputCNPJ;
-      nomeResponsavel = inputNameResponsavel;
-      nomePonto = inputNamePonto;
-      email = inputEmail;
-      estadoPonto = geoEstado;
-
-			agenteRes.forEach(function(data){
-				if((data.cpf === cpf) || (data.name === nomePonto) || (data.cnpj === cnpj) || (data.nomeCompleto === nomeResponsavel) || (data.emailPrivado === email) || (data.geoEstado === estadoPonto)){
+    agenteRes.forEach(function(data){
+      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail) ^ (data.geoEstado === geoEstado)){
+        retornoFiltro.forEach(function(dado){
+          if(data.id === dado.id){
+            flag = true;
+          }
+        });
+        if(flag === false){
           retornoFiltro.push(data);
-				}
-			});
-      $scope.quantidade = retornoFiltro.length;
-      if(retornoFiltro.length === 0){
-        retornoFiltro = [{"name": "Não encontrado"}];
+        }
       }
-      $scope.data = retornoFiltro;
-      $scope.show = true;
-		}
-
-    $scope.filtroTopos= function(){
-      $scope.quantidade = agenteRes.length;
-      if(agenteRes.length === 0){
-        agenteRes = [{"name": "Não encontrado"}];
-      }
-      $scope.data = agenteRes;
-      $scope.show = true;
+    });
+    console.log(retornoFiltro);
+    $scope.quantidade = retornoFiltro.length;
+    if(retornoFiltro.length === 0){
+      retornoFiltro = [{"name": "Não encontrado"}];
     }
+    $scope.data = retornoFiltro;
+    $scope.show = true;
+    $scope.limpaFiltro();
+  }
 
-  /*   $scope.filtroResponsavel= function(filtro,valor){
-                  var paramsFiltroResponsavel = {
-                      '@select': 'id,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
-                      'rcv_tipo': 'EQ(responsavel)',
-                  };
-                  paramsFiltroResponsavel[filtro] = 'ILIKE(%'+valor+'%)';
-                  $http.get("/api/agent/find", {
-                    params: paramsFiltroResponsavel
-                  }).success(function(data){
-                    var agenteRes = data;
-                    data.forEach(function(dados){
-                      var paramsFiltro = {
-                          '@select': 'id,name,geoEstado,rcv_tipo,parent.id',
-                          'rcv_tipo': 'EQ(ponto)',
-                          'parent': 'EQ('+dados.id+')'
-                      };
-                      $http.get("/api/agent/find", {
-                        params: paramsFiltro
-                      }).success(function(agentePon){
-                        agenteRes.forEach(function(respons){
-                          agentePon.forEach(function(data){
-                            if(data.parent.id === respons.id){
-                                respons.name = data.name;
-				respons.geoEstado = data.geoEstado;
-                            }
-                          });
-                        });
-                      });
-                    });
-                    $scope.data = agenteRes;
-                    $scope.quantidade = agenteRes.length;
-                  });
-                $scope.show = true;
-		}
+  $scope.limpaFiltro = function(){
+    $scope.inputCPF = null;
+    $scope.inputCNPJ = null;
+    $scope.inputEmail = null;
+    $scope.inputNamePonto = null;
+    $scope.inputNameResponsavel = null;
+    $scope.geoEstado = null;
+  }
+  // $scope.revirginar = function(){
+  //   $scope.formulario.$setPristine();
+  // }
 
-              $scope.filtroPontoEntidade= function(filtro,valor,tipoAgent){
-                  var paramsFiltroPonto = {
-                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,cnpj,geoEstado',
-                      'rcv_tipo': 'EQ('+tipoAgent+')',
-                  };
-                  paramsFiltroPonto[filtro] = 'ILIKE(%'+valor+'%)';
-                  $http.get("/api/agent/find", {
-                    params: paramsFiltroPonto
-                  }).success(function(data){
-                    var agentePon = data;
-                    data.forEach(function(dados){
-                      var paramsFiltro = {
-                          '@select': 'id,rcv_tipo,nomeCompleto,emailPrivado',
-                          'rcv_tipo': 'EQ(responsavel)',
-                          'id': 'EQ('+dados.parent.id+')'
-                      };
-                      $http.get("/api/agent/find", {
-                        params: paramsFiltro
-                      }).success(function(agenteRes){
-                        agentePon.forEach(function(respons){
-                          agenteRes.forEach(function(data){
-                            if(data.id === respons.parent.id){
-                                angular.extend(respons, data);
-                            }
-                          });
-                        });
-                      });
-                    });
-                    $scope.data = agentePon;
-                    $scope.quantidade = agentePon.length;
-                  });
-                $scope.show = true;
-		}
+  $scope.filtroTopos = function(){
+    $scope.quantidade = agenteRes.length;
+    if(agenteRes.length === 0){
+      agenteRes = [{"name": "Não encontrado"}];
+    }
+    $scope.data = agenteRes;
+    $scope.show = true;
+  }
 
-              $scope.filtroTopos= function(){
-                  var paramsFiltroTodos = {
-                      '@select': 'id,parent.id,name,rcv_tipo,nomeCompleto,emailPrivado,geoEstado',
-                      'rcv_tipo': 'OR(EQ(ponto),EQ(responsavel))'
-                  };
-                  $http.get("/api/agent/find", {
-                    params: paramsFiltroTodos
-                  }).success(function(data){
-		    var agenteTodos = data;
-		    var agenteRes = [];
-                    data.forEach(function(dados){
-                          if(dados.rcv_tipo === "responsavel"){
-				agenteRes.push(dados);
-			   }
-		    });
-		    agenteRes.forEach(function(respons){
-			agenteTodos.forEach(function(data){
-				if(respons.id === data.parent.id){
-					respons.name = data.name;
-					respons.geoEstado = data.geoEstado;
-				}
-			});
-		    });
-                    $scope.data = agenteRes;
-                    $scope.quantidade = agenteRes.length;
-                    });
-                $scope.show = true;
-		}
-
-           $scope.exportXls = function(){
-              var blob = new Blob([document.getElementById('container_table').innerHTML], {
-                      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-                  });
-              saveAs(blob, "Tabela.xls");
-            };*/
-
-    }]);
+  }]);
 
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
         $scope.data = {
