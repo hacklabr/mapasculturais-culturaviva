@@ -826,23 +826,16 @@
               });
           });
 
-  var retornoFiltro = [];
-  var flag = false;
-  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,geoEstado){
+
+  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail){
+    var retornoFiltro = [];
 
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail) ^ (data.geoEstado === geoEstado)){
-        retornoFiltro.forEach(function(dado){
-          if(data.id === dado.id){
-            flag = true;
-          }
-        });
-        if(flag === false){
-          retornoFiltro.push(data);
-        }
+      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+        retornoFiltro.push(data);
       }
     });
-    console.log(retornoFiltro);
+    //console.log(retornoFiltro);
     $scope.quantidade = retornoFiltro.length;
     if(retornoFiltro.length === 0){
       retornoFiltro = [{"name": "Não encontrado"}];
@@ -853,16 +846,12 @@
   }
 
   $scope.limpaFiltro = function(){
-    $scope.inputCPF = null;
-    $scope.inputCNPJ = null;
-    $scope.inputEmail = null;
-    $scope.inputNamePonto = null;
-    $scope.inputNameResponsavel = null;
-    $scope.geoEstado = null;
+    $scope.inputCPF = undefined;
+    $scope.inputCNPJ = undefined;
+    $scope.inputEmail = undefined;
+    $scope.inputNamePonto = undefined;
+    $scope.inputNameResponsavel = undefined;
   }
-  // $scope.revirginar = function(){
-  //   $scope.formulario.$setPristine();
-  // }
 
   $scope.filtroTopos = function(){
     $scope.quantidade = agenteRes.length;

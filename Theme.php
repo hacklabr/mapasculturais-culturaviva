@@ -129,7 +129,6 @@ class Theme extends BaseV1\Theme{
     protected function _enqueueStyles(){
         $this->enqueueStyle('culturaviva', 'circle', 'css/circle.css');
         $this->enqueueStyle('culturaviva', 'fonts-culturavivaiicon', 'css/fonts-icon-culturaviva.css');
-        $this->enqueueStyle('culturaviva', 'ngProgress', 'css/ngProgress.css');
     }
 
     protected function _enqueueScripts(){

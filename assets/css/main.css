@@ -6205,5 +6205,217 @@ section {
 #main-footer {
   background-color: #09897a;
   padding: 0; }
+  #topo{
+    position: fixed;
+    /*margin-left: -19%;*/
+    /*margin-top: -40px;*/
+    height: 100px;
+    width: 100%;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  }
+
+  #topo1{
+    height: 60%;
+    background: #075579;
+
+  }
+
+  #campo_busca{
+    margin-left: 200px;
+    margin-top: 15px;
+    color: #D1D2D4;
+    font-weight: bold;
+  }
+
+  #Buscar{
+    float: right;
+    margin-top: 20px;
+    margin-right: -10px;
+    width: 400px
+  }
+
+  #P_buscar{
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  #topo2{
+    height: 45%;
+    background: #D1D2D4;;
+    /*opacity: 0.3;*/
+  }
+
+  #btn_voltar, a{
+    margin-left: 8px;
+    margin-top: 4px;
+    color: #D1D2D4;
+    float: left;
+  }
+
+  #btn_voltars, a:hover{
+    color: #fff;
+  }
+
+  #registros{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: normal;
+
+  }
+
+  #Exportar{
+    float: right;
+    margin-top: 12px;
+    margin-right: 20px;
+    width: 180px;
+    color: #075579;
+    font-weight: normal;
+  }
+
+  #container_table{
+    height: auto;
+    width: -moz-fit-content;
+    border: 60px solid rgba(153, 153, 153, 0.3);
+    border-radius: 10px;
+    /*margin: 100px 0 0 70px;*/
+  }
+
+  #EstiloIEContainer{
+    display: -ms-grid;
+    -ms-grid-columns: min-content;
+    margin-left: 270px;
+  }
+
+  #table{
+    margin: 0px;
+    color: #414042;
+  }
+
+  #Cabecalho{
+    font-size: 30px;
+    font-weight: bold;
+    background: #075579;
+    background-clip: padding-box;
+    color: #d1d2d4;
+  }
+
+  #cartao{
+    width: 650px;
+    height: 150px;
+    text-align: left;
+  }
+
+  #cartaoBusca{
+    width:215px;
+  ]}
+
+  #name{
+  	color:#075579;
+  	font-size:28px;
+  }
+
+  #nomeCompleto{
+  	color:#075579;
+  }
+
+  #emailPrivado{
+  	color:#075579;
+  }
+
+  table, th , td  {
+    border-collapse: collapse;
+    padding: 5px;
+  }
+
+  table tr:nth-child(odd)	td{
+    background-color: #D1D2D4;
+  }
+  table tr:nth-child(even) td{
+    background-color: #FFFFFF;
+  }
+
+  td{
+    max-width: auto;
+    padding: 10px;
+    border: 6px solid rgba(153, 153, 153, 0.3);
+    background-clip: padding-box;
+    height: auto;
+  }
+
+
+  .download{
+    width: 1.600em;
+    height: 0.500em;
+    border: 0.250em solid #A7A9AC;
+    border-top: none;
+    position: absolute;
+    bottom: 0.188em;
+    position: relative;
+    margin-top:1em;
+  }
+
+  .download:hover{
+    width: 1.500em;
+    height: 0.500em;
+    border: 0.250em solid	#FFFFFF;
+    border-top: none;
+    position: absolute;
+    bottom: 0.188em;
+    position: relative;
+    margin-top:1em;
+  }
+
+
+  .download:before{
+    content: '';
+    position: absolute;
+    width: 0.438em;
+    height: 0.625em;
+    background: #A7A9AC;
+    top: -0.875em;
+    left: 0.563em;
+  }
+
+  .download:hover:before{
+    content: '';
+    position: absolute;
+    width: 0.438em;
+    height: 0.625em;
+    background: #FFFFFF;
+    top: -0.875em;
+    left: 0.463em;
+  }
+
+  .download:after{
+    width: 0em;
+    height: 0em;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: #A7A9AC transparent transparent transparent;
+    border-width: 0.500em;
+    left: 0.250em;
+    top: -0.250em;
+  }
+
+  .download:hover:after{
+    width: 0em;
+    height: 0em;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: 	#FFFFFF transparent transparent transparent;
+    border-width: 0.500em;
+    left: 0.250em;
+    top: -0.250em;
+  }
+
+  .inputFiltro{
+    width: 200px;
+    border-radius: 2px;
+    margin-left: 10px;
+  }
 
 /*# sourceMappingURL=main.css.map */
