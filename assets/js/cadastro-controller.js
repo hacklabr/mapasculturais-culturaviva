@@ -1,35 +1,6 @@
 (function(angular){
     'use strict';
-    var app = angular.module('culturaviva.controllers', ['ngProgress']);
-
-    var agentsChave = [     "Nome do responsável",
-                            "CPF do responsável",
-                            "E-mail do responsável",
-                            "Telefone do responsável",
-                            "Operadora do responsável",
-                            "Relação com o ponto",
-                            "Tipo de organização",
-                            "Tipo de ponto desejado",
-                            "CNPJ da entidade",
-                            "Representante legal",
-                            "Nome da entidade responsável",
-                            "Cargo do responsável",
-                            "E-mail do responsável pelo ponto",
-                            "Telefone da entidade responsável",
-                            "Operadora da entidade responsável",
-                            "Nome do ponto",
-                            "Descrição do ponto",
-                            "País onde está o ponto",
-                            "Estado onde está o ponto",
-                            "Cidade onde está o ponto",
-                            "Bairro onde está o ponto",
-                            "Rua onde está o ponto",
-                            "Número do ponto",
-                            "CEP do ponto",
-                            "Sede do ponto",
-                            "Localização do ponto",
-                            "Link do portfólio"
-                             ];
+    var app = angular.module('culturaviva.controllers', []);
 
     var agentsPontoDados = ["name",
                         "nomeCompleto",
@@ -823,80 +794,74 @@
             });
 
         }
-    ]);
+  ]);
 
-    app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q', 'ngProgressFactory',
-        function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q, ngProgressFactory){
-            $scope.progressbar = ngProgressFactory.createInstance();
-            $scope.progressbar.setColor('#fff');
-            $scope.progressbar.start();
-            $scope.chaveDado = agentsChave;
-            var params_obrigatorios = {
-                '@select': 'id,rcv_tipo,parent.id,nomeCompleto,relacaoPonto,cpf,emailPrivado,telefone1,telefone1_operadora,rcv_tipo,rcv_tipo,'+
-                            'parent.id,name,shortDescription,cep,tem_sede,pais,geoEstado,geoMunicipio,En_Bairro,En_Nome_Logradouro,'+
-                            'En_Num,location,atividadesEmRealizacaoLink,parent.id,tipoOrganizacao,tipoPontoCulturaDesejado,cnpj,responsavel_nome,'+
-                            'responsavel_cargo,responsavel_email,responsavel_telefone,responsavel_operadora,representanteLegal',
-                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
-                'rcv_tipo': 'OR(EQ(responsavel),EQ(entidade),EQ(ponto))',
-            };
-            $http.get("/api/agent/find", {
-              params: params_obrigatorios
-            }).success(function(data){
-              var agente = data;
-              var arrayResponsavel = [];
-
-              agente.forEach(function(data){
-                if(data.rcv_tipo === "responsavel"){
-                  arrayResponsavel.push(data);
-                }
+  app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
+      function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+          var agenteRes = [];
+          var paramsFiltroResponsavel={
+              '@select': 'id,user.id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
+          };
+          $http.get("/api/agent/find",{
+              params: paramsFiltroResponsavel
+          }).success(function(dados){
+              console.log(dados);
+               var agenteTodos = dados;
+               dados.forEach(function(data){
+                 if(data.rcv_tipo === 'responsavel'){
+                       agenteRes.push(data);
+                 }
+               });
+              agenteRes.forEach(function(respons){
+                    agenteTodos.forEach(function(data){
+                           if((respons.id === data.parent.id) && (data.rcv_tipo === "ponto")){
+                                  respons.name = data.name;
+                                  respons.geoEstado = data.geoEstado;
+                            }
+                            if((respons.id === data.parent.id) && (data.rcv_tipo === "entidade")){
+                                  respons.cnpj = data.cnpj;
+                            }
+                     });
               });
+          });
 
-              arrayResponsavel.forEach(function(respons, i){
-                agente.forEach(function(data){
-                  if(data.parent.id === respons.id){
-                    if(data.rcv_tipo === 'ponto'){
-                      respons.name = data.name;
-                      respons.shortDescription = data.shortDescription;
-                      respons.cep = data.cep;
-                      respons.tem_sede = data.tem_sede;
-                      respons.pais = data.pais;
-                      respons.geoEstado = data.geoEstado;
-                      respons.geoMunicipio = data.geoMunicipio;
-                      respons.En_Bairro = data.En_Bairro;
-                      respons.En_Nome_Logradouro = data.En_Nome_Logradouro;
-                      respons.En_Num = data.En_Num;
-                      respons.location = data.location;
-                      respons.atividadesEmRealizacaoLink = data.atividadesEmRealizacaoLink;
-                    }
-                    if(data.rcv_tipo === 'entidade'){
-                      respons.tipoOrganizacao = data.tipoOrganizacao;
-                      respons.tipoPontoCulturaDesejado = data.tipoPontoCulturaDesejado;
-                      respons.cnpj = data.cnpj;
-                      respons.responsavel_nome = data.responsavel_nome;
-                      respons.responsavel_cargo = data.responsavel_cargo;
-                      respons.responsavel_email = data.responsavel_email;
-                      respons.responsavel_telefone = data.responsavel_telefone;
-                      respons.responsavel_operadora = data.responsavel_operadora;
-                      respons.representanteLegal = data.representanteLegal;
-                    }
-                  }
-                });
-              });
 
-                $scope.data = arrayResponsavel;
-                $scope.quantidade = arrayResponsavel.length;
-            }).success(function(){
-              $scope.progressbar.complete();
-            });
+  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail){
+    var retornoFiltro = [];
 
-            $scope.exportXls = function(){
-              var blob = new Blob([document.getElementById('container_table').innerHTML], {
-                      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-                  });
-              saveAs(blob, "Tabela.xls");
-            };
+    agenteRes.forEach(function(data){
+      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+        retornoFiltro.push(data);
+      }
+    });
+    $scope.quantidade = retornoFiltro.length;
+    if(retornoFiltro.length === 0){
+      retornoFiltro = [{"name": "Não encontrado"}];
+    }
+    $scope.data = retornoFiltro;
+    $scope.show = true;
+    $scope.limpaFiltro();
+  }
 
-    }]);
+  $scope.limpaFiltro = function(){
+    $scope.inputCPF = undefined;
+    $scope.inputCNPJ = undefined;
+    $scope.inputEmail = undefined;
+    $scope.inputNamePonto = undefined;
+    $scope.inputNameResponsavel = undefined;
+  }
+
+  $scope.filtroTopos = function(){
+    $scope.quantidade = agenteRes.length;
+    if(agenteRes.length === 0){
+      agenteRes = [{"name": "Não encontrado"}];
+    }
+    $scope.data = agenteRes;
+    $scope.show = true;
+  }
+
+  }]);
 
     app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
         $scope.data = {
