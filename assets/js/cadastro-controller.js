@@ -800,19 +800,19 @@
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
               params: paramsFiltroResponsavel
           }).success(function(dados){
+              console.log(dados);
                var agenteTodos = dados;
                dados.forEach(function(data){
                  if(data.rcv_tipo === 'responsavel'){
                        agenteRes.push(data);
                  }
                });
-
               agenteRes.forEach(function(respons){
                     agenteTodos.forEach(function(data){
                            if((respons.id === data.parent.id) && (data.rcv_tipo === "ponto")){
@@ -835,7 +835,6 @@
         retornoFiltro.push(data);
       }
     });
-    //console.log(retornoFiltro);
     $scope.quantidade = retornoFiltro.length;
     if(retornoFiltro.length === 0){
       retornoFiltro = [{"name": "Não encontrado"}];
