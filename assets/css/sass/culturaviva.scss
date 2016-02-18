@@ -2420,7 +2420,7 @@ section{
 
   #topo2{
     height: 45%;
-    background: #D1D2D4;;
+    background: #D1D2D4;
     /*opacity: 0.3;*/
   }
 
@@ -2459,6 +2459,11 @@ section{
   #table{
     margin: 0px;
     color: #414042;
+    background: #D1D2D4;
+  }
+
+  #table tr:nth-child(even) td{
+    background-color: #FFFFFF;
   }
 
   #Cabecalho{
