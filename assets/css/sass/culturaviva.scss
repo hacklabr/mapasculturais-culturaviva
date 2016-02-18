@@ -2402,6 +2402,7 @@ section{
 #main-footer {
   background-color: #09897a;
   padding: 0; }
+
   #topo{
     position: fixed;
     /*margin-left: -19%;*/
@@ -2417,40 +2418,10 @@ section{
 
   }
 
-  #campo_busca{
-    margin-left: 200px;
-    margin-top: 15px;
-    color: #D1D2D4;
-    font-weight: bold;
-  }
-
-  #Buscar{
-    float: right;
-    margin-top: 20px;
-    margin-right: -10px;
-    width: 400px
-  }
-
-  #P_buscar{
-    font-size: 35px;
-    font-weight: bold;
-  }
-
   #topo2{
     height: 45%;
     background: #D1D2D4;;
     /*opacity: 0.3;*/
-  }
-
-  #btn_voltar, a{
-    margin-left: 8px;
-    margin-top: 4px;
-    color: #D1D2D4;
-    float: left;
-  }
-
-  #btn_voltars, a:hover{
-    color: #fff;
   }
 
   #registros{
@@ -2520,27 +2491,6 @@ section{
   #emailPrivado{
   	color:#075579;
   }
-
-  table, th , td  {
-    border-collapse: collapse;
-    padding: 5px;
-  }
-
-  table tr:nth-child(odd)	td{
-    background-color: #D1D2D4;
-  }
-  table tr:nth-child(even) td{
-    background-color: #FFFFFF;
-  }
-
-  td{
-    max-width: auto;
-    padding: 10px;
-    border: 6px solid rgba(153, 153, 153, 0.3);
-    background-clip: padding-box;
-    height: auto;
-  }
-
 
   .download{
     width: 1.600em;
