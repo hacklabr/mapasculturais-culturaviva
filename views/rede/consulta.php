@@ -25,7 +25,7 @@
                 Nome do Responsável<input class="inputFiltro" type="text" ng-model="inputNameResponsavel"/>
                 Nome do Ponto<input class="inputFiltro" type="text" ng-model="inputNamePonto"/></br>
                 Email<input class="inputFiltro" type="text" ng-model="inputEmail"/>
-                Status de Atualização<select class="inputFiltro" ng-model="inputStatus">
+                Status de Enviado<select class="inputFiltro" ng-model="inputStatus">
                   <option hidden="true" value="" selected> Status
                   <option value="1"> Atualizado
                   <option value="0"> Desatualizado

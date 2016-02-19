@@ -830,8 +830,6 @@
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
     var retornoFiltro = [];
     agenteRes.forEach(function(data){
-      console.log(data.status);
-      console.log(inputStatus);
       if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
       }
