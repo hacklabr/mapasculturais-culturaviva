@@ -800,13 +800,13 @@
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,user.id,parent.id,statusInscricao,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
               params: paramsFiltroResponsavel
           }).success(function(dados){
-              console.log(dados);
+              // console.log(dados);
                var agenteTodos = dados;
                dados.forEach(function(data){
                  if(data.rcv_tipo === 'responsavel'){
@@ -829,9 +829,10 @@
 
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
     var retornoFiltro = [];
-
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.statusInscricao === inputStatus)^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+      console.log(data.status);
+      console.log(inputStatus);
+      if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
       }
     });
