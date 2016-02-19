@@ -806,7 +806,6 @@
           $http.get("/api/agent/find",{
               params: paramsFiltroResponsavel
           }).success(function(dados){
-              // console.log(dados);
                var agenteTodos = dados;
                dados.forEach(function(data){
                  if(data.rcv_tipo === 'responsavel'){
@@ -826,12 +825,21 @@
               });
           });
 
-
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
     var retornoFiltro = [];
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+      if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
+      }
+      if((data.name !== null) & (inputNamePonto !== undefined)){
+        if(data.name.toLocaleLowerCase().indexOf(inputNamePonto.toLocaleLowerCase()) !== -1){
+            retornoFiltro.push(data);
+        }
+      }
+      if((data.nomeCompleto !== null) & (inputNameResponsavel !== undefined)){
+        if(data.nomeCompleto.toLocaleLowerCase().indexOf(inputNameResponsavel.toLocaleLowerCase()) !== -1){
+          retornoFiltro.push(data);
+        }
       }
     });
     $scope.quantidade = retornoFiltro.length;
