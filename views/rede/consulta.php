@@ -3,16 +3,9 @@
 ?>
 <div ng-controller="ConsultaCtrl">
     <div id="topo">
-      <!-- <div id="topo1">
-        <div id="btn_voltar">
-          <a target="_self" href="#">
-            <i class="icon icon-home"></i>Voltar ao início
-          </a>
-        </div></br>
-      </div> -->
       <div id="topo2">
         <span id="registros" style="color: #075579;">Quantidade de registros: {{quantidade}}</span>
-        <!-- <label id="Exportar"><p style="color: #075579;">Exportar planilha<a class="download teste" ng-click="exportXls()" hltitle="Exportar xls"></a></p></label> -->
+
     </div>
   </div>
 </br></br></br>
@@ -32,7 +25,12 @@
                 Nome do Responsável<input class="inputFiltro" type="text" ng-model="inputNameResponsavel"/>
                 Nome do Ponto<input class="inputFiltro" type="text" ng-model="inputNamePonto"/></br>
                 Email<input class="inputFiltro" type="text" ng-model="inputEmail"/>
-                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail);"/>
+                <select ng-model="inputStatus">
+                  <option hidden="true" value="" selected> Status
+                  <option value="1"> Atualizado
+                  <option value="0"> Desatualizado
+                </select>
+                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus);"/>
 
                  <input type="submit" value="Limpar Consulta" ng-click="limpaFiltro();">
                  <input style="margin-top:0px;" type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>

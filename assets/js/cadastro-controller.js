@@ -800,7 +800,7 @@
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,user.id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,statusInscricao,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
@@ -827,11 +827,11 @@
           });
 
 
-  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail){
+  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
     var retornoFiltro = [];
 
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+      if((data.cpf === inputCPF) ^ (data.statusInscricao === inputStatus)^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
       }
     });
@@ -850,6 +850,7 @@
     $scope.inputEmail = undefined;
     $scope.inputNamePonto = undefined;
     $scope.inputNameResponsavel = undefined;
+    $scope.inputStatus = undefined;
   }
 
   $scope.filtroTopos = function(){
