@@ -27,8 +27,8 @@
                 Email<input class="inputFiltro" type="text" ng-model="inputEmail"/>
                 Status de Enviado<select class="inputFiltro" ng-model="inputStatus">
                   <option hidden="true" value="" selected> Status
-                  <option value="1"> Atualizado
-                  <option value="0"> Desatualizado
+                  <option value="1"> Enviado
+                  <option value="0"> Não Enviado
                 </select>
                  <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus);"/>
 
