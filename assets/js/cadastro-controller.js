@@ -724,7 +724,7 @@
                 '@select': 'id,rcv_tipo,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                     'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                     'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                    'metodologia1_cargaHoraria,metodologia1_certificacao',
+                    'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv,',
                 '@permissions': 'view'
             };
 
@@ -802,7 +802,7 @@
           $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,status,cnpj,homologado-rcv,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
@@ -832,7 +832,7 @@
     $scope.progress = true;
     var retornoFiltro = [];
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
+      if((data.cpf === inputCPF) ^ (data.homologado-rcv == inputHomologado) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
       }
       if((data.name !== null) & (inputNamePonto !== undefined)){
@@ -976,7 +976,7 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao',
+                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv',
                     '@permissions': 'view'
                 };
 
