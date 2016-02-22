@@ -4,8 +4,11 @@
 <div ng-controller="ConsultaCtrl">
     <div id="topo">
       <div id="topo2">
-        <span id="registros" style="color: #075579;">Quantidade de registros: {{quantidade}}</span>
-
+        <span id="registros" ng-show="progress">
+            <img src="<?php $this->asset('img/spinner-black.gif')?>">
+            <span>obtendo resultados...</span>
+         </span>
+        <span id="registros" style="color: #075579;" ng-hide="progress">Quantidade de registros: {{quantidade}}</span>
     </div>
   </div>
 </br></br></br>

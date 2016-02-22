@@ -309,7 +309,6 @@
             });
 
             $scope.save_field = function save_field(field) {
-              console.log("oi");
                 if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
                     return;
                 }
@@ -800,6 +799,7 @@
 
   app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+          $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
               '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
@@ -825,9 +825,11 @@
                             }
                      });
               });
+              $scope.progress = false;
           });
 
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
+    $scope.progress = true;
     var retornoFiltro = [];
     agenteRes.forEach(function(data){
       if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
@@ -851,6 +853,7 @@
     $scope.data = retornoFiltro;
     $scope.show = true;
     $scope.limpaFiltro();
+    $scope.progress = false;
   }
 
   $scope.limpaFiltro = function(){
@@ -863,12 +866,14 @@
   }
 
   $scope.filtroTopos = function(){
+    $scope.progress = true;
     $scope.quantidade = agenteRes.length;
     if(agenteRes.length === 0){
       agenteRes = [{"name": "Não encontrado"}];
     }
     $scope.data = agenteRes;
     $scope.show = true;
+    $scope.progress = false;
   }
 
   }]);
