@@ -309,6 +309,7 @@
             });
 
             $scope.save_field = function save_field(field) {
+              console.log("oi");
                 if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
                     return;
                 }
@@ -396,6 +397,7 @@
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
                             $scope.data.validationErrors = null;
+                            $scope.messages.show('sucesso', 'alterações salvas');
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
@@ -432,10 +434,10 @@
                                 }
                               }
                             }
+
                         });
             };
-        }
-    ]);
+        }]);
 
 
     // TODO: Tranforma em diretiva
@@ -972,9 +974,11 @@
                                 'metodologia1_cargaHoraria,metodologia1_certificacao',
                     '@permissions': 'view'
                 };
+
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
                 $scope.ponto = Entity.get(ponto);
+
             }).error(function(){
                 $scope.messages.show('erro', "O usuário não foi encontrado");
             });
