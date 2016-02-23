@@ -802,7 +802,7 @@
           $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,user.id,parent.id,status,cnpj,homologado-rcv,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
@@ -831,18 +831,34 @@
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
     $scope.progress = true;
     var retornoFiltro = [];
+    var flag = false;
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.homologado-rcv == inputHomologado) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
+      if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
       }
+
       if((data.name !== null) & (inputNamePonto !== undefined)){
         if(data.name.toLocaleLowerCase().indexOf(inputNamePonto.toLocaleLowerCase()) !== -1){
-            retornoFiltro.push(data);
+          retornoFiltro.forEach(function(dados){
+            if(dados.id === data.id){
+              flag = true;
+            }
+          });
+            if(flag === false){
+                retornoFiltro.push(data);
+            }
         }
       }
       if((data.nomeCompleto !== null) & (inputNameResponsavel !== undefined)){
         if(data.nomeCompleto.toLocaleLowerCase().indexOf(inputNameResponsavel.toLocaleLowerCase()) !== -1){
-          retornoFiltro.push(data);
+          retornoFiltro.forEach(function(dados){
+            if(dados.id === data.id){
+              flag = true;
+            }
+          });
+            if(flag === false){
+                retornoFiltro.push(data);
+            }
         }
       }
     });

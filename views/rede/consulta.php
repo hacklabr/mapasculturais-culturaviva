@@ -33,13 +33,8 @@
                   <option value="1"> Enviado
                   <option value="0"> Não Enviado
                 </select>
-                Homologação de pontos<select class="inputFiltro" ng-model="inputHomologado">
-                  <option hidden="true" value="" selected> Ponto é homologado?
-                  <option value="1"> Homologado
-                  <option value="0"> Não Homologado
-                </select>
 
-                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputHomologado,inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus);"/>
+                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus);"/>
 
                  <input type="submit" value="Limpar Consulta" ng-click="limpaFiltro();">
                  <input style="margin-top:0px;" type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>
