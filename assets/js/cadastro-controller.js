@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    var app = angular.module('culturaviva.controllers', []);
+    var app = angular.module('culturaviva.controllers', ['ngDialog']);
 
     var agentsPontoDados = ["name",
                         "nomeCompleto",
@@ -370,8 +370,8 @@
         }
     }
 
-    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
-        function($scope, Entity, MapasCulturais, $http, $timeout){
+    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', 'ngDialog',
+        function($scope, Entity, MapasCulturais, $http, $timeout, ngDialog){
 
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 
@@ -396,6 +396,7 @@
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
                             $scope.data.validationErrors = null;
+                            ngDialog.open({ template: 'modal' });
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
@@ -432,10 +433,10 @@
                                 }
                               }
                             }
+
                         });
             };
-        }
-    ]);
+        }]);
 
 
     // TODO: Tranforma em diretiva
@@ -723,7 +724,7 @@
                 '@select': 'id,rcv_tipo,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                     'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                     'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                    'metodologia1_cargaHoraria,metodologia1_certificacao',
+                    'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv,',
                 '@permissions': 'view'
             };
 
@@ -798,15 +799,15 @@
 
   app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+          $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
-              '@select': 'id,user.id,parent.id,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
+              '@select': 'id,user.id,parent.id,status,cnpj,homologado-rcv,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
               'rcv_tipo': 'OR(EQ(responsavel),EQ(ponto),EQ(entidade))'
           };
           $http.get("/api/agent/find",{
               params: paramsFiltroResponsavel
           }).success(function(dados){
-              console.log(dados);
                var agenteTodos = dados;
                dados.forEach(function(data){
                  if(data.rcv_tipo === 'responsavel'){
@@ -824,15 +825,25 @@
                             }
                      });
               });
+              $scope.progress = false;
           });
 
-
-  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail){
+  $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
+    $scope.progress = true;
     var retornoFiltro = [];
-
     agenteRes.forEach(function(data){
-      if((data.cpf === inputCPF) ^ (data.name === inputNamePonto) ^ (data.cnpj === inputCNPJ) ^ (data.nomeCompleto === inputNameResponsavel) ^ (data.emailPrivado === inputEmail)){
+      if((data.cpf === inputCPF) ^ (data.homologado-rcv == inputHomologado) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail)){
         retornoFiltro.push(data);
+      }
+      if((data.name !== null) & (inputNamePonto !== undefined)){
+        if(data.name.toLocaleLowerCase().indexOf(inputNamePonto.toLocaleLowerCase()) !== -1){
+            retornoFiltro.push(data);
+        }
+      }
+      if((data.nomeCompleto !== null) & (inputNameResponsavel !== undefined)){
+        if(data.nomeCompleto.toLocaleLowerCase().indexOf(inputNameResponsavel.toLocaleLowerCase()) !== -1){
+          retornoFiltro.push(data);
+        }
       }
     });
     $scope.quantidade = retornoFiltro.length;
@@ -842,6 +853,7 @@
     $scope.data = retornoFiltro;
     $scope.show = true;
     $scope.limpaFiltro();
+    $scope.progress = false;
   }
 
   $scope.limpaFiltro = function(){
@@ -850,15 +862,18 @@
     $scope.inputEmail = undefined;
     $scope.inputNamePonto = undefined;
     $scope.inputNameResponsavel = undefined;
+    $scope.inputStatus = undefined;
   }
 
   $scope.filtroTopos = function(){
+    $scope.progress = true;
     $scope.quantidade = agenteRes.length;
     if(agenteRes.length === 0){
       agenteRes = [{"name": "Não encontrado"}];
     }
     $scope.data = agenteRes;
     $scope.show = true;
+    $scope.progress = false;
   }
 
   }]);
@@ -961,12 +976,14 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao',
+                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv',
                     '@permissions': 'view'
                 };
+
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
                 $scope.ponto = Entity.get(ponto);
+
             }).error(function(){
                 $scope.messages.show('erro', "O usuário não foi encontrado");
             });
