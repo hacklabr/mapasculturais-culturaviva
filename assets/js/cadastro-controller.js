@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    var app = angular.module('culturaviva.controllers', ['ngDialog']);
+    var app = angular.module('culturaviva.controllers', []);
 
     var agentsPontoDados = ["name",
                         "nomeCompleto",

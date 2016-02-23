@@ -145,6 +145,7 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'FileSaver', 'js/FileSaver.min.js');
 
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
+	$this->enqueueScript('vendor', 'ngDialog', 'vendor/ngDialog.min.js');
         $this->enqueueScript('vendor', 'google-maps-api', 'http://maps.google.com/maps/api/js?v=3.2&sensor=false');
     }
 
