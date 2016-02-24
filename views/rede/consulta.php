@@ -12,7 +12,7 @@
     </div>
   </div>
 </br></br></br>
-  <table style="position:fixed;" id="table">
+  <table style="position:absolute;" id="table">
       <thead>
         <tr>
           <td id="Cabecalho">Busca</td>
@@ -39,7 +39,7 @@
                   <option value="0"> Não Homologado
                 </select>
 
-                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputHomologado,inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus);"/>
+                 <input type="submit" value="Mostrar resultados" ng-click="filtro(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus,inputHomologado);"/>
 
                  <input type="submit" value="Limpar Consulta" ng-click="limpaFiltro();">
                  <input style="margin-top:0px;" type="submit" ng-click="filtroTopos()" value="Mostrar Tudo"/>
@@ -72,3 +72,4 @@
         </table>
     </div>
   </div>
+</div>

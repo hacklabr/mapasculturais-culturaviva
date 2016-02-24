@@ -9,7 +9,8 @@
         'ngFileUpload',
         'ngMessages',
         'ui.date',
-        'ui.mask'
+        'ui.mask',
+        'ngDialog'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', '$locationProvider',
@@ -28,6 +29,16 @@
             };
             $resourceProvider.defaults.stripTrailingSlashes = false;
             $locationProvider.html5Mode(true);
+        }]);
+
+        app.config(["ngDialogProvider", function (ngDialogProvider) {
+            ngDialogProvider.setDefaults({
+                className: "ngdialog-theme-default",
+                plain: false,
+                showClose: true,
+                closeByDocument: true,
+                closeByEscape: true,
+            });
         }]);
 
 })(angular);
