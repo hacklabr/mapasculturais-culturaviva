@@ -348,6 +348,9 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
 		    </strong>
   </div>
+  <script type="text/ng-template" id="modal">
+    <p>Dados atualizados com sucesso!</p>
+  </script>
 
   <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
   <div class="page-base-form">

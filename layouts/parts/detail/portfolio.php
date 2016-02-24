@@ -5,7 +5,7 @@
             <span class="destaque">Portfólio</span>
                 <div class="colunm1">
                     <a ng-if="ponto.files.portifolio.url" href="{{ponto.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
-                    <a ng-if="ponto.atividadesEmRealizacaoLink" href="ponto.atividadesEmRealizacaoLink" target="_blank">{{ponto.atividadesEmRealizacaoLink}}</a>
+                    <a ng-if="ponto.atividadesEmRealizacaoLink" href="{{ponto.atividadesEmRealizacaoLink}}" target="_blank">{{ponto.atividadesEmRealizacaoLink}}</a>
                     <span ng-if="!ponto.files.portifolio.url && !ponto.atividadesEmRealizacaoLink"><b>Não informado</b></span>
                 </div>
         </div>

@@ -926,7 +926,7 @@
         };
     }]);
 
-    app.controller('DetailCtrl',['$scope', 'Entity', '$http', '$timeout', '$location', function($scope, Entity, $http, $timeout, $location){
+    app.controller('DetailCtrl',['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', '$location', function($scope, Entity, MapasCulturais, $http, $timeout, $location){
         extendController($scope, $timeout);
         $scope.termos = termos;
         $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
@@ -970,13 +970,23 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv',
+                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado_rcv',
+                    '@permissions': 'view'
+                };
+
+                var agent = {
+                    'id': rcv.agentePonto,
+                    '@select':  'id,homologado_rcv',
                     '@permissions': 'view'
                 };
 
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
                 $scope.ponto = Entity.get(ponto);
+                $scope.agent = Entity.get(agent, function(){
+                  extendController($scope, $timeout, Entity, rcv.agentePonto, $http);
+                });
+
 
             }).error(function(){
                 $scope.messages.show('erro', "O usuário não foi encontrado");

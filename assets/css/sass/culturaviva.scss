@@ -182,7 +182,7 @@ section{
         span{
             color: #FBED1D;
             font-size: 35px;
-            margin-left: 40%;
+            margin-left: 45%;
         }
     }
 
@@ -328,7 +328,7 @@ section{
                 width: 433px;
                 height: 164px;
                 background-color: #333;
-                top: -435px;
+                top: -520px;
                 margin-left: 10px;
             }
 
@@ -365,9 +365,9 @@ section{
                     text-transform: uppercase;
                     color:#3a7c18;
                     position: relative;
-                    left: -30%;
-		    top: -15%;
-		    font-size: 18px;
+                    left: -26%;
+		                top: -15%;
+		                font-size: 24px;
             }
             a {
                 &.what {
@@ -2402,6 +2402,7 @@ section{
 #main-footer {
   background-color: #09897a;
   padding: 0; }
+
   #topo{
     position: fixed;
     /*margin-left: -19%;*/
@@ -2417,41 +2418,11 @@ section{
 
   }
 
-  #campo_busca{
-    margin-left: 200px;
-    margin-top: 15px;
-    color: #D1D2D4;
-    font-weight: bold;
-  }
-
-  #Buscar{
-    float: right;
-    margin-top: 20px;
-    margin-right: -10px;
-    width: 400px
-  }
-
-  #P_buscar{
-    font-size: 35px;
-    font-weight: bold;
-  }
-
   #topo2{
     height: 45%;
-    background: #D1D2D4;;
+    background: #D1D2D4;
     /*opacity: 0.3;*/
   }
-
-  /*#btn_voltar, a{
-    margin-left: 8px;
-    margin-top: 4px;
-    color: #D1D2D4;
-    float: left;
-  }
-
-  #btn_voltars, a:hover{
-    color: #fff;
-}*/
 
   #registros{
     position: absolute;
@@ -2488,6 +2459,11 @@ section{
   #table{
     margin: 0px;
     color: #414042;
+    background: #D1D2D4;
+  }
+
+  #table tr:nth-child(even) td{
+    background-color: #FFFFFF;
   }
 
   #Cabecalho{
@@ -2521,28 +2497,7 @@ section{
   	color:#075579;
   }
 
-  /*table, th , td  {
-    border-collapse: collapse;
-    padding: 5px;
-  }
-
-  table tr:nth-child(odd)	td{
-    background-color: #D1D2D4;
-  }
-  table tr:nth-child(even) td{
-    background-color: #FFFFFF;
-  }
-
-  td{
-    max-width: auto;
-    padding: 10px;
-    border: 6px solid rgba(153, 153, 153, 0.3);
-    background-clip: padding-box;
-    height: auto;
-}*/
-
-
-  .download{
+ .download{
     width: 1.600em;
     height: 0.500em;
     border: 0.250em solid #A7A9AC;
