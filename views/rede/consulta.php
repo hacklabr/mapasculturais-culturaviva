@@ -12,7 +12,8 @@
     </div>
   </div>
 </br></br></br>
-  <table style="position:absolute;" id="table">
+  <div>
+  <table id="table">
       <thead>
         <tr>
           <td id="Cabecalho">Busca</td>
@@ -49,6 +50,7 @@
           </tr>
       </tbody>
     </table>
+  </div>
   <div id="EstiloIEContainer" ng-show="show">
     <div id="container_table">
       <table id="table">

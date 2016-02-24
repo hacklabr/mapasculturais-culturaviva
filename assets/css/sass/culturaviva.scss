@@ -2423,7 +2423,7 @@ section{
   padding: 0; }
 
   #topo{
-    position: fixed;
+    //position: fixed;
     /*margin-left: -19%;*/
     /*margin-top: -40px;*/
     height: 100px;
@@ -2462,23 +2462,27 @@ section{
   }
 
   #container_table{
+    float: left;
     height: auto;
-    width: -moz-fit-content;
-    border: 60px solid rgba(153, 153, 153, 0.3);
-    border-radius: 10px;
+    //width: -moz-fit-content;
+    width: 80%;
+    padding-left: 50px;
+    //border: 60px solid rgba(153, 153, 153, 0.3);
+    //border-radius: 10px;
     /*margin: 100px 0 0 70px;*/
   }
 
   #EstiloIEContainer{
-    display: -ms-grid;
+    //display: -ms-grid;
     -ms-grid-columns: min-content;
-    margin-left: 270px;
+    margin-left: 170px;
   }
 
   #table{
     margin: 0px;
     color: #414042;
     background: #D1D2D4;
+    float: left;
   }
 
   #table tr:nth-child(even) td{
