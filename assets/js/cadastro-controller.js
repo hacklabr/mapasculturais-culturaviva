@@ -983,7 +983,7 @@
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
                 $scope.ponto = Entity.get(ponto);
-                $scope.agent = Entity.get(ponto, function(){
+                $scope.agent = Entity.get(agent, function(){
                   extendController($scope, $timeout, Entity, rcv.agentePonto, $http);
                 });
 

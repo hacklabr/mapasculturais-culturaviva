@@ -892,6 +892,11 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+                'homologado_rcv' =>[
+                  'label' => '',
+                  'required' => false,
+                  'private' => true
+                ],
             ]
         ];
 

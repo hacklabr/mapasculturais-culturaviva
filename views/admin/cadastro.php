@@ -12,13 +12,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <input type="radio"
            value="1"
            ng-change="save_field('homologado_rcv')"
-           ng-model="ponto.homologado_rcv"> Ponto Homologado
+           ng-model="agent.homologado_rcv"> Ponto Homologado
 </label>
 <label class="colunmH2">
     <input type="radio"
            value="0"
            ng-change="save_field('homologado_rcv')"
-           ng-model="ponto.homologado_rcv"> Ponto NÃO Homologado
+           ng-model="agent.homologado_rcv"> Ponto NÃO Homologado
 </label>
 </div>
 </div>
