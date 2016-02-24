@@ -1,10 +1,4 @@
 <div ng-controller="DetailCtrl">
-  <style>
-  #certificacaoBox{
-  width:22%;
-  }
-  </style>
-
     <div class="form">
         <h4>Conhecimento em Rede</h4>
         <div class="row">
@@ -117,16 +111,6 @@
                 <span class="destaque">Tipo de Metodologia</span>
                 <span ng-repeat="termo in ponto.terms.metodologias_areas"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.metodologias_areas.length"><b>Não informado</b></span>
-              </br>
-
-                <form id="certificacaoBox">
-                  <select ng-model="homologado-rcv">
-                    <option value="" hidden="true" >Ponto é certificado?
-                    <option value="true">Sim
-                    <option value="false">Não
-                  </select>
-                  <input type="submit" ng-click="save_field(homologado-rcv)" value="Atualizar"
-                </form>
             </div>
         </div>
     </div>
