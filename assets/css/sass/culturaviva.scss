@@ -1492,6 +1492,25 @@ section{
 **
 * Estrutura Form Especifico, Backgrounds, Colors
 */
+.page-homologacao{
+  background:#ed1c24;
+  padding-bottom: 20px;
+}
+.colunmH1{
+  color: #fff;
+  margin-left: 200px;
+  font-weight: bold;
+}
+.colunmH2{
+  color: #fff;
+  margin-left: 140px;
+  font-weight: bold;
+}
+.H3{
+  margin-left: 345px;
+  color: #fff;
+}
+
 .page-responsavel{
     header{
         background:$base-color-info-responsavel;

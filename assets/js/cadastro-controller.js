@@ -724,7 +724,7 @@
                 '@select': 'id,rcv_tipo,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                     'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                     'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                    'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv,',
+                    'metodologia1_cargaHoraria,metodologia1_certificacao,',
                 '@permissions': 'view'
             };
 
