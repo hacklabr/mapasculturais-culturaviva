@@ -370,8 +370,8 @@
         }
     }
 
-    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', 'ngDialog',
-        function($scope, Entity, MapasCulturais, $http, $timeout, ngDialog){
+    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
+        function($scope, Entity, MapasCulturais, $http, $timeout){
 
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 
@@ -396,7 +396,7 @@
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
                             $scope.data.validationErrors = null;
-                            ngDialog.open({ template: 'modal' });
+                            $scope.messages.show('sucesso', 'alterações salvas');
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
@@ -724,7 +724,7 @@
                 '@select': 'id,rcv_tipo,terms,formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                     'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                     'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                    'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv,',
+                    'metodologia1_cargaHoraria,metodologia1_certificacao,',
                 '@permissions': 'view'
             };
 
@@ -799,7 +799,6 @@
 
   app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
-          $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
               '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado',
@@ -825,11 +824,9 @@
                             }
                      });
               });
-              $scope.progress = false;
           });
 
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus){
-    $scope.progress = true;
     var retornoFiltro = [];
     var flag = false;
     agenteRes.forEach(function(data){
@@ -869,7 +866,6 @@
     $scope.data = retornoFiltro;
     $scope.show = true;
     $scope.limpaFiltro();
-    $scope.progress = false;
   }
 
   $scope.limpaFiltro = function(){
@@ -882,14 +878,12 @@
   }
 
   $scope.filtroTopos = function(){
-    $scope.progress = true;
     $scope.quantidade = agenteRes.length;
     if(agenteRes.length === 0){
       agenteRes = [{"name": "Não encontrado"}];
     }
     $scope.data = agenteRes;
     $scope.show = true;
-    $scope.progress = false;
   }
 
   }]);
@@ -948,7 +942,7 @@
         };
     }]);
 
-    app.controller('DetailCtrl',['$scope', 'Entity', '$http', '$timeout', '$location', function($scope, Entity, $http, $timeout, $location){
+    app.controller('DetailCtrl',['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', '$location', function($scope, Entity, MapasCulturais, $http, $timeout, $location){
         extendController($scope, $timeout);
         $scope.termos = termos;
         $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
@@ -992,13 +986,23 @@
 		                        'formador1_nome,formador1_email,formador1_telefone,formador1_operadora,formador1_areaAtuacao,' +
                                 'formador1_bio,formador1_facebook,formador1_twitter,formador1_google,espacoAprendizagem1_atuacao,espacoAprendizagem1_tipo,' +
                                 'espacoAprendizagem1_desc,metodologia1_nome,metodologia1_desc,metodologia1_necessidades,metodologia1_capacidade,' +
-                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado-rcv',
+                                'metodologia1_cargaHoraria,metodologia1_certificacao,homologado_rcv',
+                    '@permissions': 'view'
+                };
+
+                var agent = {
+                    'id': rcv.agentePonto,
+                    '@select':  'id,homologado_rcv',
                     '@permissions': 'view'
                 };
 
                 $scope.responsavel = Entity.get(responsavel);
                 $scope.entidade = Entity.get(entidade);
                 $scope.ponto = Entity.get(ponto);
+                $scope.agent = Entity.get(ponto, function(){
+                  extendController($scope, $timeout, Entity, rcv.agentePonto, $http);
+                });
+
 
             }).error(function(){
                 $scope.messages.show('erro', "O usuário não foi encontrado");

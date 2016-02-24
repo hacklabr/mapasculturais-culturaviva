@@ -28,15 +28,13 @@
 
             <label class="colunm1">
                 <span class="destaque">O pontão tem sede própria?</span>
-                <span ng-if="ponto.tem_sede"><b>{{ponto.tem_sede}}</b></span>
+                <span ng-if="ponto.tem_sede"><b>Sim</b></span>
                 <span ng-if="ponto.tem_sede === 0"><b>Não</b></span>
                 <span ng-if="!ponto.tem_sede"><b>Não informado</b></span>
                 <label class="check">
                     <input type="checkbox"
                            disabled
-                           name="sede_realizaAtividades"
-                           ng-change="save_field('sede_realizaAtividades', true)"
-                           ng-model="agent.sede_realizaAtividades"
+                           ng-model="ponto.sede_realizaAtividades"
                            ng-true-value="1"
                            ng-false-value="0"/>
                     realiza atividades culturais na sede

@@ -112,7 +112,6 @@
                 <span ng-repeat="termo in ponto.terms.metodologias_areas"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.metodologias_areas.length"><b>Não informado</b></span>
             </div>
-
         </div>
     </div>
 </div>
