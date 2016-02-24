@@ -370,8 +370,8 @@
         }
     }
 
-    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout',
-        function($scope, Entity, MapasCulturais, $http, $timeout){
+    app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', 'ngDialog',
+        function($scope, Entity, MapasCulturais, $http, $timeout, ngDialog){
 
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
 
@@ -396,7 +396,7 @@
                         success(function successCallback(response) {
                             $scope.data.statusInscricao = 1;
                             $scope.data.validationErrors = null;
-                            $scope.messages.show('sucesso', 'alterações salvas');
+                            ngDialog.open({ template: 'modal' });
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
