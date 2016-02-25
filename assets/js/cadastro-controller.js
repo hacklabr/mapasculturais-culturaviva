@@ -639,6 +639,9 @@
                             $scope.agent.En_Nome_Logradouro = addr.logradouro;
                             $scope.save_field('En_Nome_Logradouro');
 
+                            $scope.agent.pais = "Brasil";
+                            $scope.save_field('pais');
+
                             var string = (addr.logradouro ? addr.logradouro+', ':'') +
                                          (addr.bairro ? addr.bairro+', ':'') +
                                          (addr.localidade ? addr.localidade+', ':'') +
