@@ -174,7 +174,7 @@
           <label class="colunm05">
             <span class="destaque">Pais*</span>
               <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
-                <option value="Brasil" selected>Brasil</option>  
+                <option value="Brasil" selected>Brasil</option>
                 <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                 <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
                 <option value="Angola">Angola</option>                    <option value="Anguilla">Anguilla</option>
@@ -302,6 +302,14 @@
             <label class="colunm2">
                 <span class="destaque">Número* </span>
                 <input name="En_Num" type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
+            </label>
+            <label class="colunm2">
+                <span class="destaque">CEP*</span>
+                <input type="text"
+                       name="cep"
+                       ng-blur="save_field('cep')"
+                       ng-model="agent.cep"
+                       ui-mask="99999-999">
             </label>
             <label class="colunm3">
                 <span class="destaque">Complemento</span>

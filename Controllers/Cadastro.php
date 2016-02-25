@@ -151,6 +151,7 @@ class Cadastro extends \MapasCulturais\Controller{
             'En_Bairro',
             'En_Num',
             'En_Nome_Logradouro',
+            'cep',
 
           //'foiFomentado'
         ];

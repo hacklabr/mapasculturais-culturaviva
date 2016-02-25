@@ -753,7 +753,7 @@
                     'tipoPontoCulturaDesejado,tipoOrganizacao,' +
                     'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
                     'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
-                    'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,En_Complemento',
+                    'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,cep,En_Complemento',
 
                 '@permissions': 'view'
             };
