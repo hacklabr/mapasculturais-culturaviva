@@ -96,7 +96,7 @@
 
         <div class="row">
             <label class="colunm2">
-                <span>Pais*</span>
+                <span class="destaque">Pais*</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                   <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
@@ -188,7 +188,7 @@
                 </select>
               </label>
             <label class="colunm2" ng-show="agent.pais==='Brasil'">
-                <span>Estado*</span>
+                <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
@@ -209,13 +209,13 @@
             </label>
 
             <label class="colunm2">
-                <span>Cidade*</span>
+                <span class="destaque">Cidade*</span>
                 <input type="text" name="geoMunicipio" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
                 <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>
             </label>
 
             <label class="colunm3">
-                <span>Bairro*</span>
+                <span class="destaque">Bairro*</span>
                 <input type="text" name="En_Bairro" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
@@ -226,19 +226,19 @@
         <div class="row">
 
             <label class="colunm1">
-                <span>Rua*</span>
+                <span class="destaque">Rua*</span>
                 <input type="text" name="En_Nome_Logradouro" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
 
             <label class="colunm2">
-                <span>Número*</span>
+                <span class="destaque">Número*</span>
                 <input type="text" name="En_Num" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
                 <span class="error" ng-repeat="error in errors.numero">{{ error }}</span>
             </label>
 
             <label class="colunm3">
-                <span>Complemento</span>
+                <span class="destaque">Complemento</span>
                 <input type="text" ng-blur="save_field('En_Complemento')" ng-model="agent.En_Complemento"/>
                 <span class="error" ng-repeat="error in errors.complemento">{{ error }}</span>
             </label>

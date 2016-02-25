@@ -123,39 +123,39 @@
         </div>
         <div class="row">
             <label class="colunm-redes site-oficial">
-                <span><i class="icon icon-location"></i> Site oficial</span>
+                <span class="destaque"><i class="icon icon-location"></i> Site oficial</span>
                 <input type="text" ng-blur="save_field('site')" ng-model="agent.site" placeholder="http://"/>
             </label>
         </div>
         <div class="row">
             <label class="colunm-redes facebook">
-                <span><i class="icon icon-facebook-squared"></i> Página Facebook</span>
+                <span class="destaque"><i class="icon icon-facebook-squared"></i> Página Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span><i class="icon icon-twitter"></i> Perfil no Twitter</span>
+                <span class="destaque"><i class="icon icon-twitter"></i> Perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span><i class="icon icon-gplus"></i> Perfil no Google+</span>
+                <span class="destaque"><i class="icon icon-gplus"></i> Perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
         </div>
         <div class="row">
             <label class="colunm-redes flick">
-                <span><img src="<?php $this->asset('img/icon_flicker.png') ?>"> Página no Flickr</span>
+                <span class="destaque"><img src="<?php $this->asset('img/icon_flicker.png') ?>"> Página no Flickr</span>
                 <input type="text" ng-blur="save_field('flickr')" ng-model="agent.flickr" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes diaspora">
-                <span><img src="<?php $this->asset('img/icon_diaspora.png') ?>"> Perfil na Diáspora:</span>
+                <span class="destaque"><img src="<?php $this->asset('img/icon_diaspora.png') ?>"> Perfil na Diáspora:</span>
                 <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes youtube">
-                <span><img src="<?php $this->asset('img/icon_youtube.png') ?>"> Perfil no Youtube:</span>
+                <span class="destaque"><img src="<?php $this->asset('img/icon_youtube.png') ?>"> Perfil no Youtube:</span>
                 <input type="text" ng-blur="save_field('youtube')" ng-model="agent.youtube" placeholder="http://"/>
             </label>
         </div>
