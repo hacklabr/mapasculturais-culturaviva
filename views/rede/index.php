@@ -5,7 +5,7 @@
                 <p>Conheça o ambiente colaborativo de implantação da Lei Cultura Viva.</p>
             </div>
 
-            <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" class="btn btn__active">Entrar para a Rede</a>
+            <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" class="btn btn__active">Entrar para a<br> Rede</a>
 
             <span class="bg-transparent"></span>
     </article>
