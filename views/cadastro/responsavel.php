@@ -100,6 +100,7 @@
             <label class="colunm-30">
               <span class="destaque">Pais</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
+                  <option value="Brasil" selected>Brasil</option> 
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                   <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
                   <option value="Angola">Angola</option>                    <option value="Anguilla">Anguilla</option>
@@ -111,9 +112,9 @@
                   <option value="Bangladesh">Bangladesh</option>            <option value="Barbados">Barbados</option>
                   <option value="Bélgica">Bélgica</option>                  <option value="Benin">Benin</option>
                   <option value="Bermudas">Bermudas</option>                <option value="Botsuana">Botsuana</option>
-                  <option value="Brasil" selected>Brasil</option>           <option value="Brunei">Brunei</option>
+                            <option value="Brunei">Brunei</option>
                   <option value="Bulgária">Bulgária</option>                <option value="Burkina Fasso">Burkina Fasso</option>
-                  <option value="botão">botão</option>                      <option value="Cabo Verde">Cabo Verde</option>
+                                 <option value="Cabo Verde">Cabo Verde</option>
                   <option value="Camarões">Camarões</option>                <option value="Camboja">Camboja</option>
                   <option value="Canadá">Canadá</option>                    <option value="Cazaquistão">Cazaquistão</option>
                   <option value="Chade">Chade</option>                      <option value="Chile">Chile</option>
