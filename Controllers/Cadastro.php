@@ -143,11 +143,8 @@ class Cadastro extends \MapasCulturais\Controller{
             'responsavel_cargo',
             'responsavel_email',
             'responsavel_telefone',
-            'responsavel_operadora',
             'emailPrivado',
             'telefone1',
-            'telefone1_operadora',
-
             'pais',
             'geoEstado',
             'geoMunicipio',
@@ -207,7 +204,6 @@ class Cadastro extends \MapasCulturais\Controller{
             'cpf',
             'emailPrivado',
             'telefone1',
-            'telefone1_operadora',
         ];
     }
 
