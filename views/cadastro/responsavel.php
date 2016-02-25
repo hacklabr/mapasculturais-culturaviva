@@ -218,37 +218,37 @@
         <div class="row">
             <span class="destaque redessociais">Seu perfil nas redes sociais: <i class='hltip' title='Queremos saber seu perfil nas redes sociais para podermos conectá-l@ com nossas atualizações e novidades.'>?</i></span>
             <label class="colunm-redes facebook">
-                <span class="destaque"><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
+                <span class="destaque"><img src="<?php $this->asset('img/facebook.png') ?>"> Seu perfil no Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span class="destaque"><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
+                <span class="destaque"><img src="<?php $this->asset('img/twitter.png') ?>"> Seu perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span class="destaque"><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
+                <span class="destaque"><img src="<?php $this->asset('img/googlePlus.ico') ?>"> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
             <label class="colunm-redes telegram">
-                <span class="destaque"><i class="icon icon-telegram"></i> Seu usuário no Telegram</span>
+                <span class="destaque"><img src="<?php $this->asset('img/telegram.ico') ?>"> Seu usuário no Telegram</span>
                 <input type="text" ng-blur="save_field('telegram')" ng-model="agent.telegram" placeholder="@SeuNome"/>
             </label>
             <label class="colunm-redes whatsapp">
-                <span class="destaque"><i class="icon icon-whatsapp"></i> Seu número do WhatsApp</span>
+                <span class="destaque"><img src="<?php $this->asset('img/whatsapp.png') ?>"> Seu número do WhatsApp</span>
                 <input type="text" ng-blur="save_field('whatsapp')" ng-model="agent.whatsapp" placeholder="(11) _____-_____ "/>
             </label>
             <label class="colunm-redes culturadigital">
-                <span class="destaque"><i class="icon icon-culturadigital"></i> Seu perfil no CulturaDigital.br</span>
+                <span class="destaque"><img src="<?php $this->asset('img/culturaDigital.png') ?>"> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
             </label>
             <label class="colunm-redes diaspora">
-                <span class="destaque"><i class="icon icon-diaspora"></i> Seu perfil no Diasporabr.com.br</span>
+              <span class="destaque"><img src="http://127.0.0.1:8000/assets/img/icon_diaspora.png">Perfil na Diáspora:</span>
                 <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
             <label class="colunm-redes instagram">
-                <span class="destaque"><i class="icon icon-instagram"></i> Seu perfil no Instagram.com</span>
+                <span class="destaque"><img src="<?php $this->asset('img/instagram.png') ?>"> Seu perfil no Instagram.com</span>
                 <input type="text" ng-blur="save_field('instagram')" ng-model="agent.instagram" placeholder="http://"/>
             </label>
 

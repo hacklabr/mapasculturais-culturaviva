@@ -123,23 +123,23 @@
         </div>
         <div class="row">
             <label class="colunm-redes site-oficial">
-                <span class="destaque"><i class="icon icon-location"></i> Site oficial</span>
+                <span class="destaque"><img src="<?php $this->asset('img/location.png') ?>">  Site oficial</span>
                 <input type="text" ng-blur="save_field('site')" ng-model="agent.site" placeholder="http://"/>
             </label>
         </div>
         <div class="row">
             <label class="colunm-redes facebook">
-                <span class="destaque"><i class="icon icon-facebook-squared"></i> Página Facebook</span>
+                <span class="destaque"><img src="<?php $this->asset('img/facebook.png') ?>"> Página Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span class="destaque"><i class="icon icon-twitter"></i> Perfil no Twitter</span>
+                <span class="destaque"><img src="<?php $this->asset('img/twitter.png') ?>"> Perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span class="destaque"><i class="icon icon-gplus"></i> Perfil no Google+</span>
+                <span class="destaque"><img src="<?php $this->asset('img/googlePlus.ico') ?>"> Perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
         </div>
