@@ -3,7 +3,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
 
 <div ng-controller="DetailCtrl">
-  <div class="page-homologacao">
+  <!-- <div class="page-homologacao">
   <div class="homologacao">
   <header>
     <h3 class="H3">Homologação</h3>
@@ -21,7 +21,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
            ng-model="agent.homologado_rcv"> Ponto NÃO Homologado
 </label>
 </div>
-</div>
+</div> -->
 
   <div class="page-responsavel page-base-form">
 
