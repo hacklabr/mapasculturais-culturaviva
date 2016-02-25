@@ -15,12 +15,12 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
             <label class="colunm1">
-                <span>Nome completo*</span>
+                <span class="destaque">Nome completo*</span>
                 <input type="text" name="nomeCompleto" ng-blur="save_field('nomeCompleto')" ng-model="agent.nomeCompleto" />
             </label>
 
             <label class="colunm2">
-                <span>CPF*</span>
+                <span class="destaque">CPF*</span>
                 <input type="text"
                        name="cpf"
                        ng-blur="save_field('cpf')"
@@ -47,17 +47,17 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1">
-                <span>E-mail Pessoal*</span>
+                <span class="destaque">E-mail Pessoal*</span>
                 <input type="email" name="emailPrivado" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
 
             <label class="colunm2">
-                <span>Telefone Pessoal (com DDD)*</span>
+                <span class="destaque">Telefone Pessoal (com DDD)*</span>
                 <input type="text" name="telefone1" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999 9999">
             </label>
 
             <label class="colunm3">
-                <span>Operadora*</span>
+                <span class="destaque">Operadora*</span>
                 <input type="text" name="telefone1_operadora" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
         </div>
@@ -98,7 +98,7 @@
                 <span class="destaque">Onde você mora?</span>
             </div>
             <label class="colunm-30">
-              <span>Pais</span>
+              <span class="destaque">Pais</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                   <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
@@ -190,7 +190,7 @@
                 </select>
             </label>
               <label class="colunm05" ng-show="agent.pais==='Brasil'">
-                  <span>Estado</span>
+                  <span class="destaque">Estado</span>
                   <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                       <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
                       <option value="AP">Amapá</option>             <option value="AM">Amazonas</option>
@@ -210,7 +210,7 @@
                   <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
             <label class="cidade">
-                <span>Cidade</span>
+                <span class="destaque">Cidade</span>
                 <input type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
             <div class="clear"></div>
@@ -218,37 +218,37 @@
         <div class="row">
             <span class="destaque redessociais">Seu perfil nas redes sociais: <i class='hltip' title='Queremos saber seu perfil nas redes sociais para podermos conectá-l@ com nossas atualizações e novidades.'>?</i></span>
             <label class="colunm-redes facebook">
-                <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
+                <span class="destaque"><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
+                <span class="destaque"><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
+                <span class="destaque"><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
             <label class="colunm-redes telegram">
-                <span><i class="icon icon-telegram"></i> Seu usuário no Telegram</span>
+                <span class="destaque"><i class="icon icon-telegram"></i> Seu usuário no Telegram</span>
                 <input type="text" ng-blur="save_field('telegram')" ng-model="agent.telegram" placeholder="@SeuNome"/>
             </label>
             <label class="colunm-redes whatsapp">
-                <span><i class="icon icon-whatsapp"></i> Seu número do WhatsApp</span>
+                <span class="destaque"><i class="icon icon-whatsapp"></i> Seu número do WhatsApp</span>
                 <input type="text" ng-blur="save_field('whatsapp')" ng-model="agent.whatsapp" placeholder="(11) _____-_____ "/>
             </label>
             <label class="colunm-redes culturadigital">
-                <span><i class="icon icon-culturadigital"></i> Seu perfil no CulturaDigital.br</span>
+                <span class="destaque"><i class="icon icon-culturadigital"></i> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
             </label>
             <label class="colunm-redes diaspora">
-                <span><i class="icon icon-diaspora"></i> Seu perfil no Diasporabr.com.br</span>
+                <span class="destaque"><i class="icon icon-diaspora"></i> Seu perfil no Diasporabr.com.br</span>
                 <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
             <label class="colunm-redes instagram">
-                <span><i class="icon icon-instagram"></i> Seu perfil no Instagram.com</span>
+                <span class="destaque"><i class="icon icon-instagram"></i> Seu perfil no Instagram.com</span>
                 <input type="text" ng-blur="save_field('instagram')" ng-model="agent.instagram" placeholder="http://"/>
             </label>
 

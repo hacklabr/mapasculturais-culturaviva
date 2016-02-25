@@ -65,7 +65,7 @@
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full" ng-show="agent.participacaoMovPolitico">
-                <span>Quais?*
+                <span class="destaque">Quais?*
                 <input name="simMovimentoPoliticoCultural" class="colunm1"type="text" ng-blur="save_field('simMovimentoPoliticoCultural')" ng-model="agent.simMovimentoPoliticoCultural" /></span>
             </div>
 
@@ -89,7 +89,7 @@
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full" ng-show="agent.participacaoForumCultura">
-                <span>Quais?*
+                <span class="destaque">Quais?*
                 <input name="simForumCultural" class="colunm1"type="text" ng-blur="save_field('simForumCultural')" ng-model="agent.simForumCultural" /></span>
             </div>
             <div class="colunm-full">
@@ -115,7 +115,7 @@
                 <!-- textarea></textarea -->
             </label>
             <div class="colunm-full" ng-show="agent.parceriaPoderPublico">
-                <span>Quais?*
+                <span class="destaque">Quais?*
                 <input name="simPoderPublico" class="colunm1" type="text" ng-blur="save_field('simPoderPublico')" ng-model="agent.simPoderPublico" /></span>
             </div>
         </div>
