@@ -12,7 +12,7 @@
 <form name="form_pontoArticulacao" ng-controller="PontoArticulacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
-        <h4>Informações Obrigatórias</h4>
+        <h4>Informações Opcionais</h4>
         <div class="row">
             <div class="colunm-full">
                 <span class="destaque">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado? <i class="hltip" title='Caso nunca tenha sido contemplado, selecione "Ainda não fui Contemplado"'>?</i><br>(Pode escolher mais de uma opção) </span>
