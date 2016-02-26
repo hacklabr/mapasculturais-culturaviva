@@ -29,7 +29,7 @@
             <div class="colunm-full">
                 <span class="destaque">Quais são as áreas do Ponto/Pontão de Cultura? <i class="hltip" title="Refere-se às principais atividades realizadas pelo Ponto/Pontão de cultura.">?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
-            <taxonomy-checkboxes taxonomy="area" entity="agent" terms="termos.area" restricted-terms="true"></taxonomy-checkboxes>
+            <taxonomy-checkboxes taxonomy="area" entity="agent" terms="termos.area" ></taxonomy-checkboxes>
         </div>
         <div class="row">
             <div class="colunm-full">
