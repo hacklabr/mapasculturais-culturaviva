@@ -11,7 +11,6 @@
         <span id="registros" style="color: #075579;" ng-hide="progress">Quantidade de registros: {{quantidade}}</span>
     </div>
   </div>
-</br></br></br>
   <div>
   <table id="table">
       <thead>

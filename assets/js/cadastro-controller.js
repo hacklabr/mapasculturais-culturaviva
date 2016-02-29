@@ -361,6 +361,18 @@
             });
 
             $scope.save_field = function save_field(field) {
+              var teste = "http://";
+              var flag = false;
+              if((field === "atividadesEmRealizacaoLink") && ($scope.agent[field] !== "")){
+                if($scope.agent[field].indexOf("http://") !== -1){
+                  flag = true;
+                }else if(($scope.agent[field].indexOf("https://") !== -1) && (!flag)){
+                  flag = true;
+                }
+                if(!flag){
+                  $scope.agent[field] = teste +  $scope.agent[field];
+                }
+              }
                 if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
                     return;
                 }
@@ -884,7 +896,6 @@
 
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus,inputHomologado){
     var retornoFiltro = [];
-    var flag = false;
     agenteRes.forEach(function(data){
       if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail) ^ (data.homologado_rcv === inputHomologado)){
         retornoFiltro.push(data);
@@ -892,26 +903,24 @@
 
       if((data.name !== null) & (inputNamePonto !== undefined)){
         if(data.name.toLocaleLowerCase().indexOf(inputNamePonto.toLocaleLowerCase()) !== -1){
-          retornoFiltro.forEach(function(dados){
-            if(dados.id === data.id){
-              flag = true;
-            }
-          });
-            if(flag === false){
-                retornoFiltro.push(data);
+            if (retornoFiltro.length !== 0) {
+              if(validaRetorno(retornoFiltro,data.id)){
+                  retornoFiltro.push(data);
+              }
+            }else{
+                  retornoFiltro.push(data);
             }
         }
       }
       if((data.nomeCompleto !== null) & (inputNameResponsavel !== undefined)){
         if(data.nomeCompleto.toLocaleLowerCase().indexOf(inputNameResponsavel.toLocaleLowerCase()) !== -1){
-          retornoFiltro.forEach(function(dados){
-            if(dados.id === data.id){
-              flag = true;
-            }
-          });
-            if(flag === false){
+          if (retornoFiltro.length !== 0) {
+            if(validaRetorno(retornoFiltro,data.id)){
                 retornoFiltro.push(data);
             }
+          }else{
+                retornoFiltro.push(data);
+          }
         }
       }
     });
@@ -922,6 +931,16 @@
     $scope.data = retornoFiltro;
     $scope.show = true;
     $scope.limpaFiltro();
+  }
+
+  function validaRetorno(retornoFiltro,idDado) {
+    retornoFiltro.forEach(function(dados){
+      if(dados.id === idDado){
+        return false;
+      }else{
+        return true;
+      }
+    });
   }
 
   $scope.limpaFiltro = function(){
