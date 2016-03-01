@@ -866,6 +866,7 @@
 
   app.controller('ConsultaCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http', '$q',
       function($scope, Entity, MapasCulturais, $timeout, $location, $http, $q){
+          $scope.progress = true;
           var agenteRes = [];
           var paramsFiltroResponsavel={
               '@select': 'id,user.id,parent.id,status,cnpj,name,rcv_tipo,cpf,nomeCompleto,emailPrivado,geoEstado,homologado_rcv',
@@ -892,10 +893,12 @@
                             }
                      });
               });
+              $scope.progress = false;
           });
 
   $scope.filtro = function(inputCPF,inputCNPJ,inputNameResponsavel,inputNamePonto,inputEmail,inputStatus,inputHomologado){
     var retornoFiltro = [];
+    $scope.progress = true;
     agenteRes.forEach(function(data){
       if((data.cpf === inputCPF) ^ (data.status == inputStatus) ^ (data.cnpj === inputCNPJ) ^ (data.emailPrivado === inputEmail) ^ (data.homologado_rcv === inputHomologado)){
         retornoFiltro.push(data);
@@ -930,6 +933,7 @@
     }
     $scope.data = retornoFiltro;
     $scope.show = true;
+    $scope.progress = false;
     $scope.limpaFiltro();
   }
 
@@ -954,12 +958,14 @@
   }
 
   $scope.filtroTopos = function(){
+    $scope.progress = true;
     $scope.quantidade = agenteRes.length;
     if(agenteRes.length === 0){
       agenteRes = [{"name": "Não encontrado"}];
     }
     $scope.data = agenteRes;
     $scope.show = true;
+    $scope.progress = false;
   }
 
   }]);
