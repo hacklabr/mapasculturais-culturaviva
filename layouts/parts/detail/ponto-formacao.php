@@ -109,7 +109,7 @@
             </div>
             <div class="colunm-full">
                 <span class="destaque">Tipo de Metodologia</span>
-                <span ng-repeat="termo in ponto.terms.metodologias_areas"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.metodologias_areas"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.metodologias_areas.length"><b>Não informado</b></span>
             </div>
         </div>

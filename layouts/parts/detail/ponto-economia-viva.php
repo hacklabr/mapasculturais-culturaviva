@@ -6,37 +6,37 @@
 
             <div class="colunm-full">
                 <span class="destaque">Infra-Estrutura</span>
-                <span ng-repeat="termo in ponto.terms.ponto_infra_estrutura"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_infra_estrutura"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_infra_estrutura.length"><b>Não informado</b></span>
             </div>
 
             <div class="colunm-full">
                 <span class="destaque">Equipamentos</span>
-                <span ng-repeat="termo in ponto.terms.ponto_equipamentos"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_equipamentos"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_equipamentos.length"><b>Não informado</b></span>
             </div>
 
             <div class="colunm-full">
                 <span class="destaque">Recursos Humanos</span>
-                <span ng-repeat="termo in ponto.terms.ponto_recursos_humanos"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_recursos_humanos"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_recursos_humanos.length"><b>Não informado</b></span>
             </div>
 
             <div class="colunm-full">
                 <span class="destaque">Hospedagem</span>
-                <span ng-repeat="termo in ponto.terms.ponto_hospedagem"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_hospedagem"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_hospedagem.length"><b>Não informado</b></span>
             </div>
 
             <div class="colunm-full">
                 <span class="destaque">Deslocamento/Transportes</span>
-                <span ng-repeat="termo in ponto.terms.ponto_deslocamento"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_deslocamento"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_deslocamento.length"><b>Não informado</b></span>
             </div>
 
             <div class="colunm-full">
                 <span class="destaque">Serviços de Comunicação</span>
-                <span ng-repeat="termo in ponto.terms.ponto_comunicacao"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_comunicacao"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_comunicacao.length"><b>Não informado</b></span>
             </div>
 
@@ -84,7 +84,7 @@
 
             <div class="colunm-full">
                 <span class="destaque">Quais são as formas de sustentabilidade do Ponto/Pontão de Cultura?</span>
-                <span ng-repeat="termo in ponto.terms.ponto_sustentabilidade"><b>{{termo}}</b></span>
+                <span style="height:auto" ng-repeat="termo in ponto.terms.ponto_sustentabilidade"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.ponto_sustentabilidade.length"><b>Não informado</b></span>
             </div>
 
