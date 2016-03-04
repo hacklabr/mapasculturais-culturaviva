@@ -549,15 +549,11 @@
                 });
             };
             var showErro = function(errozao){
-              console.log("entrou2");
               $scope.errozao = false;
-              console.log($scope.errozao);
             };
 
             $scope.uploadFile = function(file, group) {
                 if(file.$error==="maxSize"){
-                  console.log("entrou1");
-                  console.log($scope.errozao);
                   showErro($scope.errozao)
                 }
                 $scope.f = file;
