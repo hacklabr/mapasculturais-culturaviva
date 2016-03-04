@@ -515,7 +515,7 @@
                 '@select': 'id,files',
                 '@permissions': 'view'
             };
-
+            $scope.errozao = true ;
             $scope.agent = Entity.get(params);
             $scope.agent.$promise.then(function(){
                 $scope.agent.files.gallery = $scope.agent.files.gallery || [];
@@ -548,14 +548,17 @@
                     console.log('não foi possível apagar a imagem', a,b,c);
                 });
             };
-            var showErro = function(){
-              extendController($scope, $timeout, Entity, agent_id, $http);
-              $scope.messages.show('Erro',"Arquivo muito grande");
+            var showErro = function(errozao){
+              console.log("entrou2");
+              $scope.errozao = false;
+              console.log($scope.errozao);
             };
 
             $scope.uploadFile = function(file, group) {
                 if(file.$error==="maxSize"){
-                  showErro();
+                  console.log("entrou1");
+                  console.log($scope.errozao);
+                  showErro($scope.errozao)
                 }
                 $scope.f = file;
                 if (file && !file.$error) {
