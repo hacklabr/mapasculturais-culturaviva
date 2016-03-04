@@ -7,7 +7,6 @@
     $this->cadastroPageClass = 'portfolio page-base-form';
     $this->cadastroLinkContinuar = 'entidadeFinanciamento';
 ?>
-
 <form name="form_portifolio" ng-controller="PortifolioCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
@@ -21,6 +20,9 @@
                         <img ng-if="!agent.files.portifolio" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                         <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                     </div>
+                    <div id="errorBox">
+                      <span id="msg_errorBox" ng-hide=errozao>Arquivos devem possuir no máximo 20MB</span>
+                  </div>
                 </div>
                 <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
                 <div class="progress row" ng-show="f.progress >= 0">

@@ -2593,3 +2593,14 @@ section{
     border-radius: 2px;
     margin-left: 10px;
   }
+  #errorBox{
+    background-color: #ED1C24;
+    text-align: center;
+    margin-left: 0;
+    width: 91%;
+  }
+  #msg_errorBox{
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+  }
