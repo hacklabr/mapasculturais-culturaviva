@@ -21,6 +21,7 @@
                         <img ng-if="!agent.files.portifolio" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                         <img ng-if="agent.files.portifolio" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                     </div>
+                    <span id="errorBox" showErro()></span>
                 </div>
                 <a ng-if="agent.files.portifolio" href="{{agent.files.portifolio.url}}" target="_blank">Baixar Arquivo</a>
                 <div class="progress row" ng-show="f.progress >= 0">
