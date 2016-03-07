@@ -1250,6 +1250,7 @@ section{
     }
     .colunm-redes{
             width: 27%;
+
             display:inline-block;
             margin-right:20px;
             margin-left: 1%;
@@ -1259,7 +1260,10 @@ section{
         margin-bottom:10px;
     }
     .facebook{
-
+        height: auto;
+        max-width: 27%;
+        word-wrap:break-word;
+        text-align:justify;
         i{
           color:#576c94;
         }
