@@ -407,10 +407,6 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->render('ponto-formacao');
     }
 
-    function GET_pogressio(){
-        echo 'Grande Adoniram Barbosa!!!';die;
-    }
-
     function ALL_registra(){
         $this->requireAuthentication();
         $app = App::i();
