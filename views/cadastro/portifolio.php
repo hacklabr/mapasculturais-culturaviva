@@ -49,24 +49,28 @@
             </label>
         <h4>Ata de composição e constituição do coletivo</h4>
 
-        <div class="colunm-20">
-            <div class="file-item">
-                <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
-                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
-                    <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                    <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
-                </div>
-                <div id="errorBox">
-                  <span id="msg_errorBox" ng-hide=errozao>Arquivos devem possuir no máximo 20MB</span>
+      <div class="colunm-20">
+          <div class="file-item">
+              <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
+              <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
+                  <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                  <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
               </div>
+              <div id="errorBox">
+                <span id="msg_errorBox" ng-hide=errozao>Arquivos devem possuir no máximo 20MB</span>
             </div>
-            <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
-            <div class="progress row" ng-show="f.progress >= 0">
-                <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
-            </div>
-        </div>
+          </div>
+          <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
+          <div class="progress row" ng-show="f.progress >= 0">
+              <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+          </div>
+      </div>
+            <label class="colunm-50">
 
-        </div>
+                <p></p>
+
+              </label>
+            </div>
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>
