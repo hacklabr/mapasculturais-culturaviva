@@ -25,7 +25,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         </article>
     </section>
     <section class="boxs-cadastro">
-	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Autodeclaração</h4></center></header></article>
+	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Certificação Simplificada</h4></center></header></article>
         <a href="<?php echo $app->createUrl('cadastro', 'responsavel'); ?>">
         <article class="box-info-responsavel">
             <header>
