@@ -190,6 +190,7 @@ class Theme extends BaseV1\Theme{
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta1', ['.*'], 'a carta deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta2', ['.*'], 'a carta deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('logoponto', ['.*'], 'O logotipo deve ser uma imagem.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('ata', ['.*'], 'a ata deve ser um arquivo pdf', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
