@@ -9,6 +9,15 @@
                     <span ng-if="!ponto.files.portifolio.url && !ponto.atividadesEmRealizacaoLink"><b>Não informado</b></span>
                 </div>
         </div>
+        <div ng-if="entidade.tipoOrganizacao == 'coletivo'">
+          <h4>Ata de composição e constituição do coletivo</h4>
+          <div class="row">
+              <div class="colunm1">
+                    <a ng-if="ponto.files.ata" href="{{ponto.files.ata.url}}" target="_blank">Baixar Arquivo</a>
+                    <span ng-if="!ponto.files.ata"><b>Não informado</b></span>
+              </div>
+          </div>
+        </div>
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>

@@ -52,13 +52,13 @@
 
       <div class="colunm-20">
           <div class="file-item">
-              <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
+              <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Ata">x</a>
               <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
                   <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                   <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
               </div>
               <div id="errorBox">
-                <span id="msg_errorBox" ng-hide=errozao>Arquivos devem possuir no máximo 20MB</span>
+                <span id="msg_errorBox" ng-hide='errozao'>Arquivos devem possuir no máximo 20MB</span>
             </div>
           </div>
           <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
