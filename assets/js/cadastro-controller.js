@@ -508,17 +508,25 @@
         function ImageUploadCtrl($scope, Entity, MapasCulturais, Upload, $timeout, $http) {
 
             // FIXME passar como parametro para generalizar
-            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id_ponto = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
 
-            var params = {
-                'id': agent_id,
+            var params_ponto = {
+                'id': agent_id_ponto,
                 '@select': 'id,files',
                 '@permissions': 'view'
             };
+
+            var params_entidade = {
+                'id': agent_id_entidade,
+                '@select': 'id,tipoOrganizacao',
+                '@permissions': 'view'
+            };
             $scope.errozao = true ;
-            $scope.agent = Entity.get(params);
-            $scope.agent.$promise.then(function(){
-                $scope.agent.files.gallery = $scope.agent.files.gallery || [];
+            $scope.agent_ponto = Entity.get(params_ponto);
+            $scope.agent_entidade = Entity.get(params_entidade);
+            $scope.agent_ponto.$promise.then(function(){
+                $scope.agent_ponto.files.gallery = $scope.agent_ponto.files.gallery || [];
             });
 
             $scope.config = {

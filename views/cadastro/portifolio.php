@@ -47,6 +47,7 @@
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
+          <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
         <h4>Ata de composição e constituição do coletivo</h4>
 
       <div class="colunm-20">
@@ -70,6 +71,7 @@
                 <p></p>
 
               </label>
+            </div>
             </div>
 
         <div class="row">
