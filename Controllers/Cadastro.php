@@ -97,7 +97,8 @@ class Cadastro extends \MapasCulturais\Controller{
      * @return array
      */
     function getPontoRequiredProperties(){
-	$agent = $this->getPonto();
+	     $agent = $this->getPonto();
+       $entidadeAgent = $this->getEntidade();
         $required_properties = [
             'name',
             'shortDescription',
@@ -109,7 +110,8 @@ class Cadastro extends \MapasCulturais\Controller{
             'pais',
             'En_Nome_Logradouro',
             'En_Num',
-            'location' // ponto no mapa
+            'location', // ponto no mapa
+
 
             //portifólio
 
@@ -121,13 +123,54 @@ class Cadastro extends \MapasCulturais\Controller{
 
         ];
 
-	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
-		$required_properties[] = 'atividadesEmRealizacaoLink';
-		$required_properties[] = 'portifolio';
-	 }
+        if($entidadeAgent->tipoPontoCulturaDesejado === "pontao"){
+          $required_properties = [
+            'participacaoMovPolitico',
+            'participacaoForumCultura',
+            'parceriaPoderPublico',
+          ];
+            if($agent->participacaoMovPolitico === "1"){
+           		$required_properties[] = 'simMovimentoPoliticoCultural';
+         	  }
 
-	return $required_properties;
+            if($agent->participacaoForumCultura === "1"){
+              $required_properties[] = 'simForumCultural';
+            }
+
+            if($agent->parceriaPoderPublico === "1"){
+              $required_properties[] = 'simPoderPublico';
+            }
+        }
+
+      	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
+          		$required_properties[] = 'atividadesEmRealizacaoLink';
+          		$required_properties[] = 'portifolio';
+      	 }
+
+  	return $required_properties;
+      }
+
+    function getPontoRequiredTaxonomies(){
+      $agent = $this->getPonto();
+      $entidadeAgent = $this->getEntidade();
+      $required_taxonomies = [];
+
+      if($entidadeAgent->tipoPontoCulturaDesejado === "pontao"){
+        $required_taxonomies = [
+          'contemplado_edital',
+          'acao_estruturante',
+          'area',
+          'publico_participante',
+          'area_atuacao',
+          'instancia_representacao_minc',
+        ];
+      }
+
+      return $required_taxonomies;
+
     }
+
+
 
     /**
      * Propriedades obrigatórias da Entidade
@@ -235,6 +278,12 @@ class Cadastro extends \MapasCulturais\Controller{
             }
         }
 
+        foreach($required_taxonomies as $prop){
+            if(is_null($entity->terms[$prop]) || empty($entity->terms[$prop])){
+                $errors[] = $prop;
+            }
+        }
+
         return $errors;
     }
 
@@ -259,8 +308,9 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getPonto();
         $this->_checkPermissionsToViewErrors($agent);
         $required_properties = $this->getPontoRequiredProperties();
+        $required_taxonomies = $this->getPontoRequiredTaxonomies();
 
-        return $this->_getErrors($agent, $required_properties);
+        return $this->_getErrors($agent, $required_properties, $required_taxonomies);
     }
 
     protected function _populateAgents($responsavel, $entidade, $ponto){
