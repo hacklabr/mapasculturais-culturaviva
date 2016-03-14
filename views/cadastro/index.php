@@ -111,13 +111,35 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         </article>
         </a>
+        <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">
+        <article class="box-atuacao-articulaco border-left">
+            <header>
+                    <span class="icon icon-chat"></span>
+                    <h4> 5. Atuação e Articulação</h4>
+                    <span class="btn_mais"> + </span>
+            </header>
+            <div class="infos">
+               <div class="texto">
+                     <p>Fale um pouco mais sobre as atividades realizadas pelo seu Ponto</p>
+                </div>
+<!--                <div class="circle-status c100 p56">
+                    <span>56%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>-->
+            </div>
+        </article>
+        </a>
 	<div ng-show="data.statusInscricao > 0">
 	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Informações Complementares</h4></center></header></article>
         <a href="<?php echo $app->createUrl('cadastro', 'entidadeFinanciamento'); ?>">
         <article class="box-entidade-financiados">
             <header>
               <span class="icon icon-dollar"></span>
-              <h4> 5. Projetos Financiados</h4>
+              <h4 ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'"> 5. Projetos Financiados</h4>
+              <h4 ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'"> 6. Projetos Financiados</h4>
               <span class="btn_mais"> + </span>
             </header>
             <div class="infos">
@@ -134,7 +156,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
         </article>
         </a>
-        <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>">
+        <a href="<?php echo $app->createUrl('cadastro', 'articulacao'); ?>" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">
         <article class="box-atuacao-articulaco border-left">
             <header>
                     <span class="icon icon-chat"></span>

@@ -438,6 +438,7 @@
         function($scope, Entity, MapasCulturais, $http, $timeout, ngDialog){
 
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
+            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
                 'id': agent_id,
@@ -450,7 +451,15 @@
                 '@permissions': 'view'
             };
 
+            var params_entidade = {
+                'id': agent_id_entidade,
+                '@select': 'id,tipoPontoCulturaDesejado',
+                '@permissions': 'view'
+            };
+
             $scope.agent = Entity.get(params);
+            $scope.agent_entidade = Entity.get(params_entidade);
+
             extendController($scope, $timeout, Entity, agent_id);
 
             $scope.data = MapasCulturais.redeCulturaViva;
@@ -737,12 +746,21 @@
         function PontoArticulacaoCtrl($scope, Entity, MapasCulturais, $timeout, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
                 'id': agent_id,
                 '@select': 'id,rcv_tipo,terms,participacaoMovPolitico,participacaoForumCultura,parceriaPoderPublico, simMovimentoPoliticoCultural, simForumCultural, simPoderPublico',
                 '@permissions': 'view'
             };
+
+            var params_entidade = {
+                'id': agent_id_entidade,
+                '@select': 'id,tipoPontoCulturaDesejado',
+                '@permissions': 'view'
+            };
+
+            $scope.agent_entidade = Entity.get(params_entidade);
 
             $scope.termos = termos;
 
