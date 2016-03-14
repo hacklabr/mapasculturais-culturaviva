@@ -212,6 +212,14 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                        ng-false-value="0"
                        ng-change="save_field('termos_de_uso')"> Aceito os <a href="/termos-de-uso-e-privacidade/" style="color:#FFF"> Termos de Uso e Privacidade</a> e o <a href="/termo-de-adesao/" style="color:#FFF">Termo de Adesão à Política Nacional de Cultura Viva </a>
               </p>
+              <p style="font-weight:bold""color:red">
+                <input type="checkbox"
+                       name="veracidade"
+                       ng-model="agent.info_verdadeira"
+                       ng-true-value="1"
+                       ng-false-value="0"
+                       ng-change="save_field('info_verdadeira')"> Declaro estar ciente que é de minha inteira responsabilidade a veracidade das informações prestadas visando a certificação como Ponto ou Pontão de Cultura.
+              </p>
             </label>
             <p class="mensagem-validar">Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
             <div class="clear"></div>
