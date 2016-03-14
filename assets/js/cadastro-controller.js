@@ -451,7 +451,6 @@
             };
 
             $scope.agent = Entity.get(params);
-
             extendController($scope, $timeout, Entity, agent_id);
 
             $scope.data = MapasCulturais.redeCulturaViva;
