@@ -360,7 +360,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <p>Dados atualizados com sucesso!</p>
   </script>
 
-  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
+  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' && agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
   <div class="page-base-form">
 
       <p ng-show="data.statusInscricao > 0" >
