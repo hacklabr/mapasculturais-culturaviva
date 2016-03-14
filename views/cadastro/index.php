@@ -218,7 +218,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                        ng-model="agent.info_verdadeira"
                        ng-true-value="1"
                        ng-false-value="0"
-                       ng-change="save_field('info_verdadeira')"> Declaro estar ciente que é de minha inteira responsabilidade a veracidade das informações prestadas visando a certificação como Ponto ou Pontão de Cultura.
+                       ng-change="save_field('info_verdadeira')"> Declaro que as informações prestadas são verdadeiras, assumindo inteira responsabilidade pelas mesmas.
               </p>
             </label>
             <p class="mensagem-validar">Para validar seu ponto, você precisa preencher todas as informações obrigatórias.</p>
