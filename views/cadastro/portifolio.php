@@ -47,28 +47,30 @@
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
-        <h4>Ata de composição e constituição do coletivo</h4>
+              <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
+          <h4>Ata de composição e constituição do coletivo</h4>
 
-      <div class="colunm-20">
-          <div class="file-item">
-              <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
-              <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
-                  <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
-                  <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+        <div class="colunm-20">
+            <div class="file-item">
+                <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
+                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
+                    <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                </div>
+            </div>
+            <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
+            <div class="progress row" ng-show="f.progress >= 0">
+                <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+            </div>
+        </div>
+              <label class="colunm-50">
+
+                  <p>Carta de Autorização de Coletivo sem Constituição Jurídica</p>
+                  Precisa de ajuda para montar sua ata?
+                  <br>
+                  <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
+                </label>
               </div>
-          </div>
-          <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
-          <div class="progress row" ng-show="f.progress >= 0">
-              <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
-          </div>
-      </div>
-            <label class="colunm-50">
-
-                <p>Carta de Autorização de Coletivo sem Constituição Jurídica</p>
-                Precisa de ajuda para montar sua ata?
-                <br>
-                <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
-              </label>
             </div>
 
         <div class="row">
