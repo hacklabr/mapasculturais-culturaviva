@@ -68,7 +68,7 @@
                   <p>Carta de Autorização de Coletivo sem Constituição Jurídica</p>
                   Precisa de ajuda para montar sua ata?
                   <br>
-                  <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
+                  <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_Coletivo vs 3.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </label>
               </div>
             </div>
