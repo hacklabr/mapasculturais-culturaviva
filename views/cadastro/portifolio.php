@@ -103,7 +103,7 @@
                 <p><span class="destaque"><i>?</i></span>
                     Precisa de um modelo de carta?
                     <br>
-                    <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=140&doc=RU5aaTNtVEo2OWE5ZGhFUXgzRnpON0VWTVVLcUhOY2lRSE9vYXBoL3VmUT0_IjE0MCI1" target="_blank">Clique aqui</a> para baixar um modelo.
+                    <a href="<?php $this->asset('pdf/Modelos_de_Carta_de_Referência_.docx')?>" target="_blank">Clique aqui</a> para baixar um modelo.
                 </p>
             </label>
         </div>
