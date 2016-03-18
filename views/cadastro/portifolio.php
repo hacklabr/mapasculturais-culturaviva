@@ -48,7 +48,7 @@
                 </p>
             </label>
               <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
-          <h4>Ata de composição e constituição do coletivo</h4>
+          <h4>Carta de Autorização de Coletivo sem Constituição Jurídica</h4>
 
         <div class="colunm-20">
             <div class="file-item">
@@ -64,8 +64,6 @@
             </div>
         </div>
               <label class="colunm-50">
-
-                  <p>Carta de Autorização de Coletivo sem Constituição Jurídica</p>
                   Precisa de ajuda para montar sua ata?
                   <br>
                   <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_Coletivo vs 3.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
