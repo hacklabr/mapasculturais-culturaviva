@@ -381,10 +381,15 @@ $this->bodyProperties['ng-app'] = "culturaviva";
   <script type="text/ng-template" id="modal">
     <p>Dados atualizados com sucesso!</p>
   </script>
-  <span>Existe alguma observação que você gostaria de fazer?</span>
-  <textarea ng-model="agent.obs" ng-blur="save_field('obs')"></textarea>
-  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' && agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
   <div class="page-base-form">
+
+  <p class="destaque">Existe alguma observação que você gostaria de fazer?</p>
+</div>
+  <div id="OBS">
+  <textarea  ng-model="agent.obs" ng-blur="save_field('obs')"></textarea>
+  </div>
+  <div class="page-base-form">
+  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' && agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
 
       <p ng-show="data.statusInscricao > 0" >
                 Recebemos seus dados com sucesso!
