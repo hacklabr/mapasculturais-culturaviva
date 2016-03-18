@@ -380,14 +380,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
   </div>
   <script type="text/ng-template" id="modal">
     <p>Dados atualizados com sucesso!</p>
+    <p ng-if ="data.statusInscricao = 1">Agora que preencheu nosso cadastro, conheça também o <a href="http://cadsol.mte.gov.br/inter/cadsol/main.seam" target="_blank">cadastro de economia solidária</a> e o <a href="http://simmc.c3sl.ufpr.br/#/pid" target="_blank"> cadastro de pontos de inclusão digital.</a></p>
+    <b> Existe alguma observação que você gostaria de fazer?</b>
+    <textarea  ng-model="agent.obs" ng-change="save_field('obs')"></textarea>
   </script>
-  <div class="page-base-form">
-
-  <p class="destaque">Existe alguma observação que você gostaria de fazer?</p>
-</div>
-  <div id="OBS">
-  <textarea  ng-model="agent.obs" ng-blur="save_field('obs')"></textarea>
-  </div>
   <div class="page-base-form">
   <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' && agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
 
