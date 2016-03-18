@@ -475,12 +475,10 @@
                             }
                             else {
                               ngDialog.open({
-                                template: 'modal2',
+                                template: 'modal1',
                                 scope: $scope
                               });
                             }
-
-                            console.log($scope.data.statusInscricao);
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
