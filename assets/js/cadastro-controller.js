@@ -475,7 +475,7 @@
                             }
                             else {
                               ngDialog.open({
-                                template: 'modal1',
+                                template: 'modal2',
                                 scope: $scope
                               });
                             }
