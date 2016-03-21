@@ -53,7 +53,7 @@
         <div class="colunm-20">
             <div class="file-item">
                 <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
-                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Ata' : 'Clique para incluir a Ata'}}">
+                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Carta' : 'Clique para incluir a Carta'}}">
                     <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                     <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
                 </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
               <label class="colunm-50">
-                  Precisa de ajuda para montar sua ata?
+                  Precisa de ajuda para montar sua carta?
                   <br>
                   <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_Coletivo vs 3.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </label>
