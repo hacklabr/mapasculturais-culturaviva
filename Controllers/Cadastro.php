@@ -318,6 +318,7 @@ class Cadastro extends \MapasCulturais\Controller{
 
         $api_url = $app->config['rcv.apiCNPJ'] . '?action=get_cultura&cnpj=' . $this->data['CNPJ'];
         $d = json_decode(file_get_contents($api_url));
+
         if(is_object($d) && isset($d->Nm_Responsavel)){
             // responsável
             $responsavel->nomeCompleto  = $d->Nm_Responsavel;
@@ -611,5 +612,16 @@ class Cadastro extends \MapasCulturais\Controller{
                 'ponto' => $erros_ponto
             ], 400);
         }
+    }
+
+    function GET_valida_cnpj(){
+
+      $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['CNPJ'];
+      $f = json_decode(file_get_contents($api_urlRF));
+
+      if(is_object($f) && ($f->tiposLucro.length !== 0)){
+        $this->errorJson('CNPJ com fins lucrativos', 400);
+      }
+
     }
 }

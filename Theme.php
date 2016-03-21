@@ -82,6 +82,7 @@ class Theme extends BaseV1\Theme{
 
         $app->hook('view.render(<<*>>):before', function() use($app){
             $this->jsObject['apiCNPJ']  = $app->config['rcv.apiCNPJ'];
+            $this->jsObject['apiCNPJRF']  = $app->config['rcv.apiCNPJRF'];
             $this->jsObject['apiHeader'] = $app->config['rcv.apiHeader'];
         });
 

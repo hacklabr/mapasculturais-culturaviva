@@ -361,7 +361,7 @@
             });
 
             $scope.save_field = function save_field(field) {
-              var teste = "http://";
+              var validaLink = "http://";
               var flag = false;
               if((field === "atividadesEmRealizacaoLink") && ($scope.agent[field] !== "")){
                 if($scope.agent[field].indexOf("http://") !== -1){
@@ -370,7 +370,7 @@
                   flag = true;
                 }
                 if(!flag){
-                  $scope.agent[field] = teste +  $scope.agent[field];
+                  $scope.agent[field] = validaLink +  $scope.agent[field];
                 }
               }
                 if(angular.equals($scope.agent[field], $scope.originalAgent[field])){
@@ -393,6 +393,7 @@
                     }
                 });
             };
+
         }
 
         $scope.showInvalid = function(agentTipo, nomeForm){
@@ -1013,6 +1014,12 @@
                             $scope.data.encontrouCNPJ = false;
                         }
                     });
+        };
+
+        $scope.GET_valida_cnpj = function GET_valida_cnpj(){
+          $http.get(MapasCulturais.apiCNPJRF + $scope.data.cnpj).
+              success(function success(data){
+          });
         };
 
 
