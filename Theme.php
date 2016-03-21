@@ -906,6 +906,11 @@ class Theme extends BaseV1\Theme{
                   'required' => false,
                   'private' => true
                 ],
+                'obs' =>[
+                  'label' => '',
+                  'required' => false,
+                  'private' => true
+                ],
             ]
         ];
 
