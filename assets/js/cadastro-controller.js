@@ -433,6 +433,13 @@
               }
           });
         }
+
+        $scope.GET_valida_CNPJRF = function GET_valida_CNPJRF(){
+          //  $http.get(MapasCulturais.apiCNPJRF + $scope.data.cnpj).
+          //      success(function success(data){
+          //
+          //  });
+        };
     }
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', 'ngDialog',
@@ -1015,13 +1022,6 @@
                         }
                     });
         };
-
-        $scope.GET_valida_cnpj = function GET_valida_cnpj(){
-          $http.get(MapasCulturais.apiCNPJRF + $scope.data.cnpj).
-              success(function success(data){
-          });
-        };
-
 
 
         $scope.registrar = function(){

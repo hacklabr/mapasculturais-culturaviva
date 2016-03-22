@@ -614,10 +614,10 @@ class Cadastro extends \MapasCulturais\Controller{
         }
     }
 
-    function GET_valida_cnpj(){
-
+    function GET_valida_CNPJRF(){
       $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['CNPJ'];
       $f = json_decode(file_get_contents($api_urlRF));
+      var_dump($f);die();
 
       if(is_object($f) && ($f->tiposLucro.length !== 0)){
         $this->errorJson('CNPJ com fins lucrativos', 400);
