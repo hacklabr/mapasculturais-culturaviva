@@ -150,6 +150,10 @@ class Cadastro extends \MapasCulturais\Controller{
   	return $required_properties;
       }
 
+    /**
+    * Taxonomias obrigatórias do Ponto
+    * @return array
+    */
     function getPontoRequiredTaxonomies(){
       $agent = $this->getPonto();
       $entidadeAgent = $this->getEntidade();
@@ -170,7 +174,22 @@ class Cadastro extends \MapasCulturais\Controller{
 
     }
 
+    /*
+    * Arquivos obrigatórios do Ponto
+    * @return array
+    */
+    function getPontoRequiredFiles(){
+        $agent = $this->getPonto();
+        $required_files = [];
 
+        $required_files = [
+            'portifolio',
+            'carta1',
+            'carta2',
+        ];
+
+        return $required_files;
+    }
 
     /**
      * Propriedades obrigatórias da Entidade
@@ -270,7 +289,7 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent->checkPermission('@control');
     }
 
-    protected function _getErrors(\MapasCulturais\Entities\Agent $entity, array $required_properties, array $required_taxonomies = []){
+    protected function _getErrors(\MapasCulturais\Entities\Agent $entity, array $required_properties, array $required_taxonomies = [], array $required_files = []){
         $errors = [];
         foreach($required_properties as $prop){
             if(is_null($entity->$prop) || $entity->$prop === ''){
@@ -280,6 +299,13 @@ class Cadastro extends \MapasCulturais\Controller{
 
         foreach($required_taxonomies as $prop){
             if(is_null($entity->terms[$prop]) || empty($entity->terms[$prop])){
+                $errors[] = $prop;
+            }
+        }
+
+        foreach($required_files as $prop){
+            //$this->_ponto->files;
+            if(!isset($entity->files[$prop])){
                 $errors[] = $prop;
             }
         }
@@ -309,8 +335,9 @@ class Cadastro extends \MapasCulturais\Controller{
         $this->_checkPermissionsToViewErrors($agent);
         $required_properties = $this->getPontoRequiredProperties();
         $required_taxonomies = $this->getPontoRequiredTaxonomies();
+        $required_files = $this->getPontoRequiredFiles();
 
-        return $this->_getErrors($agent, $required_properties, $required_taxonomies);
+        return $this->_getErrors($agent, $required_properties, $required_taxonomies, $required_files);
     }
 
     protected function _populateAgents($responsavel, $entidade, $ponto){
@@ -458,7 +485,7 @@ class Cadastro extends \MapasCulturais\Controller{
     }
 
     function GET_pogressio(){
-        echo 'Grande Adoniram Barbosa!!!';die;
+        echo var_dump($this->_ponto->files);die;
     }
 
     function ALL_registra(){
