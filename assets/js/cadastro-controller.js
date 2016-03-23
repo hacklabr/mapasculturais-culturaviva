@@ -433,13 +433,6 @@
               }
           });
         }
-
-        $scope.GET_valida_CNPJRF = function GET_valida_CNPJRF(){
-          //  $http.get(MapasCulturais.apiCNPJRF + $scope.data.cnpj).
-          //      success(function success(data){
-          //
-          //  });
-        };
     }
 
     app.controller('DashboardCtrl', ['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', 'ngDialog',
@@ -1021,6 +1014,16 @@
                             $scope.data.encontrouCNPJ = false;
                         }
                     });
+        };
+
+        $scope.validaCNPJ = function(){
+          $http.get(MapasCulturais.createUrl('cadastro', 'validaCNPJ'),
+          {params: {
+              cnpj: $scope.data.cnpj
+          }}).
+              success(function(data){
+                  console.log(data);
+              });
         };
 
 

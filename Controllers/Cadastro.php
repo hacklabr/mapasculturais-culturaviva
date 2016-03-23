@@ -614,14 +614,20 @@ class Cadastro extends \MapasCulturais\Controller{
         }
     }
 
-    function GET_valida_CNPJRF(){
-      $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['CNPJ'];
-      $f = json_decode(file_get_contents($api_urlRF));
-      var_dump($f);die();
+    function GET_validaCNPJ(){
+        $app = App::i();
 
-      if(is_object($f) && ($f->tiposLucro.length !== 0)){
-        $this->errorJson('CNPJ com fins lucrativos', 400);
-      }
+        $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['cnpj'];
 
+        $ch = curl_init();
+        $header[] = 'Authorization: Basic M2JmNDEwMDkxYmRkZjVlMjA5MmJlODYyYWEyNWZlMzQ6MTIzNDU2';
+        curl_setopt($ch, CURLOPT_URL, $api_urlRF);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+
+        if(is_object($f) && ($f->tiposLucro.length !== 0)){
+            $this->errorJson('CNPJ com fins lucrativos', 400);
+        }
     }
 }
