@@ -445,7 +445,7 @@
                 '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                            'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' +
-                           'termos_de_uso,info_verdadeira',
+                           'termos_de_uso,info_verdadeira,obs',
 
 //                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
@@ -466,9 +466,19 @@
             $scope.enviar = function(){
                 $http.post(MapasCulturais.createUrl('cadastro', 'enviar')).
                         success(function successCallback(response) {
-                            $scope.data.statusInscricao = 1;
                             $scope.data.validationErrors = null;
-                            ngDialog.open({ template: 'modal' });
+                            if($scope.data.statusInscricao==0){
+                              ngDialog.open({
+                                template: 'modal1',
+                                scope: $scope
+                              });
+                            }
+                            else {
+                              ngDialog.open({
+                                template: 'modal2',
+                                scope: $scope
+                              });
+                            }
                         }).
                         error(function errorCallback(response) {
                             if(response.error){
@@ -517,13 +527,22 @@
 
             // FIXME passar como parametro para generalizar
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
 
             var params = {
                 'id': agent_id,
                 '@select': 'id,files',
                 '@permissions': 'view'
             };
+
+            var params_entidade = {
+                'id': agent_id_entidade,
+                '@select': 'id,tipoOrganizacao',
+                '@permissions': 'view'
+            };
+
             $scope.errozao = true ;
+            $scope.agent_entidade = Entity.get(params_entidade);
             $scope.agent = Entity.get(params);
             $scope.agent.$promise.then(function(){
                 $scope.agent.files.gallery = $scope.agent.files.gallery || [];

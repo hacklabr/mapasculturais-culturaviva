@@ -47,7 +47,29 @@
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
+              <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
+          <h4>Carta de Autorização de Coletivo sem Constituição Jurídica</h4>
+
+        <div class="colunm-20">
+            <div class="file-item">
+                <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
+                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Carta' : 'Clique para incluir a Carta'}}">
+                    <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
+                    <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
+                </div>
+            </div>
+            <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
+            <div class="progress row" ng-show="f.progress >= 0">
+                <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
+            </div>
         </div>
+              <label class="colunm-50">
+                  Precisa de ajuda para montar sua carta?
+                  <br>
+                  <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_Coletivo vs 3.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
+                </label>
+              </div>
+            </div>
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>
