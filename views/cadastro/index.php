@@ -1,6 +1,14 @@
 <?php
 $this->bodyProperties['ng-app'] = "culturaviva";
 ?>
+<style>
+  a{
+    color: #078979;
+  }
+  a:hover{
+    color: #078979;
+  }
+</style>
 <div id="page-cadastro" ng-controller="DashboardCtrl">
     <?php $this->part('messages'); ?>
     <section class="texto">
@@ -378,13 +386,18 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
 		    </strong>
   </div>
-  <script type="text/ng-template" id="modal">
+  <script type="text/ng-template" id="modal1">
+    <p>Dados enviados com sucesso!</p>
+    <p ng-if ="data.statusInscricao = 1">Agora que preencheu nosso cadastro, conheça também o <a color="#078979" href="http://cadsol.mte.gov.br/inter/cadsol/main.seam" target="_blank">cadastro de economia solidária</a> e o <a href="http://simmc.c3sl.ufpr.br/#/pid" target="_blank"> cadastro de pontos de inclusão digital.</a></p>
+    <b> Existe alguma observação que você gostaria de fazer?</b>
+    <textarea cols="65" ng-model="agent.obs" ng-blur="save_field('obs')"></textarea>
+  </script>
+  <script type="text/ng-template" id="modal2">
     <p>Dados atualizados com sucesso!</p>
   </script>
 
-  <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' && agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
   <div class="page-base-form">
-
+    <button class="btn-validar" ng-disabled="agent.termos_de_uso === '0' || agent.info_verdadeira === '0'" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
       <p ng-show="data.statusInscricao > 0" >
                 Recebemos seus dados com sucesso!
                 Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura!

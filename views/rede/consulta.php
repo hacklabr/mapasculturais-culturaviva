@@ -60,7 +60,7 @@
           </thead>
           <tbody>
               <tr ng-repeat="i in data">
-                <td><a href="../admin/cadastro?id={{i.user.id}}" target="_blank">
+                <td><a href="../admin/cadastro/{{i.user.id}}" target="_blank">
                   <div id="cartao">
                     <h3 id="name">Nome do Ponto: {{i.name}}</h3>
 		    </br>
