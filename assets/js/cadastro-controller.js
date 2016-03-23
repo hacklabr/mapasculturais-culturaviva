@@ -1041,8 +1041,10 @@
               cnpj: $scope.data.cnpj
           }}).
               success(function(data){
-                  console.log(data);
-              });
+                 
+             }).error(function(data){
+
+             });
         };
 
 

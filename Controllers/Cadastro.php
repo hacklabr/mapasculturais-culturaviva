@@ -192,7 +192,7 @@ class Cadastro extends \MapasCulturais\Controller{
         if ($agentEntidade->tipoOrganizacao === 'coletivo') {
           $required_files [] = 'ata';
         }
-          var_dump($required_files);
+
         return $required_files;
     }
     /**
@@ -656,8 +656,13 @@ class Cadastro extends \MapasCulturais\Controller{
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
+        $f = json_decode($result, true);
 
-        if(is_object($f) && ($f->tiposLucro.length !== 0)){
+        if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
+
+        }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143')){
+
+        }else{
             $this->errorJson('CNPJ com fins lucrativos', 400);
         }
     }
