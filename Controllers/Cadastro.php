@@ -180,6 +180,7 @@ class Cadastro extends \MapasCulturais\Controller{
     */
     function getPontoRequiredFiles(){
         $agent = $this->getPonto();
+        $agentEntidade= $this->getEntidade();
         $required_files = [];
 
         $required_files = [
@@ -188,9 +189,12 @@ class Cadastro extends \MapasCulturais\Controller{
             'carta2',
         ];
 
+        if ($agentEntidade->tipoOrganizacao === 'coletivo') {
+          $required_files [] = 'ata';
+        }
+          var_dump($required_files);
         return $required_files;
     }
-
     /**
      * Propriedades obrigatórias da Entidade
      * @return array
