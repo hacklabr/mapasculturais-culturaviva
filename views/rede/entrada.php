@@ -32,7 +32,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 <form>
                     <label><strong id="label_cnpj"><big>CNPJ*</big></strong></label>
                     <input type="text" name="CNPJ" ui-mask="99.999.999/9999-99" ng-model="data.cnpj" ng-change="data.naoEncontrouCNPJ = false" />
-                    <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="consultaCNPJ();validaCNPJ()"/>
+                    <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="validaCNPJ()"/>
                 </form>
             </div>
             <p>Responda e verificaremos se já temos informações sobre seu Ponto ou Pontão de Cultura na base de dados do MinC.</p>

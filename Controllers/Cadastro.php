@@ -658,9 +658,14 @@ class Cadastro extends \MapasCulturais\Controller{
         $result = curl_exec($ch);
         $f = json_decode($result, true);
 
-        if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
+        if(array_key_exists("erro", $f)){
+            if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
+                $this->errorJson('CNPJ invalido', 401);
+            }
+        }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
+            $this->Json(true);
 
-        }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143')){
+        }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143') === 0){
 
         }else{
             $this->errorJson('CNPJ com fins lucrativos', 400);

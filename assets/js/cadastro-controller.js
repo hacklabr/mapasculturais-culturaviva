@@ -1014,36 +1014,40 @@
             cnpj: null,
             comCNPJ: false
         };
+        
         extendController($scope, $timeout);
-        $scope.consultaCNPJ = function(){
-            $scope.messages.show('enviando', "Procurando CNPJ em nossa base");
-            $http.get(MapasCulturais.apiCNPJ + '?action=get_cultura&cnpj=' + $scope.data.cnpj).
-                    success(function success(data){
-                        if(data.Id){
-                            $scope.messages.show('sucesso', "CNPJ encontrado");
-
-                            $scope.data.naoEncontrouCNPJ = false;
-                            $scope.data.encontrouCNPJ = $scope.data.cnpj;
-
-                            $scope.registrar();
-                        }else{
-                            $scope.messages.show('erro', "CNPJ não encontrado");
-
-                            $scope.data.naoEncontrouCNPJ = true;
-                            $scope.data.encontrouCNPJ = false;
-                        }
-                    });
-        };
-
         $scope.validaCNPJ = function(){
           $http.get(MapasCulturais.createUrl('cadastro', 'validaCNPJ'),
           {params: {
               cnpj: $scope.data.cnpj
           }}).
-              success(function(data){
-                 
-             }).error(function(data){
+              success(function successCallback (sucesso){
+                if(sucesso){
+                    $scope.messages.show('enviando', "Procurando CNPJ em nossa base");
+                    $http.get(MapasCulturais.apiCNPJ + '?action=get_cultura&cnpj=' + $scope.data.cnpj).
+                        success(function success(data){
+                            if(data.Id){
+                                $scope.messages.show('sucesso', "CNPJ encontrado");
 
+                                $scope.data.naoEncontrouCNPJ = false;
+                                $scope.data.encontrouCNPJ = $scope.data.cnpj;
+
+                                $scope.registrar();
+                            }else{
+                                    $scope.messages.show('erro', "CNPJ não encontrado");
+
+                                    $scope.data.naoEncontrouCNPJ = true;
+                                    $scope.data.encontrouCNPJ = false;
+                                }
+                        });
+                }
+
+             }).error(function errorCallback (erro){
+                if(erro.data === "CNPJ invalido"){
+                    $scope.messages.show('erro', "CNPJ informado é invalido");
+                }else if(erro.data === "CNPJ com fins lucrativos"){
+                    $scope.messages.show('erro', "CNPJ com fins lucrativos");
+                }
              });
         };
 
