@@ -650,25 +650,30 @@ class Cadastro extends \MapasCulturais\Controller{
 
         $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['cnpj'];
 
-        $ch = curl_init();
-        $header[] = 'Authorization: Basic M2JmNDEwMDkxYmRkZjVlMjA5MmJlODYyYWEyNWZlMzQ6MTIzNDU2';
-        curl_setopt($ch, CURLOPT_URL, $api_urlRF);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $f = json_decode($result, true);
-
-        if(array_key_exists("erro", $f)){
-            if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
-                $this->errorJson('CNPJ invalido', 401);
-            }
-        }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
-            $this->Json(true);
-
-        }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143') === 0){
-
+        if(strlen($this->data['cnpj']) !== 14){
+            $this->errorJson('CNPJ invalido', 401);
         }else{
-            $this->errorJson('CNPJ com fins lucrativos', 400);
+            $ch = curl_init();
+            $header[] = 'Authorization: Basic M2JmNDEwMDkxYmRkZjVlMjA5MmJlODYyYWEyNWZlMzQ6MTIzNDU2';
+            curl_setopt($ch, CURLOPT_URL, $api_urlRF);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            $f = json_decode($result, true);
+
+            if(array_key_exists("erro", $f)){
+                if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
+                    $this->errorJson('CNPJ invalido', 401);
+                }
+            }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
+                $this->Json(true);
+
+            }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143') === 0){
+                $this->Json(true);
+
+            }else{
+                $this->errorJson('CNPJ com fins lucrativos', 400);
+            }
         }
     }
 }
