@@ -1041,9 +1041,9 @@
               cnpj: $scope.data.cnpj
           }}).
               success(function successCallback (sucesso){
-                 if(sucesso){
+                if(sucesso){
                     consultaCNPJ();
-                 }
+                }
 
              }).error(function errorCallback (erro){
                 if(erro.data === "CNPJ invalido"){
@@ -1081,6 +1081,43 @@
                     });
         };
     }]);
+
+    app.controller('ValidaCNPJCadastrados', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http){
+            var cnpj = [];
+            var retorno = [];
+            var paramsCNPJ={
+                '@select': 'id,parent.id,cnpj,rcv_tipo',
+                'rcv_tipo': 'EQ(entidade)'
+            };
+            $http.get("/api/agent/find",{
+                params: paramsCNPJ
+            }).success(function(dados){
+                dados.forEach(function(data){
+                    if(data.cnpj !== null){
+                        cnpj.push(data.cnpj);
+                    }
+                });
+
+                cnpj.forEach(function(data, i){
+                    $http.get(MapasCulturais.createUrl('cadastro', 'buscaNaturezaJuridica'),
+                        {params: {
+                            cnpj: data
+                    }}).
+                        success(function successCallback (sucesso){
+                            retorno[i]={cnpj: data, naturezaJuridica: sucesso.substr(1, 4)};
+                        });
+                });
+            });
+            $scope.data = retorno;
+            $scope.exportar = function(){
+                var blob = new Blob([document.getElementById('table').innerHTML], {
+                           type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+                       });
+                   saveAs(blob, "Tabela.xls");
+           };
+        }
+    ]);
 
     app.controller('DetailCtrl',['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', '$location', function($scope, Entity, MapasCulturais, $http, $timeout, $location){
         extendController($scope, $timeout);
