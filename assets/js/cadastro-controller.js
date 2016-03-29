@@ -876,6 +876,30 @@
               }
             });
 
+            extendController($scope, $timeout, Entity, agent_id, $http);
+            $scope.validaCNPJ = function(){
+                if($scope.agent.cnpj.length === 0){
+                    $scope.agent.cnpj = null;
+                    $scope.save_field('cnpj');
+                }else{
+                    $http.get(MapasCulturais.createUrl('cadastro', 'validaCNPJ'),
+                    {params: {
+                        cnpj: $scope.agent.cnpj
+                    }}).
+                        success(function successCallback (){
+                            $scope.save_field('cnpj');
+
+                        }).error(function errorCallback (erro){
+                            if(erro.data === "CNPJ invalido"){
+                                $scope.messages.show('erro', "CNPJ informado é invalido");
+
+                            }else if(erro.data === "CNPJ com fins lucrativos"){
+                                $scope.messages.show('erro', "CNPJ com fins lucrativos");
+                            }
+                        });
+                }
+            };
+
         }
     ]);
 

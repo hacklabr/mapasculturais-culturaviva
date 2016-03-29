@@ -53,7 +53,7 @@
                         <span class="destaque">CNPJ da Entidade*</span>
                         <input name="cnpj"
                                type="text"
-                               ng-blur="save_field('cnpj')"
+                               ng-blur="validaCNPJ()"
                                ng-model="agent.cnpj"
                                ui-mask="99.999.999/9999-99">
                     </label>

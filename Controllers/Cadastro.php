@@ -652,10 +652,19 @@ class Cadastro extends \MapasCulturais\Controller{
     function GET_validaCNPJ(){
         $app = App::i();
 
+        $api_urlRF = $app->config['rcv.apiCNPJRF'] . $this->data['cnpj'];
+
         if(strlen($this->data['cnpj']) !== 14){
             $this->errorJson('CNPJ invalido', 401);
         }else{
-            $f = $this->GET_buscaNaturezaJuridica();
+
+            $ch = curl_init();
+            $header[] = 'Authorization: Basic M2JmNDEwMDkxYmRkZjVlMjA5MmJlODYyYWEyNWZlMzQ6MTIzNDU2';
+            curl_setopt($ch, CURLOPT_URL, $api_urlRF);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            $f = json_decode($result, true);
 
             if(array_key_exists("erro", $f)){
                 if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
