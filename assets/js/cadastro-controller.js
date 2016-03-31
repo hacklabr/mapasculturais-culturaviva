@@ -1055,6 +1055,7 @@
 
                         $scope.data.naoEncontrouCNPJ = true;
                         $scope.data.encontrouCNPJ = false;
+                        $scope.registrar();
                     }
                 });
         };
