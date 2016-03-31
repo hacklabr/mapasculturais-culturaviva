@@ -141,6 +141,9 @@ class Cadastro extends \MapasCulturais\Controller{
               $required_properties[] = 'simPoderPublico';
             }
         }
+        // if($agent->cfg->outros === "1"){
+        //
+        // }
 
       	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
           		$required_properties[] = 'atividadesEmRealizacaoLink';
@@ -168,6 +171,7 @@ class Cadastro extends \MapasCulturais\Controller{
           'area_atuacao',
           'instancia_representacao_minc',
         ];
+
       }
 
       return $required_taxonomies;
@@ -227,7 +231,21 @@ class Cadastro extends \MapasCulturais\Controller{
             $required_properties[] = 'representanteLegal';
         }
 
+        if($agent->outrosFinanciamentos === "1"){
+          $required_properties[] = 'outrosFinanciamentos_descricao';
+        }
 
+        if($agent->participacaoMovPolitico === "1"){
+          $required_properties[] = 'simMovimentoPoliticoCultural';
+        }
+
+        if($agent->participacaoForumCultura === "1"){
+          $required_properties[] = 'simForumCultural';
+        }
+
+        if($agent->parceriaPoderPublico === "1"){
+          $required_properties[] = 'simPoderPublico';
+        }
         /*if($agent->foiFomentado){
             $required_properties[] = 'tipoFomento';
             if($agent->tipoFomento === 'outros'){
