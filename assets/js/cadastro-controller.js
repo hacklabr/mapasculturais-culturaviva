@@ -860,7 +860,7 @@
                 'id': agent_id,
 
                 '@select': 'id,rcv_tipo,name,nomeCompleto,cnpj,representanteLegal,' +
-                    'tipoPontoCulturaDesejado,tipoOrganizacao,' +
+                    'tipoPontoCulturaDesejado,tipoOrganizacao,responsavel_operadora' +
                     'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
                     'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
                     'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,cep,En_Complemento',
