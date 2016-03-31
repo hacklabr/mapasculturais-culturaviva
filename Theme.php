@@ -907,6 +907,7 @@ class Theme extends BaseV1\Theme{
                   'required' => false,
                   'private' => true
                 ],
+                //Campo de observação
                 'obs' =>[
                   'label' => '',
                   'required' => false,
