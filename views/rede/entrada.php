@@ -32,9 +32,22 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 <form>
                     <label><strong id="label_cnpj"><big>CNPJ*</big></strong></label>
                     <input type="text" name="CNPJ" ui-mask="99.999.999/9999-99" ng-model="data.cnpj" ng-change="data.naoEncontrouCNPJ = false" />
-                    <input ng-hide="data.naoEncontrouCNPJ" type="submit" class="btn" value="OK" ng-click="validaCNPJ()"/>
+                    <input type="submit" class="btn" value="OK" ng-click="validaCNPJ()"/>
                 </form>
             </div>
+            <script type="text/ng-template" id="modalErro">
+              <p style="font-size: 13px;"><b>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</b></p>
+              <a style="color: red;" ng-click="registrar()">Continuar</a>
+            </script>
+            <script type="text/ng-template" id="modalCNPJInvalido">
+              <p style="font-size: 15px;"><b>CNPJ informado é invalido!</b></p>
+              <a style="color: red;" ng-click="closeAll()">Corrigir</a>
+            </script>
+            <script type="text/ng-template" id="modalFinsLucrativos">
+              <h4><b>CNPJ com fins lucrativos</b></h4>
+              Critérios:  <a style="color:#078979; font-size:15px;" href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" target="_blank">http://culturaviva.gov.br/saiba-mais/#quais-os-criterios</a></br>
+              <a style="color: red;" ng-click="closeAll()">Ok</a>
+            </script>
             <p>Responda e verificaremos se já temos informações sobre seu Ponto ou Pontão de Cultura na base de dados do MinC.</p>
             <a href="#" id="btn_nao" class="btn-cnpj js-btn-sem-cnpj btn_active" ng-click="data.comCNPJ = false">Não tenho CNPJ</a>
         </div>
