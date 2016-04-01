@@ -851,8 +851,8 @@
         }
     ]);
 
-    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais', '$location', '$http',
-        function($scope, $timeout, Entity, MapasCulturais, $location, $http){
+    app.controller('EntityCtrl', ['$scope', '$timeout', 'Entity', 'MapasCulturais', '$location', '$http', 'ngDialog',
+        function($scope, $timeout, Entity, MapasCulturais, $location, $http, ngDialog){
             var agent_id = MapasCulturais.redeCulturaViva.agenteEntidade;
 
 
@@ -876,6 +876,10 @@
               }
             });
 
+            $scope.closeAll = function () {
+                ngDialog.close();
+            };
+
             extendController($scope, $timeout, Entity, agent_id, $http);
             $scope.validaCNPJ = function(){
                 if($scope.agent.cnpj.length === 0){
@@ -888,13 +892,20 @@
                     }}).
                         success(function successCallback (){
                             $scope.save_field('cnpj');
+                            $scope.messages.show('sucesso', 'alterações salvas');
 
                         }).error(function errorCallback (erro){
                             if(erro.data === "CNPJ invalido"){
-                                $scope.messages.show('erro', "CNPJ informado é invalido");
+                                ngDialog.open({
+                                  template: 'modalCNPJInvalido',
+                                  scope: $scope
+                                });
 
                             }else if(erro.data === "CNPJ com fins lucrativos"){
-                                $scope.messages.show('erro', "CNPJ com fins lucrativos");
+                                ngDialog.open({
+                                  template: 'modalFinsLucrativos',
+                                  scope: $scope
+                                });
                             }
                         });
                 }
@@ -1031,7 +1042,7 @@
 
   }]);
 
-    app.controller('EntradaCtrl',['$scope', '$http', '$timeout', function($scope, $http, $timeout){
+    app.controller('EntradaCtrl',['$scope', '$http', '$timeout', 'ngDialog', function($scope, $http, $timeout, ngDialog){
         $scope.data = {
             naoEncontrouCNPJ: false,
             encontrouCNPJ: false,
@@ -1044,18 +1055,15 @@
             $http.get(MapasCulturais.apiCNPJ + '?action=get_cultura&cnpj=' + $scope.data.cnpj).
                 success(function success(data){
                     if(data.Id){
-                        $scope.messages.show('sucesso', "CNPJ encontrado");
-
-                        $scope.data.naoEncontrouCNPJ = false;
+                        $scope.registrar();
                         $scope.data.encontrouCNPJ = $scope.data.cnpj;
-
-                        $scope.registrar();
                     }else{
-                        $scope.messages.show('erro', "CNPJ não encontrado");
-
-                        $scope.data.naoEncontrouCNPJ = true;
                         $scope.data.encontrouCNPJ = false;
-                        $scope.registrar();
+                        ngDialog.open({
+                          template: 'modalErro',
+                          scope: $scope
+                        });
+                        $scope.data.encontrouCNPJ = $scope.data.cnpj;
                     }
                 });
         };
@@ -1072,14 +1080,22 @@
 
              }).error(function errorCallback (erro){
                 if(erro.data === "CNPJ invalido"){
-                    $scope.messages.show('erro', "CNPJ informado é invalido");
-                    $scope.data.naoEncontrouCNPJ = true;
+                    ngDialog.open({
+                      template: 'modalCNPJInvalido',
+                      scope: $scope
+                    });
 
                 }else if(erro.data === "CNPJ com fins lucrativos"){
-                    $scope.messages.show('erro', "CNPJ com fins lucrativos");
-                    $scope.data.naoEncontrouCNPJ = true;
+                    ngDialog.open({
+                      template: 'modalFinsLucrativos',
+                      scope: $scope
+                    });
                 }
              });
+        };
+
+        $scope.closeAll = function () {
+            ngDialog.close();
         };
 
 
