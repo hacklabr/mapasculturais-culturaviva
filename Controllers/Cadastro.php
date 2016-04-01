@@ -182,17 +182,23 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getPonto();
         $agentEntidade= $this->getEntidade();
         $required_files = [];
-
         $required_files = [
             'portifolio',
+            'atividadesEmRealizacaoLink',
             'carta1',
             'carta2',
         ];
+        if(isset($agent->portifolio) && !empty($agent->portifolio)){
+            unset($required_files['atividadesEmRealizacaoLink']);
+        }
+        if(isset($agent->atividadesEmRealizacaoLink)&& !empty($agent->atividadesEmRealizacaoLink)){
+            unset($required_files['portifolio']);
+        }
 
         if ($agentEntidade->tipoOrganizacao === 'coletivo') {
           $required_files [] = 'ata';
         }
-          var_dump($required_files);
+        var_dump($required_files);
         return $required_files;
     }
     /**
