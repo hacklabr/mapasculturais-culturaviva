@@ -25,7 +25,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <article>
         <div class="row title">
             <h3>
-                <strong>Declare seu ponto de Cultura</strong>
+                <strong>Declare seu Ponto de Cultura</strong>
                 <br />Você já possui um CNPJ?
             </h3>
             <div class="formulario-CNPJ">
@@ -54,7 +54,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <div class="row">
             <div class="colunm-full js-sem-cnpj esconde">
                 <p>
-                    Você não precisa ter um CNPJ para autodeclarar seu Ponto de Cultura.
+                    Você não precisa ter um CNPJ para declarar seu Ponto de Cultura.
                     <br />
                     Continue com a validação em nome do seu Coletivo Cultural.
                 </p>
@@ -78,7 +78,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <div class="row">
             <div class="colunm1 criterios">
                 <h4>Critérios para a Autodeclaração</h4>
-                <p>Aqui estão algumas coisas que você precisa saber antes de autodeclarar seu Ponto de Cultura: </p>
+                <p>Aqui estão algumas coisas que você precisa saber antes de declarar seu Ponto de Cultura: </p>
                 <div class="js-icons">
                      <span class="icon-user ic1 active"></span>
                      <span class="icon-home ic2"></span>
@@ -118,7 +118,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                  <div class="slide js-vcard sl6">
                      <span class="icon-vcard"></span>
                      <h4>Economia Viva </h4>
-                     <p>Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura</p>
+                     <p>Fale mais sobre os recursos que o seu Ponto tem para trocar com outros Pontos de cultura</p>
                  </div>
                  <div class="slide js-book-open sl7">
                      <span class="icon-book-open"></span>

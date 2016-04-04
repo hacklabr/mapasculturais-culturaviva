@@ -15,8 +15,8 @@
         <h4>Informações Opcionais</h4>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado? <i class="hltip" title='Caso nunca tenha sido contemplado, selecione "Ainda não fui Contemplado"'>?</i><br>(Pode escolher mais de uma opção) </span>
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado?* <i class="hltip" title='Caso nunca tenha sido contemplado, selecione "Ainda não fui Contemplado"'>?</i><br>(Pode escolher mais de uma opção) </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Em qual edital do Ministério da Cultura a Entidade/Coletivo de Cultura já foi contemplado? <i class="hltip" title='Caso nunca tenha sido contemplado, selecione "Ainda não fui Contemplado"'>?</i><br>(Pode escolher mais de uma opção) </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Em qual edital do Ministério da Cultura a Entidade/Coletivo de Cultura já foi contemplado?* <i class="hltip" title='Caso nunca tenha sido contemplado, selecione "Ainda não fui Contemplado"'>?</i><br>(Pode escolher mais de uma opção) </span>
             </div>
             <taxonomy-checkboxes taxonomy="contemplado_edital" entity="agent" terms="termos.contemplado_edital"></taxonomy-checkboxes>
         </div>
@@ -52,8 +52,8 @@
         <div class="row">
           <h4> Articulação </h4>
             <div class="colunm-full">
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Participa de algum movimento político-cultural? </span>
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Participa de algum movimento político-cultural?* </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Participa de algum movimento cultural? </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Participa de algum movimento cultural?* </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -76,8 +76,8 @@
             </div>
 
             <div class="colunm-full">
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Participa de algum Fórum de Cultura? </span>
-                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Participa de algum Fórum de Cultura?* </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado != 'pontao'">Participa de algum Fórum e/ou Conselho de Cultura? </span>
+                <span class="destaque" ng-if="agent_entidade.tipoPontoCulturaDesejado == 'pontao'">Participa de algum Fórum e/ou Conselho de Cultura?* </span>
             </div>
             <label class="colunm1">
                 <input type="radio"

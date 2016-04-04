@@ -114,7 +114,7 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável pela Entidade* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
+                <span class="destaque">Nome do Responsável pela Entidade/Coletivo* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
                 <input name="responsavel_nome" type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
@@ -143,14 +143,14 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Email institucional da Entidade *</span>
+                <span class="destaque">Email institucional da Entidade/Coletivo *</span>
                 <input name="emailPrivado" type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span class="destaque">Telefone institucional da Entidade *</span>
+                <span class="destaque">Telefone institucional da Entidade/Coletivo *</span>
                 <input name="telefone1" type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
@@ -175,13 +175,13 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço da Entidade* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
+                <span class="destaque">Endereço da Entidade/Coletivo* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
           <label class="colunm05">
-            <span class="destaque">Pais*</span>
+            <span class="destaque">País*</span>
               <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                 <option value="Brasil" selected>Brasil</option>
                 <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>

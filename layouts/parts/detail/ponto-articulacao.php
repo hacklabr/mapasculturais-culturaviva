@@ -3,7 +3,7 @@
         <h4>Informações Obrigatórias</h4>
         <div class="row">
             <div class="colunm-full">
-                <span class="destaque">Em qual edital do Ministério da Cultura a entidade/coletivo já foi contemplado?</span>
+                <span class="destaque">Em qual edital do Ministério da Cultura a Entidade/Coletivo Cultural já foi contemplado?</span>
                 <span style="height:auto" ng-repeat="termo in ponto.terms.contemplado_edital"><b>{{termo}}</b></span>
                 <span ng-if="!ponto.terms.contemplado_edital.length"><b>Não informado</b></span>
             </div>
@@ -39,7 +39,7 @@
         <div class="row">
           <h4> Articulação </h4>
             <div class="colunm-full">
-                <span class="destaque">Participa de algum movimento político-cultural? </span>
+                <span class="destaque">Participa de algum movimento cultural? </span>
             </div>
             <label class="colunm1">
                 <input type="radio"
@@ -62,7 +62,7 @@
             </div>
 
             <div class="colunm-full">
-                <span class="destaque">Participa de algum Fórum de Cultura? </span>
+                <span class="destaque">Participa de algum Fórum e/ou Conselho de Cultura? </span>
             </div>
             <label class="colunm1">
                 <input type="radio"

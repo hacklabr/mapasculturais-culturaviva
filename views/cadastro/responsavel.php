@@ -98,9 +98,9 @@
                 <span class="destaque">Onde você mora?</span>
             </div>
             <label class="colunm-30">
-              <span class="destaque">Pais</span>
+              <span class="destaque">País</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
-                  <option value="Brasil" selected>Brasil</option> 
+                  <option value="Brasil" selected>Brasil</option>
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                   <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
                   <option value="Angola">Angola</option>                    <option value="Anguilla">Anguilla</option>
@@ -245,7 +245,7 @@
                 <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
             </label>
             <label class="colunm-redes diaspora">
-              <span class="destaque"><img src="http://127.0.0.1:8000/assets/img/icon_diaspora.png">Perfil na Diáspora:</span>
+              <span class="destaque"><img src="<?php $this->asset('img/icon_diaspora.png') ?>">Perfil na Diáspora:</span>
                 <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
             </label>
             <label class="colunm-redes instagram">
