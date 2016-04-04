@@ -18,6 +18,7 @@ class Admin extends \MapasCulturais\Controller{
       }
         $this->requireAuthentication();
         $this->render('cadastro');
+        $this->render($buscaAnterior);
     }
 
     function GET_user(){
