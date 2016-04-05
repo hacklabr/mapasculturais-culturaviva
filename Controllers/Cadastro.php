@@ -670,6 +670,9 @@ class Cadastro extends \MapasCulturais\Controller{
                 if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
                     $this->errorJson('CNPJ invalido', 401);
                 }
+            }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '1') === 0){
+                $this->Json($f["naturezaJuridica"]["cdNaturezaJuridica"]);
+
             }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
                 $this->Json($f["naturezaJuridica"]["cdNaturezaJuridica"]);
 

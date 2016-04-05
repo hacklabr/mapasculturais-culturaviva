@@ -35,6 +35,11 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     <input type="submit" class="btn" value="OK" ng-click="validaCNPJ()"/>
                 </form>
             </div>
+            <script type="text/ng-template" id="modalNJ">
+              <p style="font-size: 13px;"><b>Identificamos que seu CNPJ está relacionado a órgãos e entidades públicas. Para poder receber a certificação sua instituição deve ser qualificada como Instituição Pública de Ensino.</b></p>
+              <a style="color: red;" ng-click="consultaCNPJ()">Continuar</a>
+              <a href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" style="color: red; float: right;">Critérios</a>
+            </script>
             <script type="text/ng-template" id="modalErro">
               <p style="font-size: 13px;"><b>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</b></p>
               <a style="color: red;" ng-click="registrar()">Continuar</a>

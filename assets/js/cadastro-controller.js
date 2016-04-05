@@ -1074,7 +1074,12 @@
               cnpj: $scope.data.cnpj
           }}).
               success(function successCallback (sucesso){
-                if(sucesso){
+                if(sucesso.indexOf("1") === 1){
+                    ngDialog.open({
+                      template: 'modalNJ',
+                      scope: $scope
+                    });
+                }else{
                     consultaCNPJ();
                 }
 
