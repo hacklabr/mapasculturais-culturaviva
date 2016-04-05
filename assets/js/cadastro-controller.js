@@ -898,7 +898,7 @@
                                   scope: $scope
                                 });
                             }
-                            if(sucesso.cdNaturezaJuridica.indexOf("3") === 0){
+                            if((sucesso.cdNaturezaJuridica.indexOf("3") === 0) || (sucesso.cdNaturezaJuridica === "2143")){
                                 $scope.save_field('cnpj');
                                 $scope.messages.show('sucesso', 'alterações salvas');
                             }
