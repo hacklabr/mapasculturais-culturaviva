@@ -141,9 +141,6 @@ class Cadastro extends \MapasCulturais\Controller{
               $required_properties[] = 'simPoderPublico';
             }
         }
-        // if($agent->cfg->outros === "1"){
-        //
-        // }
 
       	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
           		$required_properties[] = 'atividadesEmRealizacaoLink';
@@ -171,7 +168,6 @@ class Cadastro extends \MapasCulturais\Controller{
           'area_atuacao',
           'instancia_representacao_minc',
         ];
-
       }
 
       return $required_taxonomies;
@@ -186,20 +182,17 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getPonto();
         $agentEntidade= $this->getEntidade();
         $required_files = [];
+
         $required_files = [
             'portifolio',
-            'atividadesEmRealizacaoLink',
             'carta1',
             'carta2',
         ];
-        if(isset($agent->files['portifolio']) || $agent->atividadesEmRealizacaoLink){
-            unset($required_files[array_search('atividadesEmRealizacaoLink',$required_files)]);
-            unset($required_files[array_search('portifolio',$required_files)]);
-        }
 
         if ($agentEntidade->tipoOrganizacao === 'coletivo') {
           $required_files [] = 'ata';
         }
+
         return $required_files;
     }
     /**
@@ -210,7 +203,6 @@ class Cadastro extends \MapasCulturais\Controller{
         $agent = $this->getEntidade();
 
         $required_properties = [
-            'name',
             'tipoOrganizacao',
             'responsavel_nome',
             'responsavel_cargo',
@@ -234,21 +226,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $required_properties[] = 'representanteLegal';
         }
 
-        if($agent->outrosFinanciamentos === "1"){
-          $required_properties[] = 'outrosFinanciamentos_descricao';
-        }
 
-        if($agent->participacaoMovPolitico === "1"){
-          $required_properties[] = 'simMovimentoPoliticoCultural';
-        }
-
-        if($agent->participacaoForumCultura === "1"){
-          $required_properties[] = 'simForumCultural';
-        }
-
-        if($agent->parceriaPoderPublico === "1"){
-          $required_properties[] = 'simPoderPublico';
-        }
         /*if($agent->foiFomentado){
             $required_properties[] = 'tipoFomento';
             if($agent->tipoFomento === 'outros'){
@@ -409,6 +387,7 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->telefonePublico     = $d->Nr_DDD1 . ' ' . $d->Nr_Telefone1;
             $entidade->telefone1           = $d->Nr_DDD2 . ' ' . $d->Nr_Telefone2;
             $entidade->telefone2           = $d->Nr_DDD3 . ' ' . $d->Nr_Telefone3;
+
             $entidade->site                = $d->Lk_Site;
 
             $entidade->location            = $_location;
