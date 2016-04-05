@@ -890,9 +890,18 @@
                     {params: {
                         cnpj: $scope.agent.cnpj
                     }}).
-                        success(function successCallback (){
-                            $scope.save_field('cnpj');
-                            $scope.messages.show('sucesso', 'alterações salvas');
+                        success(function successCallback (sucesso){
+                            if(sucesso.cdNaturezaJuridica.indexOf("1") === 0){
+                                $scope.natuJuridica = sucesso.dsNaturezaJuridica;
+                                ngDialog.open({
+                                  template: 'modalNJ',
+                                  scope: $scope
+                                });
+                            }
+                            if(sucesso.cdNaturezaJuridica.indexOf("3") === 0){
+                                $scope.save_field('cnpj');
+                                $scope.messages.show('sucesso', 'alterações salvas');
+                            }
 
                         }).error(function errorCallback (erro){
                             if(erro.data === "CNPJ invalido"){
@@ -1074,7 +1083,13 @@
               cnpj: $scope.data.cnpj
           }}).
               success(function successCallback (sucesso){
-                if(sucesso){
+                if(sucesso.cdNaturezaJuridica.indexOf("1") === 0){
+                    $scope.natuJuridica = sucesso.dsNaturezaJuridica;
+                    ngDialog.open({
+                      template: 'modalNJ',
+                      scope: $scope
+                    });
+                }else{
                     consultaCNPJ();
                 }
 

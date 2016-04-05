@@ -669,11 +669,14 @@ class Cadastro extends \MapasCulturais\Controller{
                 if(strcmp($f["erro"], 'CNPJ Inválido') === 0){
                     $this->errorJson('CNPJ invalido', 401);
                 }
+            }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '1') === 0){
+                $this->Json($f["naturezaJuridica"]);
+
             }else if(strpos($f["naturezaJuridica"]["cdNaturezaJuridica"], '3') === 0){
-                $this->Json($f["naturezaJuridica"]["cdNaturezaJuridica"]);
+                $this->Json($f["naturezaJuridica"]);
 
             }else if(strcmp($f["naturezaJuridica"]["cdNaturezaJuridica"], '2143') === 0){
-                $this->Json($f["naturezaJuridica"]["cdNaturezaJuridica"]);
+                $this->Json($f["naturezaJuridica"]);
 
             }else{
                 $this->errorJson('CNPJ com fins lucrativos', 400);

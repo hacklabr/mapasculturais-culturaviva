@@ -74,7 +74,7 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável pela Entidade</span>
+                <span class="destaque">Nome do Responsável pela Entidade/Coletivo</span>
                 <span><b>{{entidade.responsavel_nome}}</b></span>
                 <span ng-if="!entidade.responsavel_nome"><b>Não informado</b></span>
             </label>
@@ -108,7 +108,7 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Email institucional da Entidade</span>
+                <span class="destaque">Email institucional da Entidade/Coletivo</span>
                 <span><b>{{entidade.emailPrivado}}</b></span>
                 <span ng-if="!entidade.emailPrivado"><b>Não informado</b></span>
             </label>
@@ -116,7 +116,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm05">
-                <span>Telefone institucional da Entidade</span>
+                <span>Telefone institucional da Entidade/Coletivo</span>
                 <span><b>{{entidade.telefone1}}</b></span>
                 <span ng-if="!entidade.telefone1"><b>Não informado</b></span>
             </label>
@@ -145,13 +145,13 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço da Entidade</span>
+                <span class="destaque">Endereço da Entidade/Coletivo</span>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
           <label class="colunm05">
-            <span>Pais</span>
+            <span>País</span>
             <span><b>{{entidade.pais}}</b></span>
             <span ng-if="!entidade.pais"><b>Não informado</b></span>
           </label>

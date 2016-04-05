@@ -32,7 +32,8 @@
 
             <label class="colunm-50">
 
-                <p>Caso não possua portfólio online, você também pode anexar arquivos no formato PDF, com no máximo 20MB.</p>
+                <p>Caso não possua portfólio online você pode anexar arquivos no formato PDF de até 20MB.</p>
+                <p>Outra possibilidade é gravar um vídeo de até 10 minutos contando sobre seu Ponto de Cultura. Publique-o no Youtube e compartilhe o link aqui.</p>
 		<div class="row" ng-controller="PortifolioCtrl">
 			<label class="colunm1">
                 		<span class="destaque">
@@ -41,8 +42,8 @@
 	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
 		</div>
-                <p><span class="destaque"><i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i></span>
-                    Precisa de ajuda para montar seu portfólio?
+                <p>Precisa de ajuda para montar seu portfólio?
+                    <i class='hltip' title='Um portifólio é um relatório das atividades desenvolvidas pelo Ponto de Cultura com imagens, vídeos e outros itens que comprovem a sua existência'>?</i>
                     <br>
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
@@ -120,12 +121,10 @@
 
             <label class="colunm-50">
 
-                <p>Caso não possua de recomendações, você também pode anexar arquivos no formato PDF, com no máximo 2MB.</p>
-
-                <p><span class="destaque"><i>?</i></span>
+                <p>
                     Precisa de um modelo de carta?
                     <br>
-                    <a href="<?php $this->asset('pdf/Modelos_de_Carta_de_Referência_.docx')?>" target="_blank">Clique aqui</a> para baixar um modelo.
+                    <a href="<?php $this->asset('pdf/Modelos_de_Carta_de_Referência_.docx')?>" target="_blank">Clique aqui</a> para baixar.
                 </p>
             </label>
         </div>
@@ -143,7 +142,7 @@
     <div class="form form-opcional">
         <h4>Informações Opcionais</h4>
         <div class="row">
-            <span class="destaque destaque-conecte">Conecte seu ponto com as redes sociais: <i class='hltip' title='Ajude-nos a te encontrar e saber as novidades.'>?</i></span>
+            <span class="destaque destaque-conecte">Conecte seu Ponto com as redes sociais: <i class='hltip' title='Ajude-nos a te encontrar e saber as novidades.'>?</i></span>
         </div>
         <div class="row">
             <label class="colunm-redes site-oficial">
@@ -186,7 +185,7 @@
         <div class="clear"></div>
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Conte um pouco sobre a história do ponto de Cultura (800 caracteres) <i class='hltip' title='Nos diga um pouco mais sobre o ponto de cultura, como por exemplo como ele começou e como surgiu a idéia'>?</i>  </span>
+                <span class="destaque">Conte um pouco sobre a história do Ponto de Cultura (max. 800 caracteres) <i class='hltip' title='Nos diga um pouco mais sobre o ponto de cultura, como por exemplo como ele começou e como surgiu a idéia'>?</i>  </span>
                 <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
             </label>
 
@@ -194,7 +193,7 @@
         <div class="clear"></div>
         <div class="row" ng-controller="ImageUploadCtrl">
             <span class="destaque espacoleft">Fotos de Divulgação do Ponto de Cultura <i class='hltip' title='Essas imagens devem mostrar as atividades que seu Ponto de Cultura desenvolve'>?</i></span>
-            <p class="espacoleft">Inclua no máximo 4 arquivos, no formato JPG ou PNG com até 1MB</p>
+            <p class="espacoleft">Inclua no máximo 10 arquivos, no formato JPG ou PNG com até 1MB</p>
             <div class="img_updade file-item" ng-repeat="f in agent.files.gallery">
                 <a class="exclui" ng-click="deleteFile(f)" title="Excluir arquivo">x</a>
                 <img src="{{f.files.avatarBig.url}}" width="160" height="138">

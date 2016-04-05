@@ -29,7 +29,7 @@
                   <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
-             <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos .JPG ou .PNG de até {{config.maxUploadSize}}</span>
+             <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos JPG ou PNG de até {{config.maxUploadSize}}</span>
           </label>
             <label class="colunm-full">
                 <span class="destaque">Nome do Ponto/Pontão de Cultura*</span>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Breve descrição (400 caracteres) do Ponto/Pontão de cultura* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu ponto e atrair o interesse do público.'>?</i></span>
+                <span class="destaque">Breve descrição do Ponto/Pontão de Cultura (max. 400 caracteres)* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu Ponto e atrair o interesse do público.'>?</i></span>
                 <textarea name="shortDescription" max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
             </label>
@@ -50,7 +50,7 @@
         <div class="row">
 
             <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
-                <span class="destaque">CEP do Ponto/Pontão de Cultura* (70308-200)<i class='hltip' title='Caso não saiba seu CEP acesse o site dos correios'>?</i></span>
+                <span class="destaque">CEP do Ponto/Pontão de Cultura* (70308-200) <i class='hltip' title='Caso não saiba seu CEP acesse o site dos correios'>?</i></span>
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
@@ -60,7 +60,7 @@
             </label>
 
             <label class="colunm1">
-                <span class="destaque">O Ponto/Pontão tem sede própria?*</span>
+                <span class="destaque">O Ponto/Pontão de Cultura tem sede própria?*</span>
                 <select name="tem_sede" ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
                     <option></option>
                     <option value="1" ng-value="1">Sim</option>
@@ -96,7 +96,7 @@
 
         <div class="row">
             <label class="colunm2">
-                <span class="destaque">Pais*</span>
+                <span class="destaque">País*</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                   <option value="Brasil" selected>Brasil</option>
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>

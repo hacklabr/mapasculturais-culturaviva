@@ -25,7 +25,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     <article>
         <div class="row title">
             <h3>
-                <strong>Declare seu ponto de Cultura</strong>
+                <strong>Declare seu Ponto de Cultura</strong>
                 <br />Você já possui um CNPJ?
             </h3>
             <div class="formulario-CNPJ">
@@ -35,6 +35,12 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                     <input type="submit" class="btn" value="OK" ng-click="validaCNPJ()"/>
                 </form>
             </div>
+            <script type="text/ng-template" id="modalNJ">
+              <h4><b>{{natuJuridica}}</b></h4>
+              <p style="font-size: 13px;"><b>Identificamos que seu CNPJ está relacionado a órgãos ou entidades públicas. Para poder receber a certificação sua instituição deve ser qualificada como Instituição Pública de Ensino.</b></p>
+              <a style="color: red;" ng-click="consultaCNPJ()">Continuar</a>
+              <a href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" style="color: red; float: right;" target="_blank">Critérios</a>
+            </script>
             <script type="text/ng-template" id="modalErro">
               <p style="font-size: 13px;"><b>Não encontramos seu CNPJ em nossa base de dados. Isso quer dizer que você ainda não é um Ponto ou Pontão de Cultura certificado, mas basta continuar para fazer sua autodeclaração e entrar na Rede Cultura Viva.</b></p>
               <a style="color: red;" ng-click="registrar()">Continuar</a>
@@ -45,8 +51,9 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </script>
             <script type="text/ng-template" id="modalFinsLucrativos">
               <h4><b>CNPJ com fins lucrativos</b></h4>
-              Critérios:  <a style="color:#078979; font-size:15px;" href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" target="_blank">http://culturaviva.gov.br/saiba-mais/#quais-os-criterios</a></br>
+              <p style="font-size: 13px;"><b>Sua instituição foi identificada com Natureza Jurídica de fins lucrativos. Para se habilitar no processo de certificação sua instituição de ser sem fins lucrativos.</b></p>
               <a style="color: red;" ng-click="closeAll()">Ok</a>
+              <a href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" style="color: red; float: right;" target="_blank">Critérios</a>
             </script>
             <p>Responda e verificaremos se já temos informações sobre seu Ponto ou Pontão de Cultura na base de dados do MinC.</p>
             <a href="#" id="btn_nao" class="btn-cnpj js-btn-sem-cnpj btn_active" ng-click="data.comCNPJ = false">Não tenho CNPJ</a>
@@ -54,7 +61,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <div class="row">
             <div class="colunm-full js-sem-cnpj esconde">
                 <p>
-                    Você não precisa ter um CNPJ para autodeclarar seu Ponto de Cultura.
+                    Você não precisa ter um CNPJ para declarar seu Ponto de Cultura.
                     <br />
                     Continue com a validação em nome do seu Coletivo Cultural.
                 </p>
@@ -78,7 +85,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
         <div class="row">
             <div class="colunm1 criterios">
                 <h4>Critérios para a Autodeclaração</h4>
-                <p>Aqui estão algumas coisas que você precisa saber antes de autodeclarar seu Ponto de Cultura: </p>
+                <p>Aqui estão algumas coisas que você precisa saber antes de declarar seu Ponto de Cultura: </p>
                 <div class="js-icons">
                      <span class="icon-user ic1 active"></span>
                      <span class="icon-home ic2"></span>
@@ -118,7 +125,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                  <div class="slide js-vcard sl6">
                      <span class="icon-vcard"></span>
                      <h4>Economia Viva </h4>
-                     <p>Fale mais sobre os recursos que o seu ponto tem para trocar com outros pontos de cultura</p>
+                     <p>Fale mais sobre os recursos que o seu Ponto tem para trocar com outros Pontos de cultura</p>
                  </div>
                  <div class="slide js-book-open sl7">
                      <span class="icon-book-open"></span>

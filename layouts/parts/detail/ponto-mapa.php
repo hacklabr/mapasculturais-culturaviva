@@ -54,7 +54,7 @@
 
         <div class="row">
             <label class="colunm2">
-                <span>Pais</span>
+                <span>País</span>
                 <span><b>{{ponto.pais}}</b></span>
                 <span ng-if="!ponto.pais"><b>Não informado</b></span>
             </label>
