@@ -50,6 +50,17 @@
                 <span><b>{{responsavel.telefone1_operadora}}</b></span>
                 <span ng-if="!responsavel.telefone1_operadora"><b>Não informado</b></span>
             </label>
+            <label class="colunm2">
+                <span>Telefone Pessoal</span>
+                <span><b>{{responsavel.telefone1}}</b></span>
+                <span ng-if="!responsavel.telefone2"><b>Não informado</b></span>
+            </label>
+
+            <label class="colunm3">
+                <span>Operadora</span>
+                <span><b>{{responsavel.telefone1_operadora}}</b></span>
+                <span ng-if="!responsavel.telefone2_operadora"><b>Não informado</b></span>
+            </label>
         </div>
         <div class="clear"></div>
         <div class="row">
