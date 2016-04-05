@@ -57,7 +57,7 @@
             </label>
 
             <label class="colunm3">
-                <span class="destaque">Operadora*</span>
+                <span class="destaque">Operadora</span>
                 <input type="text" name="telefone1_operadora" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
             <label class="colunm2">
@@ -66,7 +66,7 @@
             </label>
 
             <label class="colunm3">
-                <span class="destaque">Operadora*</span>
+                <span class="destaque">Operadora</span>
                 <input type="text" name="telefone2_operadora" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
             </label>
         </div>

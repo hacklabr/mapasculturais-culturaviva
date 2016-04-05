@@ -142,7 +142,7 @@
                 <input name="responsavel_telefone" type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999-9999"/>
             </label>
             <label class="colunm02">
-                <span class="destaque">Operadora*</span>
+                <span class="destaque">Operadora</span>
                 <input name="responsavel_operadora" type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
             </label>
         </div>
@@ -162,7 +162,7 @@
             </label>
 
             <label class="colunm02">
-                <span class="destaque">Operadora*</span>
+                <span class="destaque">Operadora</span>
                 <input name="telefone1_operadora" type="text" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
         </div>
