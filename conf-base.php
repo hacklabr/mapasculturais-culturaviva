@@ -168,6 +168,8 @@ return [
         'telefone1_operadora',
         'telefone2',
         'telefone2_operadora',
+        'telefone3',
+        'telefone3_operadora',
         'telefonePublico',
 	'telegram',
         'tem_sede',

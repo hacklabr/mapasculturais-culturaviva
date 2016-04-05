@@ -913,6 +913,18 @@ class Theme extends BaseV1\Theme{
                   'required' => false,
                   'private' => true
                 ],
+                //3° telefone
+                'telefone3' => [
+                    'label' => 'Telefone',
+//                  'required' => true,
+                    'private' => true,
+                    'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
+                ],
+                'telefone3_operadora' => [
+                    'label' => 'Operadora do teefone 3',
+//                  'required' => true,
+                    'private' => true
+                ],
             ]
         ];
 

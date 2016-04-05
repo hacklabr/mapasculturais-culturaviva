@@ -60,6 +60,15 @@
                 <span class="destaque">Operadora*</span>
                 <input type="text" name="telefone1_operadora" ng-blur="save_field('telefone1_operadora')" ng-model="agent.telefone1_operadora">
             </label>
+            <label class="colunm2">
+                <span class="destaque">Outro Telefone </span>
+                <input type="text" name="telefone2" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999 9999">
+            </label>
+
+            <label class="colunm3">
+                <span class="destaque">Operadora*</span>
+                <input type="text" name="telefone2_operadora" ng-blur="save_field('telefone2_operadora')" ng-model="agent.telefone2_operadora">
+            </label>
         </div>
         <div class="clear"></div>
         <div class="row">
@@ -100,7 +109,7 @@
             <label class="colunm-30">
               <span class="destaque">Pais</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
-                  <option value="Brasil" selected>Brasil</option> 
+                  <option value="Brasil" selected>Brasil</option>
                   <option value="África do Sul">África do Sul</option>      <option value="Albânia">Albânia</option>
                   <option value="Alemanha">Alemanha</option>                <option value="Andorra">Andorra</option>
                   <option value="Angola">Angola</option>                    <option value="Anguilla">Anguilla</option>

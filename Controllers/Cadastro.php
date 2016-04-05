@@ -409,7 +409,6 @@ class Cadastro extends \MapasCulturais\Controller{
             $entidade->telefonePublico     = $d->Nr_DDD1 . ' ' . $d->Nr_Telefone1;
             $entidade->telefone1           = $d->Nr_DDD2 . ' ' . $d->Nr_Telefone2;
             $entidade->telefone2           = $d->Nr_DDD3 . ' ' . $d->Nr_Telefone3;
-
             $entidade->site                = $d->Lk_Site;
 
             $entidade->location            = $_location;
