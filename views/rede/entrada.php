@@ -37,7 +37,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             </div>
             <script type="text/ng-template" id="modalNJ">
               <h4><b>{{natuJuridica}}</b></h4>
-              <p style="font-size: 13px;"><b>Identificamos que seu CNPJ está relacionado a órgãos e entidades públicas. Para poder receber a certificação sua instituição deve ser qualificada como Instituição Pública de Ensino.</b></p>
+              <p style="font-size: 13px;"><b>Identificamos que seu CNPJ está relacionado a órgãos ou entidades públicas. Para poder receber a certificação sua instituição deve ser qualificada como Instituição Pública de Ensino.</b></p>
               <a style="color: red;" ng-click="consultaCNPJ()">Continuar</a>
               <a href="http://culturaviva.gov.br/saiba-mais/#quais-os-criterios" style="color: red; float: right;" target="_blank">Critérios</a>
             </script>
