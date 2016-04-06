@@ -144,6 +144,14 @@
             <label class="colunm02">
                 <span class="destaque">Operadora</span>
                 <input name="responsavel_operadora" type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
+            </label><label class="colunm2">
+                <span class="destaque">Outro Telefone </span>
+                <input type="text" name="responsavel_telefone2" ng-blur="save_field('responsavel_telefone2')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999 9999">
+            </label>
+
+            <label class="colunm3">
+                <span class="destaque">Operadora</span>
+                <input type="text" name="responsavel_operadora2" ng-blur="save_field('responsavel_operadora2')" ng-model="agent.responsavel_operadora2">
             </label>
         </div>
         <div class="clear"></div>
