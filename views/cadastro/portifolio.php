@@ -7,6 +7,9 @@
     $this->cadastroPageClass = 'portfolio page-base-form';
     $this->cadastroLinkContinuar = 'entidadeFinanciamento';
 ?>
+<style>
+
+</style>
 <form name="form_portifolio" ng-controller="PortifolioCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
@@ -30,6 +33,7 @@
                 </div>
             </div>
 
+
             <label class="colunm-50">
 
                 <p>Caso não possua portfólio online você pode anexar arquivos no formato PDF de até 20MB.</p>
@@ -37,7 +41,7 @@
 		<div class="row" ng-controller="PortifolioCtrl">
 			<label class="colunm1">
                 		<span class="destaque">
-				Portfólio Online*
+				                  Portfólio Online*
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
 	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
@@ -48,38 +52,39 @@
                     <a href="http://docs.cultura.gov.br/products/files/doceditor.aspx?fileid=138&doc=NEQxOFBKRmNORzhYaVJ1NGNZUC8xNG1EMC9WaWgvRkFqbGc0MlhOV3BVZz0_IjEzOCI1" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </p>
             </label>
-              <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
+      </div>
+      <div class="row" ng-controller="ImageUploadCtrl">
+        <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
           <h4>Carta de Autorização de Coletivo sem Constituição Jurídica</h4>
-
-        <div class="colunm-20">
-            <div class="file-item">
-                <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
-                <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Carta' : 'Clique para incluir a Carta'}}">
+            <div class="colunm-20">
+              <div class="file-item">
+                  <a ng-if="agent.files.ata" href="#" class="exclui" ng-click="deleteFile(agent.files.ata)" title="Excluir Portfólio">x</a>
+                  <div type="file" ngf-select="uploadFile($file, 'ata')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.ata ? 'Clique para alterar a Carta' : 'Clique para incluir a Carta'}}">
                     <img ng-if="!agent.files.ata" src="<?php $this->asset('img/incluir_img.png') ?>" width="160" height="138">
                     <img ng-if="agent.files.ata" src="<?php $this->asset('img/pdflogo.png') ?>" width="160" height="138">
-                </div>
+                  </div>
             </div>
             <a ng-if="agent.files.ata" href="{{agent.files.ata.url}}" target="_blank">Baixar Arquivo</a>
             <div class="progress row" ng-show="f.progress >= 0">
                 <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
             </div>
-        </div>
+          </div>
               <label class="colunm-50">
                   Precisa de ajuda para montar sua carta?
                   <br>
                   <a href="<?php $this->asset('pdf/Carta_de_Apoio_da_Comunidade_à_Coletivo vs 3.pdf') ?>" target="_blank">Clique aqui</a> para baixar um modelo com orientações.
                 </label>
-              </div>
-            </div>
+        </div>
+      </div>
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>
             <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
-        <div class="row" ng-controller="ImageUploadCtrl">
+        <div class="row">
             <span class="destaque espacoleft">Carta de Reconhecimento * <i class='hltip' title='As cartas de apoio nos ajudam a entender como o Ponto de Cultura se conecta com a comunidade ao seu redor e certifica a participação da comunidade no processo.'>?</i></span>
-            <div class="colunm-20">
+            <div class="colunm-20" ng-controller="ImageUploadCtrl">
               <div class="file-item">
                   <a ng-if="agent.files.carta1" href="#" class="exclui" ng-click="deleteFile(agent.files.carta1)" title="Excluir Carta de Recomendação">x</a>
                   <div type="file" ngf-select="uploadFile($file, 'carta1')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.carta1 ? 'Clique para alterar a carta de recomendação' : 'Clique para incluir uma carta de recomendação'}}">
@@ -92,7 +97,7 @@
                   <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
               </div>
             </div>
-            <div class="colunm-20">
+            <div class="colunm-20" ng-controller="ImageUploadCtrl">
               <div class="file-item">
                   <a ng-if="agent.files.carta2" href="#" class="exclui" ng-click="deleteFile(agent.files.carta2)" title="Excluir Portfólio">x</a>
                   <div type="file" ngf-select="uploadFile($file, 'carta2')" accept="config.pdf.validation" ngf-max-size="config.pdf.maxUploadSize" title="{{agent.files.carta2 ? 'Clique para alterar a carta de recomendação' : 'Clique para incluir uma carta de recomendação'}}">
