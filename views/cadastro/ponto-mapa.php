@@ -29,7 +29,7 @@
                   <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
-            <span class="destaque-img" style="width:65%;" ng-controller="ImageUploadCtrl">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos JPG ou PNG de até {{config.images.maxUploadSize}}</span>
+            <span class="destaque-img" style="width:65%; margin-top:45px;" ng-controller="ImageUploadCtrl">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos JPG ou PNG de até {{config.images.maxUploadSize}}</span>
           </label>
             <label class="colunm-full">
                 <span class="destaque">Nome do Ponto/Pontão de Cultura*</span>
