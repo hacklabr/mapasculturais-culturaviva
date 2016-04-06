@@ -43,8 +43,9 @@
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Breve descrição do Ponto/Pontão de Cultura (max. 400 caracteres)* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu Ponto e atrair o interesse do público.'>?</i></span>
-                <textarea name="shortDescription" max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
+                <textarea name="shortDescription" maxlength="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
+                <span>{{400 - agent.shortDescription.length}} Characters</span>
             </label>
         </div>
         <div class="row">
