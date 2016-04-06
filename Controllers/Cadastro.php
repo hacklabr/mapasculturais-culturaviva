@@ -142,11 +142,6 @@ class Cadastro extends \MapasCulturais\Controller{
             }
         }
 
-      	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
-          		$required_properties[] = 'atividadesEmRealizacaoLink';
-          		$required_properties[] = 'portifolio';
-      	 }
-
   	return $required_properties;
       }
 

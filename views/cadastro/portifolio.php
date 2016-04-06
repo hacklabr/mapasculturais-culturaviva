@@ -41,7 +41,7 @@
 		<div class="row" ng-controller="PortifolioCtrl">
 			<label class="colunm1">
                 		<span class="destaque">
-				                  Portfólio Online*
+				                  Portfólio Online
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
 	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
