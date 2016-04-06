@@ -79,7 +79,7 @@
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>
-            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
+            <p style="text-align:justify;">Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
         <div class="row">
@@ -191,7 +191,8 @@
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Conte um pouco sobre a história do Ponto de Cultura (max. 800 caracteres) <i class='hltip' title='Nos diga um pouco mais sobre o ponto de cultura, como por exemplo como ele começou e como surgiu a idéia'>?</i>  </span>
-                <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
+                <textarea ng-blur="save_field('longDescription')" maxlength="800" ng-model="agent.longDescription"></textarea>
+                <span>{{800 - agent.longDescription.length}} Characters</span>
             </label>
 
         </div>
