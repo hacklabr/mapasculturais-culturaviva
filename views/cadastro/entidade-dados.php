@@ -121,7 +121,7 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável {{data.tipoOrganizacao == 'coletivo' ? 'pela Entidade' : 'pelo Coletivo'}}* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
+                <span class="destaque">Nome do Responsável {{agent.tipoOrganizacao == 'coletivo' ? 'pelo Coletivo' : 'pela Entidade'}}* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
                 <input name="responsavel_nome" type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
@@ -158,14 +158,14 @@
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Email institucional {{data.tipoOrganizacao == 'coletivo' ? 'da Entidade' : 'do Coletivo'}} *</span>
+                <span class="destaque">Email institucional {{agent.tipoOrganizacao == 'coletivo' ? 'pelo Coletivo' : 'pela Entidade'}} *</span>
                 <input name="emailPrivado" type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
             <label class="colunm1" style="width:300px;">
-                <span class="destaque">Telefone institucional {{data.tipoOrganizacao == 'coletivo' ? 'da Entidade' : 'do Coletivo'}} *</span>
+                <span class="destaque">Telefone institucional {{agent.tipoOrganizacao == 'coletivo' ? 'pelo Coletivo' : 'pela Entidade'}} *</span>
                 <input name="telefone1" type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
@@ -190,7 +190,7 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço  {{data.tipoOrganizacao == 'coletivo' ? 'da Entidade' : 'do Coletivo'}}* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
+                <span class="destaque">Endereço  {{agent.tipoOrganizacao == 'coletivo' ? 'pelo Coletivo' : 'pela Entidade'}}* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>
