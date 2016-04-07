@@ -7,7 +7,11 @@
     $this->cadastroPageClass = 'ponto-mapa page-base-form';
     $this->cadastroLinkContinuar = 'portifolio';
 ?>
-
+<style>
+#obsBox{
+margin-left:295px;
+}
+</style>
 
 <form name="form_ponto" ng-controller="PointCtrl">
     <?php $this->part('messages'); ?>
@@ -247,6 +251,9 @@
         </div>
     </div>
     <div class="clear"></div>
+    <div id="obsBox">
+      <span bold>*Arraste o ícone para alterar a localização do seu ponto*</span>
+    </div>
     <div class="form form-mapa">
         <?php /*
         <div class="mapa js-map-container">
