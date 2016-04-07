@@ -9,7 +9,7 @@
 ?>
 <style>
 #obsBox{
-margin-left:295px;
+margin-left:260px;
 color:gray;
 border: thin dashed;
 border-color: red;
