@@ -10,6 +10,9 @@
 <style>
 #obsBox{
 margin-left:295px;
+color:gray;
+border: thin dashed;
+border-color: red;
 }
 </style>
 
@@ -251,8 +254,8 @@ margin-left:295px;
         </div>
     </div>
     <div class="clear"></div>
-    <div id="obsBox">
-      <span bold>*Arraste o ícone para alterar a localização do seu ponto*</span>
+    <div>
+      <b id="obsBox">*Arraste o ícone para alterar a localização do seu ponto*</b>
     </div>
     <div class="form form-mapa">
         <?php /*
