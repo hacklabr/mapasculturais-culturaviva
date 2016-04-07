@@ -627,7 +627,7 @@ class Cadastro extends \MapasCulturais\Controller{
                 $espaco->En_Nome_Logradouro = $ponto->En_Nome_Logradouro;
                 $espaco->En_Complemento = $ponto->En_Complemento;
                 $espaco->endereco = "{$espaco->En_Nome_Logradouro} {$espaco->En_Num}, {$espaco->En_Bairro}, {$espaco->geoMunicipio}, {$espaco->geoEstado}";
-                $espaco->terms = $ponto->terms;
+                //$espaco->terms = $ponto->terms;
 
                 $espaco->save(true);
                 if(!$ponto->rcv_sede_spaceId){
