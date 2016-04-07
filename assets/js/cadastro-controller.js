@@ -638,7 +638,8 @@
                 'id': agent_id,
                 '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,nomeCompleto,'+
-                           'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
+                           'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,'+
+                           'flickr,youtube,mesmoEndereco,shortDescription',
 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
@@ -662,7 +663,8 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink',
+                '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,telegram,whatsapp,'+
+                'culturadigital,diaspora,instagram,flickr,youtube,atividadesEmRealizacaoLink',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };

@@ -261,6 +261,14 @@
                 <span class="destaque"><img src="<?php $this->asset('img/instagram.png') ?>"> Seu perfil no Instagram.com</span>
                 <input type="text" ng-blur="save_field('instagram')" ng-model="agent.instagram" placeholder="http://"/>
             </label>
+            <label class="colunm-redes flick">
+                <span class="destaque"><img src="<?php $this->asset('img/icon_flicker.png') ?>"> Página no Flickr</span>
+                <input type="text" ng-blur="save_field('flickr')" ng-model="agent.flickr" placeholder="http://"/>
+            </label>
+            <label class="colunm-redes youtube">
+                <span class="destaque"><img src="<?php $this->asset('img/icon_youtube.png') ?>"> Perfil no Youtube:</span>
+                <input type="text" ng-blur="save_field('youtube')" ng-model="agent.youtube" placeholder="http://"/>
+            </label>
 
         </div>
     </div>
