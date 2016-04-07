@@ -206,15 +206,18 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'pais',
-            'geoEstado',
-            'geoMunicipio',
-            'En_Bairro',
-            'En_Num',
-            'En_Nome_Logradouro',
-            'cep',
 
           //'foiFomentado'
         ];
+
+        if($agent->pais === 'Brasil'){
+            $required_properties[] = 'geoEstado';
+            $required_properties[] = 'geoMunicipio';
+            $required_properties[] = 'En_Bairro';
+            $required_properties[] = 'En_Nome_Logradouro';
+            $required_properties[] = 'En_Num';
+            $required_properties[] = 'cep';
+        }
 
         if($agent->tipoOrganizacao === 'entidade'){
             $required_properties[] = 'cnpj';

@@ -288,7 +288,7 @@
                 <option value="Zâmbia">Zâmbia</option>                  <option value="Zimbábue">Zimbábue</option>
               </select>
           </label>
-            <label class="colunm2" ng-show="agent.pais==='Brasil'">
+            <label class="colunm2" ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
@@ -308,32 +308,42 @@
                 </select>
                 <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
+            <label class="colunm2" ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Estado</span>
+                <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
+            </label>
             <label class="colunm2">
-                <span class="destaque">Cidade*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Cidade*' : 'Cidade'}}</span>
                 <input name="geoMunicipio" type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
             <label class="colunm2">
-                <span class="destaque">Bairro*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Bairro*' : 'Bairro'}}</span>
                 <input name="En_Bairro" type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
           <label class="colunm2">
-              <span class="destaque">Rua*</span>
+              <span class="destaque">{{agent.pais == 'Brasil' ? 'Rua*' : 'Rua'}}</span>
               <input name="En_Nome_Logradouro" type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
           </label>
             <label class="colunm2">
-                <span class="destaque">Número* </span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Número*' : 'Número'}}</span>
                 <input name="En_Num" type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
             </label>
             <label class="colunm2">
-                <span class="destaque">CEP*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'CEP*' : 'CEP'}}</span>
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep')"
                        ng-model="agent.cep"
-                       ui-mask="99999-999">
+                       ui-mask="99999-999"
+                       ng-if="agent.pais === 'Brasil'">
+                <input type="text"
+                      name="cep"
+                      ng-blur="save_field('cep')"
+                      ng-model="agent.cep"
+                      ng-if="agent.pais !== 'Brasil'">
             </label>
             <label class="colunm2">
                 <span class="destaque">Complemento</span>
