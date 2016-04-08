@@ -727,10 +727,10 @@
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
                         if(addr){
-                            $scope.agent.geoEstado = addr.uf;
+                            $scope.agent.geoEstado = addr.estado;
                             $scope.save_field('geoEstado');
 
-                            $scope.agent.geoMunicipio = addr.localidade;
+                            $scope.agent.geoMunicipio = addr.cidade;
                             $scope.save_field('geoMunicipio');
 
                             $scope.agent.En_Bairro = addr.bairro;

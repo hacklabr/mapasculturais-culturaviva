@@ -62,8 +62,12 @@ border-color: red;
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
-                       ng-model="agent.cep"
-                       ui-mask="99999-999">
+                       ng-model="agent.cep">
+                       <!-- <input type="text"
+                              name="cep"
+                              ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                              ng-model="agent.cep"
+                              ui-mask="99999-999"> -->
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
@@ -196,7 +200,7 @@ border-color: red;
                   <option value="Zâmbia">Zâmbia</option>                  <option value="Zimbábue">Zimbábue</option>
                 </select>
               </label>
-            <label class="colunm2" ng-show="agent.pais==='Brasil'">
+            <label class="colunm2" ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
@@ -216,6 +220,10 @@ border-color: red;
                 </select>
                 <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
+            <label class="colunm2" ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Estado</span>
+                <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
+            </label>
 
             <label class="colunm2">
                 <span class="destaque">Cidade*</span>
@@ -224,7 +232,7 @@ border-color: red;
             </label>
 
             <label class="colunm3">
-                <span class="destaque">Bairro*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Bairro*' : 'Bairro'}}</span>
                 <input type="text" name="En_Bairro" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
@@ -234,14 +242,14 @@ border-color: red;
 
         <div class="row">
 
-            <label class="colunm1">
-                <span class="destaque">Rua*</span>
+            <label class="colunm1" style="width:413px;">
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Rua*' : 'Rua'}}</span>
                 <input type="text" name="En_Nome_Logradouro" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
 
             <label class="colunm2">
-                <span class="destaque">Número*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Número*' : 'Número'}}</span>
                 <input type="text" name="En_Num" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
                 <span class="error" ng-repeat="error in errors.numero">{{ error }}</span>
             </label>

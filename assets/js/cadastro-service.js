@@ -25,7 +25,7 @@
             cep = (cep || '').replace(/[^\d]/g, '');
 
             if(cep.match(/^\d{8,8}$/)){
-                return $http.get('http://cep.correiocontrol.com.br/'+cep+'.json');
+                return $http.get('http://api.postmon.com.br/v1/cep/'+cep);
             }
             deferred.reject('Formato inválido para cep');
             return deferred.promise;
