@@ -11,8 +11,8 @@
 #obsBox{
 margin-left:260px;
 color:gray;
-border: thin dashed;
-border-color: red;
+border: medium dashed;
+border-color: gray;
 }
 </style>
 
