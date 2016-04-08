@@ -179,7 +179,7 @@
                 <input type="text" ng-blur="save_field('whatsapp')" ng-model="agent.whatsapp" placeholder="(11) _____-_____ "/>
             </label>
             <label class="colunm-redes culturadigital">
-                <span class="destaque"><img src="<?php $this->asset('img/culturaDigital.png') ?>"> Seu perfil no CulturaDigital.br</span>
+                <span class="destaque"><img src="<?php $this->asset('img/CulturaDigital_favi.png') ?>"> Seu perfil no CulturaDigital.br</span>
                 <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
             </label>
             <label class="colunm-redes diaspora">
