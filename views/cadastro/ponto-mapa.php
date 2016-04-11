@@ -7,7 +7,14 @@
     $this->cadastroPageClass = 'ponto-mapa page-base-form';
     $this->cadastroLinkContinuar = 'portifolio';
 ?>
-
+<style>
+#obsBox{
+margin-left:260px;
+color:gray;
+border: medium dashed;
+border-color: gray;
+}
+</style>
 
 <form name="form_ponto" ng-controller="PointCtrl">
     <?php $this->part('messages'); ?>
@@ -29,7 +36,7 @@
                   <span style="width:{{f.progress}}%;" ng-bind="f.progress + '%'"></span>
                 </div>
             </div>
-             <span class="destaque-img">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos JPG ou PNG de até {{config.maxUploadSize}}</span>
+            <span class="destaque-img" style="width:65%; margin-top:45px;" ng-controller="ImageUploadCtrl">Incluir o logo vai fazer com que seu Ponto seja facilmente reconhecido no mapa da Rede Cultura Viva. Utilize arquivos JPG ou PNG de até {{config.images.maxUploadSize}}</span>
           </label>
             <label class="colunm-full">
                 <span class="destaque">Nome do Ponto/Pontão de Cultura*</span>
@@ -43,8 +50,9 @@
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Breve descrição do Ponto/Pontão de Cultura (max. 400 caracteres)* <i class='hltip' title='Esta descrição será publicada no mapa da Rede Cultura Viva, aproveite para contar um pouco mais do seu Ponto e atrair o interesse do público.'>?</i></span>
-                <textarea name="shortDescription" max-length="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
+                <textarea name="shortDescription" maxlength="400" ng-blur="save_field('shortDescription')" ng-model="agent.shortDescription"></textarea>
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
+                <span>{{400 - agent.shortDescription.length}} Characters</span>
             </label>
         </div>
         <div class="row">
@@ -54,8 +62,12 @@
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
-                       ng-model="agent.cep"
-                       ui-mask="99999-999">
+                       ng-model="agent.cep">
+                       <!-- <input type="text"
+                              name="cep"
+                              ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                              ng-model="agent.cep"
+                              ui-mask="99999-999"> -->
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
@@ -188,7 +200,7 @@
                   <option value="Zâmbia">Zâmbia</option>                  <option value="Zimbábue">Zimbábue</option>
                 </select>
               </label>
-            <label class="colunm2" ng-show="agent.pais==='Brasil'">
+            <label class="colunm2" ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
@@ -208,6 +220,10 @@
                 </select>
                 <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
+            <label class="colunm2" ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Estado</span>
+                <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
+            </label>
 
             <label class="colunm2">
                 <span class="destaque">Cidade*</span>
@@ -216,7 +232,7 @@
             </label>
 
             <label class="colunm3">
-                <span class="destaque">Bairro*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Bairro*' : 'Bairro'}}</span>
                 <input type="text" name="En_Bairro" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
                 <span class="error" ng-repeat="error in errors.bairro">{{ error }}</span>
             </label>
@@ -226,14 +242,14 @@
 
         <div class="row">
 
-            <label class="colunm1">
-                <span class="destaque">Rua*</span>
+            <label class="colunm1" style="width:413px;">
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Rua*' : 'Rua'}}</span>
                 <input type="text" name="En_Nome_Logradouro" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
                 <span class="error" ng-repeat="error in errors.rua">{{ error }}</span>
             </label>
 
             <label class="colunm2">
-                <span class="destaque">Número*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Número*' : 'Número'}}</span>
                 <input type="text" name="En_Num" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
                 <span class="error" ng-repeat="error in errors.numero">{{ error }}</span>
             </label>
@@ -246,6 +262,9 @@
         </div>
     </div>
     <div class="clear"></div>
+    <div>
+      <b id="obsBox">*Arraste o ícone para alterar a localização do seu ponto*</b>
+    </div>
     <div class="form form-mapa">
         <?php /*
         <div class="mapa js-map-container">

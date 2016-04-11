@@ -102,14 +102,8 @@ class Cadastro extends \MapasCulturais\Controller{
         $required_properties = [
             'name',
             'shortDescription',
-            'cep',
             'tem_sede',
-            'geoEstado',
-            'geoMunicipio',
-            'En_Bairro',
             'pais',
-            'En_Nome_Logradouro',
-            'En_Num',
             'location', // ponto no mapa
 
 
@@ -122,6 +116,17 @@ class Cadastro extends \MapasCulturais\Controller{
 //            'atividadesEmRealizacao'
 
         ];
+
+        if($agent->pais === 'Brasil'){
+            $required_properties[] = 'geoEstado';
+            $required_properties[] = 'geoMunicipio';
+            $required_properties[] = 'En_Bairro';
+            $required_properties[] = 'En_Nome_Logradouro';
+            $required_properties[] = 'En_Num';
+            $required_properties[] = 'cep';
+        }else{
+            $required_properties[] = 'geoMunicipio';
+        }
 
         if($entidadeAgent->tipoPontoCulturaDesejado === "pontao"){
           $required_properties = [
@@ -141,11 +146,6 @@ class Cadastro extends \MapasCulturais\Controller{
               $required_properties[] = 'simPoderPublico';
             }
         }
-
-      	 if(!$agent->atividadesEmRealizacaoLink && !$agent->files){
-          		$required_properties[] = 'atividadesEmRealizacaoLink';
-          		$required_properties[] = 'portifolio';
-      	 }
 
   	return $required_properties;
       }
@@ -211,15 +211,18 @@ class Cadastro extends \MapasCulturais\Controller{
             'emailPrivado',
             'telefone1',
             'pais',
-            'geoEstado',
-            'geoMunicipio',
-            'En_Bairro',
-            'En_Num',
-            'En_Nome_Logradouro',
-            'cep',
 
           //'foiFomentado'
         ];
+
+        if($agent->pais === 'Brasil'){
+            $required_properties[] = 'geoEstado';
+            $required_properties[] = 'geoMunicipio';
+            $required_properties[] = 'En_Bairro';
+            $required_properties[] = 'En_Nome_Logradouro';
+            $required_properties[] = 'En_Num';
+            $required_properties[] = 'cep';
+        }
 
         if($agent->tipoOrganizacao === 'entidade'){
             $required_properties[] = 'cnpj';

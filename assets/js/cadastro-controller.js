@@ -638,7 +638,8 @@
                 'id': agent_id,
                 '@select': 'id,rcv_tipo,singleUrl,name,rg,rg_orgao,relacaoPonto,pais,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,nomeCompleto,'+
-                           'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,mesmoEndereco,shortDescription',
+                           'geoMunicipio,facebook,twitter,googleplus,telegram,whatsapp,culturadigital,diaspora,instagram,'+
+                           'flickr,youtube,mesmoEndereco,shortDescription',
 
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
@@ -662,7 +663,8 @@
 
             var params = {
                 'id': agent_id,
-                '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,flickr,diaspora,youtube,instagram,culturadigital,atividadesEmRealizacaoLink',
+                '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,telegram,whatsapp,'+
+                'culturadigital,diaspora,instagram,flickr,youtube,atividadesEmRealizacaoLink',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
                 '@permissions': 'view'
             };
@@ -725,10 +727,10 @@
                     cepcoder.code(cep).then(function(res){
                         var addr = res.data;
                         if(addr){
-                            $scope.agent.geoEstado = addr.uf;
+                            $scope.agent.geoEstado = addr.estado;
                             $scope.save_field('geoEstado');
 
-                            $scope.agent.geoMunicipio = addr.localidade;
+                            $scope.agent.geoMunicipio = addr.cidade;
                             $scope.save_field('geoMunicipio');
 
                             $scope.agent.En_Bairro = addr.bairro;
@@ -860,9 +862,9 @@
                 'id': agent_id,
 
                 '@select': 'id,rcv_tipo,name,nomeCompleto,cnpj,representanteLegal,' +
-                    'tipoPontoCulturaDesejado,tipoOrganizacao,responsavel_operadora,' +
+                    'tipoPontoCulturaDesejado,tipoOrganizacao,responsavel_operadora,responsavel_operadora2,' +
                     'emailPrivado,telefone1,telefone1_operadora,telefone2,telefone2_operadora,' +
-                    'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,' +
+                    'responsavel_nome,responsavel_email,responsavel_cargo,responsavel_telefone,responsavel_telefone2,' +
                     'geoEstado,geoMunicipio,pais,En_Bairro,En_Num,En_Nome_Logradouro,cep,En_Complemento',
 
                 '@permissions': 'view'
