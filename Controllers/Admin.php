@@ -12,16 +12,12 @@ class Admin extends \MapasCulturais\Controller{
     }
 
     function GET_cadastro(){
-      $uriExplode = explode('/',$_SERVER['REQUEST_URI']);
-      if(isset($uriExplode[3])){
-        $buscaAnterior = $uriExplode[3];
-      }
         $this->requireAuthentication();
         $this->render('cadastro');
     }
 
     function GET_user(){
-        $_user = App::i()->repo('User')->find($this->getGetData()['id']);
+        $_user = App::i()->repo('User')->find($this->getUrlData()['id']);
         if($_user){
             $this->json($_user);
         }else {

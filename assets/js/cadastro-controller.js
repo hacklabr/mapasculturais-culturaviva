@@ -1180,7 +1180,9 @@
     app.controller('DetailCtrl',['$scope', 'Entity', 'MapasCulturais', '$http', '$timeout', '$location', function($scope, Entity, MapasCulturais, $http, $timeout, $location){
         extendController($scope, $timeout);
         $scope.termos = termos;
-        $http.get(MapasCulturais.createUrl('admin','user') + '?id='+$location.search()['id'])
+        var url = document.URL;
+        var posicao = url.slice(url.lastIndexOf("/") + 1);
+        $http.get(MapasCulturais.createUrl('admin','user') + posicao)
             .success(function(data){
 		        var rcv = JSON.parse(data.redeCulturaViva);
                 var responsavel = {
