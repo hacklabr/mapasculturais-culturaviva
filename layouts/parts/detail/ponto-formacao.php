@@ -1,4 +1,4 @@
-<div ng-controller="DetailCtrl">
+<div  >
     <div class="form">
         <h4>Conhecimento em Rede</h4>
         <div class="row">

@@ -37,7 +37,7 @@
 
         <div ng-show="agent.tipoOrganizacao==='coletivo'">
             <div class="row">
-                <label class="colunm-50">
+                <label class="colunm1">
                     <span class="destaque">Nome do Coletivo Cultural* <i class='hltip' title='Nome dado ao grupo que compõe o coletivo cultural'>?</i>
                     </span>
                     <input name="name" type="text" ng-blur="save_field('name')" ng-model="agent.name">
@@ -49,7 +49,7 @@
         <div ng-show="agent.tipoOrganizacao">
             <div ng-show="agent.tipoOrganizacao==='entidade'">
                 <div class="row">
-                    <label class="colunm-50">
+                    <label class="colunm1">
                         <span class="destaque">CNPJ da Entidade*</span>
                         <input name="cnpj"
                                type="text"
@@ -84,7 +84,7 @@
 
                 <div class="clear"></div>
                 <div class="row">
-                    <label class="colunm-50">
+                    <label class="colunm1">
                         <span class="destaque">Nome do Representante Legal* <i class='hltip' title='Pessoa que está habilitada juridicamente a representar a entidade'>?</i></span>
                         <input name="representanteLegal" type="text" ng-blur="save_field('representanteLegal')" ng-model="agent.representanteLegal" >
                     </label>
@@ -121,11 +121,11 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Nome do Responsável pela Entidade/Coletivo* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
+                <span class="destaque">Nome do Responsável {{agent.tipoOrganizacao == 'coletivo' ? 'pelo Coletivo' : 'pela Entidade'}}* <i class='hltip' title='Pessoa que representa o Ponto de Cultura'>?</i></span>
                 <input name="responsavel_nome" type="text" ng-blur="save_field('responsavel_nome')" ng-model="agent.responsavel_nome" />
             </label>
 
-            <label class="colunm2">
+            <label class="colunm05">
                 <span class="destaque">Cargo do Responsável*</span>
                 <input name="responsavel_cargo" type="text" ng-blur="save_field('responsavel_cargo')" ng-model="agent.responsavel_cargo"/>
             </label>
@@ -137,27 +137,35 @@
                 <input name="responsavel_email" type="email" ng-blur="save_field('responsavel_email')" ng-model="agent.responsavel_email" />
             </label>
 
-            <label class="colunm2">
+            <label class="colunm05">
                 <span class="destaque">Telefone do Responsável*</span>
                 <input name="responsavel_telefone" type="text" ng-blur="save_field('responsavel_telefone')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999-9999"/>
             </label>
             <label class="colunm02">
                 <span class="destaque">Operadora</span>
                 <input name="responsavel_operadora" type="text" ng-blur="save_field('responsavel_operadora')" ng-model="agent.responsavel_operadora">
+            </label><label class="colunm2">
+                <span class="destaque">Outro Telefone </span>
+                <input type="text" name="responsavel_telefone2" ng-blur="save_field('responsavel_telefone2')" ng-model="agent.responsavel_telefone" ui-mask="(99) ?99999 9999">
+            </label>
+
+            <label class="colunm3">
+                <span class="destaque">Operadora</span>
+                <input type="text" name="responsavel_operadora2" ng-blur="save_field('responsavel_operadora2')" ng-model="agent.responsavel_operadora2">
             </label>
         </div>
         <div class="clear"></div>
 
         <div class="row">
             <label class="colunm-full">
-                <span class="destaque">Email institucional da Entidade/Coletivo *</span>
+                <span class="destaque">Email institucional {{agent.tipoOrganizacao == 'coletivo' ? 'do Coletivo' : 'da Entidade'}} *</span>
                 <input name="emailPrivado" type="email" ng-blur="save_field('emailPrivado')" ng-model="agent.emailPrivado" />
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
-            <label class="colunm05">
-                <span class="destaque">Telefone institucional da Entidade/Coletivo *</span>
+            <label class="colunm1" style="width:300px;">
+                <span class="destaque">Telefone institucional {{agent.tipoOrganizacao == 'coletivo' ? 'do Coletivo' : 'da Entidade'}} *</span>
                 <input name="telefone1" type="text" ng-blur="save_field('telefone1')" ng-model="agent.telefone1" ui-mask="(99) ?99999-9999">
             </label>
 
@@ -168,7 +176,7 @@
         </div>
         <div class="clear"></div>
         <div class="row">
-            <label class="colunm05">
+            <label class="colunm1" style="width:300px;">
                 <span class="destaque">Outro Telefone</span>
                 <input type="text" ng-blur="save_field('telefone2')" ng-model="agent.telefone2" ui-mask="(99) ?99999-9999">
             </label>
@@ -182,12 +190,12 @@
 
         <div class="row">
             <label class="colunm1">
-                <span class="destaque">Endereço da Entidade/Coletivo* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
+                <span class="destaque">Endereço  {{agent.tipoOrganizacao == 'coletivo' ? 'do Coletivo' : 'da Entidade'}}* <i class='hltip' title='Endereço atrelado ao CNPJ (não precisa ser o mesmo endereço do Ponto de Cultura)'>?</i></span>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
-          <label class="colunm05">
+          <label class="colunm2">
             <span class="destaque">País*</span>
               <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                 <option value="Brasil" selected>Brasil</option>
@@ -280,7 +288,7 @@
                 <option value="Zâmbia">Zâmbia</option>                  <option value="Zimbábue">Zimbábue</option>
               </select>
           </label>
-            <label class="colunm05" ng-show="agent.pais==='Brasil'">
+            <label class="colunm2" ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
@@ -300,34 +308,44 @@
                 </select>
                 <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
+            <label class="colunm2" ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Estado</span>
+                <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
+            </label>
             <label class="colunm2">
-                <span class="destaque">Cidade*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Cidade*' : 'Cidade'}}</span>
                 <input name="geoMunicipio" type="text" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
             </label>
-            <label class="colunm3">
-                <span class="destaque">Bairro*</span>
+            <label class="colunm2">
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Bairro*' : 'Bairro'}}</span>
                 <input name="En_Bairro" type="text" ng-blur="save_field('En_Bairro')" ng-model="agent.En_Bairro"/>
             </label>
         </div>
         <div class="clear"></div>
         <div class="row">
-          <label class="colunm05">
-              <span class="destaque">Rua*</span>
+          <label class="colunm2">
+              <span class="destaque">{{agent.pais == 'Brasil' ? 'Rua*' : 'Rua'}}</span>
               <input name="En_Nome_Logradouro" type="text" ng-blur="save_field('En_Nome_Logradouro')" ng-model="agent.En_Nome_Logradouro"/>
           </label>
             <label class="colunm2">
-                <span class="destaque">Número* </span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'Número*' : 'Número'}}</span>
                 <input name="En_Num" type="text" ng-blur="save_field('En_Num')" ng-model="agent.En_Num"/>
             </label>
             <label class="colunm2">
-                <span class="destaque">CEP*</span>
+                <span class="destaque">{{agent.pais == 'Brasil' ? 'CEP*' : 'CEP'}}</span>
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep')"
                        ng-model="agent.cep"
-                       ui-mask="99999-999">
+                       ui-mask="99999-999"
+                       ng-if="agent.pais === 'Brasil'">
+                <input type="text"
+                      name="cep"
+                      ng-blur="save_field('cep')"
+                      ng-model="agent.cep"
+                      ng-if="agent.pais !== 'Brasil'">
             </label>
-            <label class="colunm3">
+            <label class="colunm2">
                 <span class="destaque">Complemento</span>
                 <input type="text" ng-blur="save_field('En_Complemento')" ng-model="agent.En_Complemento"/>
             </label>

@@ -510,6 +510,17 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
 
+                'responsavel_telefone2' => [
+                    'label' => 'Telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'responsavel_operadora2' => [
+                    'label' => 'Operadora do telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
+
                 'En_Bairro' => [
                     'label' => 'Bairro',
 //                  'required' => true,
@@ -921,7 +932,7 @@ class Theme extends BaseV1\Theme{
                     'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
                 ],
                 'telefone3_operadora' => [
-                    'label' => 'Operadora do teefone 3',
+                    'label' => 'Operadora do telefone 3',
 //                  'required' => true,
                     'private' => true
                 ],

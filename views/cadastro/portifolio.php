@@ -41,7 +41,7 @@
 		<div class="row" ng-controller="PortifolioCtrl">
 			<label class="colunm1">
                 		<span class="destaque">
-				                  Portfólio Online*
+				                  Portfólio Online
 				<i class='hltip' title="Caso possua um portfólio online, coloque o link aqui.">?</i></span>
 	        		<input type="text" name="atividadesEmRealizacaoLink" placeholder="http://" ng-blur="save_field('atividadesEmRealizacaoLink')" ng-model="agent.atividadesEmRealizacaoLink" />
 			</label>
@@ -79,7 +79,7 @@
 
         <div class="row">
             <h4>Cartas de Reconhecimento</h4>
-            <p>Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
+            <p style="text-align:justify;">Anexar 02 cartas de apoio à entidade ou coletivo cultural requerente, emitidas por Pontos de Cultura, instituições públicas, privadas, ou coletivos culturais relacionadas com arte, cultura, educação ou desenvolvimento comunitário. As cartas devem ser assinadas e digitalizadas. Serão aceitas somente assinaturas manuscritas em papel ou impressões digitais em caso de pessoas não alfabetizadas.</p>
             <p>O ato de assinar uma Carta de Reconhecimento implica na responsabilidade da instituições públicas, privadas, ou coletivos culturais para com a credibilidade do Ponto/Pontão de Cultura, firmando a legitimidade do mesmo.</p>
         </div>
         <div class="row">
@@ -157,31 +157,43 @@
         </div>
         <div class="row">
             <label class="colunm-redes facebook">
-                <span class="destaque"><img src="<?php $this->asset('img/facebook.png') ?>"> Página Facebook</span>
+                <span class="destaque"><img src="<?php $this->asset('img/facebook.png') ?>"> Seu perfil no Facebook</span>
                 <input type="text" ng-blur="save_field('facebook')" ng-model="agent.facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span class="destaque"><img src="<?php $this->asset('img/twitter.png') ?>"> Perfil no Twitter</span>
+                <span class="destaque"><img src="<?php $this->asset('img/twitter.png') ?>"> Seu perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('twitter')" ng-model="agent.twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span class="destaque"><img src="<?php $this->asset('img/googlePlus.ico') ?>"> Perfil no Google+</span>
+                <span class="destaque"><img src="<?php $this->asset('img/googlePlus.ico') ?>"> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('googleplus')" ng-model="agent.googleplus" placeholder="http://"/>
             </label>
-        </div>
-        <div class="row">
+            <label class="colunm-redes telegram">
+                <span class="destaque"><img src="<?php $this->asset('img/telegram.ico') ?>"> Seu usuário no Telegram</span>
+                <input type="text" ng-blur="save_field('telegram')" ng-model="agent.telegram" placeholder="@SeuNome"/>
+            </label>
+            <label class="colunm-redes whatsapp">
+                <span class="destaque"><img src="<?php $this->asset('img/whatsapp.png') ?>"> Seu número do WhatsApp</span>
+                <input type="text" ng-blur="save_field('whatsapp')" ng-model="agent.whatsapp" placeholder="(11) _____-_____ "/>
+            </label>
+            <label class="colunm-redes culturadigital">
+                <span class="destaque"><img src="<?php $this->asset('img/CulturaDigital_favi.png') ?>"> Seu perfil no CulturaDigital.br</span>
+                <input type="text" ng-blur="save_field('culturadigital')" ng-model="agent.culturadigital" placeholder="http://"/>
+            </label>
+            <label class="colunm-redes diaspora">
+              <span class="destaque"><img src="<?php $this->asset('img/icon_diaspora.png') ?>">Perfil na Diáspora:</span>
+                <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
+            </label>
+            <label class="colunm-redes instagram">
+                <span class="destaque"><img src="<?php $this->asset('img/instagram.png') ?>"> Seu perfil no Instagram.com</span>
+                <input type="text" ng-blur="save_field('instagram')" ng-model="agent.instagram" placeholder="http://"/>
+            </label>
             <label class="colunm-redes flick">
                 <span class="destaque"><img src="<?php $this->asset('img/icon_flicker.png') ?>"> Página no Flickr</span>
                 <input type="text" ng-blur="save_field('flickr')" ng-model="agent.flickr" placeholder="http://"/>
             </label>
-
-            <label class="colunm-redes diaspora">
-                <span class="destaque"><img src="<?php $this->asset('img/icon_diaspora.png') ?>"> Perfil na Diáspora:</span>
-                <input type="text" ng-blur="save_field('diaspora')" ng-model="agent.diaspora" placeholder="http://"/>
-            </label>
-
             <label class="colunm-redes youtube">
                 <span class="destaque"><img src="<?php $this->asset('img/icon_youtube.png') ?>"> Perfil no Youtube:</span>
                 <input type="text" ng-blur="save_field('youtube')" ng-model="agent.youtube" placeholder="http://"/>
@@ -191,7 +203,8 @@
         <div class="row">
             <label class="colunm-full">
                 <span class="destaque">Conte um pouco sobre a história do Ponto de Cultura (max. 800 caracteres) <i class='hltip' title='Nos diga um pouco mais sobre o ponto de cultura, como por exemplo como ele começou e como surgiu a idéia'>?</i>  </span>
-                <textarea ng-blur="save_field('longDescription')" ng-model="agent.longDescription"></textarea>
+                <textarea ng-blur="save_field('longDescription')" maxlength="800" ng-model="agent.longDescription"></textarea>
+                <span>{{800 - agent.longDescription.length}} Characters</span>
             </label>
 
         </div>
