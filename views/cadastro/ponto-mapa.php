@@ -55,17 +55,28 @@ border-color: gray;
                 <span>{{400 - agent.shortDescription.length}} Characters</span>
             </label>
 
-            <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
+            <label class="colunm1" ng-class="{'busy': cepcoder.busy}"
+                ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">CEP do Ponto/Pontão de Cultura* (70308-200) <i class='hltip' title='Caso não saiba seu CEP acesse o site dos correios'>?</i></span>
                 <input type="text"
                        name="cep"
                        ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
-                       ng-model="agent.cep">
+                       ng-model="agent.cep"
+                       ui-mask="99999-999">
                        <!-- <input type="text"
                               name="cep"
                               ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
                               ng-model="agent.cep"
                               ui-mask="99999-999"> -->
+                <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
+            </label>
+
+            <label class="colunm1" ng-class="{busy: cepcoder.busy}" ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Código Postal do Ponto/Pontão de Cultura <i class='hltip' title='Caso não saiba seu código postal consulte com seu governo'>?</i></span>
+                <input type="text"
+                       name="cep"
+                       ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                       ng-model="agent.cep">
                 <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
             </label>
 
