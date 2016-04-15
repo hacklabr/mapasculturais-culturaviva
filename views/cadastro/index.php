@@ -8,6 +8,14 @@ $this->bodyProperties['ng-app'] = "culturaviva";
   a:hover{
     color: #078979;
   }
+  #selo-index{
+  margin-left: 737px;
+  margin-top: -213px;
+  }
+  #selo-img{
+    height: 180px;
+    width:auto;
+  }
 </style>
 <div id="page-cadastro" ng-controller="DashboardCtrl">
     <?php $this->part('messages'); ?>
@@ -31,6 +39,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Enviar".</p>
             <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
+        <!-- ng-if="(agent.homologado_rcv === '0' || agent.homologado_rcv =='null' )" -->
+        <div id="selo-index">
+          <span><img id="selo-img" src="<?php $this->asset('img/verified-seal.png') ?>"></span>
+        </div>
     </section>
     <section class="boxs-cadastro">
 	<article class="boxs-cadastro" style="width: 100%; background: #078979 none repeat scroll 0% 0%;"><header><center><h4>Certificação Simplificada</h4></center></header></article>
@@ -397,7 +409,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
   </script>
 
   <div class="page-base-form">
-    <button class="btn-validar" ng-disabled="(agent.termos_de_uso === null ||agent.termos_de_uso === '0' || agent.info_verdadeira === null || agent.info_verdadeira === '0')" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
+    <button class="btn-validar" ng-disabled="(agent.termos_de_uso === null || agent.termos_de_uso === '0' || agent.info_verdadeira === null || agent.info_verdadeira === '0')" ng-click="enviar()"> {{data.statusInscricao > 0 ? 'Atualizar' : 'Enviar'}} </button>
       <p ng-show="data.statusInscricao > 0" >
                 Recebemos seus dados com sucesso!
                 Em breve você receberá uma notificação sobre a validação do seu Ponto ou Pontão de Cultura!

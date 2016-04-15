@@ -446,7 +446,7 @@
                 '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                            'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' +
-                           'termos_de_uso,info_verdadeira,obs',
+                           'termos_de_uso,info_verdadeira,obs,homologado_rcv',
 
 //                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
                 '@permissions': 'view'
