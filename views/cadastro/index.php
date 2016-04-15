@@ -9,7 +9,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     color: #078979;
   }
   #selo-index{
-  margin-left: 737px;
+  margin-left: 750px;
   margin-top: -213px;
   }
   #selo-img{
@@ -39,9 +39,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             <p>Fique a vontade para ir preenchendo as sessões. Você não precisa fazer tudo agora! Quando sua página estiver completa clique em "Enviar".</p>
             <p>Depois, seu ponto poderá criar eventos, projetos e usar a plataforma para se manter em contato com o Ministério da Cultura.</p>
         </article>
-        <!-- ng-if="(agent.homologado_rcv === '0' || agent.homologado_rcv =='null' )" -->
-        <div id="selo-index">
-          <span><img id="selo-img" src="<?php $this->asset('img/verified-seal.png') ?>"></span>
+        <div ng-if="agent_ponto.homologado_rcv" id="selo-index">
+          <img id="selo-img" src="<?php $this->asset('img/verified-icon-big.png') ?>">
         </div>
     </section>
     <section class="boxs-cadastro">

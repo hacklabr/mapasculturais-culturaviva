@@ -440,15 +440,14 @@
 
             var agent_id = MapasCulturais.redeCulturaViva.agenteIndividual;
             var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
+            var agent_id_ponto = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
                 '@select': 'id,singleUrl,name,rg,rg_orgao,relacaoPonto,cpf,geoEstado,terms,'+
                            'emailPrivado,telefone1,telefone1_operadora,nomeCompleto,'+
                            'geoMunicipio,facebook,twitter,googleplus,mesmoEndereco,shortDescription,' +
-                           'termos_de_uso,info_verdadeira,obs,homologado_rcv',
-
-//                '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig):url',
+                           'termos_de_uso,info_verdadeira,obs',
                 '@permissions': 'view'
             };
 
@@ -458,8 +457,15 @@
                 '@permissions': 'view'
             };
 
+            var params_ponto = {
+                'id': agent_id_ponto,
+                '@select': 'id,homologado_rcv',
+                '@permissions': 'view'
+            };
+
             $scope.agent = Entity.get(params);
             $scope.agent_entidade = Entity.get(params_entidade);
+            $scope.agent_ponto = Entity.get(params_ponto);
 
             extendController($scope, $timeout, Entity, agent_id);
 
