@@ -20,6 +20,8 @@ class Theme extends BaseV1\Theme{
         return array(
             'site: owner' => 'Ministério da Cultura',
             'site: by the site owner' => 'pelo Ministério da Cultura',
+            'search: verified results' => 'Pontos Certificados',
+            'search: verified' => "Certificados",
 
         );
     }
