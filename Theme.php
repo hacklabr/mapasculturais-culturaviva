@@ -913,7 +913,7 @@ class Theme extends BaseV1\Theme{
                 'homologado_rcv' =>[
                   'label' => '',
                   'required' => false,
-                  'private' => true
+                  //'private' => false
                 ],
                 'info_verdadeira' =>[
                   'label' => '',
