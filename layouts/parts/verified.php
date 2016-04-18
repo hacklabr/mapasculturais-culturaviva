@@ -10,6 +10,6 @@
 </div>
 <?php elseif($entity->homologado_rcv): ?>
 <div class="widget widget-verified">
-    <a class="verified-seal hltip active" title="Este Ponto é certificado." href="#"></a>
+    <a class="certified-icon hltip active" title="Este Ponto é certificado." href="#"></a>
 </div>
 <?php endif; ?>
