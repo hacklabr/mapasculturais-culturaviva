@@ -152,6 +152,12 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
 	    $this->enqueueScript('vendor', 'ngDialog', 'vendor/ngDialog.min.js');
         $this->enqueueScript('vendor', 'google-maps-api', 'http://maps.google.com/maps/api/js?v=3.2&sensor=false');
+        $this->enqueueScript('vendor', 'angularQR', 'vendor/angular-qr.min.js');
+        $this->enqueueScript('vendor', 'QR', 'vendor/qrcode.min.js');
+        $this->enqueueScript('vendor', 'jsPDF', 'vendor/jspdf.min.js');
+        $this->enqueueScript('vendor', 'jsPDFFromHtml', 'vendor/from_html.js');
+        $this->enqueueScript('vendor', 'jsPDFTextSize', 'vendor/split_text_to_size.js');
+        $this->enqueueScript('vendor', 'jsPDFFontMetric', 'vendor/standard_fonts_metrics.js');
     }
 
     protected function _publishAssets(){

@@ -10,7 +10,8 @@
         'ngMessages',
         'ui.date',
         'ui.mask',
-        'ngDialog'
+        'ngDialog',
+        'ja.qr'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', '$locationProvider',

@@ -1252,4 +1252,35 @@
             });
     }]);
 
+    app.controller('layoutPDFCtrl', ['$scope', 'Entity', 'MapasCulturais', '$timeout', '$location', '$http',
+        function($scope, Entity, MapasCulturais, $timeout, $location, $http){
+            var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var aux = 'culturaviva.gov.br/agente/';
+
+            var params = {
+                '@select': 'id,name,user.id',
+                '@permissions': 'view',
+                'id': 'EQ('+agent_id+')'
+            };
+
+             $http.get("/api/agent/find",{
+                 params: params
+             }).success(function(dados){
+                $scope.name = dados[0].name;
+                dados[0].user.id = aux.concat(dados[0].user.id);
+                $scope.id = dados[0].user.id;
+
+        		var doc = new jsPDF('landscape', 'mm', 'a4');
+
+        		var imgData = 'Tenho que ver como fazer com o canvas';
+
+        		//doc.addImage(imgData, 'JPEG', 0, 0, 297, 210);
+        		doc.text(dados[0].name, 130, 67);
+        		doc.text(dados[0].user.id, 98, 207);
+        		doc.save('Certificado.pdf');
+
+             });
+
+    }]);
+
 })(angular);
