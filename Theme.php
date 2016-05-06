@@ -64,6 +64,7 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
         $this->assetManager->publishAsset('img/banner-home2.jpg', 'img/banner-home2.jpg');
+        $this->assetManager->publishAsset('img/certificado.png', 'img/certificado.png');
 
         $app->hook('view.render(site/search):before', function(){
             $this->jsObject['searchFilters'] = [
@@ -155,9 +156,6 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('vendor', 'angularQR', 'vendor/angular-qr.min.js');
         $this->enqueueScript('vendor', 'QR', 'vendor/qrcode.min.js');
         $this->enqueueScript('vendor', 'jsPDF', 'vendor/jspdf.min.js');
-        $this->enqueueScript('vendor', 'jsPDFFromHtml', 'vendor/from_html.js');
-        $this->enqueueScript('vendor', 'jsPDFTextSize', 'vendor/split_text_to_size.js');
-        $this->enqueueScript('vendor', 'jsPDFFontMetric', 'vendor/standard_fonts_metrics.js');
     }
 
     protected function _publishAssets(){

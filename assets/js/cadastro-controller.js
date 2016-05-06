@@ -1269,18 +1269,7 @@
                 $scope.name = dados[0].name;
                 dados[0].user.id = aux.concat(dados[0].user.id);
                 $scope.id = dados[0].user.id;
-
-        		var doc = new jsPDF('landscape', 'mm', 'a4');
-
-        		var imgData = 'Tenho que ver como fazer com o canvas';
-
-        		//doc.addImage(imgData, 'JPEG', 0, 0, 297, 210);
-        		doc.text(dados[0].name, 130, 67);
-        		doc.text(dados[0].user.id, 98, 207);
-        		doc.save('Certificado.pdf');
-
-             });
-
+            });
     }]);
 
 })(angular);
