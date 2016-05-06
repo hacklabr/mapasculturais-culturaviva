@@ -1266,9 +1266,8 @@
              $http.get("/api/agent/find",{
                  params: params
              }).success(function(dados){
-                $scope.name = dados[0].name;
-                dados[0].user.id = aux.concat(dados[0].user.id);
-                $scope.id = dados[0].user.id;
+                window.name = dados[0].name;
+                window.url = aux.concat(dados[0].id);
             });
     }]);
 
