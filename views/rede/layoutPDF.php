@@ -5,6 +5,25 @@
 <div id="layout" ng-controller="layoutPDFCtrl">
     <input type="button" id="download" value="Ver Certificado" href="#"/>
     <script type="text/javascript">
+    var elemento_pai = document.getElementById("layout");
+    var qr = document.createElement('qr');
+    qr.setAttribute('text', 'teste');
+    elemento_pai.appendChild(qr);
+    var canvas = document.canvas;
+
+    function convertImgToBase64RQ(callback, canvas){
+        var img = new Image();
+        img.onload = function(){
+            var ctx = canvas.getContext('2d');
+            canvas.height = 130;
+            canvas.width = 130;
+            ctx.drawImage(this, 0, 0);
+            var dataURL = canvas.toDataURL('image/png');
+            callback(dataURL);
+            canvas = null;
+        };
+    }
+
         function convertImgToBase64(callback){
             var img = new Image();
             img.onload = function(){
@@ -17,7 +36,7 @@
                 callback(dataURL);
                 canvas = null;
             };
-            img.src = '/assets/rcv/img/certificado.png';
+            img.src = '/assets/img/certificado.png';
         }
 
         var button = document.getElementById("download");
@@ -35,9 +54,9 @@
                     doc.setFontSize(15);
                 }
                 doc.addImage(dataUrl,'png',0,0,1754,1241);
-                doc.text(window.name, 770, 390);
-                doc.setFontSize(16);
-                doc.text(window.url,640,1214);
+                doc.setFontType("bold");
+                doc.text(window.name, 770, 395);
+                doc.text(window.url,570,1225);
                 doc.save('Certificado.pdf');
             });
         };
