@@ -1269,6 +1269,7 @@
                 window.name = dados[0].name;
                 window.url = aux.concat(dados[0].id);
             });
+            $scope.teste = "www.google.com";
     }]);
 
 })(angular);
