@@ -1268,6 +1268,7 @@
              }).success(function(dados){
                 window.name = dados[0].name;
                 window.url = aux.concat(dados[0].id);
+                $scope.teste2 = "www.globo.com";
             });
             $scope.teste = "www.google.com";
     }]);
