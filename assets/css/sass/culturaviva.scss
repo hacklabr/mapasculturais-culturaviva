@@ -25,7 +25,7 @@ body{
     background:transparent;
 }
 
-section{
+section {
     max-width:960px;
     width:100%;
     margin:0 auto;
@@ -41,13 +41,16 @@ section{
         text-transform: uppercase;
         width: 220px;
     }
-
 }
 
-.entity {
+.entity, .controller-site {
     section {
-        max-width: initial;
+        max-width: 96%;
     }
+}
+
+#editable-entity {
+    max-width: 96%;
 }
 
 #page-entrada{
