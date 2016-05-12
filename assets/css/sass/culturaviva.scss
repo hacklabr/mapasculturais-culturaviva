@@ -44,6 +44,12 @@ section{
 
 }
 
+.entity {
+    section {
+        max-width: initial;
+    }
+}
+
 #page-entrada{
     margin-top:150px;
     h3, h4{
@@ -2414,14 +2420,6 @@ section{
   width: 12px;
   height: 12px;
   margin-bottom: 5px;
-}
-
-#editable-entity {
-    max-width: 960px;
-}
-
-#editable-entity {
-  max-width: 960px;
 }
 
 .certified-icon {
