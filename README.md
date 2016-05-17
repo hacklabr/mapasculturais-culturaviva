@@ -59,6 +59,7 @@ E configurar o `config.php` para setar o tema Cultura Viva no Mapas
 *(use `:h` dentro do vim para ver as opções de comando)*
 
 Deve ficar desta forma:
+
 ![imagem de teste](/Exemplo.jpg)
 
 Entre na pasta `/mapasculturais` e reinicie o Vagrant
@@ -82,6 +83,7 @@ Agora, em seu navegador, acesse o Cultura Viva usando este endereço:
 ` 127.0.0.1:8000 `
 
 *(Se aparecer essa tela abaixo está tudo certo)*
+
 ![Imagem de exemplo](/Exemplo2.jpg)
 
 A próxima tela será a de autenticação
