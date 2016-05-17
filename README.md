@@ -7,11 +7,15 @@
 Para facilitar explicação vamos criar uma pasta em
  /home/PastaPessoal
 '''
+
   mkdir “mapas”
+
   cd mapas
+
 '''
-Atualizar o sistema
- → sudo apt-get update
+Para atualizar o sistema:
+
+' sudo apt-get update '
 
 Baixar virtualBox
  → sudo apt-get install virtualBox
