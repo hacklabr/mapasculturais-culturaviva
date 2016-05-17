@@ -3,62 +3,91 @@
 [![Stories in Ready](https://badge.waffle.io/culturagovbr/mapasculturais-culturaviva.svg?label=ready&title=Ready)](http://waffle.io/culturagovbr/mapasculturais-culturaviva)
 
 ## Tema de Mapas Culturais para a Rede Cultura Viva
-
 Para facilitar explicação vamos criar uma pasta em
  /home/PastaPessoal
  ```
+mkdir “mapas”
 
-  mkdir “mapas”
-
-  cd mapas
+cd mapas
 
 ```
-Para atualizar o sistema:
+Vamos começar atualizando o sistema para garantir que tudo corra bem
 
-' sudo apt-get update '
+` sudo apt-get update `
 
-Baixar virtualBox
- → sudo apt-get install virtualBox
+Agora, baixar a VirtualBox:
+ ` sudo apt-get install virtualBox`
 
-Baixar Vagrant
- → sudo apt-get install -y vagrant
+ O Vagrant:
+ `sudo apt-get install -y vagrant`
 
-Baixar git
- → sudo apt-get install -y git
+O GitHub:
+ ` sudo apt-get install -y git`
 
-Clonar repositório mapasculturais
- → git clone https://github.com/hacklabr/mapasculturais.git
- → Entrar na pasta clonada cd mapasculturais
+Ok, vamos então _Clonar_ o repositório do **Mapas Culturais**
+e entrar na pasta clonada:
 
-Iniciar instalação do mapasculturais
- → vagrant up
-  (Isso pode levar um tempo)
+ ```
+    git clone https://github.com/hacklabr/mapasculturais.git
+cd mapasculturais
+```
 
-voltar um diretório e clonar repositório do culturaviva
- → cd ..
- → git clone https://github.com/culturagovbr/mapasculturais-culturaviva.git
+Inicie a instalação do **Mapas Culturais** no Vagrant
 
-Mover a pasta do cultura viva para a pasta themes dentro do mapasculturais
- → mv mapasculturais-culturaviva mapasculturais/src/protected/application/themes
+  `vagrant up`
 
-Configurar o config.php para setar o thema cultura viva no mapas
-  → vim mapasculturais/src/protected/application/conf/config.php
-  → Deve ficar desta forma abaixo:
+*(Isso pode levar um tempo)*
 
+Volte ao diretório principal e clone o repositório do CulturaViva
+```
+  cd ..
+git clone https://github.com/culturagovbr/mapasculturais-culturaviva.git
+ ```
 
+Moveremos a pasta do Cultura Viva para a pasta ~~Temas~~ *themes* dentro do MapasCulturais
 
+```
+mv mapasculturais-culturaviva mapasculturais/src/protected/application/themes
+```
 
+E configurar o `config.php` para setar o tema Cultura Viva no Mapas
 
+ *(Para fazer essa alteração é possível o uso de qualquer IDE)*
+```
+   vim mapasculturais/src/protected/application/conf/config.php
+```
+*(use `:h` dentro do vim para ver as opções de comando)*
 
+Deve ficar desta forma:
+![imagem de teste](/Exemplo.jpg)
 
-Entrar na pasta mapasculturais e reiniciar o vagrant
-  → cd mapasculturais
-  → vagrant reload
+Entre na pasta `/mapasculturais` e reinicie o Vagrant
+```
+cd mapasculturais
 
-Acessar a maquina virtual
-  → vagrant ssh
+vagrant reload
+```
+Acesse a maquina virtual:
 
-acessar pasta script e compilar o tema
-  → /vagrant/scripts
-  → ./compile-sass.sh
-Em seu navegador acesse o cultura viva
+  ` vagrant ssh `
+
+E acesse a pasta script e para compilar o tema:
+```
+/vagrant/scripts
+./compile-sass.sh
+```
+### **Pronto!**
+Agora, em seu navegador, acesse o Cultura Viva usando este endereço:
+
+` 127.0.0.1:8000 `
+
+*(Se aparecer essa tela abaixo está tudo certo)*
+![Imagem de exemplo](/Exemplo2.jpg)
+
+A próxima tela será a de autenticação
+
+**→ A parte de cima é para super usuários, precisa só clicar em ok.**
+
+→ A parte de baixo é para criar usuários normais.
+
+**Se ocorrer algum erro na instalação fale conosco.**
