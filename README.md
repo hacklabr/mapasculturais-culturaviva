@@ -6,13 +6,13 @@
 
 Para facilitar explicação vamos criar uma pasta em
  /home/PastaPessoal
-'''
+ ```
 
   mkdir “mapas”
 
   cd mapas
 
-'''
+```
 Para atualizar o sistema:
 
 ' sudo apt-get update '
