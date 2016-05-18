@@ -9,12 +9,12 @@
 </style>
 
 <div id="layout" ng-controller="layoutPDFCtrl">
-    <input type="button" id="download" value="Ver Certificado" href="#"/>
-    <qr text="teste" id="qrcode"></qr>
+    <a id="download">Baixar certificado</a>
+    <!-- <input type="button" id="download" value="Ver Certificado" href="#"/> -->
+    <!-- <qr text="urlQRCODE" id="qrcode"></qr> -->
     <script type="text/javascript">
         var qr = document.getElementById('qrcode');
         var elementoPai = document.getElementById('layout');
-        qr.setAttribute('text',  'teste'); // Tentativa de mudar o text da tag apos clicar no botao
         //elementoPai.removeChild(qr);
 
         function convertImgToBase64(callback){ //converte imagem em base64
@@ -34,7 +34,7 @@
 
         var button = document.getElementById("download");
 
-        button.onclick = function(){ // funcao que gere pdf
+        button.onclick = function(){
             convertImgToBase64(function(dataUrl){
                 var doc = new jsPDF('landscape','pt',[1754,1241]);
                 doc.addImage(dataUrl,'png',0,0,1754,1241);
@@ -43,12 +43,15 @@
                 doc.text(window.name, 770, 395);
                 doc.setFontSize(30);
                 doc.text(window.url,570,1225);
-                qr.setAttribute('text',  'teste2'); //tentativa de mudar text
+                //qr = document.createElement('qr');
+                //qr.setAttribute('text', 'teste2'); // funcao que gere pdf
+                //elementoPai.appendChild(qr);
+
 
                 // tentando passar tag para ser convertida
 
-                //var dataURLQR = qr.children[0].toDataURL('image/png');
-                //doc.addImage(dataURLQR,'png',667,1014,177,177);
+                // var dataURLQR = qr.children[0].toDataURL('image/png');
+                // doc.addImage(dataURLQR,'png',667,1014,177,177);
                 doc.save('Certificado.pdf');
             });
         };

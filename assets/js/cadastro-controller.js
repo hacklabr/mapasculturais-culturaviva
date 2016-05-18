@@ -1256,6 +1256,8 @@
         function($scope, Entity, MapasCulturais, $timeout, $location, $http){
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             var aux = 'culturaviva.gov.br/agente/';
+            
+            window.url = null;
 
             var params = {
                 '@select': 'id,name,user.id',
@@ -1267,10 +1269,10 @@
                  params: params
              }).success(function(dados){
                 window.name = dados[0].name;
-                window.url = aux.concat(dados[0].id);
-                $scope.teste2 = "www.globo.com";
+                window.url = aux.concat(dados[0].user.id);
+                $scope.teste2 = dados[0].user.id;
             });
-            $scope.teste = "www.google.com";
+            $scope.urlQRCODE = aux;
     }]);
 
 })(angular);

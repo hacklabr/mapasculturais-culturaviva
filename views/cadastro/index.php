@@ -415,8 +415,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Continue navegando e, caso altere algum campo, clique em atualizar.
                 Muito obrigada por fazer parte da Rede Cultura Viva!
       </p>
-        <div ng-controller="layoutPDFCtrl" style="float:right; margin-right: 60px;">
-            <a id="download">Baixar Certificado</a>
+        <div ng-if="agent_ponto.homologado_rcv" style="float:right; margin-right: 60px;">
+            <a href="../rede/layoutPDF">Baixar Certificado</a>
         </div>
   </div>
      </article>
@@ -424,7 +424,7 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     </section>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function convertImgToBase64(callback){
         var img = new Image();
         img.onload = function(){
@@ -462,4 +462,4 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             doc.save('Certificado.pdf');
         });
     };
-</script>
+</script> -->
