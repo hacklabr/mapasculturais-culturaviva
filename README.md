@@ -3,7 +3,8 @@
 [![Stories in Ready](https://badge.waffle.io/culturagovbr/mapasculturais-culturaviva.svg?label=ready&title=Ready)](http://waffle.io/culturagovbr/mapasculturais-culturaviva)
 
 ## Tema de Mapas Culturais para a Rede Cultura Viva
-Para facilitar explicação vamos criar uma pasta em
+###Instalação do Rede Cultura Viva
+Para facilitar a explicação vamos criar uma pasta em
  /home/PastaPessoal
  ```
 mkdir “mapas”
