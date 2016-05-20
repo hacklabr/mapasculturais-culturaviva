@@ -385,16 +385,16 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Alguns campos obrigatórios não foram preenchidos
 		    <!-- Dados do responsavel -->
     		<strong ng-show="data.mostrarErroResponsavel == 'responsavel'"><br/>
-			       <a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável" </a>
+			       <a href="/cadastro/responsavel/#?invalid=1">Em "Informações do Responsável" </a>
 		    </strong>
 		    <strong ng-show="data.mostrarErroEntidadeDado == 'entidade_showdado'"><br/>
-			       <a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
+			       <a href="/cadastro/entidadeDados/#?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
 		    </strong>
     		<strong ng-show="data.mostrarErroPontoMapa == 'ponto_mapa'"><br/>
-			       <a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa" </a>
+			       <a href="/cadastro/pontoMapa/#?invalid=1">Em "Seu Ponto no Mapa" </a>
 		    </strong>
     		<strong ng-show="data.mostrarErroPonto == 'ponto_portifolio'"><br/>
-			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
+			       <a href="/cadastro/portifolio/#?invalid=1">Em "Portfólio e Anexos"</a>
 		    </strong>
   </div>
   <script type="text/ng-template" id="modal1">

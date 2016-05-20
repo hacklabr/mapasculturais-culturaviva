@@ -29,7 +29,6 @@
                 return result;
             };
             $resourceProvider.defaults.stripTrailingSlashes = false;
-            $locationProvider.html5Mode(true);
         }]);
 
         app.config(["ngDialogProvider", function (ngDialogProvider) {
