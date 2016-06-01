@@ -22,7 +22,7 @@ Agora, baixar a VirtualBox:
  O Vagrant:
  `sudo apt-get install -y vagrant`
 
-O GitHub:
+ O Git:
  ` sudo apt-get install -y git`
 
 Ok, vamos então _Clonar_ o repositório do **Mapas Culturais**
