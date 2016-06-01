@@ -415,16 +415,17 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Continue navegando e, caso altere algum campo, clique em atualizar.
                 Muito obrigada por fazer parte da Rede Cultura Viva!
       </p>
-        <div ng-if="agent_ponto.homologado_rcv" style="float:right; margin-right: 60px;">
-            <a href="../rede/layoutPDF">Baixar Certificado</a>
-        </div>
   </div>
      </article>
 
     </section>
 </div>
-
-<!-- <script type="text/javascript">
+<div style="margin-top:-50px; margin-right: 300px; font-size: 35px" ng-controller="layoutPDFCtrl">
+    <div ng-show="show" style="float:right;">
+        <a id="download">Baixar Certificado</a>
+    </div>
+</div>
+<script type="text/javascript">
     function convertImgToBase64(callback){
         var img = new Image();
         img.onload = function(){
@@ -447,11 +448,9 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             var doc = new jsPDF('landscape','pt',[1754,1241]);
             if(window.name.length < 40){
                 doc.setFontSize(40);
-            }
-            if(window.name.length < 70){
+            }else if(window.name.length < 70){
                 doc.setFontSize(20);
-            }
-            if(window.name.length < 105){
+            }else{
                 doc.setFontSize(15);
             }
             doc.addImage(dataUrl,'png',0,0,1754,1241);
@@ -462,4 +461,4 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             doc.save('Certificado.pdf');
         });
     };
-</script> -->
+</script>

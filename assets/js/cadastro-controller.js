@@ -1256,11 +1256,17 @@
         function($scope, Entity, MapasCulturais, $timeout, $location, $http){
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             var aux = 'culturaviva.gov.br/agente/';
-            
+
             window.url = null;
+            // $interval(function(){
+            //     var elementoPai = document.getElementById('layout');
+            //     var qr = document.createElement('qr');
+            //
+            //     $scope.testeurl = pegaurl;
+            // },10000);
 
             var params = {
-                '@select': 'id,name,user.id',
+                '@select': 'id,name,user.id,homologado_rcv',
                 '@permissions': 'view',
                 'id': 'EQ('+agent_id+')'
             };
@@ -1270,7 +1276,7 @@
              }).success(function(dados){
                 window.name = dados[0].name;
                 window.url = aux.concat(dados[0].user.id);
-                $scope.teste2 = dados[0].user.id;
+                $scope.show = dados[0].homologado_rcv;
             });
             $scope.urlQRCODE = aux;
     }]);
