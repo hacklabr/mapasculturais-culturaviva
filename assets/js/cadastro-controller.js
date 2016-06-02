@@ -1257,13 +1257,7 @@
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             var aux = 'culturaviva.gov.br/agente/';
 
-            window.url = null;
-            // $interval(function(){
-            //     var elementoPai = document.getElementById('layout');
-            //     var qr = document.createElement('qr');
-            //
-            //     $scope.testeurl = pegaurl;
-            // },10000);
+            $scope.urlQRCODE = null;
 
             var params = {
                 '@select': 'id,name,user.id,homologado_rcv',
@@ -1276,9 +1270,9 @@
              }).success(function(dados){
                 window.name = dados[0].name;
                 window.url = aux.concat(dados[0].user.id);
+                $scope.urlQRCODE = window.url;
                 $scope.show = dados[0].homologado_rcv;
             });
-            $scope.urlQRCODE = aux;
     }]);
 
 })(angular);

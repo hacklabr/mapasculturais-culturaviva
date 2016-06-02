@@ -16,6 +16,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     height: 180px;
     width:auto;
   }
+  canvas{
+      width: 10px;
+      height: 10px;
+  }
 </style>
 <div id="page-cadastro" ng-controller="DashboardCtrl">
     <?php $this->part('messages'); ?>
@@ -423,9 +427,13 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 <div style="margin-top:-50px; margin-right: 300px; font-size: 35px" ng-controller="layoutPDFCtrl">
     <div ng-show="show" style="float:right;">
         <a id="download">Baixar Certificado</a>
+        <div ng-hide="urlQRCODE.length != 0">
+            <qr text="urlQRCODE" id="qrcode"></qr>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
+    var qr = document.getElementById('qrcode');
     function convertImgToBase64(callback){
         var img = new Image();
         img.onload = function(){
@@ -458,6 +466,8 @@ $this->bodyProperties['ng-app'] = "culturaviva";
             doc.text(window.name, 770, 395);
             doc.setFontSize(30);
             doc.text(window.url,570,1225);
+            var dataURLQR = qr.children[0].toDataURL('image/png');
+            doc.addImage(dataURLQR,'png',667,1014,177,177);
             doc.save('Certificado.pdf');
         });
     };
