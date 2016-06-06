@@ -10,7 +10,8 @@
         'ngMessages',
         'ui.date',
         'ui.mask',
-        'ngDialog'
+        'ngDialog',
+        'ja.qr'
     ]);
 
     app.config(['$httpProvider', '$resourceProvider', '$locationProvider',
@@ -28,7 +29,6 @@
                 return result;
             };
             $resourceProvider.defaults.stripTrailingSlashes = false;
-            $locationProvider.html5Mode(true);
         }]);
 
         app.config(["ngDialogProvider", function (ngDialogProvider) {

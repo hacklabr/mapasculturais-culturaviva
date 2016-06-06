@@ -2421,7 +2421,33 @@ section{
 }
 
 #editable-entity {
-  max-width: 960px; }
+  max-width: 960px;
+}
+
+.certified-icon {
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    background-image: url(../img/unverified-seal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    &.inactive {
+        opacity: .2;
+    }
+    &.active {
+        background-image: url(../img/verified-icon-big.png);
+    }
+    &.editable {
+        padding-top: 1rem;
+        background-position: center 1rem;
+        &:after {
+            margin-left: -.5rem;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
 
 #main-footer {
   background-color: #09897a;

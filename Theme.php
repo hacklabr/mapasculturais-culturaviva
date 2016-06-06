@@ -20,6 +20,8 @@ class Theme extends BaseV1\Theme{
         return array(
             'site: owner' => 'Ministério da Cultura',
             'site: by the site owner' => 'pelo Ministério da Cultura',
+            'search: verified results' => 'Pontos Certificados',
+            'search: verified' => "Certificados",
 
         );
     }
@@ -62,6 +64,7 @@ class Theme extends BaseV1\Theme{
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
         $this->assetManager->publishAsset('img/banner-home2.jpg', 'img/banner-home2.jpg');
+        $this->assetManager->publishAsset('img/certificado.png', 'img/certificado.png');
 
         $app->hook('view.render(site/search):before', function(){
             $this->jsObject['searchFilters'] = [
@@ -150,6 +153,9 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
 	    $this->enqueueScript('vendor', 'ngDialog', 'vendor/ngDialog.min.js');
         $this->enqueueScript('vendor', 'google-maps-api', 'http://maps.google.com/maps/api/js?v=3.2&sensor=false');
+        $this->enqueueScript('vendor', 'angularQR', 'vendor/angular-qr.min.js');
+        $this->enqueueScript('vendor', 'QR', 'vendor/qrcode.min.js');
+        $this->enqueueScript('vendor', 'jsPDF', 'vendor/jspdf.min.js');
     }
 
     protected function _publishAssets(){
@@ -911,7 +917,7 @@ class Theme extends BaseV1\Theme{
                 'homologado_rcv' =>[
                   'label' => '',
                   'required' => false,
-                  'private' => true
+                  //'private' => false
                 ],
                 'info_verdadeira' =>[
                   'label' => '',

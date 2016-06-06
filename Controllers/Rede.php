@@ -26,4 +26,9 @@ class Rede extends \MapasCulturais\Controller{
         $this->requireAuthentication();
         $this->render('consulta');
     }
+
+    function GET_layoutPDF(){
+        $this->requireAuthentication();
+        $this->render('layoutPDF');
+     }
 }
