@@ -247,7 +247,13 @@ border-color: gray;
                 <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
             </label>
 
-            <label class="colunm2">
+            <label class="colunm2" ng-class="{busy: cidadecoder.busy}"  ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Cidade*</span>
+                <input type="text" name="geoMunicipio" ng-blur="save_field('geoMunicipio'); cidadecoder.code(agent.geoMunicipio)" ng-model="agent.geoMunicipio"/>
+                <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>
+            </label>
+
+            <label class="colunm2"  ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Cidade*</span>
                 <input type="text" name="geoMunicipio" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
                 <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>

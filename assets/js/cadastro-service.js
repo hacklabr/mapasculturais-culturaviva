@@ -13,7 +13,7 @@
     app.factory('googleGeoCoder', function(){
         if(!(google && google.maps && google.maps.Geocoder)) {
             var script = document.createElement('script');
-            script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places';
+            script.src = '"https://maps.googleapis.com/maps/api/js?libraries=places&signed_in=true&callback=initMap';
             document.body.appendChild(script);
         }
         return new google.maps.Geocoder();
@@ -28,6 +28,19 @@
                 return $http.get('http://api.postmon.com.br/v1/cep/'+cep);
             }
             deferred.reject('Formato inválido para cep');
+            return deferred.promise;
+        };
+    }]);
+
+    app.service('cidadecoder', ['$q', '$http', function($q, $http){
+        this.code = function(cidade) {
+            var deferred = $q.defer();
+            cidade = cidade.replace(/' '/g, '+');
+
+            if(cidade.indexOf(' ') == -1){
+                return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + cidade);
+            }
+            deferred.reject('Formato inválido para cidade');
             return deferred.promise;
         };
     }]);

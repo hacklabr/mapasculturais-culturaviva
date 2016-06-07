@@ -687,8 +687,8 @@
 
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http',
-        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http)
+    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http', 'cidadecoder',
+        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http, cidadecoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
@@ -723,6 +723,34 @@
                     $scope.save_field('location');
                 }
             }, true);
+
+            $scope.cidadecoder = {
+                busy: false,
+                code: function(cidade){
+                    $scope.agent.geoMunicipio = cidade;
+                    $scope.save_field('geoMunicipio');
+                    $scope.cidadecoder.busy = true;
+                    cidadecoder.code(cidade).then(function(res){
+                        var addr = res.data;
+                        if(addr){
+                            $scope.agent.geoMunicipio = addr.results[0].address_components[0].long_name;
+                            $scope.save_field('geoMunicipio');
+
+                            var string = (addr.results[0].address_components[0].long_name ? addr.results[0].address_components[0].long_name+', ':'');
+                        }
+
+                        return geocoder.code(string);
+
+                    }).then(function(point){
+                        point.zoom = 14;
+                        $scope.markers.main = point;
+                    })['catch'](function(){
+                        $scope.markers.main = undefined;
+                    }).finally(function(){
+                        $scope.cepcoder.busy = false;
+                    });
+                }
+            };
 
             $scope.cepcoder = {
                 busy: false,
