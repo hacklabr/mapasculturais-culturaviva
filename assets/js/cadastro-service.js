@@ -35,7 +35,8 @@
     app.service('cidadecoder', ['$q', '$http', function($q, $http){
         this.code = function(cidade) {
             var deferred = $q.defer();
-            cidade = cidade.replace(/' '/g, '+');
+            cidade = cidade.replace(/ /g, '+');
+            console.log(cidade);
 
             if(cidade.indexOf(' ') == -1){
                 return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + cidade);
