@@ -726,17 +726,14 @@
 
             $scope.cidadecoder = {
                 busy: false,
-                code: function(cidade){
+                code: function(cidade, pais){
                     $scope.agent.geoMunicipio = cidade;
                     $scope.save_field('geoMunicipio');
                     $scope.cidadecoder.busy = true;
-                    cidadecoder.code(cidade).then(function(res){
-                        var addr = res.data;
+                    cidadecoder.code(cidade, pais).then(function(res){
+                        var addr = res.data[0];
                         if(addr){
-                            $scope.agent.geoMunicipio = addr.results[0].address_components[0].long_name;
-                            $scope.save_field('geoMunicipio');
-
-                            var string = (addr.results[0].address_components[0].long_name ? addr.results[0].address_components[0].long_name+', ':'');
+                            var string = (addr.display_name ? addr.display_name+', ':'');
                         }
 
                         return geocoder.code(string);

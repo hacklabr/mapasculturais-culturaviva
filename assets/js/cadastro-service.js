@@ -33,13 +33,13 @@
     }]);
 
     app.service('cidadecoder', ['$q', '$http', function($q, $http){
-        this.code = function(cidade) {
+        this.code = function(cidade, pais) {
             var deferred = $q.defer();
             cidade = cidade.replace(/ /g, '+');
-            console.log(cidade);
+            pais = pais.replace(/ /g, '+');
 
             if(cidade.indexOf(' ') == -1){
-                return $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + cidade);
+                return $http.get('http://nominatim.openstreetmap.org/search?city=' + cidade + '&country=' + pais + '&format=json');
             }
             deferred.reject('Formato inválido para cidade');
             return deferred.promise;
