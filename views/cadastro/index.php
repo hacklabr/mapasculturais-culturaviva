@@ -16,6 +16,10 @@ $this->bodyProperties['ng-app'] = "culturaviva";
     height: 180px;
     width:auto;
   }
+  canvas{
+      width: 10px;
+      height: 10px;
+  }
 </style>
 <div id="page-cadastro" ng-controller="DashboardCtrl">
     <?php $this->part('messages'); ?>
@@ -385,16 +389,16 @@ $this->bodyProperties['ng-app'] = "culturaviva";
                 Alguns campos obrigatórios não foram preenchidos
 		    <!-- Dados do responsavel -->
     		<strong ng-show="data.mostrarErroResponsavel == 'responsavel'"><br/>
-			       <a href="/cadastro/responsavel/?invalid=1">Em "Informações do Responsável" </a>
+			       <a href="/cadastro/responsavel/#?invalid=1">Em "Informações do Responsável" </a>
 		    </strong>
 		    <strong ng-show="data.mostrarErroEntidadeDado == 'entidade_showdado'"><br/>
-			       <a href="/cadastro/entidadeDados/?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
+			       <a href="/cadastro/entidadeDados/#?invalid=1">Em "Dados da Entidade ou Coletivo Cultural" </a>
 		    </strong>
     		<strong ng-show="data.mostrarErroPontoMapa == 'ponto_mapa'"><br/>
-			       <a href="/cadastro/pontoMapa/?invalid=1">Em "Seu Ponto no Mapa" </a>
+			       <a href="/cadastro/pontoMapa/#?invalid=1">Em "Seu Ponto no Mapa" </a>
 		    </strong>
     		<strong ng-show="data.mostrarErroPonto == 'ponto_portifolio'"><br/>
-			       <a href="/cadastro/portifolio/?invalid=1">Em "Portfólio e Anexos"</a>
+			       <a href="/cadastro/portifolio/#?invalid=1">Em "Portfólio e Anexos"</a>
 		    </strong>
   </div>
   <script type="text/ng-template" id="modal1">
@@ -420,3 +424,51 @@ $this->bodyProperties['ng-app'] = "culturaviva";
 
     </section>
 </div>
+<div style="margin-top:-50px; margin-right: 300px; font-size: 35px" ng-controller="layoutPDFCtrl">
+    <div ng-show="show" style="float:right;">
+        <a id="download">Baixar Certificado</a>
+        <div ng-hide="urlQRCODE.length != 0">
+            <qr text="urlQRCODE" id="qrcode"></qr>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var qr = document.getElementById('qrcode');
+    function convertImgToBase64(callback){
+        var img = new Image();
+        img.onload = function(){
+            var canvas = document.createElement('CANVAS');
+            var ctx = canvas.getContext('2d');
+            canvas.height = 1241;
+            canvas.width = 1754;
+            ctx.drawImage(this, 0, 0);
+            var dataURL = canvas.toDataURL('image/png');
+            callback(dataURL);
+            canvas = null;
+        };
+        img.src = '/assets/img/certificado.png';
+    }
+
+    var button = document.getElementById("download");
+
+    button.onclick = function(){
+        convertImgToBase64(function(dataUrl){
+            var doc = new jsPDF('landscape','pt',[1754,1241]);
+            if(window.name.length < 40){
+                doc.setFontSize(40);
+            }else if(window.name.length < 70){
+                doc.setFontSize(20);
+            }else{
+                doc.setFontSize(15);
+            }
+            doc.addImage(dataUrl,'png',0,0,1754,1241);
+            doc.setFontType("bold");
+            doc.text(window.name, 770, 395);
+            doc.setFontSize(30);
+            doc.text(window.url,570,1225);
+            var dataURLQR = qr.children[0].toDataURL('image/png');
+            doc.addImage(dataURLQR,'png',667,1014,177,177);
+            doc.save('Certificado.pdf');
+        });
+    };
+</script>

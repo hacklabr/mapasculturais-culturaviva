@@ -54,60 +54,8 @@ border-color: gray;
                 <span class="error" ng-repeat="error in errors.shortDescription">{{ error }}</span>
                 <span>{{400 - agent.shortDescription.length}} Characters</span>
             </label>
-        </div>
-        <div class="row">
-
-            <label class="colunm1" ng-class="{'busy': cepcoder.busy}">
-                <span class="destaque">CEP do Ponto/Pontão de Cultura* (70308-200) <i class='hltip' title='Caso não saiba seu CEP acesse o site dos correios'>?</i></span>
-                <input type="text"
-                       name="cep"
-                       ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
-                       ng-model="agent.cep">
-                       <!-- <input type="text"
-                              name="cep"
-                              ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
-                              ng-model="agent.cep"
-                              ui-mask="99999-999"> -->
-                <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
-            </label>
 
             <label class="colunm1">
-                <span class="destaque">O Ponto/Pontão de Cultura tem sede própria?*</span>
-                <select name="tem_sede" ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
-                    <option></option>
-                    <option value="1" ng-value="1">Sim</option>
-                    <option value="0" ng-value="0">Não</option>
-                </select>
-                <label class="check">
-                    <input type="checkbox"
-                           name="sede_realizaAtividades"
-                           ng-change="save_field('sede_realizaAtividades', true)"
-                           ng-model="agent.sede_realizaAtividades"
-                           ng-true-value="1"
-                           ng-false-value="0"/>
-                    realiza atividades culturais na sede
-                </label>
-                <?php /*
-                <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
-                <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
-                */ ?>
-
-                <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
-            </label>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="row">
-            <span class="colunm1">
-                <span class="destaque">Endereço* <i class='hltip' title='Caso não tenha uma sede, coloque o endereço de referêrncia do Ponto de Cultura'>?</i></span>
-            </span>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="row">
-            <label class="colunm2">
                 <span class="destaque">País*</span>
                 <select name="pais" ng-blur="save_field('pais')" ng-model="agent.pais">
                   <option value="Brasil" selected>Brasil</option>
@@ -199,8 +147,78 @@ border-color: gray;
                   <option value="Vietnã">Vietnã</option>                  <option value="Zaire">Zaire</option>
                   <option value="Zâmbia">Zâmbia</option>                  <option value="Zimbábue">Zimbábue</option>
                 </select>
-              </label>
-            <label class="colunm2" ng-if="agent.pais === 'Brasil'">
+            </label>
+
+            <label class="colunm1">
+                <span class="destaque">O Ponto/Pontão de Cultura tem sede própria?*</span>
+                <select name="tem_sede" ng-blur="save_field('tem_sede')" ng-model="agent.tem_sede">
+                    <option></option>
+                    <option value="1" ng-value="1">Sim</option>
+                    <option value="0" ng-value="0">Não</option>
+                </select>
+                <label class="check">
+                    <input type="checkbox"
+                           name="sede_realizaAtividades"
+                           ng-change="save_field('sede_realizaAtividades', true)"
+                           ng-model="agent.sede_realizaAtividades"
+                           ng-true-value="1"
+                           ng-false-value="0"/>
+                    realiza atividades culturais na sede
+                </label>
+                <?php /*
+                <input type="checkbox" ng-change="save_field('mesmoEndereco', true)" ng-model="agent.mesmoEndereco" ng-checked="agent.mesmoEndereco == 'true'"/>
+                <span class="check">mesmo endereço cadastrado no CNPJ da entidade</span>
+                */ ?>
+
+                <span class="error" ng-repeat="error in errors.tem_sede">{{ error }}</span>
+            </label>
+
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+            <span class="colunm1">
+                <span class="destaque">Informe o endereço do Ponto/Pontão de Cultura <i class='hltip' title='Caso não tenha uma sede, coloque o endereço de referência do Ponto de Cultura'>?</i></span>
+            </span>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="row">
+
+            <!-- inicio campos CEP e Código Postal -->
+            <label class="colunm2"
+                   ng-class="{'busy': cepcoder.busy}"
+                   ng-if="agent.pais === 'Brasil'">
+                <span class="destaque">CEP* <i class='hltip' title='Caso não saiba o CEP acesse o site dos correios'>?</i></span>
+                <input type="text"
+                       name="cep"
+                       ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                       ng-model="agent.cep"
+                       ui-mask="99999-999">
+                       <!-- <input type="text"
+                                   name="cep"
+                                   ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                                   ng-model="agent.cep"
+                                   ui-mask="99999-999"> -->
+                <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
+            </label>
+
+            <label class="colunm2"
+                   ng-class="{busy: cepcoder.busy}"
+                   ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Código Postal <i class='hltip' title='Caso não saiba o código postal consulte com seu governo'>?</i></span>
+                <input type="text"
+                       name="cep"
+                       ng-blur="save_field('cep'); cepcoder.code(agent.cep)"
+                       ng-model="agent.cep">
+                <span class="error" ng-repeat="error in errors.cep">{{ error }}</span>
+            </label>
+            <!-- Fim campos CEP e Código Postal -->
+
+            <label ng-if="agent.pais === 'Brasil'" class="colunm2">
                 <span class="destaque">Estado*</span>
                 <select name="geoEstado" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado">
                     <option value="AC">Acre</option>              <option value="AL">Alagoas</option>
@@ -220,12 +238,22 @@ border-color: gray;
                 </select>
                 <span class="error" ng-repeat="error in errors.estado">{{ error }}</span>
             </label>
+
+
+
+
             <label class="colunm2" ng-if="agent.pais !== 'Brasil'">
                 <span class="destaque">Estado</span>
                 <input name="geoEstado" type="text" ng-blur="save_field('geoEstado')" ng-model="agent.geoEstado"/>
             </label>
 
-            <label class="colunm2">
+            <label class="colunm2" ng-class="{busy: cidadecoder.busy}"  ng-if="agent.pais !== 'Brasil'">
+                <span class="destaque">Cidade*</span>
+                <input type="text" name="geoMunicipio" ng-blur="save_field('geoMunicipio'); cidadecoder.code(agent.geoMunicipio, agent.pais)" ng-model="agent.geoMunicipio"/>
+                <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>
+            </label>
+
+            <label class="colunm2"  ng-if="agent.pais === 'Brasil'">
                 <span class="destaque">Cidade*</span>
                 <input type="text" name="geoMunicipio" ng-blur="save_field('geoMunicipio')" ng-model="agent.geoMunicipio"/>
                 <span class="error" ng-repeat="error in errors.cidade">{{ error }}</span>

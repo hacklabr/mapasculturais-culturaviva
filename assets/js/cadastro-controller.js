@@ -690,8 +690,8 @@
 
 
     // Controller do 'Seu ponto no Mapa'
-    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http',
-        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http)
+    app.controller('PointCtrl', ['$scope', 'Entity', 'MapasCulturais', 'Upload', '$timeout', 'geocoder', 'cepcoder', '$location', '$http', 'cidadecoder',
+        function PointCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http, cidadecoder)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
 
@@ -726,6 +726,31 @@
                     $scope.save_field('location');
                 }
             }, true);
+
+            $scope.cidadecoder = {
+                busy: false,
+                code: function(cidade, pais){
+                    $scope.agent.geoMunicipio = cidade;
+                    $scope.save_field('geoMunicipio');
+                    $scope.cidadecoder.busy = true;
+                    cidadecoder.code(cidade, pais).then(function(res){
+                        var addr = res.data[0];
+                        if(addr){
+                            var string = (addr.display_name ? addr.display_name+', ':'');
+                        }
+
+                        return geocoder.code(string);
+
+                    }).then(function(point){
+                        point.zoom = 14;
+                        $scope.markers.main = point;
+                    })['catch'](function(){
+                        $scope.markers.main = undefined;
+                    }).finally(function(){
+                        $scope.cepcoder.busy = false;
+                    });
+                }
+            };
 
             $scope.cepcoder = {
                 busy: false,
@@ -1264,8 +1289,10 @@
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
             var aux = 'culturaviva.gov.br/agente/';
 
+            $scope.urlQRCODE = null;
+
             var params = {
-                '@select': 'id,name,user.id',
+                '@select': 'id,name,user.id,homologado_rcv',
                 '@permissions': 'view',
                 'id': 'EQ('+agent_id+')'
             };
@@ -1273,9 +1300,10 @@
              $http.get("/api/agent/find",{
                  params: params
              }).success(function(dados){
-                $scope.name = dados[0].name;
-                dados[0].user.id = aux.concat(dados[0].user.id);
-                $scope.id = dados[0].user.id;
+                window.name = dados[0].name;
+                window.url = aux.concat(dados[0].user.id);
+                $scope.urlQRCODE = window.url;
+                $scope.show = dados[0].homologado_rcv;
             });
     }]);
 
