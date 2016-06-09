@@ -23,12 +23,15 @@ $link_continuar = $app->createUrl('cadastro', $link );
     </header>
 
     <p><?php echo $this->cadastroText ?></p>
+    <div class="btn_voltar_topo">
+       <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" target="_self">voltar ao início <i class="icon icon-home"></i></a>
+    </div>
 
     <?php echo $TEMPLATE_CONTENT; ?>
     <div class="btn_voltar">
-       <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>">voltar ao início <i class="icon icon-home"></i></a>
+       <a href="<?php echo $app->createUrl('cadastro', 'index'); ?>" target="_self">voltar ao início <i class="icon icon-home"></i></a>
     </div>
-    <a href="<?php echo $link_continuar;  ?>" class="btn btn_continuar">Continuar >> </a>
+    <a href="<?php echo $link_continuar;  ?>" class="btn btn_continuar" target="_self">Continuar >> </a>
     <div class="clear"></div>
 </div>
 

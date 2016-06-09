@@ -1,5 +1,4 @@
 
-
 @font-face {
   font-family: "DroidSans";
   font-weight: normal;
@@ -26,7 +25,7 @@ body{
     background:transparent;
 }
 
-section{
+section {
     max-width:960px;
     width:100%;
     margin:0 auto;
@@ -42,7 +41,22 @@ section{
         text-transform: uppercase;
         width: 220px;
     }
+}
 
+.entity, .controller-site {
+    section {
+        max-width: 96%;
+    }
+}
+
+.infobox-open {
+    section {
+        max-width: initial;
+    }
+}
+
+#editable-entity {
+    max-width: 96%;
 }
 
 #page-entrada{
@@ -183,7 +197,7 @@ section{
         span{
             color: #FBED1D;
             font-size: 35px;
-            margin-left: 40%;
+            margin-left: 45%;
         }
     }
 
@@ -313,7 +327,7 @@ section{
 
     article {
         &.slide-home {
-            background: url('../img/banner-home1.jpg');
+            background: url('../img/banner-home2.jpg');
             height: 450px;
             padding-top: 30px;
             max-height: 480px;
@@ -329,7 +343,7 @@ section{
                 width: 433px;
                 height: 164px;
                 background-color: #333;
-                top: -435px;
+                top: -555px;
                 margin-left: 10px;
             }
 
@@ -366,9 +380,10 @@ section{
                     text-transform: uppercase;
                     color:#3a7c18;
                     position: relative;
-                    left: -325%;
-		    top: -15%;
-		    font-size: 18px;
+                    height:auto;
+                    left: -26%;
+		                top: -15%;
+		                font-size: 24px;
             }
             a {
                 &.what {
@@ -663,7 +678,7 @@ section{
                     font-size: 1.3em;
                     margin: 20px 5% 10px;
 					position: relative;
-					
+
 					display: inline-block;
 					top: 13px;
                 }
@@ -676,7 +691,7 @@ section{
                     left: 15px;
 					position: relative;
 					vertical-align:top;
-                
+
                 }
 
                 .btn_mais{
@@ -965,7 +980,7 @@ section{
                 margin-left: 44%;
                 margin-top: 30px;
             }
-            
+
             .btn-validar:enabled {
             	background: rgb(214, 213, 213);
             	color: rgb(99, 99, 99);
@@ -1095,7 +1110,7 @@ section{
             display:inline-block;
             margin-right: 10px;
         }
-       
+
         .img_updade{
             display:inline-block;
             margin-bottom: 30px;
@@ -1228,7 +1243,7 @@ section{
             color: #078979;
             font-weight:bold;
 
-            i{
+            .hltip{
                 background: #f7931e;
                 border-radius: 10px;
                 padding: 1px 6px;
@@ -1250,6 +1265,7 @@ section{
     }
     .colunm-redes{
             width: 27%;
+
             display:inline-block;
             margin-right:20px;
             margin-left: 1%;
@@ -1259,7 +1275,10 @@ section{
         margin-bottom:10px;
     }
     .facebook{
-
+        height: auto;
+        max-width: 27%;
+        word-wrap:break-word;
+        text-align:justify;
         i{
           color:#576c94;
         }
@@ -1377,7 +1396,7 @@ section{
         }
 
         .facebook{
-            
+
             i{
               color:#576c94;
             }
@@ -1439,6 +1458,42 @@ section{
         }
     }
 
+    .btn_voltar_topo{
+        float:right;
+        margin-right: 50px;
+        margin-top: -35px;
+        a{
+            color: #b3b3b3;
+            text-decoration: underline;
+            font-size:14px;
+            font-weight: 100;
+            cursor:pointer;
+
+            i{
+                background:#078979;
+                cursor:pointer;
+                color:#fff;
+                display: inline-block;
+                font-size: 20px;
+                padding: 7px 9px 5px;
+                margin-left:10px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                -webkit-box-shadow: 0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+                -moz-box-shadow:    0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+                box-shadow:         0px 0px 7px 0px rgba(50, 50, 50, 0.75);
+            }
+        }
+
+        a:hover{
+            i{
+                color:#078979;
+                background:#b3b3b3;
+            }
+        }
+    }
+
     .btn_continuar{
         float: right;
         margin-right: 100px;
@@ -1457,6 +1512,25 @@ section{
 **
 * Estrutura Form Especifico, Backgrounds, Colors
 */
+.page-homologacao{
+  background:#ed1c24;
+  padding-bottom: 20px;
+}
+.colunmH1{
+  color: #fff;
+  margin-left: 200px;
+  font-weight: bold;
+}
+.colunmH2{
+  color: #fff;
+  margin-left: 140px;
+  font-weight: bold;
+}
+.H3{
+  margin-left: 345px;
+  color: #fff;
+}
+
 .page-responsavel{
     header{
         background:$base-color-info-responsavel;
@@ -1485,6 +1559,11 @@ section{
             background: $base-color-info-responsavel;
         }
     }
+
+}
+
+.input_erro{
+    border-color: #FF0000;
 }
 
 .page-ponto-mapa{
@@ -1519,7 +1598,7 @@ section{
         width:60%;
     }
 
-    
+
 
     .form{
         h4{
@@ -1628,7 +1707,7 @@ section{
 
             .destaque{
                 display:inline-block;
-                i{
+                .hltip{
                     font-size:11px;
                 }
             }
@@ -1966,8 +2045,15 @@ section{
         vertical-align:top;
     }
 
+    .colunm-30{
+        width: 400px;
+        margin-left: 4%;
+        display:inline-block;
+        vertical-align:top;
+    }
+
     .colunm05{
-        width: 200px;
+        width: 210px;
         margin-left: 2%;
         display:inline-block;
         vertical-align:top;
@@ -2005,8 +2091,8 @@ section{
             .text-banner{
                 width: 90%;
             }
-        }    
-        
+        }
+
         article.points_culture{
             .row{
                 p{
@@ -2020,13 +2106,13 @@ section{
                    width:90%;
                    font-size: 16px;
                    + .box{
-                     margin-top: 20px;   
+                     margin-top: 20px;
                    }
-                   
+
                 }
-                
+
             }
-        }   
+        }
     }
 
     .page-base-form{
@@ -2064,24 +2150,24 @@ section{
         }
         .form-opcional{
             .nome_chamado{
-                width:90%; 
-                margin-left: 5%;   
+                width:90%;
+                margin-left: 5%;
             }
-    
+
             .onde_voce_mora{
                 width:90%;
-                margin-left: 5%; 
+                margin-left: 5%;
             }
-            
+
             .cidade{
                 margin-left:5%;
                 width:90%;
-            }  
-            
+            }
+
             .estado{
                 margin-left:5%;
             }
-                
+
             .colunm-redes{
                 width:80%;
                 margin-left:5%;
@@ -2117,7 +2203,7 @@ section{
             }
         }
 
-       
+
         section.boxs-cadastro {
             article{
                 width:100%;
@@ -2135,7 +2221,7 @@ section{
 
                 span.icon{
                     vertical-align: top;
-                    top: 34px; 
+                    top: 34px;
                 }
 
                 .infos{
@@ -2157,7 +2243,7 @@ section{
                 p.mensagem-validar{
                     width: 80%;
                 }
-            }  
+            }
         }
     }
 
@@ -2175,7 +2261,7 @@ section{
         }
 
         .colunm3{
-            
+
         }
     }
  }
@@ -2185,11 +2271,11 @@ section{
         article{
             header{
                 h4{
-                   width: 60%;  
+                   width: 60%;
                 }
             }
-        } 
-    } 
+        }
+    }
 }
 
 @media (min-width:550px) and (max-width: 760px) {
@@ -2343,4 +2429,255 @@ section{
   width: 12px;
   height: 12px;
   margin-bottom: 5px;
+}
+
+.certified-icon {
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    background-image: url(../img/unverified-seal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    &.inactive {
+        opacity: .2;
+    }
+    &.active {
+        background-image: url(../img/verified-icon-big.png);
+    }
+    &.editable {
+        padding-top: 1rem;
+        background-position: center 1rem;
+        &:after {
+            margin-left: -.5rem;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+#main-footer {
+  background-color: #09897a;
+  padding: 0; }
+
+  #topo{
+    //position: fixed;
+    /*margin-left: -19%;*/
+    /*margin-top: -40px;*/
+    height: 100px;
+    width: 100%;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+  }
+
+  #topo1{
+    height: 60%;
+    background: #075579;
+
+  }
+
+  #topo2{
+    height: 45%;
+    background: #D1D2D4;
+    /*opacity: 0.3;*/
+  }
+
+  #registros{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: normal;
+
+  }
+
+  #Exportar{
+    float: right;
+    margin-top: 12px;
+    margin-right: 20px;
+    width: 180px;
+    color: #075579;
+    font-weight: normal;
+  }
+
+  #container_table{
+    float: left;
+    height: auto;
+    //width: -moz-fit-content;
+    width: 80%;
+    padding-left: 50px;
+    //border: 60px solid rgba(153, 153, 153, 0.3);
+    //border-radius: 10px;
+    /*margin: 100px 0 0 70px;*/
+  }
+
+  #EstiloIEContainer{
+    //display: -ms-grid;
+    -ms-grid-columns: min-content;
+    margin-left: 170px;
+  }
+
+  #table{
+    margin: 0px;
+    color: #414042;
+    background: #D1D2D4;
+    float: left;
+  }
+
+  #table tr:nth-child(even) td{
+    background-color: #FFFFFF;
+  }
+
+  #Cabecalho{
+    font-size: 30px;
+    font-weight: bold;
+    background: #075579;
+    background-clip: padding-box;
+    color: #d1d2d4;
+  }
+
+  #cartao{
+    width: 650px;
+    height: 150px;
+    text-align: left;
+  }
+
+  #cartaoBusca{
+    width:215px;
+  }
+
+  #name{
+  	color:#075579;
+  	font-size:28px;
+  }
+
+  #nomeCompleto{
+  	color:#075579;
+  }
+
+  #emailPrivado{
+  	color:#075579;
+  }
+
+ .download{
+    width: 1.600em;
+    height: 0.500em;
+    border: 0.250em solid #A7A9AC;
+    border-top: none;
+    position: absolute;
+    bottom: 0.188em;
+    position: relative;
+    margin-top:1em;
+  }
+
+  .download:hover{
+    width: 1.500em;
+    height: 0.500em;
+    border: 0.250em solid	#FFFFFF;
+    border-top: none;
+    position: absolute;
+    bottom: 0.188em;
+    position: relative;
+    margin-top:1em;
+  }
+
+
+  .download:before{
+    content: '';
+    position: absolute;
+    width: 0.438em;
+    height: 0.625em;
+    background: #A7A9AC;
+    top: -0.875em;
+    left: 0.563em;
+  }
+
+  .download:hover:before{
+    content: '';
+    position: absolute;
+    width: 0.438em;
+    height: 0.625em;
+    background: #FFFFFF;
+    top: -0.875em;
+    left: 0.463em;
+  }
+
+  .download:after{
+    width: 0em;
+    height: 0em;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: #A7A9AC transparent transparent transparent;
+    border-width: 0.500em;
+    left: 0.250em;
+    top: -0.250em;
+  }
+
+  .download:hover:after{
+    width: 0em;
+    height: 0em;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: 	#FFFFFF transparent transparent transparent;
+    border-width: 0.500em;
+    left: 0.250em;
+    top: -0.250em;
+  }
+
+  .inputFiltro{
+    width: 200px;
+    border-radius: 2px;
+    margin-left: 10px;
+  }
+  #errorBox{
+    background-color: #ED1C24;
+    text-align: center;
+    margin-left: 0;
+    width: 91%;
+  }
+  #msg_errorBox{
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  #OBS{
+    text-align: center;
+    width:200px;
+    textarea{
+      width:200px;
+      height:auto;
+    }
+  }
+
+// fixing the responsive
+@media screen and (max-width: 889px) {
+    .site-header .main-navigation button.menu-toggle {
+        width: 50px;
+    }
+    .site-header .main-navigation {
+        float: none !important;
+        max-width: initial !important;
+        width: 100%;
+        ul {
+            border-top: 1px solid #dfdfdf;
+            float: none !important;
+            margin-top: 85px !important;
+            width: 100%;
+            li {
+                border-bottom: 1px solid #dfdfdf;
+                border-left: 0;
+                border-right: 0;
+                border-top: 1px solid #dfdfdf;
+                display: block;
+                float: none;
+                text-align: left;
+                width: 100%;
+                &:before {
+                    float: left;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
 }

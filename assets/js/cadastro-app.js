@@ -5,14 +5,17 @@
         'culturaviva.controllers',
         'culturaviva.services',
         'culturaviva.directives',
-        'Notifications',
+       //'Notifications',
         'ngFileUpload',
         'ngMessages',
         'ui.date',
-        'ui.mask'
+        'ui.mask',
+        'ngDialog',
+        'ja.qr'
     ]);
 
-    app.config(['$httpProvider', '$resourceProvider', function ($httpProvider, $resourceProvider) {
+    app.config(['$httpProvider', '$resourceProvider', '$locationProvider',
+    function ($httpProvider, $resourceProvider, $locationProvider) {
             $httpProvider.defaults.headers.delete = {};
             $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
             $httpProvider.defaults.headers.patch['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -26,6 +29,17 @@
                 return result;
             };
             $resourceProvider.defaults.stripTrailingSlashes = false;
+            $locationProvider.html5Mode(true);
+        }]);
+
+        app.config(["ngDialogProvider", function (ngDialogProvider) {
+            ngDialogProvider.setDefaults({
+                className: "ngdialog-theme-default",
+                plain: false,
+                showClose: true,
+                closeByDocument: true,
+                closeByEscape: true,
+            });
         }]);
 
 })(angular);

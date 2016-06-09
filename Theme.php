@@ -20,6 +20,8 @@ class Theme extends BaseV1\Theme{
         return array(
             'site: owner' => 'Ministério da Cultura',
             'site: by the site owner' => 'pelo Ministério da Cultura',
+            'search: verified results' => 'Pontos Certificados',
+            'search: verified' => "Certificados",
 
         );
     }
@@ -61,14 +63,15 @@ class Theme extends BaseV1\Theme{
 
         $this->assetManager->publishAsset('img/bg.png', 'img/bg.png');
         $this->assetManager->publishAsset('img/slider-home-topo/Home01.jpg', 'img/slider-home-topo/Home01.jpg');
-        $this->assetManager->publishAsset('img/banner-home1.jpg', 'img/banner-home1.jpg');
+        $this->assetManager->publishAsset('img/banner-home2.jpg', 'img/banner-home2.jpg');
+        $this->assetManager->publishAsset('img/certificado.png', 'img/certificado.png');
 
         $app->hook('view.render(site/search):before', function(){
             $this->jsObject['searchFilters'] = [
                 'agent' => ['rcv_tipo' => 'EQ(ponto)']
             ];
         });
-        
+
         $app->hook('view.render(cadastro/<<*>>):before', function() use($app) {
             $this->jsObject['templateUrl']['taxonomyCheckboxes'] = $this->asset('js/directives/taxonomy-checkboxes.html', false);
             $area = $app->getRegisteredTaxonomy('MapasCulturais\Entities\Agent', 'area');
@@ -82,6 +85,7 @@ class Theme extends BaseV1\Theme{
 
         $app->hook('view.render(<<*>>):before', function() use($app){
             $this->jsObject['apiCNPJ']  = $app->config['rcv.apiCNPJ'];
+            $this->jsObject['apiCNPJRF']  = $app->config['rcv.apiCNPJRF'];
             $this->jsObject['apiHeader'] = $app->config['rcv.apiHeader'];
         });
 
@@ -129,6 +133,8 @@ class Theme extends BaseV1\Theme{
     protected function _enqueueStyles(){
         $this->enqueueStyle('culturaviva', 'circle', 'css/circle.css');
         $this->enqueueStyle('culturaviva', 'fonts-culturavivaiicon', 'css/fonts-icon-culturaviva.css');
+        $this->enqueueStyle('vendor', 'ngDialog-style', 'css/ngDialog.min.css');
+        $this->enqueueStyle('vendor', 'ngDialog-theme', 'css/ngDialog-theme-default.min.css');
     }
 
     protected function _enqueueScripts(){
@@ -142,8 +148,14 @@ class Theme extends BaseV1\Theme{
         $this->enqueueScript('culturaviva', 'cadastro-directive', 'js/cadastro-directive.js', ['cadastro-app']);
 
         $this->enqueueScript('culturaviva', 'cadastro-culturaviva', 'js/culturaviva.js');
+        $this->enqueueScript('culturaviva', 'FileSaver', 'js/FileSaver.min.js');
 
         $this->enqueueScript('vendor', 'ng-file-upload', 'vendor/ng-file-upload.js', ['angular']);
+	    $this->enqueueScript('vendor', 'ngDialog', 'vendor/ngDialog.min.js');
+        $this->enqueueScript('vendor', 'google-maps-api', 'http://maps.google.com/maps/api/js?v=3.2&sensor=false');
+        $this->enqueueScript('vendor', 'angularQR', 'vendor/angular-qr.min.js');
+        $this->enqueueScript('vendor', 'QR', 'vendor/qrcode.min.js');
+        $this->enqueueScript('vendor', 'jsPDF', 'vendor/jspdf.min.js');
     }
 
     protected function _publishAssets(){
@@ -152,7 +164,7 @@ class Theme extends BaseV1\Theme{
 
     function head() {
         parent::head();
-        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede'){
+        if($this->controller->id === 'cadastro' || $this->controller->id == 'rede' || $this->controller->id === 'admin'){
             $this->printStyles('culturaviva');
             $this->printScripts('culturaviva');
         }
@@ -178,12 +190,14 @@ class Theme extends BaseV1\Theme{
         $app = App::i();
         $app->registerController('rede', 'CulturaViva\Controllers\Rede');
         $app->registerController('cadastro', 'CulturaViva\Controllers\Cadastro');
+        $app->registerController('admin', 'CulturaViva\Controllers\Admin');
 
 //        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['^application\/pdf$'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('portifolio', ['.*'], 'O portifólio deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta1', ['.*'], 'a carta deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('carta2', ['.*'], 'a carta deve ser um arquivo pdf.', true));
         $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('logoponto', ['.*'], 'O logotipo deve ser uma imagem.', true));
+        $app->registerFileGroup('agent', new \MapasCulturais\Definitions\FileGroup('ata', ['.*'], 'a ata deve ser um arquivo pdf', true));
 
         $metadata = [
             'MapasCulturais\Entities\User' => [
@@ -223,7 +237,7 @@ class Theme extends BaseV1\Theme{
                     'label' => 'Tipo de agente da Rede Cultura Viva',
                     'private' => false
                 ],
-                
+
                 // campos para salvar infos da base de pontos existente
                 'rcv_Ds_Edital' => [
                     'label' => 'Ds_Edital',
@@ -502,6 +516,17 @@ class Theme extends BaseV1\Theme{
                     'private' => true
                 ],
 
+                'responsavel_telefone2' => [
+                    'label' => 'Telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
+                'responsavel_operadora2' => [
+                    'label' => 'Operadora do telefone do responsável',
+//                  'required' => true,
+                    'private' => true
+                ],
+
                 'En_Bairro' => [
                     'label' => 'Bairro',
 //                  'required' => true,
@@ -537,6 +562,14 @@ class Theme extends BaseV1\Theme{
 
                 'geoEstado' => [
                     'label' => 'Estado',
+//                  'required' => true,
+                    'private' => function(){
+                        return !$this->publicLocation;
+                    }
+                ],
+
+                'pais' => [
+                    'label' => 'Pais',
 //                  'required' => true,
                     'private' => function(){
                         return !$this->publicLocation;
@@ -601,6 +634,9 @@ class Theme extends BaseV1\Theme{
                 'atividadesEmRealizacao' => [
                     'label' => 'Atividades culturais em realização'
                 ],
+		'atividadesEmRealizacaoLink' => [
+                    'label' => 'Link para suas atividades culturais em realização'
+                ],
                 'flickr' => [
                     'label' => 'Flickr',
                     'required' => false
@@ -611,6 +647,22 @@ class Theme extends BaseV1\Theme{
                 ],
                 'youtube' => [
                     'label' => 'Youtube',
+                    'required' => false
+                ],
+		'telegram' => [
+		    'label' => 'Telegram',
+		    'required' => false
+		],
+		'whatsapp' => [
+                    'label' => 'WhatsApp',
+                    'required' => false
+                ],
+		'culturadigital' => [
+                    'label' => 'CulturaDigital',
+                    'required' => false
+                ],
+		'instagram' => [
+                    'label' => 'Instagram',
                     'required' => false
                 ],
 
@@ -628,6 +680,21 @@ class Theme extends BaseV1\Theme{
                 'parceriaPoderPublico' => [
                     'label' => '',
                     'required' => false,
+                    'private' => true
+                ],
+                'simPoderPublico' => [
+                    'label' => 'Quais para radio participa poder publico',
+      //              'required' => false,
+                    'private' => true
+                ],
+                'simMovimentoPoliticoCultural' => [
+                    'label' => 'Quais para radio participa movimento politico cultural',
+      //              'required' => false,
+                    'private' => true
+                ],
+                'simForumCultural' => [
+                    'label' => 'Quais para radio participa forum cultural',
+      //              'required' => false,
                     'private' => true
                 ],
 
@@ -846,6 +913,35 @@ class Theme extends BaseV1\Theme{
                     'required' => false,
                     'private' => true
                 ],
+                //Homologação
+                'homologado_rcv' =>[
+                  'label' => '',
+                  'required' => false,
+                  //'private' => false
+                ],
+                'info_verdadeira' =>[
+                  'label' => '',
+                  'required' => false,
+                  'private' => true
+                ],
+                //Campo de observação
+                'obs' =>[
+                  'label' => '',
+                  'required' => false,
+                  'private' => true
+                ],
+                //3° telefone
+                'telefone3' => [
+                    'label' => 'Telefone',
+//                  'required' => true,
+                    'private' => true,
+                    'validations' => ['v::regex("#^\d{2}[ ]?\d{4,5}\d{4}$#")' => 'Por favor, informe o telefone público no formato xx xxxx xxxx.']
+                ],
+                'telefone3_operadora' => [
+                    'label' => 'Operadora do telefone 3',
+//                  'required' => true,
+                    'private' => true
+                ],
             ]
         ];
 
@@ -858,6 +954,7 @@ class Theme extends BaseV1\Theme{
 
         $taxonomies = [
             // Atuação e Articulação
+            'area' => 'São as áreas do Ponto/Pontão de Cultura',
             'contemplado_edital' => 'Editais do Ministério da Cultura em que foi contemplado',
             'acao_estruturante' => 'Ações Estruturantes',
             'publico_participante' => 'Públicos que participam das ações',

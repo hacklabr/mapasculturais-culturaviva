@@ -1,33 +1,33 @@
 <?php
     $this->bodyProperties['ng-app'] = "culturaviva";
     $this->layout = 'cadastro';
-    $this->cadastroTitle = '3. Projetos Financiados';
+    $this->cadastroTitle = '5. Projetos Financiados';
     $this->cadastroText = 'O MinC possui diversas formas de financiamento. Você já recebeu algum prêmio ou participou de algum edital?';
     $this->cadastroIcon = 'icon-dollar';
     $this->cadastroPageClass = 'contato-entidade page-base-form';
-    $this->cadastroLinkContinuar = 'pontoMapa';
+    $this->cadastroLinkContinuar = 'articulacao';
 ?>
 
 
-<form ng-controller="EntityContactCtrl">
+<form name="form_entityContact" ng-controller="EntityContactCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
-        <h4>Informações Obrigatórias</h4>
+        <h4>Informações Opcionais</h4>
 
         <div class="row">
             <div class="colunm-50">
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC* <i Marque caso você tenha recebido algum recurso direto do MinC>?</i></span>
-                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC* <i>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='entidade' || !agent.tipoOrganizacao">A Entidade já foi financiada pelo MinC <i class='hltip' title='Marque caso você tenha recebido algum recurso direto do MinC'>?</i></span>
+                <span class="destaque" ng-show="agent.tipoOrganizacao==='coletivo'">O Coletivo já foi financiada pelo MinC <i class='hltip' title='Marque SIM se o coletivo cultural ja recebeu algum recurso do MiniC'>?</i></span>
                 <label class="label-radio">
                     <input type="radio"
-                           name="formentominc"
+                           name="foiFomentado"
                            ng-value="1"
                            ng-change="save_field('foiFomentado')"
                            ng-model="agent.foiFomentado"> Sim
                 </label>
                 <label class="label-radio">
                     <input type="radio"
-                           name="formentominc"
+                           name="foiFomentado"
                            ng-value="0"
                            ng-change="save_field('foiFomentado')"
                            ng-model="agent.foiFomentado"> Não
@@ -111,11 +111,11 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Número do Edital de Seleção</span>
-                    <input type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
+                    <input name="edital_num" type="text" ng-blur="save_field('edital_num')" ng-model="agent.edital_num" >
                 </label>
                 <label class="colunm-50">
                     <span class="destaque">Ano do Edital de Seleção</span>
-                    <input type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
+                    <input name="edital_ano" type="text" ng-blur="save_field('edital_ano')" ng-model="agent.edital_ano" ui-mask="9999" >
                 </label>
 
             </div>
@@ -123,13 +123,13 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Título do Projeto</span>
-                    <input type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="agent.edital_projeto_nome" >
+                    <input name="edital_projeto_nome" type="text" ng-blur="save_field('edital_projeto_nome')" ng-model="agent.edital_projeto_nome" >
                 </label>
 
                 <label class="colunm-50">
 
-                    <span class="destaque">Local de Realização <i>?</i></span>
-                    <input type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
+                    <span class="destaque">Local de Realização <i class='hltip' title='Local onde o projeto foi realizado'>?</i></span>
+                    <input name="edital_localRealizacao" type="text" ng-blur="save_field('edital_localRealizacao')" ng-model="agent.edital_localRealizacao" >
     <!--                <select ng-blur="save_field('')" ng-model="agent.locationrealization">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -141,14 +141,14 @@
             <div class="row">
                 <label class="colunm-50">
                     <span class="destaque">Proponente </span>
-                    <input type="text" ng-blur="save_field('edital_proponente')" ng-model="agent.edital_proponente" >
+                    <input name="edital_proponente" type="text" ng-blur="save_field('edital_proponente')" ng-model="agent.edital_proponente" >
                 </label>
             </div>
             <div class="clear"></div>
             <div class="row">
                 <label class="colunm-full">
-                    <span class="destaque">Resumo do projeto (objeto) <i>?</i></span>
-                    <textarea ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
+                    <span class="destaque">Resumo do projeto (objeto) <i class='hltip' title='Um breve resumo do que foi realizado no projeto (como foi feito, qual o objetivo,etc..)'>?</i></span>
+                    <textarea name="edital_projeto_resumo" ng-blur="save_field('edital_projeto_resumo')" ng-model="agent.edital_projeto_resumo"> </textarea>
                 </label>
             </div>
             <div class="clear"></div>
@@ -190,7 +190,7 @@
             <div class="clear"></div>-->
             <div class="row">
                 <div class="colunm-50">
-                    <span class="destaque">Etapa do Projeto <i>?</i></span>
+                    <span class="destaque">Etapa do Projeto <i class='hltip' title='Se o projeto mencionado ainda estiver em andamento marque Em Execução'>?</i></span>
                     <label class="label-radio"><input type="radio"
                                                      name="etapaprojeto"
                                                      value="emexecucao"
@@ -207,7 +207,7 @@
             <div ng-show="agent.edital_projeto_etapa==='executado'">
                 <div class="row">
                     <div class="colunm-50">
-                        <span class="destaque">Prestação de Contas <i>?</i></span>
+                        <span class="destaque">Prestação de Contas <i class='hltip' title=''>?</i></span>
                         <label class="label-radio"><input type="radio"
                                                          name="edital_prestacaoContas_envio"
                                                          value="enviada"
@@ -251,10 +251,10 @@
                 <label class="colunm-full vigencia">
                     <span class="destaque">Vigência:    </span>
                     <span class="vigencia-box vigiencia-de" style="width:120px; display:inline-block;">
-                        de <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
+                        de <input name="edital_projeto_vigencia_inicio" class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_inicio')" ng-model="agent.edital_projeto_vigencia_inicio">
                     </span>
                     <span class="vigencia-box vigiencia-ate" style="width:120px; display:inline-block; margin-left:15px">
-                        até  <input class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
+                        até  <input name="edital_projeto_vigencia_fim" class="vigencia-box vigiencia-de" ui-date ui-date-format="yy-mm-dd" ng-change="save_field('edital_projeto_vigencia_fim')" ng-model="agent.edital_projeto_vigencia_fim">
                     </span>
 
                 </label>
@@ -262,7 +262,7 @@
             <div class="clear"></div>
             <div class="row">
                 <div class="colunm-full">
-                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc)* <i>?</i></span>
+                   <span class="destaque">Recebe ou recebeu outros financiamentos? (apoios, patrocínios, prêmios, bolsas, convênios, etc) <i class='hltip' title='Se recebeu mais algum outro financiamento do Minc, seja ele de qualquer tipo marque sim'>?</i></span>
                     <label class="label-radio">
                         <input type="radio"
                                name="financiamentos"
@@ -280,7 +280,7 @@
             <div class="row" ng-show="agent.outrosFinanciamentos">
                 <label class="colunm-50">
                     <span class="destaque">Quais ?</span>
-                    <input type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="agent.outrosFinanciamentos_descricao" >
+                    <input name="outrosFinanciamentos_descricao" type="text" ng-blur="save_field('outrosFinanciamentos_descricao')" ng-model="agent.outrosFinanciamentos_descricao" >
                 </label>
             </div>
             <div class="clear"></div>

@@ -9,7 +9,7 @@
 
 ?>
 
-<form ng-controller="PontoEconomiaVivaCtrl">
+<form name="form_pontoEconomia" ng-controller="PontoEconomiaVivaCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <div class="row">
@@ -105,7 +105,7 @@
                        ng-change="save_field('pontoEconomiaSolidaria')"
                        ng-model="agent.pontoEconomiaSolidaria"> Sim
                 <div ng-show="agent.pontoEconomiaSolidaria==='sim'">
-                    <span> Como? </span>
+                    <span class="destaque"> Como? </span>
                     <textarea ng-model="agent.pontoEconomiaSolidariaDescricao" ng-blur="save_field('pontoEconomiaSolidariaDescricao')"></textarea>
                 </div>
             </label>
@@ -135,7 +135,7 @@
                        ng-change="save_field('pontoEconomiaCultura')"
                        ng-model="agent.pontoEconomiaCultura"> Sim
                 <div ng-show="agent.pontoEconomiaCultura==='sim'">
-                    <span> Como? </span>
+                    <span class="destaque"> Como? </span>
                     <textarea ng-model="agent.pontoEconomiaCulturaDescricao" ng-blur="save_field('pontoEconomiaCulturaDescricao')"></textarea>
                 </div>
             </label>
@@ -261,7 +261,7 @@
                        ng-change="save_field('pontoContrataServicos')"
                        ng-model="agent.pontoContrataServicos">  Sim
                 <div ng-show="agent.pontoContrataServicos==='sim'">
-                    <span>Que tipo de serviços e/ou produtos?</span>
+                    <span class="destaque">Que tipo de serviços e/ou produtos?</span>
                     <textarea ng-model="agent.pontoContrataServicosOutros"
                               ng-blur="save_field('pontoContrataServicosOutros')"></textarea>
                 </div>
@@ -283,7 +283,7 @@
                        ng-change="save_field('pontoInvestimentosColetivos')"
                        ng-model="agent.pontoInvestimentosColetivos"> Sim
                  <div ng-show="agent.pontoInvestimentosColetivos==='sim'">
-                    <span>Quanto e para quem?</span>
+                    <span class="destaque">Quanto e para quem?</span>
                     <textarea ng-model="agent.pontoInvestColetivosOutros"
                               ng-blur="save_field('pontoInvestColetivosOutros')"></textarea>
                 </div>

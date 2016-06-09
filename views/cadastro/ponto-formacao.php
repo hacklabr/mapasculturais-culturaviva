@@ -9,7 +9,7 @@
 
 ?>
 
-<form ng-controller="PontoFormacaoCtrl">
+<form name="form_pontoFormacao" ng-controller="PontoFormacaoCtrl">
     <?php $this->part('messages'); ?>
     <div class="form">
         <h4>Conhecimento em Rede</h4>
@@ -52,20 +52,20 @@
                 <textarea ng-blur="save_field('formador1_bio')" ng-model="agent.formador1_bio"></textarea>
             </label>
             <div class="colunm-full">
-                <span class="destaque redessociais">Seu perfil nas redes sociais: <i>?</i></span>
+                <span class="destaque redessociais">Seu perfil nas redes sociais: <i class='hltip' title='Caso possua um perfil nas redes sociais abaixo coloque o link do perfil'>?</i></span>
             </div>
             <label class="colunm-redes facebook">
-                <span><i class="icon icon-facebook-squared"></i> Seu perfil no Facebook</span>
+                <span class="destaque"><img src="<?php $this->asset('img/facebook.png') ?>"> Seu perfil no Facebook</span>
                 <input type="text" ng-blur="save_field('formador1_facebook')" ng-model="agent.formador1_facebook" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes twitter">
-                <span><i class="icon icon-twitter"></i> Seu perfil no Twitter</span>
+                <span class="destaque"><img src="<?php $this->asset('img/twitter.png') ?>"> Seu perfil no Twitter</span>
                 <input type="text" ng-blur="save_field('formador1_twitter')" ng-model="agent.formador1_twitter" placeholder="http://"/>
             </label>
 
             <label class="colunm-redes googleplus">
-                <span><i class="icon icon-gplus"></i> Seu perfil no Google+</span>
+                <span class="destaque"><img src="<?php $this->asset('img/googlePlus.ico') ?>"> Seu perfil no Google+</span>
                 <input type="text" ng-blur="save_field('formador1_google')" ng-model="agent.formador1_google" placeholder="http://"/>
             </label>
 
