@@ -669,12 +669,25 @@
         function PortifolioCtrl($scope, Entity, MapasCulturais, Upload, $timeout, geocoder, cepcoder, $location, $http)
         {
             var agent_id = MapasCulturais.redeCulturaViva.agentePonto;
+            var agent_id_entidade = MapasCulturais.redeCulturaViva.agenteEntidade;
+            var agent_id_ponto = MapasCulturais.redeCulturaViva.agentePonto;
 
             var params = {
                 'id': agent_id,
                 '@select': 'id,rcv_tipo,longDescription,atividadesEmRealizacao,site,facebook,twitter,googleplus,telegram,whatsapp,'+
                 'culturadigital,diaspora,instagram,flickr,youtube,atividadesEmRealizacaoLink',
                 '@files':'(avatar.avatarBig,portifolio,gallery.avatarBig,cartasRecomendacao):url',
+                '@permissions': 'view'
+            };
+            var params_entidade = {
+                'id': agent_id_entidade,
+                '@select': 'id,tipoOrganizacao',
+                '@permissions': 'view'
+            };
+
+            var params_ponto = {
+                'id': agent_id_ponto,
+                '@select': 'id,homologado_rcv',
                 '@permissions': 'view'
             };
 
@@ -685,6 +698,10 @@
                 $scope.showInvalid($scope.agent.rcv_tipo, 'form_portifolio');
               }
             });
+            
+
+            $scope.agent_entidade = Entity.get(params_entidade);
+            $scope.agent_ponto = Entity.get(params_ponto);
         }
     ]);
 

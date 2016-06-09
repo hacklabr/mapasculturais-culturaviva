@@ -54,8 +54,8 @@
                 </p>
             </label>
       </div>
-      <div class="row" ng-controller="ImageUploadCtrl">
-        <div ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
+      <div class="row" ng-if="agent_entidade.tipoOrganizacao == 'coletivo'">
+        <div ng-controller="ImageUploadCtrl" ng-init="init('ponto')">
           <h4>Carta de Autorização de Coletivo sem Constituição Jurídica</h4>
             <div class="colunm-20">
               <div class="file-item">
